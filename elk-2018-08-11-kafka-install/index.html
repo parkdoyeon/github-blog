@@ -23,7 +23,10 @@
 
 
 
-  <link rel="alternate" href="/default" title="Park Doyeon">
+  <link rel="alternate" href="/feed.xml" title="Park Doyeon">
+
+
+
 
 
 
@@ -138,10 +141,10 @@
 
     
             <div class="post-content">
-            <p>팀에서 관리하는 웹서버의 로깅시스템을 구축하면서 <a href="https://kafka.apache.org/" target="_blank" rel="noopener">kafka</a>를 사용하기로 했다. kafka는 서버간 데이터 전달을 위한 브로커 어플리케이션으로, 급격하게 증가하는 데이터를 장애없이 빠르게 보낼수 있는 messaging queue 역할을 한다. kafka를 사용하기로 한 데 있어서 결정적인 요소는 두가지였는데,</p>
+            <p>팀에서 관리하는 웹서버의 로깅시스템을 구축하면서 <a href="https://kafka.apache.org/" rel="external nofollow noopener noreferrer" target="_blank">kafka</a>를 사용하기로 했다. kafka는 서버간 데이터 전달을 위한 브로커 어플리케이션으로, 급격하게 증가하는 데이터를 장애없이 빠르게 보낼수 있는 messaging queue 역할을 한다. kafka를 사용하기로 한 데 있어서 결정적인 요소는 두가지였는데,</p>
 <ol>
 <li>게임 사이트, 런처를 관리하는 우리팀의 경우 서비스는 오픈이나 트래픽을 공격과 같이 급격하게 데이터가 밀려들어오는 이벤트가 자주 발생하고,</li>
-<li>기존 로깅시스템에서 사용되던 <a href="https://www.fluentd.org/" target="_blank" rel="noopener">fluntd</a>를 밀어내면서 fluntd의 대용량 처리기능을 보완하는 시스템이 필요했다.</li>
+<li>기존 로깅시스템에서 사용되던 <a href="https://www.fluentd.org/" rel="external nofollow noopener noreferrer" target="_blank">fluntd</a>를 밀어내면서 fluntd의 대용량 처리기능을 보완하는 시스템이 필요했다.</li>
 </ol>
 <p>아직 테스트 단계라 얼만큼 더 효과적으로 사용되고 있는지 확인하긴 어렵지만, 카프카의 취지와 기능을 고려했을때 현재 로깅 시스템 환경에 적합할 것이라고 판단했다.</p>
 <h3 id="kafka와-zookeeper"><a href="#kafka와-zookeeper" class="headerlink" title="kafka와 zookeeper"></a><strong>kafka와 zookeeper</strong></h3><p>kafka는 클러스터링 구성하는데 있어서 분산 시스템을 관리하는(coordination) 기능이 내장되어있지 않고 따로 주키퍼를 사용한다(Apache에서 개발리소스를 생각해서 함께 개발하지 않았다고 한다).</p>
@@ -151,7 +154,7 @@
 <li>JDK기반으로 돌아가기때문에 실행환경에서는 꼭 자바를 먼저 설치해놓도록 하자.<br>  (나의경우 카프카를 도커 이미지로 빌드했기 때문에 카프카는 볼륨으로 연결해서 실행하고, JDK는 이미지에 직접 설치했다)</li>
 </ul>
 <ul>
-<li><p><a href="https://kafka.apache.org/downloads" target="_blank" rel="noopener">https://kafka.apache.org/downloads</a> 에서 apache에서 권장하는 미러사이트로 tar파일 설치 </p>
+<li><p><a href="https://kafka.apache.org/downloads" rel="external nofollow noopener noreferrer" target="_blank">https://kafka.apache.org/downloads</a> 에서 apache에서 권장하는 미러사이트로 tar파일 설치 </p>
 <pre><code class="bash">$ wget http://mirror.navercorp.com/apache/kafka/1.1.1/kafka_2.11-1.1.1.tgz</code></pre>
 </li>
 <li><p>압축풀기</p>
@@ -353,7 +356,7 @@ group.initial.rebalance.delay.ms=0
     2019
     <span class="footer-author">Park Doyeon.</span>
     <span class="power-by">
-        Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/parkdoyeon">Me</a>
+        Powered by <a class="hexo-link" href="https://hexo.io/" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> and <a class="theme-link" href="https://github.com/parkdoyeon">Me</a>
     </span>
 </span>
 

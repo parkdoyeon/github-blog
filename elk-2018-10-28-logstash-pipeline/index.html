@@ -23,7 +23,10 @@
 
 
 
-  <link rel="alternate" href="/default" title="Park Doyeon">
+  <link rel="alternate" href="/feed.xml" title="Park Doyeon">
+
+
+
 
 
 
@@ -139,7 +142,7 @@
     
             <div class="post-content">
             <p>ElasticSearch와 Filebeat와의 호환성, 다른 어플리케이션보단 조금 더 프로그래밍적인 파이프라인 설정방식을 사용한다는 이유로 logstash를 쓰기로 했다. 생각만큼 쉽지 않게 파이프라인 설정을 마치고나니 세상에 공짜는 없구나 싶었다. 어떤 기술을 제대로 이해하고 올바른 방식으로 활용하려면 시행착오를 겪어야 한다는 걸. 이 포스트에는 Logstash의 디버깅 모드 설정하는 방법과 파일비트에서 전달된 데이터의 형식, 그리고 여기에 맞는 logstash 데이터의 파이프라인 필터 설정과정을 기록했다.</p>
-<h3 id="디버깅-모드-세팅하기"><a href="#디버깅-모드-세팅하기" class="headerlink" title="디버깅 모드 세팅하기"></a>디버깅 모드 세팅하기</h3><p>먼저 파일비트-카프카-로그스태시-엘라스틱서치 구간을 실행시킨 다음에 설정테스트를 하다가, 쉽게 끝나지 않으리라는걸 깨닫고 디버깅 모드를 세팅했다. 이 판단이 더 빠르게 이뤄졌음 좋았을텐데. 세팅 전까지 파일비트를 껐다 키고, 데이터를 보려고 es인덱스를 지우기를 반복했다. 아래의 설정은 커맨드라인에서 로그를 입력받고 명령창에 출력 및 json파일로 남긴다. 방법은 <a href="https://deviantony.wordpress.com/2014/06/04/logstash-debug-configuration/" target="_blank" rel="noopener">이 포스트</a>를 참조했다.</p>
+<h3 id="디버깅-모드-세팅하기"><a href="#디버깅-모드-세팅하기" class="headerlink" title="디버깅 모드 세팅하기"></a>디버깅 모드 세팅하기</h3><p>먼저 파일비트-카프카-로그스태시-엘라스틱서치 구간을 실행시킨 다음에 설정테스트를 하다가, 쉽게 끝나지 않으리라는걸 깨닫고 디버깅 모드를 세팅했다. 이 판단이 더 빠르게 이뤄졌음 좋았을텐데. 세팅 전까지 파일비트를 껐다 키고, 데이터를 보려고 es인덱스를 지우기를 반복했다. 아래의 설정은 커맨드라인에서 로그를 입력받고 명령창에 출력 및 json파일로 남긴다. 방법은 <a href="https://deviantony.wordpress.com/2014/06/04/logstash-debug-configuration/" rel="external nofollow noopener noreferrer" target="_blank">이 포스트</a>를 참조했다.</p>
 <pre><code class="yml">input {
   stdin { } # 커맨드라인에서 받은 로그를 input으로 받는다
 }
@@ -249,15 +252,15 @@ output {
         
   <nav class="post-nav">
     
-      <a class="prev" href="/csharp-2018-11-06-csharp-basic/">
+      <a class="prev" href="/elk-2018-01-08-logstash-multiline/">
         <i class="iconfont icon-left"></i>
-        <span class="prev-text nav-default">c# 기본서 - 빌드환경과 GC, 힙과 스택</span>
+        <span class="prev-text nav-default">Logstash - 멀티라인 세팅하기</span>
         <span class="prev-text nav-mobile">Prev</span>
       </a>
     
     
-      <a class="next" href="/elk-2018-01-08-logstash-multiline/">
-        <span class="next-text nav-default">Logstash - 멀티라인 세팅하기</span>
+      <a class="next" href="/csharp-2018-10-25-csharp-basic/">
+        <span class="next-text nav-default">c# 기본서 - 멤버별 유형확장</span>
         <span class="prev-text nav-mobile">Next</span>
         <i class="iconfont icon-right"></i>
       </a>
@@ -295,7 +298,7 @@ output {
     2019
     <span class="footer-author">Park Doyeon.</span>
     <span class="power-by">
-        Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/parkdoyeon">Me</a>
+        Powered by <a class="hexo-link" href="https://hexo.io/" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> and <a class="theme-link" href="https://github.com/parkdoyeon">Me</a>
     </span>
 </span>
 

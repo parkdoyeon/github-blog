@@ -23,7 +23,10 @@
 
 
 
-  <link rel="alternate" href="/default" title="Park Doyeon">
+  <link rel="alternate" href="/feed.xml" title="Park Doyeon">
+
+
+
 
 
 
@@ -141,7 +144,7 @@
             <p>어느날 ElasticSearch index에 데이터가 제대로 들어오지 않는 것같아서 logstash의 log를 열어보니 다음과 같은 로그가 여러개 발생해 있었다.</p>
 <pre><code class="bash">logstash.outputs.elasticsearch] retrying failed action with response code: 403 ({&quot;type&quot;=&gt;&quot;cluster_block_exception&quot;, &quot;reason&quot;=&gt;&quot;blocked by: [FORBIDDEN/12/index read-only / allow delete (api)]</code></pre>
 <p>그래서 찾아보니 이런 내용의 글이 있었다.</p>
-<p>(원문 페이지: <a href="https://discuss.elastic.co/t/forbidden-12-index-read-only-allow-delete-api/110282" target="_blank" rel="noopener">https://discuss.elastic.co/t/forbidden-12-index-read-only-allow-delete-api/110282</a>)</p>
+<p>(원문 페이지: <a href="https://discuss.elastic.co/t/forbidden-12-index-read-only-allow-delete-api/110282" rel="external nofollow noopener noreferrer" target="_blank">https://discuss.elastic.co/t/forbidden-12-index-read-only-allow-delete-api/110282</a>)</p>
 <p>Edit: i think my problem is low storage. just check your storage first.</p>
 <p>when it’s low, kibana auto changes its config to read-only mode. to deal with it, go to your dev tools console and run below command:</p>
 <pre><code class="curl">PUT .kibana/_settings
@@ -227,7 +230,7 @@
     2019
     <span class="footer-author">Park Doyeon.</span>
     <span class="power-by">
-        Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/parkdoyeon">Me</a>
+        Powered by <a class="hexo-link" href="https://hexo.io/" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> and <a class="theme-link" href="https://github.com/parkdoyeon">Me</a>
     </span>
 </span>
 

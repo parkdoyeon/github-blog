@@ -23,7 +23,10 @@
 
 
 
-  <link rel="alternate" href="/default" title="Park Doyeon">
+  <link rel="alternate" href="/feed.xml" title="Park Doyeon">
+
+
+
 
 
 
@@ -140,8 +143,8 @@
             <div class="post-content">
             <p>pwa에 mp4 동영상 캐싱이 안돼서 구글링을 하다 스택오버플로우와 모질라의 설명을 종합해보니 아래와 같다.</p>
 <p>사파리는 영상 로드시 byte-range 리퀘스트를 지원한다.<br>byte-range리퀘스트는 처음에 영상을 로드할때 헤드에 range에 1024바이트 확인한다는 요청을 한다. (해당 리퀘스트가 지원되지 않는 서버 영상은 재생되지 않을수도 있다.) 서버는 성공적인 range 리스폰스이면 206코드를 던지면서 전체 리소스 사이즈가 어떤지를 보낸다.<br>사파리 브라우저는 이를 바탕으로 각 파일의 바이트 길이를 계산한다. 여기서 요청한 것보다 데이터가 크면 이후의 리퀘스트를 중단한다.</p>
-<p>safari의 mp4영상지원 설명: <a href="https://stackoverflow.com/questions/52087208/pwa-cached-video-will-not-play-in-mobile-safari-11-4" target="_blank" rel="noopener">https://stackoverflow.com/questions/52087208/pwa-cached-video-will-not-play-in-mobile-safari-11-4</a></p>
-<p>byte-range 설명: <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Range_requests" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/HTTP/Range_requests</a></p>
+<p>safari의 mp4영상지원 설명: <a href="https://stackoverflow.com/questions/52087208/pwa-cached-video-will-not-play-in-mobile-safari-11-4" rel="external nofollow noopener noreferrer" target="_blank">https://stackoverflow.com/questions/52087208/pwa-cached-video-will-not-play-in-mobile-safari-11-4</a></p>
+<p>byte-range 설명: <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Range_requests" rel="external nofollow noopener noreferrer" target="_blank">https://developer.mozilla.org/en-US/docs/Web/HTTP/Range_requests</a></p>
 
             </div>
           
@@ -206,7 +209,7 @@
     2019
     <span class="footer-author">Park Doyeon.</span>
     <span class="power-by">
-        Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/parkdoyeon">Me</a>
+        Powered by <a class="hexo-link" href="https://hexo.io/" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> and <a class="theme-link" href="https://github.com/parkdoyeon">Me</a>
     </span>
 </span>
 

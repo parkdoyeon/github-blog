@@ -23,7 +23,10 @@
 
 
 
-  <link rel="alternate" href="/default" title="Park Doyeon">
+  <link rel="alternate" href="/feed.xml" title="Park Doyeon">
+
+
+
 
 
 
@@ -177,7 +180,7 @@ public class Calc {
 </li>
 <li><p>BeginInvoke의 세번째 인자로 콜백메서드를 지정해주면된다.</p>
 </li>
-<li><p>네번째 인자는 StateObject로, 해당 메서드를 여러 곳에서 비동기 호출 했을 때 각각의 비동기 호출을 구분하는 역할을 갖는다.(stateObject - A user-provided object that distinguishes this particular asynchronous read request from other requests.) <a href="http://www.java2s.com/Tutorials/CSharp/System.IO/FileStream/C_FileStream_BeginRead.htm" target="_blank" rel="noopener">참고</a></p>
+<li><p>네번째 인자는 StateObject로, 해당 메서드를 여러 곳에서 비동기 호출 했을 때 각각의 비동기 호출을 구분하는 역할을 갖는다.(stateObject - A user-provided object that distinguishes this particular asynchronous read request from other requests.) <a href="http://www.java2s.com/Tutorials/CSharp/System.IO/FileStream/C_FileStream_BeginRead.htm" rel="external nofollow noopener noreferrer" target="_blank">참고</a></p>
 <pre><code class="c#">public delegate long CalcMethod(int start, int end);
 static void Main(string[] args) {
   CalcMethod calc = new CalcMethod(Calc.Cumsum);
@@ -257,7 +260,7 @@ static void calcCompleted(IAsyncResult ar) {
     2019
     <span class="footer-author">Park Doyeon.</span>
     <span class="power-by">
-        Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/parkdoyeon">Me</a>
+        Powered by <a class="hexo-link" href="https://hexo.io/" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> and <a class="theme-link" href="https://github.com/parkdoyeon">Me</a>
     </span>
 </span>
 

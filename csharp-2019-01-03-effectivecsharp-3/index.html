@@ -23,7 +23,10 @@
 
 
 
-  <link rel="alternate" href="/default" title="Park Doyeon">
+  <link rel="alternate" href="/feed.xml" title="Park Doyeon">
+
+
+
 
 
 
@@ -147,7 +150,7 @@
 <li>이때, 런타임 환경을 최대한 고려하여 최적화된 타입별 생성자/메소드 오버로드등을 작성하는 것이 좋다.</li>
 </ul>
 <h3 id="IComparable와-IComparer를-이용하여-객체의-선후관계를-정의하라"><a href="#IComparable와-IComparer를-이용하여-객체의-선후관계를-정의하라" class="headerlink" title="IComparable와 IComparer를 이용하여 객체의 선후관계를 정의하라"></a>IComparable<t>와 IComparer<t>를 이용하여 객체의 선후관계를 정의하라</t></t></h3><ul>
-<li>ICompareable<t>는 현재 객체의 비교대상을 지정해 리턴하고, IComparer<t>는 T타입의 모든 객체의 비교 함수를 정의한다. <a href="https://stackoverflow.com/questions/9316918/what-is-the-difference-between-iequalitycomparert-and-iequatablet" target="_blank" rel="noopener">참조</a><ul>
+<li>ICompareable<t>는 현재 객체의 비교대상을 지정해 리턴하고, IComparer<t>는 T타입의 모든 객체의 비교 함수를 정의한다. <a href="https://stackoverflow.com/questions/9316918/what-is-the-difference-between-iequalitycomparert-and-iequatablet" rel="external nofollow noopener noreferrer" target="_blank">참조</a><ul>
 <li><strong>IComparable</strong> - Defines an interface for an object with a CompareTo() method that takes another object of the same type and compares <strong>the current object</strong> to the passed one. It internalizes the comparison to the object, allowing for a more inline comparison operation, and is useful when there’s only one logical way, or an overwhelmingly common default way, to compare objects of a type.</li>
 <li><strong>IComparer</strong> - Defines an interface with a Compare() method that <strong>takes two objects of another type</strong> (which don’t have to implement IComparable) and compares them. This externalizes the comparison, and is useful when there are many feasible ways to compare two objects of a type, or when the type doesn’t implement IComparable (or the IComparable implementation compares a different way than what you want) and you don’t have control over that type’s source.</li>
 </ul>
@@ -246,8 +249,8 @@
       </a>
     
     
-      <a class="next" href="/csharp-2018-12-31-effectivecsharp-2/">
-        <span class="next-text nav-default">effective c# - 2. 리소스 관리</span>
+      <a class="next" href="/csharp-2018-12-18-effectivecsharp-1/">
+        <span class="next-text nav-default">effective c# - 1. 언어요소</span>
         <span class="prev-text nav-mobile">Next</span>
         <i class="iconfont icon-right"></i>
       </a>
@@ -285,7 +288,7 @@
     2019
     <span class="footer-author">Park Doyeon.</span>
     <span class="power-by">
-        Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/parkdoyeon">Me</a>
+        Powered by <a class="hexo-link" href="https://hexo.io/" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> and <a class="theme-link" href="https://github.com/parkdoyeon">Me</a>
     </span>
 </span>
 
