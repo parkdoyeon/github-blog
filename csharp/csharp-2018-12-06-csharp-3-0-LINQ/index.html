@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang>
+  <head><meta name="generator" content="Hexo 3.8.0">
+    
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta name="google-site-verification" content="ZPpg1XKRwaiB4lPx6SawBAA96ROVlVBmZ8s6pigFEVc">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+  <meta name="description" content="c# 기본서 - c# 3.0: LINQ">
+
+
+
+
+  <meta name="keywords" content="c#,c#3.0,LINQ,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Park Doyeon">
+
+
+
+
+
+
+<link rel="canonical" href="https://parkdoyeon.github.io/csharp/csharp-2018-12-06-csharp-3-0-LINQ/">
+
+
+<meta name="description" content="LINQ IEnumerable를 인자로 받는다  IEnumerable, IOrderedEnumerable를 상속받아 정의하면 LINQ를 사용할 수 있다   IEnumerate, IOrderedEnumerable를 반환한다.  두 요소를 반환하지 않는 형식의 메서드를 사용하면 메서드가 즉시 실행된다.   select 예약어: Select 확장 메서드호출하는">
+<meta name="keywords" content="c#,c#3.0,LINQ">
+<meta property="og:type" content="article">
+<meta property="og:title" content="c# 기본서 - c# 3.0: LINQ">
+<meta property="og:url" content="https://parkdoyeon.github.io/csharp/csharp-2018-12-06-csharp-3-0-LINQ/index.html">
+<meta property="og:site_name" content="Park Doyeon">
+<meta property="og:description" content="LINQ IEnumerable를 인자로 받는다  IEnumerable, IOrderedEnumerable를 상속받아 정의하면 LINQ를 사용할 수 있다   IEnumerate, IOrderedEnumerable를 반환한다.  두 요소를 반환하지 않는 형식의 메서드를 사용하면 메서드가 즉시 실행된다.   select 예약어: Select 확장 메서드호출하는">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-06-08T02:58:52.612Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="c# 기본서 - c# 3.0: LINQ">
+<meta name="twitter:description" content="LINQ IEnumerable를 인자로 받는다  IEnumerable, IOrderedEnumerable를 상속받아 정의하면 LINQ를 사용할 수 있다   IEnumerate, IOrderedEnumerable를 반환한다.  두 요소를 반환하지 않는 형식의 메서드를 사용하면 메서드가 즉시 실행된다.   select 예약어: Select 확장 메서드호출하는">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141653278-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-141653278-1');
+  </script>
+
+
+
+
+
+  
+
+
+    <title> c# 기본서 - c# 3.0: LINQ - Park Doyeon </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </head>
+
+  <body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Park Doyeon</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+  </nav>
+</div>
+      </header>
+
+      <div id="post-categories"><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/csharp/">C#</a></li><li class="category-list-item"><a class="category-list-link" href="/dev-env/">Dev-Env</a></li><li class="category-list-item"><a class="category-list-link" href="/docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/elk/">ELK</a></li><li class="category-list-item"><a class="category-list-link" href="/ml/">ML</a></li><li class="category-list-item"><a class="category-list-link" href="/python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/sql/">SQL</a></li><li class="category-list-item"><a class="category-list-link" href="/web/">Web</a></li></ul>
+      </div>
+
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          c# 기본서 - c# 3.0: LINQ
+        
+      </h1>
+
+      <time class="post-time">
+          Dec 6 2018
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <h3 id="LINQ"><a href="#LINQ" class="headerlink" title="LINQ"></a>LINQ</h3><ul>
+<li><p>IEnumerable<t>를 인자로 받는다</t></p>
+<ul>
+<li>IEnumerable<t>, IOrderedEnumerable<telement>를 상속받아 정의하면 LINQ를 사용할 수 있다</telement></t></li>
+</ul>
+</li>
+<li><p>IEnumerate<t>, IOrderedEnumerable<telement>를 반환한다.</telement></t></p>
+<ul>
+<li>두 요소를 반환하지 않는 형식의 메서드를 사용하면 메서드가 즉시 실행된다.</li>
+</ul>
+</li>
+<li><p>select 예약어: Select 확장 메서드호출하는 또 다른 문법에 불과하다.</p>
+<pre><code class="c#">  var all = from person in people
+      select person;
+  people.Select((elem) =&gt; elem );</code></pre>
+</li>
+<li><p>orderby: IComparable 인터페이스가 구현된 타입에 사용할 수 있다.</p>
+<pre><code class="c#">  var all = from person in people
+      orderby person.Age descending //디폴트가 ascending
+      select person;</code></pre>
+</li>
+<li><p>group … by: select … by와 의미적으로 같으므로 (실제 select … by는 없음) select가 올 수 없다.</p>
+<ul>
+<li><p>그렇기 때문에 select에서 가능한 형변환 작업이 가능하다.</p>
+<pre><code class="c#">var addrGroup = from person in people
+  group person by person.Address;
+
+//아래와 같이도 가능하다
+var changedGroup = from person in people
+  group new { Name = person.Name, Age = person.Age } by person.Address;
+
+foreach(var itemGroup in addrGroup) //컬렉션 요소 분류
+{
+  Console.WriteLine(itemGroup.Key) 
+
+  foreach(var item in itemGroup) //컬렉션 반환
+      Console.WriteLine(item.Name);
+}</code></pre>
+</li>
+</ul>
+</li>
+<li><p>join: 이런게 가능하다 정도만?</p>
+<pre><code class="c#">  //만족하는 레코드만 삽입시키는 inner join의 유형
+  //on ... equals ...가 사용됐다.
+  var nameToLangList = from person in people
+      join language in languages on person.Name equals language.Name
+
+  //누락시키지 않고 전부 삽입하는 outer join의 유형
+  //빈값에 대한 후처리
+  var nameToLangAllList = from person in people
+      join language in languages on person.Name equals language.Name into lang
+      from language in lang.DefaultIfEmpty(new MainLanguage())
+      select new { Name=person.Name, Age=person.Age, Language=language.Language }</code></pre>
+</li>
+</ul>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+        <div class="post-tags">
+          
+            <a href="/tags/c/">c#</a>
+          
+            <a href="/tags/c-3-0/">c#3.0</a>
+          
+            <a href="/tags/linq/">LINQ</a>
+          
+        </div>
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/csharp/csharp-2018-12-07-csharp-4-0-dynamic/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">c# 기본서 - c# 4.0: dynamic</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="/csharp/csharp-2018-12-06-csharp-3-0-Lambda/">
+        <span class="next-text nav-default">c# 기본서 - c# 3.0: Lambda, 확장메서드</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+    <!--<div style="text-align:center;">
+        <button class="btn" id="load-disqus" onclick="disqus.load();">load Disqus review</button>
+    </div>-->
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+    2019
+    <span class="footer-author">Park Doyeon.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> and <a class="theme-link" href="https://github.com/parkdoyeon">Me</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+<script type="text/javascript">
+  var disqus_shortname = 'parkdoyeon';
+  var disqus_identifier = 'csharp/csharp-2018-12-06-csharp-3-0-LINQ/';
+  var disqus_url = 'https://parkdoyeon.github.io/csharp/csharp-2018-12-06-csharp-3-0-LINQ/index.html';
+
+  
+  var disqus_config = function () {
+      this.page.url = disqus_url;
+      this.page.identifier = disqus_identifier;
+  };
+  
+  (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+  
+  
+  // var disqus = {
+  //   load : function disqus(){
+  //       if(typeof DISQUS !== 'object') {
+  //         (function () {
+  //         var s = document.createElement('script'); s.async = true;
+  //         s.type = 'text/javascript';
+  //         s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  //         (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+  //         }());
+  //         $('#load-disqus').remove(); ///Delete Button
+  //       }
+  //   }
+  // }
+
+</script>
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v="></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v="></script>
+<script type="text/javascript" src="/js/src/highlight.pack.js?v="></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.7.0/highlightjs-line-numbers.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', (event) => {
+  document.querySelectorAll('figure.highlight').forEach((block) => {
+    hljs.highlightBlock(block);
+  });
+});
+hljs.initHighlightingOnLoad();
+hljs.initLineNumbersOnLoad();
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </body>
+</html>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang>
+  <head><meta name="generator" content="Hexo 3.8.0">
+    
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta name="google-site-verification" content="ZPpg1XKRwaiB4lPx6SawBAA96ROVlVBmZ8s6pigFEVc">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+  <meta name="description" content="ssms 사용할때 자주쓰는 명령어 정리">
+
+
+
+
+  <meta name="keywords" content="mssql,insert,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Park Doyeon">
+
+
+
+
+
+
+<link rel="canonical" href="https://parkdoyeon.github.io/sql/sql-2019-05-27-ssms/">
+
+
+<meta name="description" content="SP 내용 보기 sp_helptext &amp;#39;[sp 이름]&amp;#39; 특정 구문이 포함되어있는 SP 찾기 (특정 테이블이나 컬럼을 사용하는 SP를 찾을때 유용하다) select * from sys.procedures p join sys.syscomments s on p.object_id = s.id where text like &amp;#39;%[문자열]%&amp;#39">
+<meta name="keywords" content="mssql,insert">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ssms 사용할때 자주쓰는 명령어 정리">
+<meta property="og:url" content="https://parkdoyeon.github.io/sql/sql-2019-05-27-ssms/index.html">
+<meta property="og:site_name" content="Park Doyeon">
+<meta property="og:description" content="SP 내용 보기 sp_helptext &amp;#39;[sp 이름]&amp;#39; 특정 구문이 포함되어있는 SP 찾기 (특정 테이블이나 컬럼을 사용하는 SP를 찾을때 유용하다) select * from sys.procedures p join sys.syscomments s on p.object_id = s.id where text like &amp;#39;%[문자열]%&amp;#39">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://parkdoyeon.github.io/image/sql/2019-05-27-ssms.png">
+<meta property="og:updated_time" content="2019-06-08T02:58:52.620Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ssms 사용할때 자주쓰는 명령어 정리">
+<meta name="twitter:description" content="SP 내용 보기 sp_helptext &amp;#39;[sp 이름]&amp;#39; 특정 구문이 포함되어있는 SP 찾기 (특정 테이블이나 컬럼을 사용하는 SP를 찾을때 유용하다) select * from sys.procedures p join sys.syscomments s on p.object_id = s.id where text like &amp;#39;%[문자열]%&amp;#39">
+<meta name="twitter:image" content="https://parkdoyeon.github.io/image/sql/2019-05-27-ssms.png">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141653278-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-141653278-1');
+  </script>
+
+
+
+
+
+  
+
+
+    <title> ssms 사용할때 자주쓰는 명령어 정리 - Park Doyeon </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </head>
+
+  <body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Park Doyeon</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+  </nav>
+</div>
+      </header>
+
+      <div id="post-categories"><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/csharp/">C#</a></li><li class="category-list-item"><a class="category-list-link" href="/dev-env/">Dev-Env</a></li><li class="category-list-item"><a class="category-list-link" href="/docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/elk/">ELK</a></li><li class="category-list-item"><a class="category-list-link" href="/ml/">ML</a></li><li class="category-list-item"><a class="category-list-link" href="/python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/sql/">SQL</a></li><li class="category-list-item"><a class="category-list-link" href="/web/">Web</a></li></ul>
+      </div>
+
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          ssms 사용할때 자주쓰는 명령어 정리
+        
+      </h1>
+
+      <time class="post-time">
+          May 27 2019
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <p>SP 내용 보기</p>
+<pre><code class="sql">sp_helptext &#39;[sp 이름]&#39;</code></pre>
+<p>특정 구문이 포함되어있는 SP 찾기 (특정 테이블이나 컬럼을 사용하는 SP를 찾을때 유용하다)</p>
+<pre><code class="sql">select * from sys.procedures p join sys.syscomments s on p.object_id = s.id where text like &#39;%[문자열]%&#39;;</code></pre>
+<p>프로파일러 잡을때 DB ID 확인이 필요한경우</p>
+<pre><code class="sql">select db_id(&#39;[db 이름]&#39;)</code></pre>
+<p>도구 &gt; 옵션 &gt; 키보드 &gt; 쿼리 바로가기에서 아래처럼 키보드 단축키로 설정하고 사용하면 좋다.<br><img src="/image/sql/2019-05-27-ssms.png" alt="옵션"></p>
+<ul>
+<li>sp_lock : sp들의 점유상태를 보고싶을 때</li>
+<li>sp_who : DB 로그인 정보와 호스트 확인</li>
+</ul>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+        <div class="post-tags">
+          
+            <a href="/tags/mssql/">mssql</a>
+          
+            <a href="/tags/insert/">insert</a>
+          
+        </div>
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/ml/ml-2019-05-27-deep/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Deep Learning From Scratch - 1. 퍼셉트론과 신경망</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="/dev-env/dev-env-2019-04-29-hyperv/">
+        <span class="next-text nav-default">Hyper-V - 네트워크 환경세팅하기</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+    <!--<div style="text-align:center;">
+        <button class="btn" id="load-disqus" onclick="disqus.load();">load Disqus review</button>
+    </div>-->
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+    2019
+    <span class="footer-author">Park Doyeon.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> and <a class="theme-link" href="https://github.com/parkdoyeon">Me</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+<script type="text/javascript">
+  var disqus_shortname = 'parkdoyeon';
+  var disqus_identifier = 'sql/sql-2019-05-27-ssms/';
+  var disqus_url = 'https://parkdoyeon.github.io/sql/sql-2019-05-27-ssms/index.html';
+
+  
+  var disqus_config = function () {
+      this.page.url = disqus_url;
+      this.page.identifier = disqus_identifier;
+  };
+  
+  (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+  
+  
+  // var disqus = {
+  //   load : function disqus(){
+  //       if(typeof DISQUS !== 'object') {
+  //         (function () {
+  //         var s = document.createElement('script'); s.async = true;
+  //         s.type = 'text/javascript';
+  //         s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  //         (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+  //         }());
+  //         $('#load-disqus').remove(); ///Delete Button
+  //       }
+  //   }
+  // }
+
+</script>
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v="></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v="></script>
+<script type="text/javascript" src="/js/src/highlight.pack.js?v="></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.7.0/highlightjs-line-numbers.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', (event) => {
+  document.querySelectorAll('figure.highlight').forEach((block) => {
+    hljs.highlightBlock(block);
+  });
+});
+hljs.initHighlightingOnLoad();
+hljs.initLineNumbersOnLoad();
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </body>
+</html>

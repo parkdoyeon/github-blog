@@ -18,8 +18,8 @@
   
   <entry>
     <title>hexo에 mathjax 적용하기</title>
-    <link href="https://parkdoyeon.github.io/web-2019-06-07-mathjax/"/>
-    <id>https://parkdoyeon.github.io/web-2019-06-07-mathjax/</id>
+    <link href="https://parkdoyeon.github.io/web/web-2019-06-07-mathjax/"/>
+    <id>https://parkdoyeon.github.io/web/web-2019-06-07-mathjax/</id>
     <published>2019-06-07T08:02:33.000Z</published>
     <updated>2019-06-08T02:58:52.621Z</updated>
     
@@ -47,8 +47,8 @@
   
   <entry>
     <title>Deep Learning From Scratch - 2. 신경망 학습</title>
-    <link href="https://parkdoyeon.github.io/ml-2019-06-02-deep2/"/>
-    <id>https://parkdoyeon.github.io/ml-2019-06-02-deep2/</id>
+    <link href="https://parkdoyeon.github.io/ml/ml-2019-06-02-deep2/"/>
+    <id>https://parkdoyeon.github.io/ml/ml-2019-06-02-deep2/</id>
     <published>2019-06-02T05:20:01.000Z</published>
     <updated>2019-06-08T03:23:45.974Z</updated>
     
@@ -75,8 +75,8 @@
   
   <entry>
     <title>도커/도커 컴포즈 설치하고 서비스 시작하기</title>
-    <link href="https://parkdoyeon.github.io/docker-2019-05-30-docker-install/"/>
-    <id>https://parkdoyeon.github.io/docker-2019-05-30-docker-install/</id>
+    <link href="https://parkdoyeon.github.io/docker/docker-2019-05-30-docker-install/"/>
+    <id>https://parkdoyeon.github.io/docker/docker-2019-05-30-docker-install/</id>
     <published>2019-05-30T06:25:27.000Z</published>
     <updated>2019-06-08T02:58:52.616Z</updated>
     
@@ -103,8 +103,8 @@
   
   <entry>
     <title>ElastAlert의 유용한 규칙 종류</title>
-    <link href="https://parkdoyeon.github.io/elk-2019-05-29-elastalert/"/>
-    <id>https://parkdoyeon.github.io/elk-2019-05-29-elastalert/</id>
+    <link href="https://parkdoyeon.github.io/elk/elk-2019-05-29-elastalert/"/>
+    <id>https://parkdoyeon.github.io/elk/elk-2019-05-29-elastalert/</id>
     <published>2019-05-29T11:07:16.000Z</published>
     <updated>2019-06-08T02:58:52.618Z</updated>
     
@@ -132,8 +132,8 @@
   
   <entry>
     <title>Jenkins에 Python 환경세팅하고 Allure Report 연동하기</title>
-    <link href="https://parkdoyeon.github.io/python-2019-05-28-jekins-to-pytest/"/>
-    <id>https://parkdoyeon.github.io/python-2019-05-28-jekins-to-pytest/</id>
+    <link href="https://parkdoyeon.github.io/python/python-2019-05-28-jekins-to-pytest/"/>
+    <id>https://parkdoyeon.github.io/python/python-2019-05-28-jekins-to-pytest/</id>
     <published>2019-05-28T06:17:02.000Z</published>
     <updated>2019-06-08T02:58:52.619Z</updated>
     
@@ -160,8 +160,8 @@
   
   <entry>
     <title>Deep Learning From Scratch - 1. 퍼셉트론과 신경망</title>
-    <link href="https://parkdoyeon.github.io/ml-2019-05-27-deep/"/>
-    <id>https://parkdoyeon.github.io/ml-2019-05-27-deep/</id>
+    <link href="https://parkdoyeon.github.io/ml/ml-2019-05-27-deep/"/>
+    <id>https://parkdoyeon.github.io/ml/ml-2019-05-27-deep/</id>
     <published>2019-05-27T10:38:00.000Z</published>
     <updated>2019-06-08T02:58:52.619Z</updated>
     
@@ -188,8 +188,8 @@
   
   <entry>
     <title>ssms 사용할때 자주쓰는 명령어 정리</title>
-    <link href="https://parkdoyeon.github.io/sql-2019-05-27-ssms/"/>
-    <id>https://parkdoyeon.github.io/sql-2019-05-27-ssms/</id>
+    <link href="https://parkdoyeon.github.io/sql/sql-2019-05-27-ssms/"/>
+    <id>https://parkdoyeon.github.io/sql/sql-2019-05-27-ssms/</id>
     <published>2019-05-27T08:36:00.000Z</published>
     <updated>2019-06-08T02:58:52.620Z</updated>
     
@@ -217,8 +217,8 @@
   
   <entry>
     <title>Hyper-V - 네트워크 환경세팅하기</title>
-    <link href="https://parkdoyeon.github.io/dev-env-2019-04-29-hyperv/"/>
-    <id>https://parkdoyeon.github.io/dev-env-2019-04-29-hyperv/</id>
+    <link href="https://parkdoyeon.github.io/dev-env/dev-env-2019-04-29-hyperv/"/>
+    <id>https://parkdoyeon.github.io/dev-env/dev-env-2019-04-29-hyperv/</id>
     <published>2019-04-29T07:47:00.000Z</published>
     <updated>2019-06-08T02:58:52.615Z</updated>
     
@@ -251,8 +251,8 @@
   
   <entry>
     <title>Python - 독립실행환경 virtualenv 만들기</title>
-    <link href="https://parkdoyeon.github.io/python-2019-04-18-python-venv/"/>
-    <id>https://parkdoyeon.github.io/python-2019-04-18-python-venv/</id>
+    <link href="https://parkdoyeon.github.io/python/python-2019-04-18-python-venv/"/>
+    <id>https://parkdoyeon.github.io/python/python-2019-04-18-python-venv/</id>
     <published>2019-04-18T09:32:00.000Z</published>
     <updated>2019-06-08T02:58:52.619Z</updated>
     
@@ -281,8 +281,8 @@
   
   <entry>
     <title>Git - 실수로 용량이 큰 파일을 커밋했을 때</title>
-    <link href="https://parkdoyeon.github.io/dev-env-2019-04-07-git-large-file/"/>
-    <id>https://parkdoyeon.github.io/dev-env-2019-04-07-git-large-file/</id>
+    <link href="https://parkdoyeon.github.io/dev-env/dev-env-2019-04-07-git-large-file/"/>
+    <id>https://parkdoyeon.github.io/dev-env/dev-env-2019-04-07-git-large-file/</id>
     <published>2019-04-07T10:14:00.000Z</published>
     <updated>2019-06-08T02:58:52.615Z</updated>
     
@@ -308,8 +308,8 @@
   
   <entry>
     <title>ElasticSearch - 도커를 이용해 인덱스 주기적으로 삭제하기</title>
-    <link href="https://parkdoyeon.github.io/elk-2019-04-02-es-curator/"/>
-    <id>https://parkdoyeon.github.io/elk-2019-04-02-es-curator/</id>
+    <link href="https://parkdoyeon.github.io/elk/elk-2019-04-02-es-curator/"/>
+    <id>https://parkdoyeon.github.io/elk/elk-2019-04-02-es-curator/</id>
     <published>2019-04-02T08:35:00.000Z</published>
     <updated>2019-06-08T02:58:52.618Z</updated>
     
@@ -339,8 +339,8 @@
   
   <entry>
     <title>docker - 이미지/컨테이너 파일로 저장하고 불러오기</title>
-    <link href="https://parkdoyeon.github.io/docker-2019-03-29-docker-image/"/>
-    <id>https://parkdoyeon.github.io/docker-2019-03-29-docker-image/</id>
+    <link href="https://parkdoyeon.github.io/docker/docker-2019-03-29-docker-image/"/>
+    <id>https://parkdoyeon.github.io/docker/docker-2019-03-29-docker-image/</id>
     <published>2019-03-29T09:37:00.000Z</published>
     <updated>2019-06-08T02:58:52.616Z</updated>
     
@@ -368,8 +368,8 @@
   
   <entry>
     <title>docker-compose up에서 네트워크 생성이 되지 않을 때</title>
-    <link href="https://parkdoyeon.github.io/docker-2019-03-29-compose-network/"/>
-    <id>https://parkdoyeon.github.io/docker-2019-03-29-compose-network/</id>
+    <link href="https://parkdoyeon.github.io/docker/docker-2019-03-29-compose-network/"/>
+    <id>https://parkdoyeon.github.io/docker/docker-2019-03-29-compose-network/</id>
     <published>2019-03-29T09:24:00.000Z</published>
     <updated>2019-06-08T02:58:52.616Z</updated>
     
@@ -395,8 +395,8 @@
   
   <entry>
     <title>Linux - 리눅스 용량, 메모리 정보 확인하기</title>
-    <link href="https://parkdoyeon.github.io/dev-env-2019-03-26-linux-disk/"/>
-    <id>https://parkdoyeon.github.io/dev-env-2019-03-26-linux-disk/</id>
+    <link href="https://parkdoyeon.github.io/dev-env/dev-env-2019-03-26-linux-disk/"/>
+    <id>https://parkdoyeon.github.io/dev-env/dev-env-2019-03-26-linux-disk/</id>
     <published>2019-03-26T08:03:00.000Z</published>
     <updated>2019-06-08T02:58:52.615Z</updated>
     
@@ -423,8 +423,8 @@
   
   <entry>
     <title>SVM - 2. svm 사이의 최대 거리값 찾기</title>
-    <link href="https://parkdoyeon.github.io/ml-2019-03-19-svm2/"/>
-    <id>https://parkdoyeon.github.io/ml-2019-03-19-svm2/</id>
+    <link href="https://parkdoyeon.github.io/ml/ml-2019-03-19-svm2/"/>
+    <id>https://parkdoyeon.github.io/ml/ml-2019-03-19-svm2/</id>
     <published>2019-03-19T08:38:00.000Z</published>
     <updated>2019-06-08T02:58:52.619Z</updated>
     
@@ -451,8 +451,8 @@
   
   <entry>
     <title>SVM - 1. yi(x·w+b) &gt;= 1 도출하기</title>
-    <link href="https://parkdoyeon.github.io/ml-2019-03-19-svm/"/>
-    <id>https://parkdoyeon.github.io/ml-2019-03-19-svm/</id>
+    <link href="https://parkdoyeon.github.io/ml/ml-2019-03-19-svm/"/>
+    <id>https://parkdoyeon.github.io/ml/ml-2019-03-19-svm/</id>
     <published>2019-03-19T06:09:00.000Z</published>
     <updated>2019-06-08T02:58:52.618Z</updated>
     
@@ -478,9 +478,38 @@
   </entry>
   
   <entry>
+    <title>기존 테이블에 PK키 추가하기</title>
+    <link href="https://parkdoyeon.github.io/sql/sql-2019-04-22-addpk/"/>
+    <id>https://parkdoyeon.github.io/sql/sql-2019-04-22-addpk/</id>
+    <published>2019-03-14T09:14:00.000Z</published>
+    <updated>2019-06-08T02:58:52.620Z</updated>
+    
+    <content type="html"><![CDATA[<p>mssql에서 PK를 추가하려면 기존의 PK를 삭제해주고 재생성해줘야한다.<br>mytable에 PK을 하나 더 추가하려고 PK 추가 구문을 아래와 같이 호출하면,<br>아래와 같이 이미 기본키가 정의되었다는 에러메세지가 나오면서 실패한다.</p><pre><code class="SQL">ALTER TABLE [dbo].[mytable] ADD  CONSTRAINT [PK_mytable] PRIMARY KEY CLUSTERED (    [otherPKColumn] ASC)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]GO</code></pre><pre><code class="SQL">메시지 1779, 수준 16, 상태 0, 줄 9테이블 &#39;mytable&#39;에 이미 기본 키가 정의되어 있습니다.메시지 1750, 수준 16, 상태 0, 줄 9제약 조건을 만들 수 없습니다. 이전 오류를 참조하십시오.</code></pre><p>때문에 아래 호출을 통해 기본키를 정의한 PK 테이블 이름을 확인한다음, </p><pre><code class="SQL">sp_helpconstraint [mytable]</code></pre><pre><code class="SQL">constraint_type constraint_name delete_action   update_action   status_enabled  status_for_replication  constraint_keysPRIMARY KEY(clustered)  PK_mytable  (n/a)  (n/a)  (n/a)  (n/a) Seq</code></pre><p>Drop문으로 날려주고 재생성해야한다.</p><pre><code class="SQL">ALTER TABLE dbo.mytable DROP CONSTRAINT PK_mytableALTER TABLE [dbo].[mytable] ADD  CONSTRAINT [PK_mytable] PRIMARY KEY CLUSTERED (    [Seq] ASC,    [otherPKColumn] ASC)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]GO</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;mssql에서 PK를 추가하려면 기존의 PK를 삭제해주고 재생성해줘야한다.&lt;br&gt;mytable에 PK을 하나 더 추가하려고 PK 추가 구문을 아래와 같이 호출하면,&lt;br&gt;아래와 같이 이미 기본키가 정의되었다는 에러메세지가 나오면서 실패한다.&lt;/p
+      
+    
+    </summary>
+    
+      <category term="SQL" scheme="https://parkdoyeon.github.io/sql/"/>
+    
+    
+      <category term="mssql" scheme="https://parkdoyeon.github.io/tags/mssql/"/>
+    
+      <category term="insert" scheme="https://parkdoyeon.github.io/tags/insert/"/>
+    
+      <category term="pk" scheme="https://parkdoyeon.github.io/tags/pk/"/>
+    
+  </entry>
+  
+  <entry>
     <title>insert into select 사용하기</title>
-    <link href="https://parkdoyeon.github.io/sql-2019-03-14-insertselect/"/>
-    <id>https://parkdoyeon.github.io/sql-2019-03-14-insertselect/</id>
+    <link href="https://parkdoyeon.github.io/sql/sql-2019-03-14-insertselect/"/>
+    <id>https://parkdoyeon.github.io/sql/sql-2019-03-14-insertselect/</id>
     <published>2019-03-14T09:14:00.000Z</published>
     <updated>2019-06-08T02:58:52.620Z</updated>
     
@@ -508,38 +537,9 @@
   </entry>
   
   <entry>
-    <title>기존 테이블에 PK키 추가하기</title>
-    <link href="https://parkdoyeon.github.io/sql-2019-04-22-addpk/"/>
-    <id>https://parkdoyeon.github.io/sql-2019-04-22-addpk/</id>
-    <published>2019-03-14T09:14:00.000Z</published>
-    <updated>2019-06-08T02:58:52.620Z</updated>
-    
-    <content type="html"><![CDATA[<p>mssql에서 PK를 추가하려면 기존의 PK를 삭제해주고 재생성해줘야한다.<br>mytable에 PK을 하나 더 추가하려고 PK 추가 구문을 아래와 같이 호출하면,<br>아래와 같이 이미 기본키가 정의되었다는 에러메세지가 나오면서 실패한다.</p><pre><code class="SQL">ALTER TABLE [dbo].[mytable] ADD  CONSTRAINT [PK_mytable] PRIMARY KEY CLUSTERED (    [otherPKColumn] ASC)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]GO</code></pre><pre><code class="SQL">메시지 1779, 수준 16, 상태 0, 줄 9테이블 &#39;mytable&#39;에 이미 기본 키가 정의되어 있습니다.메시지 1750, 수준 16, 상태 0, 줄 9제약 조건을 만들 수 없습니다. 이전 오류를 참조하십시오.</code></pre><p>때문에 아래 호출을 통해 기본키를 정의한 PK 테이블 이름을 확인한다음, </p><pre><code class="SQL">sp_helpconstraint [mytable]</code></pre><pre><code class="SQL">constraint_type constraint_name delete_action   update_action   status_enabled  status_for_replication  constraint_keysPRIMARY KEY(clustered)  PK_mytable  (n/a)  (n/a)  (n/a)  (n/a) Seq</code></pre><p>Drop문으로 날려주고 재생성해야한다.</p><pre><code class="SQL">ALTER TABLE dbo.mytable DROP CONSTRAINT PK_mytableALTER TABLE [dbo].[mytable] ADD  CONSTRAINT [PK_mytable] PRIMARY KEY CLUSTERED (    [Seq] ASC,    [otherPKColumn] ASC)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]GO</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;mssql에서 PK를 추가하려면 기존의 PK를 삭제해주고 재생성해줘야한다.&lt;br&gt;mytable에 PK을 하나 더 추가하려고 PK 추가 구문을 아래와 같이 호출하면,&lt;br&gt;아래와 같이 이미 기본키가 정의되었다는 에러메세지가 나오면서 실패한다.&lt;/p
-      
-    
-    </summary>
-    
-      <category term="SQL" scheme="https://parkdoyeon.github.io/sql/"/>
-    
-    
-      <category term="mssql" scheme="https://parkdoyeon.github.io/tags/mssql/"/>
-    
-      <category term="insert" scheme="https://parkdoyeon.github.io/tags/insert/"/>
-    
-      <category term="pk" scheme="https://parkdoyeon.github.io/tags/pk/"/>
-    
-  </entry>
-  
-  <entry>
     <title>ElasticSearch - 403 index read-only 에러가 발생했을 때</title>
-    <link href="https://parkdoyeon.github.io/elk-2019-03-10-es-readonly-err/"/>
-    <id>https://parkdoyeon.github.io/elk-2019-03-10-es-readonly-err/</id>
+    <link href="https://parkdoyeon.github.io/elk/elk-2019-03-10-es-readonly-err/"/>
+    <id>https://parkdoyeon.github.io/elk/elk-2019-03-10-es-readonly-err/</id>
     <published>2019-03-10T09:24:00.000Z</published>
     <updated>2019-06-08T02:58:52.617Z</updated>
     
@@ -566,8 +566,8 @@
   
   <entry>
     <title>Git - gitignore 즉시 적용하기</title>
-    <link href="https://parkdoyeon.github.io/dev-env-2019-02-27-gitignore/"/>
-    <id>https://parkdoyeon.github.io/dev-env-2019-02-27-gitignore/</id>
+    <link href="https://parkdoyeon.github.io/dev-env/dev-env-2019-02-27-gitignore/"/>
+    <id>https://parkdoyeon.github.io/dev-env/dev-env-2019-02-27-gitignore/</id>
     <published>2019-02-27T10:23:00.000Z</published>
     <updated>2019-06-08T02:58:52.615Z</updated>
     

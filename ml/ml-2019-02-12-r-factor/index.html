@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang>
+  <head><meta name="generator" content="Hexo 3.8.0">
+    
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta name="google-site-verification" content="ZPpg1XKRwaiB4lPx6SawBAA96ROVlVBmZ8s6pigFEVc">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+  <meta name="description" content="R - factor 자료형에 대하여">
+
+
+
+
+  <meta name="keywords" content="machine-learning,R,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Park Doyeon">
+
+
+
+
+
+
+<link rel="canonical" href="https://parkdoyeon.github.io/ml/ml-2019-02-12-r-factor/">
+
+
+<meta name="description" content="Factor는 인덱스와 같은 제한된 숫자값을 갖고있는 자료형이다. 통계적 모델링(그래프 요소의 순서처리 등)을 위해 주로 사용되고, 같은 value값을 지닌 데이터간의 안정성이 보장되는 이점이 있다. 또, 그만큼 데이터 복사/처리 등이 쉽게 이뤄지지 않으므로 일반적으로 가공과정에서는 사용하지 말것을 권장한다.  csv, excel등의 데이터를 R데이터 타입">
+<meta name="keywords" content="machine-learning,R">
+<meta property="og:type" content="article">
+<meta property="og:title" content="R - factor 자료형에 대하여">
+<meta property="og:url" content="https://parkdoyeon.github.io/ml/ml-2019-02-12-r-factor/index.html">
+<meta property="og:site_name" content="Park Doyeon">
+<meta property="og:description" content="Factor는 인덱스와 같은 제한된 숫자값을 갖고있는 자료형이다. 통계적 모델링(그래프 요소의 순서처리 등)을 위해 주로 사용되고, 같은 value값을 지닌 데이터간의 안정성이 보장되는 이점이 있다. 또, 그만큼 데이터 복사/처리 등이 쉽게 이뤄지지 않으므로 일반적으로 가공과정에서는 사용하지 말것을 권장한다.  csv, excel등의 데이터를 R데이터 타입">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-06-08T02:58:52.618Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="R - factor 자료형에 대하여">
+<meta name="twitter:description" content="Factor는 인덱스와 같은 제한된 숫자값을 갖고있는 자료형이다. 통계적 모델링(그래프 요소의 순서처리 등)을 위해 주로 사용되고, 같은 value값을 지닌 데이터간의 안정성이 보장되는 이점이 있다. 또, 그만큼 데이터 복사/처리 등이 쉽게 이뤄지지 않으므로 일반적으로 가공과정에서는 사용하지 말것을 권장한다.  csv, excel등의 데이터를 R데이터 타입">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141653278-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-141653278-1');
+  </script>
+
+
+
+
+
+  
+
+
+    <title> R - factor 자료형에 대하여 - Park Doyeon </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </head>
+
+  <body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Park Doyeon</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+  </nav>
+</div>
+      </header>
+
+      <div id="post-categories"><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/csharp/">C#</a></li><li class="category-list-item"><a class="category-list-link" href="/dev-env/">Dev-Env</a></li><li class="category-list-item"><a class="category-list-link" href="/docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/elk/">ELK</a></li><li class="category-list-item"><a class="category-list-link" href="/ml/">ML</a></li><li class="category-list-item"><a class="category-list-link" href="/python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/sql/">SQL</a></li><li class="category-list-item"><a class="category-list-link" href="/web/">Web</a></li></ul>
+      </div>
+
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          R - factor 자료형에 대하여
+        
+      </h1>
+
+      <time class="post-time">
+          Feb 12 2019
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <p>Factor는 인덱스와 같은 제한된 숫자값을 갖고있는 자료형이다. 통계적 모델링(그래프 요소의 순서처리 등)을 위해 주로 사용되고, 같은 value값을 지닌 데이터간의 안정성이 보장되는 이점이 있다. 또, 그만큼 데이터 복사/처리 등이 쉽게 이뤄지지 않으므로 일반적으로 가공과정에서는 사용하지 말것을 권장한다.</p>
+<p> csv, excel등의 데이터를 R데이터 타입으로 변환하거나 생성할때 stringAsFactors 옵션을 통해 해당 데이터를 Factor로 다룰것인지 옵션을 줄 수 있다.</p>
+<pre><code class="r">credit_rating &lt;- c(&quot;A&quot;, &quot;A&quot;, &quot;BB&quot;)
+bond_owners &lt;- c(&quot;Dan&quot;, &quot;Tom&quot;, &quot;Joe&quot;)
+bonds &lt;- data.frame(credit_rating, bond_owners, stringsAsFactors = T)</code></pre>
+<p>bonds 데이터프레임을 생성하고 열어 보면 아래와 같은 결과가 나온다.</p>
+<pre><code class="r">&gt; bonds
+  credit_rating bond_owners
+1             A         Dan
+2             A         Tom
+3            BB         Joe
+bonds 데이터프레임을 열어보면 credit_rating은 2개의 레벨을 갖고있는 Factor자료형, bond_owners는 3개의 레벨을 갖고있는 Factor자료형임을 알 수 있다.</code></pre>
+<pre><code class="r">&gt; str(bonds)
+&#39;data.frame&#39;:    3 obs. of  2 variables:
+ $ credit_rating: Factor w/ 2 levels &quot;A&quot;,&quot;BB&quot;: 1 1 2
+ $ bond_owners  : Factor w/ 3 levels &quot;Dan&quot;,&quot;Joe&quot;,&quot;Tom&quot;: 1 3 2</code></pre>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+        <div class="post-tags">
+          
+            <a href="/tags/machine-learning/">machine-learning</a>
+          
+            <a href="/tags/r/">R</a>
+          
+        </div>
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/ml/ml-2019-02-12-r-encodig/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">R - 인코딩 옵션 추론 및 한글 변환하기</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="/csharp/csharp-2019-01-24-effectivecsharp-4/">
+        <span class="next-text nav-default">effective c# - 4. LINQ 활용</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+    <!--<div style="text-align:center;">
+        <button class="btn" id="load-disqus" onclick="disqus.load();">load Disqus review</button>
+    </div>-->
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+    2019
+    <span class="footer-author">Park Doyeon.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> and <a class="theme-link" href="https://github.com/parkdoyeon">Me</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+<script type="text/javascript">
+  var disqus_shortname = 'parkdoyeon';
+  var disqus_identifier = 'ml/ml-2019-02-12-r-factor/';
+  var disqus_url = 'https://parkdoyeon.github.io/ml/ml-2019-02-12-r-factor/index.html';
+
+  
+  var disqus_config = function () {
+      this.page.url = disqus_url;
+      this.page.identifier = disqus_identifier;
+  };
+  
+  (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+  
+  
+  // var disqus = {
+  //   load : function disqus(){
+  //       if(typeof DISQUS !== 'object') {
+  //         (function () {
+  //         var s = document.createElement('script'); s.async = true;
+  //         s.type = 'text/javascript';
+  //         s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  //         (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+  //         }());
+  //         $('#load-disqus').remove(); ///Delete Button
+  //       }
+  //   }
+  // }
+
+</script>
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v="></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v="></script>
+<script type="text/javascript" src="/js/src/highlight.pack.js?v="></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.7.0/highlightjs-line-numbers.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', (event) => {
+  document.querySelectorAll('figure.highlight').forEach((block) => {
+    hljs.highlightBlock(block);
+  });
+});
+hljs.initHighlightingOnLoad();
+hljs.initLineNumbersOnLoad();
+</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src>
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  </body>
+</html>
