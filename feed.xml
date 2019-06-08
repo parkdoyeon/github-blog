@@ -122,9 +122,9 @@
       <category term="ELK" scheme="https://parkdoyeon.github.io/elk/"/>
     
     
-      <category term="elk" scheme="https://parkdoyeon.github.io/tags/elk/"/>
-    
       <category term="elasticsearch" scheme="https://parkdoyeon.github.io/tags/elasticsearch/"/>
+    
+      <category term="elk" scheme="https://parkdoyeon.github.io/tags/elk/"/>
     
       <category term="elastalert" scheme="https://parkdoyeon.github.io/tags/elastalert/"/>
     

@@ -17,21 +17,19 @@
 
 
 
-  <meta name="keywords" content="elk,elasticsearch,elastalert,">
+  <meta name="keywords" content="elasticsearch,elk,elastalert,">
 
 
 
 
 
-  <link rel="alternate" href="/feed.xml" title="Park Doyeon">
+  <link rel="alternate" href="/atom.xml" title="Park Doyeon">
 
 
 
 
 
 
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1">
 
 
 
@@ -39,7 +37,7 @@
 
 
 <meta name="description" content="ElastAlert은 조건에 따라 Elasticsearch에서 발생하는 문서에 대한 알럿을 보내주는 오픈소스이다. 각각의 규칙(Rule) yml파일을 생성하면 지정한 Rule 디렉토리에 있는 설정대로 ES에 쿼리하는 구조로,직접 파일을 생성해서 관리해줄수도 있고, Kibana에 ElastAlert 플러그인을 추가해서 규칙 관리를 할수도 있다.  규칙은 다양">
-<meta name="keywords" content="elk,elasticsearch,elastalert">
+<meta name="keywords" content="elasticsearch,elk,elastalert">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ElastAlert의 유용한 규칙 종류">
 <meta property="og:url" content="https://parkdoyeon.github.io/elk-2019-05-29-elastalert/index.html">
@@ -52,7 +50,7 @@
 <meta name="twitter:description" content="ElastAlert은 조건에 따라 Elasticsearch에서 발생하는 문서에 대한 알럿을 보내주는 오픈소스이다. 각각의 규칙(Rule) yml파일을 생성하면 지정한 Rule 디렉토리에 있는 설정대로 ES에 쿼리하는 구조로,직접 파일을 생성해서 관리해줄수도 있고, Kibana에 ElastAlert 플러그인을 추가해서 규칙 관리를 할수도 있다.  규칙은 다양">
 
 
-<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1">
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=">
 <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 
 
@@ -62,7 +60,7 @@
 <script type="text/javascript">
   var themeConfig = {
     fancybox: {
-      enable: false
+      enable: 
     },
   };
 </script>
@@ -71,6 +69,16 @@
 
 
   
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141653278-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-141653278-1');
+  </script>
 
 
 
@@ -90,28 +98,6 @@
     </h1>
 
     <nav id="nav-top">
-        
-            <ul id="menu-top" class="nav-top-items">
-                
-                    <li class="menu-item">
-                        <a href="/about">
-                            
-                            
-                                About
-                            
-                        </a>
-                    </li>
-                
-                    <li class="menu-item">
-                        <a href="/resume">
-                            
-                            
-                                Resume
-                            
-                        </a>
-                    </li>
-                
-            </ul>
         
   </nav>
 </div>
@@ -204,9 +190,9 @@ alert_subject: &quot;지속적인 에러가 발생했습니다.&quot;</code></pr
       <footer class="post-footer">
         <div class="post-tags">
           
-            <a href="/tags/elk/">elk</a>
-          
             <a href="/tags/elasticsearch/">elasticsearch</a>
+          
+            <a href="/tags/elk/">elk</a>
           
             <a href="/tags/elastalert/">elastalert</a>
           
@@ -321,10 +307,9 @@ alert_subject: &quot;지속적인 에러가 발생했습니다.&quot;</code></pr
 
   
 
-    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
-<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
-<script type="text/javascript" src="/js/src/highlight.pack.js?v=1.1"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+    <script type="text/javascript" src="/js/src/theme.js?v="></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v="></script>
+<script type="text/javascript" src="/js/src/highlight.pack.js?v="></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.7.0/highlightjs-line-numbers.min.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', (event) => {
