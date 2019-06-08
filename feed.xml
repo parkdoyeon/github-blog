@@ -122,9 +122,9 @@
       <category term="ELK" scheme="https://parkdoyeon.github.io/elk/"/>
     
     
-      <category term="elasticsearch" scheme="https://parkdoyeon.github.io/tags/elasticsearch/"/>
-    
       <category term="elk" scheme="https://parkdoyeon.github.io/tags/elk/"/>
+    
+      <category term="elasticsearch" scheme="https://parkdoyeon.github.io/tags/elasticsearch/"/>
     
       <category term="elastalert" scheme="https://parkdoyeon.github.io/tags/elastalert/"/>
     
@@ -243,9 +243,9 @@
       <category term="Dev-Env" scheme="https://parkdoyeon.github.io/dev-env/"/>
     
     
-      <category term="Hyper-V" scheme="https://parkdoyeon.github.io/tags/hyper-v/"/>
-    
       <category term="network" scheme="https://parkdoyeon.github.io/tags/network/"/>
+    
+      <category term="Hyper-V" scheme="https://parkdoyeon.github.io/tags/hyper-v/"/>
     
   </entry>
   
@@ -478,35 +478,6 @@
   </entry>
   
   <entry>
-    <title>기존 테이블에 PK키 추가하기</title>
-    <link href="https://parkdoyeon.github.io/sql-2019-04-22-addpk/"/>
-    <id>https://parkdoyeon.github.io/sql-2019-04-22-addpk/</id>
-    <published>2019-03-14T09:14:00.000Z</published>
-    <updated>2019-06-08T02:58:52.620Z</updated>
-    
-    <content type="html"><![CDATA[<p>mssql에서 PK를 추가하려면 기존의 PK를 삭제해주고 재생성해줘야한다.<br>mytable에 PK을 하나 더 추가하려고 PK 추가 구문을 아래와 같이 호출하면,<br>아래와 같이 이미 기본키가 정의되었다는 에러메세지가 나오면서 실패한다.</p><pre><code class="SQL">ALTER TABLE [dbo].[mytable] ADD  CONSTRAINT [PK_mytable] PRIMARY KEY CLUSTERED (    [otherPKColumn] ASC)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]GO</code></pre><pre><code class="SQL">메시지 1779, 수준 16, 상태 0, 줄 9테이블 &#39;mytable&#39;에 이미 기본 키가 정의되어 있습니다.메시지 1750, 수준 16, 상태 0, 줄 9제약 조건을 만들 수 없습니다. 이전 오류를 참조하십시오.</code></pre><p>때문에 아래 호출을 통해 기본키를 정의한 PK 테이블 이름을 확인한다음, </p><pre><code class="SQL">sp_helpconstraint [mytable]</code></pre><pre><code class="SQL">constraint_type constraint_name delete_action   update_action   status_enabled  status_for_replication  constraint_keysPRIMARY KEY(clustered)  PK_mytable  (n/a)  (n/a)  (n/a)  (n/a) Seq</code></pre><p>Drop문으로 날려주고 재생성해야한다.</p><pre><code class="SQL">ALTER TABLE dbo.mytable DROP CONSTRAINT PK_mytableALTER TABLE [dbo].[mytable] ADD  CONSTRAINT [PK_mytable] PRIMARY KEY CLUSTERED (    [Seq] ASC,    [otherPKColumn] ASC)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]GO</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;mssql에서 PK를 추가하려면 기존의 PK를 삭제해주고 재생성해줘야한다.&lt;br&gt;mytable에 PK을 하나 더 추가하려고 PK 추가 구문을 아래와 같이 호출하면,&lt;br&gt;아래와 같이 이미 기본키가 정의되었다는 에러메세지가 나오면서 실패한다.&lt;/p
-      
-    
-    </summary>
-    
-      <category term="SQL" scheme="https://parkdoyeon.github.io/sql/"/>
-    
-    
-      <category term="mssql" scheme="https://parkdoyeon.github.io/tags/mssql/"/>
-    
-      <category term="insert" scheme="https://parkdoyeon.github.io/tags/insert/"/>
-    
-      <category term="pk" scheme="https://parkdoyeon.github.io/tags/pk/"/>
-    
-  </entry>
-  
-  <entry>
     <title>insert into select 사용하기</title>
     <link href="https://parkdoyeon.github.io/sql-2019-03-14-insertselect/"/>
     <id>https://parkdoyeon.github.io/sql-2019-03-14-insertselect/</id>
@@ -533,6 +504,35 @@
       <category term="mssql" scheme="https://parkdoyeon.github.io/tags/mssql/"/>
     
       <category term="insert" scheme="https://parkdoyeon.github.io/tags/insert/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>기존 테이블에 PK키 추가하기</title>
+    <link href="https://parkdoyeon.github.io/sql-2019-04-22-addpk/"/>
+    <id>https://parkdoyeon.github.io/sql-2019-04-22-addpk/</id>
+    <published>2019-03-14T09:14:00.000Z</published>
+    <updated>2019-06-08T02:58:52.620Z</updated>
+    
+    <content type="html"><![CDATA[<p>mssql에서 PK를 추가하려면 기존의 PK를 삭제해주고 재생성해줘야한다.<br>mytable에 PK을 하나 더 추가하려고 PK 추가 구문을 아래와 같이 호출하면,<br>아래와 같이 이미 기본키가 정의되었다는 에러메세지가 나오면서 실패한다.</p><pre><code class="SQL">ALTER TABLE [dbo].[mytable] ADD  CONSTRAINT [PK_mytable] PRIMARY KEY CLUSTERED (    [otherPKColumn] ASC)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]GO</code></pre><pre><code class="SQL">메시지 1779, 수준 16, 상태 0, 줄 9테이블 &#39;mytable&#39;에 이미 기본 키가 정의되어 있습니다.메시지 1750, 수준 16, 상태 0, 줄 9제약 조건을 만들 수 없습니다. 이전 오류를 참조하십시오.</code></pre><p>때문에 아래 호출을 통해 기본키를 정의한 PK 테이블 이름을 확인한다음, </p><pre><code class="SQL">sp_helpconstraint [mytable]</code></pre><pre><code class="SQL">constraint_type constraint_name delete_action   update_action   status_enabled  status_for_replication  constraint_keysPRIMARY KEY(clustered)  PK_mytable  (n/a)  (n/a)  (n/a)  (n/a) Seq</code></pre><p>Drop문으로 날려주고 재생성해야한다.</p><pre><code class="SQL">ALTER TABLE dbo.mytable DROP CONSTRAINT PK_mytableALTER TABLE [dbo].[mytable] ADD  CONSTRAINT [PK_mytable] PRIMARY KEY CLUSTERED (    [Seq] ASC,    [otherPKColumn] ASC)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]GO</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;mssql에서 PK를 추가하려면 기존의 PK를 삭제해주고 재생성해줘야한다.&lt;br&gt;mytable에 PK을 하나 더 추가하려고 PK 추가 구문을 아래와 같이 호출하면,&lt;br&gt;아래와 같이 이미 기본키가 정의되었다는 에러메세지가 나오면서 실패한다.&lt;/p
+      
+    
+    </summary>
+    
+      <category term="SQL" scheme="https://parkdoyeon.github.io/sql/"/>
+    
+    
+      <category term="mssql" scheme="https://parkdoyeon.github.io/tags/mssql/"/>
+    
+      <category term="insert" scheme="https://parkdoyeon.github.io/tags/insert/"/>
+    
+      <category term="pk" scheme="https://parkdoyeon.github.io/tags/pk/"/>
     
   </entry>
   
