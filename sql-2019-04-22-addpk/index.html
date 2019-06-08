@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang>
+  <head><meta name="generator" content="Hexo 3.8.0">
+    
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+  <meta name="description" content="기존 테이블에 PK키 추가하기">
+
+
+
+
+  <meta name="keywords" content="mssql,insert,pk,">
+
+
+
+
+
+  <link rel="alternate" href="/default" title="Park Doyeon">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1">
+
+
+
+<link rel="canonical" href="https://parkdoyeon.github.io/sql-2019-04-22-addpk/">
+
+
+<meta name="description" content="mssql에서 PK를 추가하려면 기존의 PK를 삭제해주고 재생성해줘야한다.mytable에 PK을 하나 더 추가하려고 PK 추가 구문을 아래와 같이 호출하면,아래와 같이 이미 기본키가 정의되었다는 에러메세지가 나오면서 실패한다. ALTER TABLE [dbo].[mytable] ADD  CONSTRAINT [PK_mytable] PRIMARY KEY CLUS">
+<meta name="keywords" content="mssql,insert,pk">
+<meta property="og:type" content="article">
+<meta property="og:title" content="기존 테이블에 PK키 추가하기">
+<meta property="og:url" content="https://parkdoyeon.github.io/sql-2019-04-22-addpk/index.html">
+<meta property="og:site_name" content="Park Doyeon">
+<meta property="og:description" content="mssql에서 PK를 추가하려면 기존의 PK를 삭제해주고 재생성해줘야한다.mytable에 PK을 하나 더 추가하려고 PK 추가 구문을 아래와 같이 호출하면,아래와 같이 이미 기본키가 정의되었다는 에러메세지가 나오면서 실패한다. ALTER TABLE [dbo].[mytable] ADD  CONSTRAINT [PK_mytable] PRIMARY KEY CLUS">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-06-08T02:58:52.620Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="기존 테이블에 PK키 추가하기">
+<meta name="twitter:description" content="mssql에서 PK를 추가하려면 기존의 PK를 삭제해주고 재생성해줘야한다.mytable에 PK을 하나 더 추가하려고 PK 추가 구문을 아래와 같이 호출하면,아래와 같이 이미 기본키가 정의되었다는 에러메세지가 나오면서 실패한다. ALTER TABLE [dbo].[mytable] ADD  CONSTRAINT [PK_mytable] PRIMARY KEY CLUS">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+    <title> 기존 테이블에 PK키 추가하기 - Park Doyeon </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </head>
+
+  <body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Park Doyeon</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/resume">
+                            
+                            
+                                Resume
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+      </header>
+
+      <div id="post-categories"><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/csharp/">C#</a></li><li class="category-list-item"><a class="category-list-link" href="/dev-env/">Dev-Env</a></li><li class="category-list-item"><a class="category-list-link" href="/docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/elk/">ELK</a></li><li class="category-list-item"><a class="category-list-link" href="/ml/">ML</a></li><li class="category-list-item"><a class="category-list-link" href="/python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/sql/">SQL</a></li><li class="category-list-item"><a class="category-list-link" href="/web/">Web</a></li></ul>
+      </div>
+
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          기존 테이블에 PK키 추가하기
+        
+      </h1>
+
+      <time class="post-time">
+          Mar 14 2019
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <p>mssql에서 PK를 추가하려면 기존의 PK를 삭제해주고 재생성해줘야한다.<br>mytable에 PK을 하나 더 추가하려고 PK 추가 구문을 아래와 같이 호출하면,<br>아래와 같이 이미 기본키가 정의되었다는 에러메세지가 나오면서 실패한다.</p>
+<pre><code class="SQL">ALTER TABLE [dbo].[mytable] ADD  CONSTRAINT [PK_mytable] PRIMARY KEY CLUSTERED 
+(
+    [otherPKColumn] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO</code></pre>
+<pre><code class="SQL">메시지 1779, 수준 16, 상태 0, 줄 9
+테이블 &#39;mytable&#39;에 이미 기본 키가 정의되어 있습니다.
+메시지 1750, 수준 16, 상태 0, 줄 9
+제약 조건을 만들 수 없습니다. 이전 오류를 참조하십시오.</code></pre>
+<p>때문에 아래 호출을 통해 기본키를 정의한 PK 테이블 이름을 확인한다음, </p>
+<pre><code class="SQL">sp_helpconstraint [mytable]</code></pre>
+<pre><code class="SQL">constraint_type constraint_name delete_action   update_action   status_enabled  status_for_replication  constraint_keys
+PRIMARY KEY(clustered)  PK_mytable  (n/a)  (n/a)  (n/a)  (n/a) Seq</code></pre>
+<p>Drop문으로 날려주고 재생성해야한다.</p>
+<pre><code class="SQL">ALTER TABLE dbo.mytable DROP CONSTRAINT PK_mytable
+ALTER TABLE [dbo].[mytable] ADD  CONSTRAINT [PK_mytable] PRIMARY KEY CLUSTERED 
+(
+    [Seq] ASC,
+    [otherPKColumn] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO</code></pre>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+        <div class="post-tags">
+          
+            <a href="/tags/mssql/">mssql</a>
+          
+            <a href="/tags/insert/">insert</a>
+          
+            <a href="/tags/pk/">pk</a>
+          
+        </div>
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/sql-2019-03-14-insertselect/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">insert into select 사용하기</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="/elk-2019-03-10-es-readonly-err/">
+        <span class="next-text nav-default">ElasticSearch - 403 index read-only 에러가 발생했을 때</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+    <!--<div style="text-align:center;">
+        <button class="btn" id="load-disqus" onclick="disqus.load();">load Disqus review</button>
+    </div>-->
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+    2019
+    <span class="footer-author">Park Doyeon.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/parkdoyeon">Me</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+<script type="text/javascript">
+  var disqus_shortname = 'parkdoyeon';
+  var disqus_identifier = 'sql-2019-04-22-addpk/';
+  var disqus_url = 'https://parkdoyeon.github.io/sql-2019-04-22-addpk/index.html';
+
+  
+  var disqus_config = function () {
+      this.page.url = disqus_url;
+      this.page.identifier = disqus_identifier;
+  };
+  
+  (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+  
+  
+  // var disqus = {
+  //   load : function disqus(){
+  //       if(typeof DISQUS !== 'object') {
+  //         (function () {
+  //         var s = document.createElement('script'); s.async = true;
+  //         s.type = 'text/javascript';
+  //         s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  //         (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+  //         }());
+  //         $('#load-disqus').remove(); ///Delete Button
+  //       }
+  //   }
+  // }
+
+</script>
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/highlight.pack.js?v=1.1"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.7.0/highlightjs-line-numbers.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', (event) => {
+  document.querySelectorAll('figure.highlight').forEach((block) => {
+    hljs.highlightBlock(block);
+  });
+});
+hljs.initHighlightingOnLoad();
+hljs.initLineNumbersOnLoad();
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </body>
+</html>

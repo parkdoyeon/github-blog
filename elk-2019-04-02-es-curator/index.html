@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang>
+  <head><meta name="generator" content="Hexo 3.8.0">
+    
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+  <meta name="description" content="ElasticSearch - 도커를 이용해 인덱스 주기적으로 삭제하기">
+
+
+
+
+  <meta name="keywords" content="docker,elasticsearch,curator,index,">
+
+
+
+
+
+  <link rel="alternate" href="/default" title="Park Doyeon">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1">
+
+
+
+<link rel="canonical" href="https://parkdoyeon.github.io/elk-2019-04-02-es-curator/">
+
+
+<meta name="description" content="로그를 끊임없이 ES에 저장하다보면 디스크 용량이 부족한 문제가 발생한다.수동으로 인덱스를 삭제하다보면 단순히 번거로울 뿐만이 아니라 삭제하지 않으려고 했던 인덱스도 삭제될 수 있기 때문에, 삭제 자동화는 ES 운영에 반드시 필요하다.curator는 elasticsearch의 인덱스를 관리를 위한 어플리케이션으로, ES와 격리된 환경에서 http 통신으로">
+<meta name="keywords" content="docker,elasticsearch,curator,index">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ElasticSearch - 도커를 이용해 인덱스 주기적으로 삭제하기">
+<meta property="og:url" content="https://parkdoyeon.github.io/elk-2019-04-02-es-curator/index.html">
+<meta property="og:site_name" content="Park Doyeon">
+<meta property="og:description" content="로그를 끊임없이 ES에 저장하다보면 디스크 용량이 부족한 문제가 발생한다.수동으로 인덱스를 삭제하다보면 단순히 번거로울 뿐만이 아니라 삭제하지 않으려고 했던 인덱스도 삭제될 수 있기 때문에, 삭제 자동화는 ES 운영에 반드시 필요하다.curator는 elasticsearch의 인덱스를 관리를 위한 어플리케이션으로, ES와 격리된 환경에서 http 통신으로">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-06-08T02:58:52.618Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ElasticSearch - 도커를 이용해 인덱스 주기적으로 삭제하기">
+<meta name="twitter:description" content="로그를 끊임없이 ES에 저장하다보면 디스크 용량이 부족한 문제가 발생한다.수동으로 인덱스를 삭제하다보면 단순히 번거로울 뿐만이 아니라 삭제하지 않으려고 했던 인덱스도 삭제될 수 있기 때문에, 삭제 자동화는 ES 운영에 반드시 필요하다.curator는 elasticsearch의 인덱스를 관리를 위한 어플리케이션으로, ES와 격리된 환경에서 http 통신으로">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+    <title> ElasticSearch - 도커를 이용해 인덱스 주기적으로 삭제하기 - Park Doyeon </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </head>
+
+  <body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Park Doyeon</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/resume">
+                            
+                            
+                                Resume
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+      </header>
+
+      <div id="post-categories"><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/csharp/">C#</a></li><li class="category-list-item"><a class="category-list-link" href="/dev-env/">Dev-Env</a></li><li class="category-list-item"><a class="category-list-link" href="/docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/elk/">ELK</a></li><li class="category-list-item"><a class="category-list-link" href="/ml/">ML</a></li><li class="category-list-item"><a class="category-list-link" href="/python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/sql/">SQL</a></li><li class="category-list-item"><a class="category-list-link" href="/web/">Web</a></li></ul>
+      </div>
+
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          ElasticSearch - 도커를 이용해 인덱스 주기적으로 삭제하기
+        
+      </h1>
+
+      <time class="post-time">
+          Apr 2 2019
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <p>로그를 끊임없이 ES에 저장하다보면 디스크 용량이 부족한 문제가 발생한다.<br>수동으로 인덱스를 삭제하다보면 단순히 번거로울 뿐만이 아니라 삭제하지 않으려고 했던 인덱스도 삭제될 수 있기 때문에, 삭제 자동화는 ES 운영에 반드시 필요하다.<br>curator는 elasticsearch의 인덱스를 관리를 위한 어플리케이션으로, ES와 격리된 환경에서 http 통신으로 동작이 가능하다.</p>
+<p>여기에는 인덱스 삭제만 나와있지만, 샤드의 삭제나 엘라스틱서치의 스냅샷 삭제, 샤드 라우팅 변경도 가능하다.<br>나의 경우 curator를 세팅할 서버는 폐쇄된 환경이었기 때문에,<br>로컬에서 curator 공식사이트의 dockerfile을 받아 이미지를 빌드한 다음,<br>이미지를 파일로 압축해 서버에 세팅하고 cronjob을 통해 매일 인덱스 삭제작업을 진행하도록 했다.</p>
+<h4 id="docker-image-빌드"><a href="#docker-image-빌드" class="headerlink" title="docker image 빌드"></a>docker image 빌드</h4><p>github에 올라와있는 dockerfile을 다운받아 빌드한다 <a href="https://github.com/elastic/curator" target="_blank" rel="noopener">https://github.com/elastic/curator</a></p>
+<pre><code class="bash">docker build .</code></pre>
+<h4 id="큐레이터-기본-설정파일-생성하기-curator-yml"><a href="#큐레이터-기본-설정파일-생성하기-curator-yml" class="headerlink" title="큐레이터 기본 설정파일 생성하기: curator.yml"></a>큐레이터 기본 설정파일 생성하기: curator.yml</h4><pre><code class="yml">client:
+  hosts:
+   - elasticsearch
+  port: 9200
+  url_prefix:
+  use_ssl: False
+  certificate:
+  client_cert:
+  client_key:
+  ssl_no_validate: False
+  http_auth:
+  timeout: 30
+  master_only: False
+
+logging:
+  loglevel: INFO
+  logfile: /volume/curator.log #로그 디렉토리 설정, 어플리케이션 수행 
+  logformat: default
+  blacklist: [&#39;elasticsearch&#39;, &#39;urllib3&#39;]</code></pre>
+<h4 id="인덱스-삭제-규칙파일-생성하기-delete-indices-yml"><a href="#인덱스-삭제-규칙파일-생성하기-delete-indices-yml" class="headerlink" title="인덱스 삭제 규칙파일 생성하기: delete-indices.yml"></a>인덱스 삭제 규칙파일 생성하기: delete-indices.yml</h4><pre><code class="yml">actions:
+  1:
+    action: delete_indices
+    options:
+      ignore_empty_list: True
+      disable_action: False
+    filters:
+     - filtertype: pattern
+       kind: prefix
+       value: kr-*-
+     - filtertype: age
+       source: name
+       direction: older
+       timestring: &#39;%Y.%m.%d&#39;
+       unit: days
+       unit_count: 8 #생성한지 8일이 된 데이터는 삭제한다</code></pre>
+<h4 id="도커-컴포즈-설정"><a href="#도커-컴포즈-설정" class="headerlink" title="도커 컴포즈 설정"></a>도커 컴포즈 설정</h4><p>빌드된 이미지의 entrypoint는 아무 옵션 없이 단순히 어플리케이션을 실행하는 ‘curator/curator’이다.<br>때문에 설정파일이나 규칙들을 정의해주고싶다면 아래와 같이 entrypoint override를 해야한다.<br>또한, 어떤 인덱스가 삭제될지 확인하고싶다면 dry run 옵션을 통해 위의 curator.yml에 지정한 log파일에서 리스트확인이 가능하다.<br>최초 실행시 반드시 dry run을 통해 curator.log에 삭제 대상이 되는 인덱스들을 확인하자.</p>
+<pre><code class="yml">version: &#39;3.3&#39;
+
+  services:
+    curator:
+      image: curator:5.6
+      container_name: curator
+      user: $USER
+      volumes:
+        - /data/volume/curator:/volume
+  # 테스트시 주석 해제 후 실행
+  #    entrypoint: [&quot;curator/curator&quot;, &quot;--config&quot;, &quot;/volume/config/curator.yml&quot;, &quot;--dry-run&quot;, &quot;/volume/config/delete-indices.yml&quot;]
+      entrypoint: [&quot;curator/curator&quot;, &quot;--config&quot;, &quot;/volume/config/curator.yml&quot;, &quot;/volume/config/delete-indices.yml&quot;]
+      network_mode: esmaster #엘라스틱 서치가 있는 네트워크와 맞춰주기</code></pre>
+<h4 id="큐레이터로-도커컴포즈-실행하기"><a href="#큐레이터로-도커컴포즈-실행하기" class="headerlink" title="큐레이터로 도커컴포즈 실행하기"></a>큐레이터로 도커컴포즈 실행하기</h4><p>도커 컨테이너는 규칙 실행후 exit code 0을 반환하며 종료된다.<br>정기적으로 실행되도록 설정하려면 리눅스 cronjob 등록을 해줘야한다.</p>
+<ol>
+<li>도커 컴포즈 실행 스크립트 만들기<pre><code class="bash">#!/bin/bash
+cd /path/to/docker-compose
+docker-compose up
+</code></pre>
+</li>
+</ol>
+<pre><code>
+2. 크론탭 에디터 열기
+``` bash
+crontab -e</code></pre><ol start="3">
+<li>규칙 추가<br>매일 17시에 실행되고, cronjob 작업 수행 이력이 crontab.log에 남는다.<pre><code class="bash">0 17 * * * /data/volume/curator-run.sh &gt; /data/crontab.log 2&gt;&amp;1</code></pre>
+</li>
+</ol>
+<p>완료후 반영은 wq를 통해 하면 된다.</p>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+        <div class="post-tags">
+          
+            <a href="/tags/docker/">docker</a>
+          
+            <a href="/tags/elasticsearch/">elasticsearch</a>
+          
+            <a href="/tags/curator/">curator</a>
+          
+            <a href="/tags/index/">index</a>
+          
+        </div>
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/dev-env-2019-04-07-git-large-file/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Git - 실수로 용량이 큰 파일을 커밋했을 때</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="/docker-2019-03-29-docker-image/">
+        <span class="next-text nav-default">docker - 이미지/컨테이너 파일로 저장하고 불러오기</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+    <!--<div style="text-align:center;">
+        <button class="btn" id="load-disqus" onclick="disqus.load();">load Disqus review</button>
+    </div>-->
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+    2019
+    <span class="footer-author">Park Doyeon.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/parkdoyeon">Me</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+<script type="text/javascript">
+  var disqus_shortname = 'parkdoyeon';
+  var disqus_identifier = 'elk-2019-04-02-es-curator/';
+  var disqus_url = 'https://parkdoyeon.github.io/elk-2019-04-02-es-curator/index.html';
+
+  
+  var disqus_config = function () {
+      this.page.url = disqus_url;
+      this.page.identifier = disqus_identifier;
+  };
+  
+  (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+  
+  
+  // var disqus = {
+  //   load : function disqus(){
+  //       if(typeof DISQUS !== 'object') {
+  //         (function () {
+  //         var s = document.createElement('script'); s.async = true;
+  //         s.type = 'text/javascript';
+  //         s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  //         (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+  //         }());
+  //         $('#load-disqus').remove(); ///Delete Button
+  //       }
+  //   }
+  // }
+
+</script>
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/highlight.pack.js?v=1.1"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.7.0/highlightjs-line-numbers.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', (event) => {
+  document.querySelectorAll('figure.highlight').forEach((block) => {
+    hljs.highlightBlock(block);
+  });
+});
+hljs.initHighlightingOnLoad();
+hljs.initLineNumbersOnLoad();
+</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  </body>
+</html>

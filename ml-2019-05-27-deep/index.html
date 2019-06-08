@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang>
+  <head><meta name="generator" content="Hexo 3.8.0">
+    
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+  <meta name="description" content="Deep Learning From Scratch - 1. 퍼셉트론과 신경망">
+
+
+
+
+  <meta name="keywords" content="machine-learning,deep-learning,">
+
+
+
+
+
+  <link rel="alternate" href="/default" title="Park Doyeon">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1">
+
+
+
+<link rel="canonical" href="https://parkdoyeon.github.io/ml-2019-05-27-deep/">
+
+
+<meta name="description" content="1. 퍼셉트론 뉴런에서 보내온 신호 총합이 정해진 한계(임계값)를 넘어서면 1, 아니면 0을 출력하는게 기본 원리. 신호는 가중치값 \(w\)와 곱한다. 전류에서 말하는 저항을 생각하면 된다. 가중치가 높으면 신호가 크고, 가중치가 낮으면 신호가 낮다.   활성화를 조정하는 상수 편향값 \(b\)를 더한다. 한계: AND, NAND(Not And: And의">
+<meta name="keywords" content="machine-learning,deep-learning">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Deep Learning From Scratch - 1. 퍼셉트론과 신경망">
+<meta property="og:url" content="https://parkdoyeon.github.io/ml-2019-05-27-deep/index.html">
+<meta property="og:site_name" content="Park Doyeon">
+<meta property="og:description" content="1. 퍼셉트론 뉴런에서 보내온 신호 총합이 정해진 한계(임계값)를 넘어서면 1, 아니면 0을 출력하는게 기본 원리. 신호는 가중치값 \(w\)와 곱한다. 전류에서 말하는 저항을 생각하면 된다. 가중치가 높으면 신호가 크고, 가중치가 낮으면 신호가 낮다.   활성화를 조정하는 상수 편향값 \(b\)를 더한다. 한계: AND, NAND(Not And: And의">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-06-08T02:58:52.619Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Deep Learning From Scratch - 1. 퍼셉트론과 신경망">
+<meta name="twitter:description" content="1. 퍼셉트론 뉴런에서 보내온 신호 총합이 정해진 한계(임계값)를 넘어서면 1, 아니면 0을 출력하는게 기본 원리. 신호는 가중치값 \(w\)와 곱한다. 전류에서 말하는 저항을 생각하면 된다. 가중치가 높으면 신호가 크고, 가중치가 낮으면 신호가 낮다.   활성화를 조정하는 상수 편향값 \(b\)를 더한다. 한계: AND, NAND(Not And: And의">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+    <title> Deep Learning From Scratch - 1. 퍼셉트론과 신경망 - Park Doyeon </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </head>
+
+  <body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Park Doyeon</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/resume">
+                            
+                            
+                                Resume
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+      </header>
+
+      <div id="post-categories"><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/csharp/">C#</a></li><li class="category-list-item"><a class="category-list-link" href="/dev-env/">Dev-Env</a></li><li class="category-list-item"><a class="category-list-link" href="/docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/elk/">ELK</a></li><li class="category-list-item"><a class="category-list-link" href="/ml/">ML</a></li><li class="category-list-item"><a class="category-list-link" href="/python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/sql/">SQL</a></li><li class="category-list-item"><a class="category-list-link" href="/web/">Web</a></li></ul>
+      </div>
+
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          Deep Learning From Scratch - 1. 퍼셉트론과 신경망
+        
+      </h1>
+
+      <time class="post-time">
+          May 27 2019
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <h2 id="1-퍼셉트론"><a href="#1-퍼셉트론" class="headerlink" title="1. 퍼셉트론"></a>1. 퍼셉트론</h2><ul>
+<li>뉴런에서 보내온 신호 총합이 정해진 한계(임계값)를 넘어서면 1, 아니면 0을 출력하는게 기본 원리.</li>
+<li>신호는 가중치값 \(w\)와 곱한다.<ul>
+<li>전류에서 말하는 저항을 생각하면 된다.</li>
+<li>가중치가 높으면 신호가 크고, 가중치가 낮으면 신호가 낮다.</li>
+</ul>
+</li>
+<li>활성화를 조정하는 상수 편향값 \(b\)를 더한다.</li>
+<li>한계: AND, NAND(Not And: And의 반대 진리표), OR의 연산 구현이 가능하지만, XOR 게이트는 구현할 수 없다.</li>
+</ul>
+<h2 id="2-다층-퍼셉트론"><a href="#2-다층-퍼셉트론" class="headerlink" title="2. 다층 퍼셉트론"></a>2. 다층 퍼셉트론</h2><ul>
+<li>선형구조인 퍼셉트론의 대안으로, 다층적으로 구현하는 퍼셉트론을 말한다.</li>
+<li>다층 퍼셉트론의 NAND 연산만으로 컴퓨터를 구현할 수 있다.</li>
+</ul>
+<h2 id="3-신경망"><a href="#3-신경망" class="headerlink" title="3. 신경망"></a>3. 신경망</h2><ul>
+<li>입력층, 은닉층, 출력층으로 구성되어있다.</li>
+<li>두개의 신호 \(w_1\), \(w_2\)와 편향값 b가 있다고 가정할때, 다음과 같이 표현할 수 있다.<br>$$ y= h(b+w_1x_1+w_2x_2) $$</li>
+<li>여기서 출력값 y를 도출하는 h(a)로 표현되는 함수는 활성화 함수라고 한다.</li>
+</ul>
+<h4 id="3-1-활성화-함수"><a href="#3-1-활성화-함수" class="headerlink" title="3.1 활성화 함수"></a>3.1 활성화 함수</h4><ul>
+<li>활성화 함수는 신호의 총합을 출력의 신호로 변환하는 함수를 말한다.</li>
+<li>신경망은 활성화 함수를 통해 신호를 변환하고, 그 변환된 신호를 다음 뉴런에 전달한다.</li>
+<li>책에서는 활성화 함수로 세 가지를 소개한다.<ol>
+<li>계단함수<ul>
+<li>입력이 0을 넘으면 1을, 그 외에는 0을 출력하는 함수이다.</li>
+</ul>
+</li>
+<li>시그모이드 함수<ul>
+<li>시그모이드 함수는 아래의 공식을 나타내며, e는 자연상수이다.<br>$$ h(x)= {1 \over 1+exp(-x)}$$<br>$$  exp(-x) = e^{-x}, e=2.7182… $$</li>
+</ul>
+</li>
+<li>ReLU 함수<ul>
+<li>입력이 0을 넘으면 그 입력을 그대로 출력하고, 0이하면 0을 출력하는 함수이다.</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>세 함수는 공통적으로 비선형 함수이고, 신경망에서는 활성화 함수로 비선형 함수를 사용해야한다<ul>
+<li>선형함수를 이용하면 미분값이 값이 상수가 되며, 변화량이 상수면 신경망 층을 깊게하는 의미가 없어지기 때문이다.</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-2-출력층-설계하기"><a href="#3-2-출력층-설계하기" class="headerlink" title="3.2 출력층 설계하기"></a>3.2 출력층 설계하기</h4><ul>
+<li>기계학습은 분석(classification, 입력데이터를 구분), 회귀(regression, 입력데이터에서 연속적인 수치 예측)따라 활성화 함수를 달리쓴다.</li>
+<li>두가지를 소개한다.<ol>
+<li>항등함수<ul>
+<li>회귀에서 주로 사용한다. 입력을 그대로 출력함.</li>
+</ul>
+</li>
+<li>소프트맥스<ul>
+<li>분류에서 주로 사용한다.</li>
+<li>분자는 입력신호의 지수함수, 분모는 n개의 모든 입력신호의 지수함수의 합으로 구성된다<br> $$  y_k = {exp(a_k) \over \sum_ {i=0}^n exp(a_i)} $$<ul>
+<li>분모의 값을 보면 모든 출력층의 뉴런이 모든 신호로부터 영향을 받는 것을 알 수 있다.</li>
+<li>소프트 맥스 함수는 코드 구현시 지수값으로 인한 오버플로 문제가 있다. 이를 개선하기 위해 입력신호중 최대값을 뺀다.</li>
+<li>아래의 식을 보면 어떤값을 더하거나 뺴도 결과값은 동일하다는 것을 보여준다.<br>$$  y_k = {exp(a_k) \over \sum_ {i=0}^n exp(a_i)} = {Cexp(a_k) \over C\sum_ {i=0}^n exp(a_i)}  $$<br>\(exp(n)\)는 지수함수이므로 C를 지수식에 밑이 e인 자연로그($log_e$)으로 취하면 덧셈식에 넣을 수 있다.<br>$$  = {exp(a_k+logC) \over \sum_ {i=0}^n exp(a_i+logC)} = {exp(a_k+C’) \over \sum_ {i=0}^n exp(a_i+C’)}$$</li>
+</ul>
+</li>
+<li>소프트 맥스 함수의 출력은 0부터 1사이의 실수이며, 그렇기 때문에 출력을 확률로 해석할 수 있다.</li>
+<li>\(y=exp(x)\)형식의 단조 증가함수이므로 원소간의 대소관계가 바뀌지는 않는다.</li>
+<li>그렇기 떄문에 지수함수 계산에 드는 자원 낭비를 줄이기 위해 현업에서는 출력층의 소프트맥스 함수를 생략하기도 한다.</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+        <div class="post-tags">
+          
+            <a href="/tags/machine-learning/">machine-learning</a>
+          
+            <a href="/tags/deep-learning/">deep-learning</a>
+          
+        </div>
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/python-2019-05-28-jekins-to-pytest/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Jenkins에 Python 환경세팅하고 Allure Report 연동하기</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="/sql-2019-05-27-ssms/">
+        <span class="next-text nav-default">ssms 사용할때 자주쓰는 명령어 정리</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+    <!--<div style="text-align:center;">
+        <button class="btn" id="load-disqus" onclick="disqus.load();">load Disqus review</button>
+    </div>-->
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+    2019
+    <span class="footer-author">Park Doyeon.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/parkdoyeon">Me</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+<script type="text/javascript">
+  var disqus_shortname = 'parkdoyeon';
+  var disqus_identifier = 'ml-2019-05-27-deep/';
+  var disqus_url = 'https://parkdoyeon.github.io/ml-2019-05-27-deep/index.html';
+
+  
+  var disqus_config = function () {
+      this.page.url = disqus_url;
+      this.page.identifier = disqus_identifier;
+  };
+  
+  (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+  
+  
+  // var disqus = {
+  //   load : function disqus(){
+  //       if(typeof DISQUS !== 'object') {
+  //         (function () {
+  //         var s = document.createElement('script'); s.async = true;
+  //         s.type = 'text/javascript';
+  //         s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  //         (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+  //         }());
+  //         $('#load-disqus').remove(); ///Delete Button
+  //       }
+  //   }
+  // }
+
+</script>
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/highlight.pack.js?v=1.1"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.7.0/highlightjs-line-numbers.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', (event) => {
+  document.querySelectorAll('figure.highlight').forEach((block) => {
+    hljs.highlightBlock(block);
+  });
+});
+hljs.initHighlightingOnLoad();
+hljs.initLineNumbersOnLoad();
+</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  </body>
+</html>
