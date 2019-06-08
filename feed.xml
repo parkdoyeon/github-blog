@@ -530,9 +530,9 @@
     
       <category term="mssql" scheme="https://parkdoyeon.github.io/tags/mssql/"/>
     
-      <category term="insert" scheme="https://parkdoyeon.github.io/tags/insert/"/>
-    
       <category term="pk" scheme="https://parkdoyeon.github.io/tags/pk/"/>
+    
+      <category term="insert" scheme="https://parkdoyeon.github.io/tags/insert/"/>
     
   </entry>
   
