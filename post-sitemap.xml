@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>https://parkdoyeon.github.io/web/web-2019-06-07-mathjax/</loc>
+        <lastmod>2019-06-08T11:10:27.413Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://parkdoyeon.github.io/ml/ml-2019-06-02-deep2/</loc>
         <lastmod>2019-06-08T05:52:01.530Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -33,14 +41,6 @@
 
     <url>
         <loc>https://parkdoyeon.github.io/web/web-2019-02-13-facebook/</loc>
-        <lastmod>2019-06-08T02:58:52.621Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://parkdoyeon.github.io/web/web-2019-06-07-mathjax/</loc>
         <lastmod>2019-06-08T02:58:52.621Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
