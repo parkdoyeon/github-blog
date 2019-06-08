@@ -59,12 +59,12 @@
 <meta property="og:site_name" content="Park Doyeon">
 <meta property="og:description" content="SP 내용 보기 sp_helptext &amp;#39;[sp 이름]&amp;#39; 특정 구문이 포함되어있는 SP 찾기 (특정 테이블이나 컬럼을 사용하는 SP를 찾을때 유용하다) select * from sys.procedures p join sys.syscomments s on p.object_id = s.id where text like &amp;#39;%[문자열]%&amp;#39">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://parkdoyeon.github.io/image/sql/2019-05-27-ssms.png">
-<meta property="og:updated_time" content="2019-06-08T02:58:52.620Z">
+<meta property="og:image" content="https://parkdoyeon.github.io/image/sql/2019-05-27-ssms-1.png">
+<meta property="og:updated_time" content="2019-06-08T18:02:17.324Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ssms 사용할때 자주쓰는 명령어 정리">
 <meta name="twitter:description" content="SP 내용 보기 sp_helptext &amp;#39;[sp 이름]&amp;#39; 특정 구문이 포함되어있는 SP 찾기 (특정 테이블이나 컬럼을 사용하는 SP를 찾을때 유용하다) select * from sys.procedures p join sys.syscomments s on p.object_id = s.id where text like &amp;#39;%[문자열]%&amp;#39">
-<meta name="twitter:image" content="https://parkdoyeon.github.io/image/sql/2019-05-27-ssms.png">
+<meta name="twitter:image" content="https://parkdoyeon.github.io/image/sql/2019-05-27-ssms-1.png">
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=">
@@ -150,7 +150,7 @@
 <pre><code class="sql">select * from sys.procedures p join sys.syscomments s on p.object_id = s.id where text like &#39;%[문자열]%&#39;;</code></pre>
 <p>프로파일러 잡을때 DB ID 확인이 필요한경우</p>
 <pre><code class="sql">select db_id(&#39;[db 이름]&#39;)</code></pre>
-<p>도구 &gt; 옵션 &gt; 키보드 &gt; 쿼리 바로가기에서 아래처럼 키보드 단축키로 설정하고 사용하면 좋다.<br><img src="/image/sql/2019-05-27-ssms.png" alt="옵션"></p>
+<p>도구 &gt; 옵션 &gt; 키보드 &gt; 쿼리 바로가기에서 아래처럼 키보드 단축키로 설정하고 사용하면 좋다.<br><img src="/image/sql/2019-05-27-ssms-1.png" alt="옵션"></p>
 <ul>
 <li>sp_lock : sp들의 점유상태를 보고싶을 때</li>
 <li>sp_who : DB 로그인 정보와 호스트 확인</li>

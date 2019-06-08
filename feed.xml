@@ -191,9 +191,9 @@
     <link href="https://parkdoyeon.github.io/sql/sql-2019-05-27-ssms/"/>
     <id>https://parkdoyeon.github.io/sql/sql-2019-05-27-ssms/</id>
     <published>2019-05-27T08:36:00.000Z</published>
-    <updated>2019-06-08T02:58:52.620Z</updated>
+    <updated>2019-06-08T18:02:17.324Z</updated>
     
-    <content type="html"><![CDATA[<p>SP 내용 보기</p><pre><code class="sql">sp_helptext &#39;[sp 이름]&#39;</code></pre><p>특정 구문이 포함되어있는 SP 찾기 (특정 테이블이나 컬럼을 사용하는 SP를 찾을때 유용하다)</p><pre><code class="sql">select * from sys.procedures p join sys.syscomments s on p.object_id = s.id where text like &#39;%[문자열]%&#39;;</code></pre><p>프로파일러 잡을때 DB ID 확인이 필요한경우</p><pre><code class="sql">select db_id(&#39;[db 이름]&#39;)</code></pre><p>도구 &gt; 옵션 &gt; 키보드 &gt; 쿼리 바로가기에서 아래처럼 키보드 단축키로 설정하고 사용하면 좋다.<br><img src="/image/sql/2019-05-27-ssms.png" alt="옵션"></p><ul><li>sp_lock : sp들의 점유상태를 보고싶을 때</li><li>sp_who : DB 로그인 정보와 호스트 확인</li></ul>]]></content>
+    <content type="html"><![CDATA[<p>SP 내용 보기</p><pre><code class="sql">sp_helptext &#39;[sp 이름]&#39;</code></pre><p>특정 구문이 포함되어있는 SP 찾기 (특정 테이블이나 컬럼을 사용하는 SP를 찾을때 유용하다)</p><pre><code class="sql">select * from sys.procedures p join sys.syscomments s on p.object_id = s.id where text like &#39;%[문자열]%&#39;;</code></pre><p>프로파일러 잡을때 DB ID 확인이 필요한경우</p><pre><code class="sql">select db_id(&#39;[db 이름]&#39;)</code></pre><p>도구 &gt; 옵션 &gt; 키보드 &gt; 쿼리 바로가기에서 아래처럼 키보드 단축키로 설정하고 사용하면 좋다.<br><img src="/image/sql/2019-05-27-ssms-1.png" alt="옵션"></p><ul><li>sp_lock : sp들의 점유상태를 보고싶을 때</li><li>sp_who : DB 로그인 정보와 호스트 확인</li></ul>]]></content>
     
     <summary type="html">
     
@@ -243,9 +243,9 @@
       <category term="Dev-Env" scheme="https://parkdoyeon.github.io/dev-env/"/>
     
     
-      <category term="network" scheme="https://parkdoyeon.github.io/tags/network/"/>
-    
       <category term="Hyper-V" scheme="https://parkdoyeon.github.io/tags/hyper-v/"/>
+    
+      <category term="network" scheme="https://parkdoyeon.github.io/tags/network/"/>
     
   </entry>
   
@@ -327,9 +327,9 @@
       <category term="ELK" scheme="https://parkdoyeon.github.io/elk/"/>
     
     
-      <category term="docker" scheme="https://parkdoyeon.github.io/tags/docker/"/>
-    
       <category term="elasticsearch" scheme="https://parkdoyeon.github.io/tags/elasticsearch/"/>
+    
+      <category term="docker" scheme="https://parkdoyeon.github.io/tags/docker/"/>
     
       <category term="curator" scheme="https://parkdoyeon.github.io/tags/curator/"/>
     
