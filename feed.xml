@@ -243,9 +243,9 @@
       <category term="Dev-Env" scheme="https://parkdoyeon.github.io/dev-env/"/>
     
     
-      <category term="network" scheme="https://parkdoyeon.github.io/tags/network/"/>
-    
       <category term="Hyper-V" scheme="https://parkdoyeon.github.io/tags/hyper-v/"/>
+    
+      <category term="network" scheme="https://parkdoyeon.github.io/tags/network/"/>
     
   </entry>
   
@@ -530,9 +530,9 @@
     
       <category term="mssql" scheme="https://parkdoyeon.github.io/tags/mssql/"/>
     
-      <category term="pk" scheme="https://parkdoyeon.github.io/tags/pk/"/>
-    
       <category term="insert" scheme="https://parkdoyeon.github.io/tags/insert/"/>
+    
+      <category term="pk" scheme="https://parkdoyeon.github.io/tags/pk/"/>
     
   </entry>
   
