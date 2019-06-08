@@ -57,6 +57,7 @@
 
 
 
+
 <script type="text/javascript">
   var themeConfig = {
     fancybox: {
@@ -266,9 +267,15 @@ bonds 데이터프레임을 열어보면 credit_rating은 2개의 레벨을 갖�
 
   
 
-    <script type="text/javascript" src="/js/src/theme.js?v="></script>
-<script type="text/javascript" src="/js/src/bootstrap.js?v="></script>
-<script type="text/javascript" src="/js/src/highlight.pack.js?v="></script>
+    <script src="/js/src/theme.js?v="></script>
+<script src="/js/src/bootstrap.js?v="></script>
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+<script src="/js/src/highlight.pack.js?v="></script>
+
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.7.0/highlightjs-line-numbers.min.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', (event) => {
@@ -278,23 +285,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
 });
 hljs.initHighlightingOnLoad();
 hljs.initLineNumbersOnLoad();
-</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config("");
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src>
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   </body>
 </html>

@@ -4,14 +4,14 @@
 
     <url>
         <loc>https://parkdoyeon.github.io/tags/deep-learning/</loc>
-        <lastmod>2019-06-08T03:23:45.974Z</lastmod>
+        <lastmod>2019-06-08T05:22:37.502Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://parkdoyeon.github.io/tags/machine-learning/</loc>
-        <lastmod>2019-06-08T03:23:45.974Z</lastmod>
+        <lastmod>2019-06-08T05:22:37.502Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -241,13 +241,6 @@
     </url>
 
     <url>
-        <loc>https://parkdoyeon.github.io/tags/install/</loc>
-        <lastmod>2019-06-08T02:58:52.616Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://parkdoyeon.github.io/tags/container/</loc>
         <lastmod>2019-06-08T02:58:52.616Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -262,15 +255,15 @@
     </url>
 
     <url>
-        <loc>https://parkdoyeon.github.io/tags/docker-compose/</loc>
+        <loc>https://parkdoyeon.github.io/tags/install/</loc>
         <lastmod>2019-06-08T02:58:52.616Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://parkdoyeon.github.io/tags/network/</loc>
-        <lastmod>2019-06-08T02:58:52.615Z</lastmod>
+        <loc>https://parkdoyeon.github.io/tags/docker-compose/</loc>
+        <lastmod>2019-06-08T02:58:52.616Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -284,6 +277,20 @@
 
     <url>
         <loc>https://parkdoyeon.github.io/tags/filter-branch/</loc>
+        <lastmod>2019-06-08T02:58:52.615Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://parkdoyeon.github.io/tags/gitignore/</loc>
+        <lastmod>2019-06-08T02:58:52.615Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://parkdoyeon.github.io/tags/git/</loc>
         <lastmod>2019-06-08T02:58:52.615Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -304,14 +311,7 @@
     </url>
 
     <url>
-        <loc>https://parkdoyeon.github.io/tags/gitignore/</loc>
-        <lastmod>2019-06-08T02:58:52.615Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://parkdoyeon.github.io/tags/git/</loc>
+        <loc>https://parkdoyeon.github.io/tags/network/</loc>
         <lastmod>2019-06-08T02:58:52.615Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>

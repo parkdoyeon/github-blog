@@ -21,7 +21,7 @@
 
 
 
-  <meta name="keywords" content="network,c#,bcl,tcp,udp,ip,">
+  <meta name="keywords" content="c#,bcl,network,tcp,udp,ip,">
 
 
 
@@ -38,7 +38,7 @@
 
 
 <meta name="description" content="비동기 호출 프로토콜: 어떤 절차를 거쳐서 통신을 주고받을것이냐에 대한 규칙 현재 인터넷에서 가장 많이사용하는 규칙은 tcp/ip이다.   IPv4: Internet Protocol의 4번째버전에 해당하는 기술 이미 주소가 바닥났지만 하나의 IP라우터를 통해 공용IP를 공유하고 사설 IP를 할당받는 등의 방식으로 큰 불편을 느끼지 못하고 있다. 사설IP는">
-<meta name="keywords" content="network,c#,bcl,tcp,udp,ip">
+<meta name="keywords" content="c#,bcl,network,tcp,udp,ip">
 <meta property="og:type" content="article">
 <meta property="og:title" content="c# 기본서 - 네트워크">
 <meta property="og:url" content="https://parkdoyeon.github.io/csharp/csharp-2018-11-30-csharp-network/index.html">
@@ -53,6 +53,7 @@
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=">
 <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
 
 
 
@@ -224,11 +225,11 @@ foreach (IPAddress ipAddress in entry.AddressList)
       <footer class="post-footer">
         <div class="post-tags">
           
-            <a href="/tags/network/">network</a>
-          
             <a href="/tags/c/">c#</a>
           
             <a href="/tags/bcl/">bcl</a>
+          
+            <a href="/tags/network/">network</a>
           
             <a href="/tags/tcp/">tcp</a>
           
@@ -347,9 +348,15 @@ foreach (IPAddress ipAddress in entry.AddressList)
 
   
 
-    <script type="text/javascript" src="/js/src/theme.js?v="></script>
-<script type="text/javascript" src="/js/src/bootstrap.js?v="></script>
-<script type="text/javascript" src="/js/src/highlight.pack.js?v="></script>
+    <script src="/js/src/theme.js?v="></script>
+<script src="/js/src/bootstrap.js?v="></script>
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+<script src="/js/src/highlight.pack.js?v="></script>
+
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.7.0/highlightjs-line-numbers.min.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', (event) => {
@@ -359,23 +366,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
 });
 hljs.initHighlightingOnLoad();
 hljs.initLineNumbersOnLoad();
-</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config("");
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src>
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   </body>
 </html>
