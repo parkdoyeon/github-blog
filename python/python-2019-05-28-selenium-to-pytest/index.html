@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang>
+  <head><meta name="generator" content="Hexo 3.8.0">
+    
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta name="google-site-verification" content="ZPpg1XKRwaiB4lPx6SawBAA96ROVlVBmZ8s6pigFEVc">
+
+
+
+<meta name="naver-site-verification" content="a31e494cb7e78d5a64696ea234dc6c9006b251ff">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://parkdoyeon.github.io/python/python-2019-05-28-selenium-to-pytest/">
+
+
+  <meta property="og:title" content="셀레니움과 pytest로 브라우저 테스트 하기">
+
+
+
+
+  <meta name="description" content="셀레니움과 pytest로 브라우저 테스트 하기">
+  <meta property="og:description" content="셀레니움과 pytest로 브라우저 테스트 하기">
+
+
+
+
+
+  <meta name="keywords" content="python,selenium,pytest,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Park Doyeon">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=">
+
+
+
+<link rel="canonical" href="https://parkdoyeon.github.io/python/python-2019-05-28-selenium-to-pytest/">
+
+
+<meta name="description" content="디렉토리 구조우선 pytest 샘플 프로젝트의 이렇다. 각각의 파일의 특징들은 아래와 같다. D:. │  conftest.py # 파이테스트에서 공통적으로 사용할 객체들을 구현한 모듈 │  inspection_test.py # 브라우저를 테스트하는 클래스/함수가 구현된 모듈 │  requirements.txt # pip으로 설치된 패키지 리스트 │ ├─al">
+<meta name="keywords" content="python,selenium,pytest">
+<meta property="og:type" content="article">
+<meta property="og:title" content="셀레니움과 pytest로 브라우저 테스트 하기">
+<meta property="og:url" content="https://parkdoyeon.github.io/python/python-2019-05-28-selenium-to-pytest/index.html">
+<meta property="og:site_name" content="Park Doyeon">
+<meta property="og:description" content="디렉토리 구조우선 pytest 샘플 프로젝트의 이렇다. 각각의 파일의 특징들은 아래와 같다. D:. │  conftest.py # 파이테스트에서 공통적으로 사용할 객체들을 구현한 모듈 │  inspection_test.py # 브라우저를 테스트하는 클래스/함수가 구현된 모듈 │  requirements.txt # pip으로 설치된 패키지 리스트 │ ├─al">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-06-10T14:18:16.119Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="셀레니움과 pytest로 브라우저 테스트 하기">
+<meta name="twitter:description" content="디렉토리 구조우선 pytest 샘플 프로젝트의 이렇다. 각각의 파일의 특징들은 아래와 같다. D:. │  conftest.py # 파이테스트에서 공통적으로 사용할 객체들을 구현한 모듈 │  inspection_test.py # 브라우저를 테스트하는 클래스/함수가 구현된 모듈 │  requirements.txt # pip으로 설치된 패키지 리스트 │ ├─al">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141653278-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-141653278-1');
+  </script>
+
+
+
+
+
+  
+
+
+    <title> 셀레니움과 pytest로 브라우저 테스트 하기 - Park Doyeon </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </head>
+
+  <body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Park Doyeon</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/resume">
+                            
+                            
+                                Resume
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+      </header>
+
+      <div id="post-categories"><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/csharp/">C#</a></li><li class="category-list-item"><a class="category-list-link" href="/dev-env/">Dev-Env</a></li><li class="category-list-item"><a class="category-list-link" href="/docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/elk/">ELK</a></li><li class="category-list-item"><a class="category-list-link" href="/ml/">ML</a></li><li class="category-list-item"><a class="category-list-link" href="/python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/sql/">SQL</a></li><li class="category-list-item"><a class="category-list-link" href="/web/">Web</a></li></ul>
+      </div>
+
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          셀레니움과 pytest로 브라우저 테스트 하기
+        
+      </h1>
+
+      <time class="post-time">
+          May 28 2019
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <h1 id="디렉토리-구조"><a href="#디렉토리-구조" class="headerlink" title="디렉토리 구조"></a>디렉토리 구조</h1><p>우선 pytest 샘플 프로젝트의 이렇다. 각각의 파일의 특징들은 아래와 같다.</p>
+<pre><code class="bash">D:.
+│  conftest.py # 파이테스트에서 공통적으로 사용할 객체들을 구현한 모듈
+│  inspection_test.py # 브라우저를 테스트하는 클래스/함수가 구현된 모듈
+│  requirements.txt # pip으로 설치된 패키지 리스트
+│
+├─allure-results
+├─bin
+│      chromedriver72.exe
+│      IEDriverServer.exe
+├─venv
+└─__pycache__</code></pre>
+<h1 id="conftest-py-공통-객체-설정하기"><a href="#conftest-py-공통-객체-설정하기" class="headerlink" title="conftest.py: 공통 객체 설정하기"></a>conftest.py: 공통 객체 설정하기</h1><p>pytest는 conftest.py라는 이름을 가진 스크립트에서 터미널 실행시 지정할 옵션값을 설정하거나,<br>각 테스트 함수에서 공통으로 사용하는 오브젝트(가령 셀레니움에서 사용할 브라우저 엔진같은)를 생성할 수 있다.</p>
+<pre><code class="python">import pytest
+import allure
+
+# 터미널 옵션 설정
+def pytest_addoption(parser):
+    # 아래에서 params 값에 세팅해줄 예정이니 패스
+    # parser.addoption(&quot;--driver&quot;, action=&quot;store&quot;, default=&quot;chrome&quot;, help=&quot;Type in browser type&quot;)
+    parser.addoption(&quot;--url&quot;, action=&quot;store&quot;, default=&quot;http://test.website.co.kr&quot;, help=&quot;url&quot;)
+
+# @pytest.fixture 데코레이터를 통해 리스트 형식인 파라미터를 넘기면,
+# params값이 루프를 돌면서 인자 순서대로 함수가 여러번 호출된다.
+@pytest.fixture(params=[&quot;chrome&quot;, &quot;ie&quot;], scope=&quot;class&quot;)
+def driver_get(request):
+    from selenium import webdriver
+
+    if request.param == &quot;chrome&quot;:
+        web_driver = webdriver.Chrome(&quot;bin/chromedriver72.exe&quot;)
+    if request.param == &quot;ie&quot;:
+        web_driver = webdriver.Ie(&quot;bin/IEDriverServer.exe&quot;)
+
+    request.cls.driver = web_driver
+    yield # yield 예약어를 통해 web_driver사용을 일시적으로 브라우저 엔진을 반환한다.</code></pre>
+<h1 id="inspection-test-py-테스트-함수를-만드는-클래스-모듈"><a href="#inspection-test-py-테스트-함수를-만드는-클래스-모듈" class="headerlink" title="inspection_test.py: 테스트 함수를 만드는 클래스 모듈"></a>inspection_test.py: 테스트 함수를 만드는 클래스 모듈</h1><p>pytest를 실행하면 conftest.py에서 설정을 읽은 후 test가 접두어로 붙은 함수를 차례대로 호출한다.<br>이때, 호출 데코레이터에 파라미터를 지정해놓으면, 앞에서 설명한 conftest.py의 fixture 파라미터 처럼 값을 순차적으로 순회하면서 함수를 여러번 실행시킨다.</p>
+<pre><code class="python">import pytest
+import selenium
+import allure
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
+from selenium.common import exceptions as ex
+
+import dao
+
+@pytest.mark.usefixtures(&quot;driver_get&quot;)
+class TestInspection(object):
+
+    def get_targets():
+        # 타겟에 해당하는 튜플값을 반환하는 함수
+        # 데코레이터에서 직접 호출해도 된다.
+        return targets
+
+    @pytest.mark.parametrize(&quot;url, title&quot;, get_targets())
+    def test_search_inspection(self, url, title):
+        wait = WebDriverWait(self.driver, 3)
+        self.driver.get(url)
+
+        # 해당 ID값을 가진 태그가 화면에 등장하지 않으면 pytest의 결과를 통해 확인할 익셉션을 발생시킨다
+        with pytest.raises(ex.TimeoutException):
+            wait.until(EC.visibility_of_element_located((By.ID, &quot;alertSiteInspection&quot;)))
+
+        # allure report에 화면 스크린샷을 남긴다.
+        screenshot = &quot;data/&quot;+title+&quot;.png&quot;
+        self.driver.save_screenshot(screenshot)
+        allure.attach.file(screenshot, title+&quot;.png&quot;, attachment_type=allure.attachment_type.PNG)</code></pre>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+        <div class="post-tags">
+          
+            <a href="/tags/python/">python</a>
+          
+            <a href="/tags/selenium/">selenium</a>
+          
+            <a href="/tags/pytest/">pytest</a>
+          
+        </div>
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/elk/elk-2019-05-29-elastalert/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">ElastAlert의 유용한 규칙 종류</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="/python/python-2019-05-28-jekins-to-pytest/">
+        <span class="next-text nav-default">Jenkins에 Python 환경세팅하고 Allure Report 연동하기</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+    <!--<div style="text-align:center;">
+        <button class="btn" id="load-disqus" onclick="disqus.load();">load Disqus review</button>
+    </div>-->
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+    2019
+    <span class="footer-author">Park Doyeon.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> and <a class="theme-link" href="https://github.com/parkdoyeon">Me</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+<script type="text/javascript">
+  var disqus_shortname = 'parkdoyeon';
+  var disqus_identifier = 'python/python-2019-05-28-selenium-to-pytest/';
+  var disqus_url = 'https://parkdoyeon.github.io/python/python-2019-05-28-selenium-to-pytest/index.html';
+
+  
+  var disqus_config = function () {
+      this.page.url = disqus_url;
+      this.page.identifier = disqus_identifier;
+  };
+  
+  (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+  
+  
+  // var disqus = {
+  //   load : function disqus(){
+  //       if(typeof DISQUS !== 'object') {
+  //         (function () {
+  //         var s = document.createElement('script'); s.async = true;
+  //         s.type = 'text/javascript';
+  //         s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  //         (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+  //         }());
+  //         $('#load-disqus').remove(); ///Delete Button
+  //       }
+  //   }
+  // }
+
+</script>
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script src="/js/src/theme.js?v="></script>
+<script src="/js/src/bootstrap.js?v="></script>
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+<script src="/js/src/highlight.pack.js?v="></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.7.0/highlightjs-line-numbers.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', (event) => {
+  document.querySelectorAll('figure.highlight').forEach((block) => {
+    hljs.highlightBlock(block);
+  });
+});
+hljs.initHighlightingOnLoad();
+hljs.initLineNumbersOnLoad();
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </body>
+</html>

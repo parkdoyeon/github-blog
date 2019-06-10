@@ -50,9 +50,9 @@
     <link href="https://parkdoyeon.github.io/ml/ml-2019-06-02-deep2/"/>
     <id>https://parkdoyeon.github.io/ml/ml-2019-06-02-deep2/</id>
     <published>2019-06-02T05:20:01.000Z</published>
-    <updated>2019-06-08T11:11:42.977Z</updated>
+    <updated>2019-06-10T14:18:16.119Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="개요"><a href="#개요" class="headerlink" title="개요"></a>개요</h3><ul><li>‘학습’이란 훈련 데이터로부터 가중치 매개변수의 최적값을 <strong>자동</strong>으로 획득하는 것을 뜻한다.</li><li>매개변수 최적값을 학습할 수 있도록 해주는 <strong>지표</strong>는 손실함수이다.<ul><li>왜 정확도가 아닌 손실함수인가?<ul><li>정확도를 지표료 하면 매개변수의 미분이 대부분의 장소에서 0이 되기 때문이다. (= 소숫점 단위로 표현되는 연속적인 수치값이 아닌 단절된 숫자값으로 표현되기가 쉽다.)</li></ul></li></ul></li><li>손실함수를 최대한 작게 만들어주도록 하는 기법중 하나로, 함수의 기울기를 활용하는 것이 ‘경사법’이다.</li><li>입력부터 출력까지 사람의 개입이 없다는 의미에서, 딥러닝을 종단간 기계학습(end-to-end learning)이라고 한다.</li><li>한 데이터셋에만 지나치게 최적화된 상태를 <strong>오버피팅</strong>이라고 한다.</li></ul><h3 id="1-손실함수"><a href="#1-손실함수" class="headerlink" title="1. 손실함수"></a>1. 손실함수</h3><h4 id="1-1-평균-제곱-오차"><a href="#1-1-평균-제곱-오차" class="headerlink" title="1.1 평균 제곱 오차"></a>1.1 평균 제곱 오차</h4><p>$$ E = { { 1\over2 } \sum_ { k } ( y_k-t_k)^2 } $$</p><ul><li>\(y_k\)는 신경망이 추정한 출력값, \(t_k\)는 실제 정답레이블 값(원-핫 인코딩), k는 차원의 수를 의미한다.</li><li>결과값으로 나타난 손실값의 합들이 높을수록 정답과 멀어지고, 적을수록 정답에 가깝다.</li></ul><h4 id="1-2-교차-엔트로피-오차"><a href="#1-2-교차-엔트로피-오차" class="headerlink" title="1.2 교차 엔트로피 오차"></a>1.2 교차 엔트로피 오차</h4><p>$$  E = - { \sum_ { k } t_k logy_k } $$</p><ul><li>여기서 \(logy\)는 자연로그 \(log_en\)를 취한다.</li><li>\(t_k\)는 원-핫 인코딩 값이므로 실질적으로 \(t_k\)가 1일때의 \(logy_k\)을 계산한 값, 즉 정답 추정값의 자연로그를 계산하는 식이 된다.<ul><li>여기서 정답과 거리가 먼 결과가 발생할수록(x가 1에 가까워질수록) 엔트로피 오차(loss)가 더 크게 발생한다.</li><li>\(log_ex=y\)의 그래프<br><img src="/image/ml/2019-06-02-deep2-1.png" alt="log_ex=y의 그래프"></li><li>가령 신경망 출력이 0.6일때 교차 엔트로피 오차가 \(-log0.6 = 0.51\)이라면, 0.1일때는 \(-log0.1=2.3\)이 된다.jn</li></ul></li></ul><h4 id="1-3-미니-배치-함수"><a href="#1-3-미니-배치-함수" class="headerlink" title="1.3 미니 배치 함수"></a>1.3 미니 배치 함수</h4><p>$$  E = - { 1 \over N } \sum { \sum_ { k } t_k logy_k } $$</p><ul><li>앞서서 구한 쿄차 엔트로피 오차를 모두 구해서 갯수만큼 나누면 평균 교차 엔트로피값을 구할 수 있다. 이렇게 하면 훈련 데이터 개수와 관계없이 통일된 지표를 구할 수 있다.</li><li>전체 데이터가 수천 수십만개가 되면 교차 엔트로피 값을 구하는것은 무리가 있으므로 데이터 일부를 추려서 근사치로 이용할 수 있다.</li><li>추려진 일부 데이터를 <strong>미니배치</strong>라고 한다.</li></ul><h3 id="2-수치미분"><a href="#2-수치미분" class="headerlink" title="2. 수치미분"></a>2. 수치미분</h3><h4 id="2-1-수치미분과-오차"><a href="#2-1-수치미분과-오차" class="headerlink" title="2.1 수치미분과 오차"></a>2.1 수치미분과 오차</h4><ul><li>미분방법에는 수치미분과 해석적미분이 있다.<ol><li>수치미분은 실제 변화량을 수치적으로 계산하는 것으로, 변화값인 h에 최대한 작은 값(보통 \(\lim_{h\to0}\)으로 표현된다.)을 대입하여 계산한다.</li><li>해석적 미분은 수식적으로 미분함수를 만들어 미분값을 찾는 것을 의미한다.</li></ol></li><li>수치미분을 코드로직에 적용할때 h의 최솟값을 대입하다보면 아래와 같은 문제가 발생한다.<br>수치미분을 구하는 파이썬 함수를 예로들면,<pre><code class="python">  def numerical_diff(f, x):      h = 10e-50      return (f(x+h)+f(x)/h)</code></pre>  아래와같이 소숫점 8자리 이하부터 생략이 발생해 최종계산에 오차가 발생한다.<pre><code class="bash">  &gt;&gt;&gt; np.float32(1e-50)  0.0</code></pre>  때문에 \(10^{-4}\)정도의 값을 사용할 것을 권장한다.</li><li>수치미분에서 발생하는 오차는 필연적이기 때문에, 변화량이 +h인 미분과 -h인 미분의 중앙값을 구하기도 한다.</li></ul><h4 id="2-2-편미분"><a href="#2-2-편미분" class="headerlink" title="2.2 편미분"></a>2.2 편미분</h4><ul><li>편미분은 변수가 2개 이상인 경우에 사용한다. 3차원으로 그래프가 그려지므로, 미분값을 구할때는 변수 하나에 초점을 맞추고 다른 변수는 값을 고정한다.</li><li>편미분을 한 기울기값을 마이너스를 붙인 2차원 벡터로 표현하면 각 지점에서 낮아지는 방향을 가리킨다. </li><li>이말인 즉, <strong>기울기가 가리키는 곳은 각 장소의 함수에서 함수의 출력 값을 가장 크게 줄이는 방향</strong>이다.</li></ul><h4 id="2-3-경사법"><a href="#2-3-경사법" class="headerlink" title="2.3 경사법"></a>2.3 경사법</h4><ul><li>경사법은 경사 하강법이라고 한다. 손실함수가 최소가 되는 값을 찾기위해 기울기를 활용하는 방법이다.</li><li>기울기가 가리키는 곳에 정말 함수의 최솟값이 있는지는 보장할 수 없다. 실제로 최솟값이 없는 경우가 대부분이다.</li><li>다만 그 방향으로 가야 줄일 수 있다는 사실은 확실하므로, 기울어진 방향으로 일정 거리만큼 이동해나가면서 줄이는게 경사법이라고 한다.</li><li>최솟값을 찾으면 경사 하강법, 최댓값을 찾으면 경사 상승법이다. 단순히 기울기에 마이너스를 붙이냐 아니냐의 차이이므로 방법과 내용의 실질적인 차이는 없다.</li></ul><h3 id="2-3-1-경사법의-수식"><a href="#2-3-1-경사법의-수식" class="headerlink" title="2.3.1 경사법의 수식"></a>2.3.1 경사법의 수식</h3><p>$$ x_0 = x_0 - \eta { \partial f \over \partial x_0 },  x_1 = x_1 - \eta { \partial f \over \partial x_1 } $$</p><ul><li><p>\( \eta \)(eta)기호는 갱신하는 양을 나타낸다. 보통 0.01이나 0.001 등 특정값으로 정해둔다. 신경망 학습에서는 <strong>학습률</strong>이라고 한다.</p></li><li><p>위의 식은 1회의 갱신이 일어나는 식이며, 만족스러운 값이 나타날때까지 갱신을 반복한다.</p><pre><code class="python">  # f: 최적화함수  # init_x: 초기값  # learning_rate: 학습률  # step_num: 경사법에 따른 반복횟쑤   def gradient_descent (f, init_x, learning_rate=0.01, step_num=100):      x=init_x      for i in range(step_num):          grad = numerical_gradient(f, x)          x -= lr*grad      return x</code></pre></li><li><p>학습률과 같은 매개변수를 하이퍼파라미터라고 한다. 가중치/편향과 같은 신경망 매개변수와는 성질이 다른 매개변수이다.</p></li></ul>]]></content>
+    <content type="html"><![CDATA[<h3 id="개요"><a href="#개요" class="headerlink" title="개요"></a>개요</h3><ul><li>‘학습’이란 훈련 데이터로부터 가중치 매개변수의 최적값을 <strong>자동</strong>으로 획득하는 것을 뜻한다.</li><li>매개변수 최적값을 학습할 수 있도록 해주는 <strong>지표</strong>는 손실함수이다.<ul><li>왜 정확도가 아닌 손실함수인가?<ul><li>정확도를 지표료 하면 매개변수의 미분이 대부분의 장소에서 0이 되기 때문이다. (= 소숫점 단위로 표현되는 연속적인 수치값이 아닌 단절된 숫자값으로 표현되기가 쉽다.)</li></ul></li></ul></li><li>손실함수를 최대한 작게 만들어주도록 하는 기법중 하나로, 함수의 기울기를 활용하는 것이 ‘경사법’이다.</li><li>입력부터 출력까지 사람의 개입이 없다는 의미에서, 딥러닝을 종단간 기계학습(end-to-end learning)이라고 한다.</li><li>한 데이터셋에만 지나치게 최적화된 상태를 <strong>오버피팅</strong>이라고 한다.</li></ul><h3 id="1-손실함수"><a href="#1-손실함수" class="headerlink" title="1. 손실함수"></a>1. 손실함수</h3><h4 id="1-1-평균-제곱-오차"><a href="#1-1-평균-제곱-오차" class="headerlink" title="1.1 평균 제곱 오차"></a>1.1 평균 제곱 오차</h4><p>$$ E = { { 1\over2 } \sum_ { k } ( y_k-t_k)^2 } $$</p><ul><li>\(y_k\)는 신경망이 추정한 출력값, \(t_k\)는 실제 정답레이블 값(원-핫 인코딩), k는 차원의 수를 의미한다.</li><li>결과값으로 나타난 손실값의 합들이 높을수록 정답과 멀어지고, 적을수록 정답에 가깝다.</li></ul><h4 id="1-2-교차-엔트로피-오차"><a href="#1-2-교차-엔트로피-오차" class="headerlink" title="1.2 교차 엔트로피 오차"></a>1.2 교차 엔트로피 오차</h4><p>$$  E = - { \sum_ { k } t_k logy_k } $$</p><ul><li>여기서 \(logy\)는 자연로그 \(log_en\)를 취한다.</li><li>\(t_k\)는 원-핫 인코딩 값이므로 실질적으로 \(t_k\)가 1일때의 \(logy_k\)을 계산한 값, 즉 정답 추정값의 자연로그를 계산하는 식이 된다.<ul><li>여기서 정답과 거리가 먼 결과가 발생할수록(x가 1에 가까워질수록) 엔트로피 오차(loss)가 더 크게 발생한다.</li><li>\(log_ex=y\)의 그래프<br><img src="/image/ml/2019-06-02-deep2-1.png" alt="log_ex=y의 그래프"></li><li>가령 신경망 출력이 0.6일때 교차 엔트로피 오차가 \(-log0.6 = 0.51\)이라면, 0.1일때는 \(-log0.1=2.3\)이 된다.</li></ul></li></ul><h4 id="1-3-미니-배치-함수"><a href="#1-3-미니-배치-함수" class="headerlink" title="1.3 미니 배치 함수"></a>1.3 미니 배치 함수</h4><p>$$  E = - { 1 \over N } \sum { \sum_ { k } t_k logy_k } $$</p><ul><li>앞서서 구한 쿄차 엔트로피 오차를 모두 구해서 갯수만큼 나누면 평균 교차 엔트로피값을 구할 수 있다. 이렇게 하면 훈련 데이터 개수와 관계없이 통일된 지표를 구할 수 있다.</li><li>전체 데이터가 수천 수십만개가 되면 교차 엔트로피 값을 구하는것은 무리가 있으므로 데이터 일부를 추려서 근사치로 이용할 수 있다.</li><li>추려진 일부 데이터를 <strong>미니배치</strong>라고 한다.</li></ul><h3 id="2-수치미분"><a href="#2-수치미분" class="headerlink" title="2. 수치미분"></a>2. 수치미분</h3><h4 id="2-1-수치미분과-오차"><a href="#2-1-수치미분과-오차" class="headerlink" title="2.1 수치미분과 오차"></a>2.1 수치미분과 오차</h4><ul><li>미분방법에는 수치미분과 해석적미분이 있다.<ol><li>수치미분은 실제 변화량을 수치적으로 계산하는 것으로, 변화값인 h에 최대한 작은 값(보통 \(\lim_{h\to0}\)으로 표현된다.)을 대입하여 계산한다.</li><li>해석적 미분은 수식적으로 미분함수를 만들어 미분값을 찾는 것을 의미한다.</li></ol></li><li>수치미분을 코드로직에 적용할때 h의 최솟값을 대입하다보면 아래와 같은 문제가 발생한다.<br>수치미분을 구하는 파이썬 함수를 예로들면,<pre><code class="python">  def numerical_diff(f, x):      h = 10e-50      return (f(x+h)+f(x)/h)</code></pre>  아래와같이 소숫점 8자리 이하부터 생략이 발생해 최종계산에 오차가 발생한다.<pre><code class="bash">  &gt;&gt;&gt; np.float32(1e-50)  0.0</code></pre>  때문에 \(10^{-4}\)정도의 값을 사용할 것을 권장한다.</li><li>수치미분에서 발생하는 오차는 필연적이기 때문에, 변화량이 +h인 미분과 -h인 미분의 중앙값을 구하기도 한다.</li></ul><h4 id="2-2-편미분"><a href="#2-2-편미분" class="headerlink" title="2.2 편미분"></a>2.2 편미분</h4><ul><li>편미분은 변수가 2개 이상인 경우에 사용한다. 3차원으로 그래프가 그려지므로, 미분값을 구할때는 변수 하나에 초점을 맞추고 다른 변수는 값을 고정한다.</li><li>편미분을 한 기울기값을 마이너스를 붙인 2차원 벡터로 표현하면 각 지점에서 낮아지는 방향을 가리킨다. </li><li>이말인 즉, <strong>기울기가 가리키는 곳은 각 장소의 함수에서 함수의 출력 값을 가장 크게 줄이는 방향</strong>이다.</li></ul><h4 id="2-3-경사법"><a href="#2-3-경사법" class="headerlink" title="2.3 경사법"></a>2.3 경사법</h4><ul><li>경사법은 경사 하강법이라고 한다. 손실함수가 최소가 되는 값을 찾기위해 기울기를 활용하는 방법이다.</li><li>기울기가 가리키는 곳에 정말 함수의 최솟값이 있는지는 보장할 수 없다. 실제로 최솟값이 없는 경우가 대부분이다.</li><li>다만 그 방향으로 가야 줄일 수 있다는 사실은 확실하므로, 기울어진 방향으로 일정 거리만큼 이동해나가면서 줄이는게 경사법이라고 한다.</li><li>최솟값을 찾으면 경사 하강법, 최댓값을 찾으면 경사 상승법이다. 단순히 기울기에 마이너스를 붙이냐 아니냐의 차이이므로 방법과 내용의 실질적인 차이는 없다.</li></ul><h3 id="2-3-1-경사법의-수식"><a href="#2-3-1-경사법의-수식" class="headerlink" title="2.3.1 경사법의 수식"></a>2.3.1 경사법의 수식</h3><p>$$ x_0 = x_0 - \eta { \partial f \over \partial x_0 },  x_1 = x_1 - \eta { \partial f \over \partial x_1 } $$</p><ul><li><p>\( \eta \)(eta)기호는 갱신하는 양을 나타낸다. 보통 0.01이나 0.001 등 특정값으로 정해둔다. 신경망 학습에서는 <strong>학습률</strong>이라고 한다.</p></li><li><p>위의 식은 1회의 갱신이 일어나는 식이며, 만족스러운 값이 나타날때까지 갱신을 반복한다.</p><pre><code class="python">  # f: 최적화함수  # init_x: 초기값  # learning_rate: 학습률  # step_num: 경사법에 따른 반복횟쑤   def gradient_descent (f, init_x, learning_rate=0.01, step_num=100):      x=init_x      for i in range(step_num):          grad = numerical_gradient(f, x)          x -= lr*grad      return x</code></pre></li><li><p>학습률과 같은 매개변수를 하이퍼파라미터라고 한다. 가중치/편향과 같은 신경망 매개변수와는 성질이 다른 매개변수이다.</p></li></ul>]]></content>
     
     <summary type="html">
     
@@ -131,6 +131,36 @@
   </entry>
   
   <entry>
+    <title>셀레니움과 pytest로 브라우저 테스트 하기</title>
+    <link href="https://parkdoyeon.github.io/python/python-2019-05-28-selenium-to-pytest/"/>
+    <id>https://parkdoyeon.github.io/python/python-2019-05-28-selenium-to-pytest/</id>
+    <published>2019-05-28T06:55:53.000Z</published>
+    <updated>2019-06-10T14:18:16.119Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="디렉토리-구조"><a href="#디렉토리-구조" class="headerlink" title="디렉토리 구조"></a>디렉토리 구조</h1><p>우선 pytest 샘플 프로젝트의 이렇다. 각각의 파일의 특징들은 아래와 같다.</p><pre><code class="bash">D:.│  conftest.py # 파이테스트에서 공통적으로 사용할 객체들을 구현한 모듈│  inspection_test.py # 브라우저를 테스트하는 클래스/함수가 구현된 모듈│  requirements.txt # pip으로 설치된 패키지 리스트│├─allure-results├─bin│      chromedriver72.exe│      IEDriverServer.exe├─venv└─__pycache__</code></pre><h1 id="conftest-py-공통-객체-설정하기"><a href="#conftest-py-공통-객체-설정하기" class="headerlink" title="conftest.py: 공통 객체 설정하기"></a>conftest.py: 공통 객체 설정하기</h1><p>pytest는 conftest.py라는 이름을 가진 스크립트에서 터미널 실행시 지정할 옵션값을 설정하거나,<br>각 테스트 함수에서 공통으로 사용하는 오브젝트(가령 셀레니움에서 사용할 브라우저 엔진같은)를 생성할 수 있다.</p><pre><code class="python">import pytestimport allure# 터미널 옵션 설정def pytest_addoption(parser):    # 아래에서 params 값에 세팅해줄 예정이니 패스    # parser.addoption(&quot;--driver&quot;, action=&quot;store&quot;, default=&quot;chrome&quot;, help=&quot;Type in browser type&quot;)    parser.addoption(&quot;--url&quot;, action=&quot;store&quot;, default=&quot;http://test.website.co.kr&quot;, help=&quot;url&quot;)# @pytest.fixture 데코레이터를 통해 리스트 형식인 파라미터를 넘기면,# params값이 루프를 돌면서 인자 순서대로 함수가 여러번 호출된다.@pytest.fixture(params=[&quot;chrome&quot;, &quot;ie&quot;], scope=&quot;class&quot;)def driver_get(request):    from selenium import webdriver    if request.param == &quot;chrome&quot;:        web_driver = webdriver.Chrome(&quot;bin/chromedriver72.exe&quot;)    if request.param == &quot;ie&quot;:        web_driver = webdriver.Ie(&quot;bin/IEDriverServer.exe&quot;)    request.cls.driver = web_driver    yield # yield 예약어를 통해 web_driver사용을 일시적으로 브라우저 엔진을 반환한다.</code></pre><h1 id="inspection-test-py-테스트-함수를-만드는-클래스-모듈"><a href="#inspection-test-py-테스트-함수를-만드는-클래스-모듈" class="headerlink" title="inspection_test.py: 테스트 함수를 만드는 클래스 모듈"></a>inspection_test.py: 테스트 함수를 만드는 클래스 모듈</h1><p>pytest를 실행하면 conftest.py에서 설정을 읽은 후 test가 접두어로 붙은 함수를 차례대로 호출한다.<br>이때, 호출 데코레이터에 파라미터를 지정해놓으면, 앞에서 설명한 conftest.py의 fixture 파라미터 처럼 값을 순차적으로 순회하면서 함수를 여러번 실행시킨다.</p><pre><code class="python">import pytestimport seleniumimport allurefrom selenium.webdriver.support.ui import WebDriverWaitfrom selenium.webdriver.support import expected_conditions as ECfrom selenium.webdriver.common.by import Byfrom selenium.common import exceptions as eximport dao@pytest.mark.usefixtures(&quot;driver_get&quot;)class TestInspection(object):    def get_targets():        # 타겟에 해당하는 튜플값을 반환하는 함수        # 데코레이터에서 직접 호출해도 된다.        return targets    @pytest.mark.parametrize(&quot;url, title&quot;, get_targets())    def test_search_inspection(self, url, title):        wait = WebDriverWait(self.driver, 3)        self.driver.get(url)        # 해당 ID값을 가진 태그가 화면에 등장하지 않으면 pytest의 결과를 통해 확인할 익셉션을 발생시킨다        with pytest.raises(ex.TimeoutException):            wait.until(EC.visibility_of_element_located((By.ID, &quot;alertSiteInspection&quot;)))        # allure report에 화면 스크린샷을 남긴다.        screenshot = &quot;data/&quot;+title+&quot;.png&quot;        self.driver.save_screenshot(screenshot)        allure.attach.file(screenshot, title+&quot;.png&quot;, attachment_type=allure.attachment_type.PNG)</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;디렉토리-구조&quot;&gt;&lt;a href=&quot;#디렉토리-구조&quot; class=&quot;headerlink&quot; title=&quot;디렉토리 구조&quot;&gt;&lt;/a&gt;디렉토리 구조&lt;/h1&gt;&lt;p&gt;우선 pytest 샘플 프로젝트의 이렇다. 각각의 파일의 특징들은 아래와 같다.&lt;/p&gt;
+&lt;
+      
+    
+    </summary>
+    
+      <category term="Python" scheme="https://parkdoyeon.github.io/python/"/>
+    
+    
+      <category term="python" scheme="https://parkdoyeon.github.io/tags/python/"/>
+    
+      <category term="selenium" scheme="https://parkdoyeon.github.io/tags/selenium/"/>
+    
+      <category term="pytest" scheme="https://parkdoyeon.github.io/tags/pytest/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Jenkins에 Python 환경세팅하고 Allure Report 연동하기</title>
     <link href="https://parkdoyeon.github.io/python/python-2019-05-28-jekins-to-pytest/"/>
     <id>https://parkdoyeon.github.io/python/python-2019-05-28-jekins-to-pytest/</id>
@@ -191,7 +221,7 @@
     <link href="https://parkdoyeon.github.io/sql/sql-2019-05-27-ssms/"/>
     <id>https://parkdoyeon.github.io/sql/sql-2019-05-27-ssms/</id>
     <published>2019-05-27T08:36:00.000Z</published>
-    <updated>2019-06-08T18:02:17.324Z</updated>
+    <updated>2019-06-08T18:03:26.928Z</updated>
     
     <content type="html"><![CDATA[<p>SP 내용 보기</p><pre><code class="sql">sp_helptext &#39;[sp 이름]&#39;</code></pre><p>특정 구문이 포함되어있는 SP 찾기 (특정 테이블이나 컬럼을 사용하는 SP를 찾을때 유용하다)</p><pre><code class="sql">select * from sys.procedures p join sys.syscomments s on p.object_id = s.id where text like &#39;%[문자열]%&#39;;</code></pre><p>프로파일러 잡을때 DB ID 확인이 필요한경우</p><pre><code class="sql">select db_id(&#39;[db 이름]&#39;)</code></pre><p>도구 &gt; 옵션 &gt; 키보드 &gt; 쿼리 바로가기에서 아래처럼 키보드 단축키로 설정하고 사용하면 좋다.<br><img src="/image/sql/2019-05-27-ssms-1.png" alt="옵션"></p><ul><li>sp_lock : sp들의 점유상태를 보고싶을 때</li><li>sp_who : DB 로그인 정보와 호스트 확인</li></ul>]]></content>
     
@@ -243,9 +273,9 @@
       <category term="Dev-Env" scheme="https://parkdoyeon.github.io/dev-env/"/>
     
     
-      <category term="Hyper-V" scheme="https://parkdoyeon.github.io/tags/hyper-v/"/>
-    
       <category term="network" scheme="https://parkdoyeon.github.io/tags/network/"/>
+    
+      <category term="Hyper-V" scheme="https://parkdoyeon.github.io/tags/hyper-v/"/>
     
   </entry>
   
@@ -327,9 +357,9 @@
       <category term="ELK" scheme="https://parkdoyeon.github.io/elk/"/>
     
     
-      <category term="elasticsearch" scheme="https://parkdoyeon.github.io/tags/elasticsearch/"/>
-    
       <category term="docker" scheme="https://parkdoyeon.github.io/tags/docker/"/>
+    
+      <category term="elasticsearch" scheme="https://parkdoyeon.github.io/tags/elasticsearch/"/>
     
       <category term="curator" scheme="https://parkdoyeon.github.io/tags/curator/"/>
     
@@ -478,6 +508,35 @@
   </entry>
   
   <entry>
+    <title>기존 테이블에 PK키 추가하기</title>
+    <link href="https://parkdoyeon.github.io/sql/sql-2019-04-22-addpk/"/>
+    <id>https://parkdoyeon.github.io/sql/sql-2019-04-22-addpk/</id>
+    <published>2019-03-14T09:14:00.000Z</published>
+    <updated>2019-06-08T02:58:52.620Z</updated>
+    
+    <content type="html"><![CDATA[<p>mssql에서 PK를 추가하려면 기존의 PK를 삭제해주고 재생성해줘야한다.<br>mytable에 PK을 하나 더 추가하려고 PK 추가 구문을 아래와 같이 호출하면,<br>아래와 같이 이미 기본키가 정의되었다는 에러메세지가 나오면서 실패한다.</p><pre><code class="SQL">ALTER TABLE [dbo].[mytable] ADD  CONSTRAINT [PK_mytable] PRIMARY KEY CLUSTERED (    [otherPKColumn] ASC)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]GO</code></pre><pre><code class="SQL">메시지 1779, 수준 16, 상태 0, 줄 9테이블 &#39;mytable&#39;에 이미 기본 키가 정의되어 있습니다.메시지 1750, 수준 16, 상태 0, 줄 9제약 조건을 만들 수 없습니다. 이전 오류를 참조하십시오.</code></pre><p>때문에 아래 호출을 통해 기본키를 정의한 PK 테이블 이름을 확인한다음, </p><pre><code class="SQL">sp_helpconstraint [mytable]</code></pre><pre><code class="SQL">constraint_type constraint_name delete_action   update_action   status_enabled  status_for_replication  constraint_keysPRIMARY KEY(clustered)  PK_mytable  (n/a)  (n/a)  (n/a)  (n/a) Seq</code></pre><p>Drop문으로 날려주고 재생성해야한다.</p><pre><code class="SQL">ALTER TABLE dbo.mytable DROP CONSTRAINT PK_mytableALTER TABLE [dbo].[mytable] ADD  CONSTRAINT [PK_mytable] PRIMARY KEY CLUSTERED (    [Seq] ASC,    [otherPKColumn] ASC)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]GO</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;mssql에서 PK를 추가하려면 기존의 PK를 삭제해주고 재생성해줘야한다.&lt;br&gt;mytable에 PK을 하나 더 추가하려고 PK 추가 구문을 아래와 같이 호출하면,&lt;br&gt;아래와 같이 이미 기본키가 정의되었다는 에러메세지가 나오면서 실패한다.&lt;/p
+      
+    
+    </summary>
+    
+      <category term="SQL" scheme="https://parkdoyeon.github.io/sql/"/>
+    
+    
+      <category term="mssql" scheme="https://parkdoyeon.github.io/tags/mssql/"/>
+    
+      <category term="insert" scheme="https://parkdoyeon.github.io/tags/insert/"/>
+    
+      <category term="pk" scheme="https://parkdoyeon.github.io/tags/pk/"/>
+    
+  </entry>
+  
+  <entry>
     <title>insert into select 사용하기</title>
     <link href="https://parkdoyeon.github.io/sql/sql-2019-03-14-insertselect/"/>
     <id>https://parkdoyeon.github.io/sql/sql-2019-03-14-insertselect/</id>
@@ -508,35 +567,6 @@
   </entry>
   
   <entry>
-    <title>기존 테이블에 PK키 추가하기</title>
-    <link href="https://parkdoyeon.github.io/sql/sql-2019-04-22-addpk/"/>
-    <id>https://parkdoyeon.github.io/sql/sql-2019-04-22-addpk/</id>
-    <published>2019-03-14T09:14:00.000Z</published>
-    <updated>2019-06-08T02:58:52.620Z</updated>
-    
-    <content type="html"><![CDATA[<p>mssql에서 PK를 추가하려면 기존의 PK를 삭제해주고 재생성해줘야한다.<br>mytable에 PK을 하나 더 추가하려고 PK 추가 구문을 아래와 같이 호출하면,<br>아래와 같이 이미 기본키가 정의되었다는 에러메세지가 나오면서 실패한다.</p><pre><code class="SQL">ALTER TABLE [dbo].[mytable] ADD  CONSTRAINT [PK_mytable] PRIMARY KEY CLUSTERED (    [otherPKColumn] ASC)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]GO</code></pre><pre><code class="SQL">메시지 1779, 수준 16, 상태 0, 줄 9테이블 &#39;mytable&#39;에 이미 기본 키가 정의되어 있습니다.메시지 1750, 수준 16, 상태 0, 줄 9제약 조건을 만들 수 없습니다. 이전 오류를 참조하십시오.</code></pre><p>때문에 아래 호출을 통해 기본키를 정의한 PK 테이블 이름을 확인한다음, </p><pre><code class="SQL">sp_helpconstraint [mytable]</code></pre><pre><code class="SQL">constraint_type constraint_name delete_action   update_action   status_enabled  status_for_replication  constraint_keysPRIMARY KEY(clustered)  PK_mytable  (n/a)  (n/a)  (n/a)  (n/a) Seq</code></pre><p>Drop문으로 날려주고 재생성해야한다.</p><pre><code class="SQL">ALTER TABLE dbo.mytable DROP CONSTRAINT PK_mytableALTER TABLE [dbo].[mytable] ADD  CONSTRAINT [PK_mytable] PRIMARY KEY CLUSTERED (    [Seq] ASC,    [otherPKColumn] ASC)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]GO</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;mssql에서 PK를 추가하려면 기존의 PK를 삭제해주고 재생성해줘야한다.&lt;br&gt;mytable에 PK을 하나 더 추가하려고 PK 추가 구문을 아래와 같이 호출하면,&lt;br&gt;아래와 같이 이미 기본키가 정의되었다는 에러메세지가 나오면서 실패한다.&lt;/p
-      
-    
-    </summary>
-    
-      <category term="SQL" scheme="https://parkdoyeon.github.io/sql/"/>
-    
-    
-      <category term="mssql" scheme="https://parkdoyeon.github.io/tags/mssql/"/>
-    
-      <category term="insert" scheme="https://parkdoyeon.github.io/tags/insert/"/>
-    
-      <category term="pk" scheme="https://parkdoyeon.github.io/tags/pk/"/>
-    
-  </entry>
-  
-  <entry>
     <title>ElasticSearch - 403 index read-only 에러가 발생했을 때</title>
     <link href="https://parkdoyeon.github.io/elk/elk-2019-03-10-es-readonly-err/"/>
     <id>https://parkdoyeon.github.io/elk/elk-2019-03-10-es-readonly-err/</id>
@@ -561,36 +591,6 @@
       <category term="elasticsearch" scheme="https://parkdoyeon.github.io/tags/elasticsearch/"/>
     
       <category term="err" scheme="https://parkdoyeon.github.io/tags/err/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Git - gitignore 즉시 적용하기</title>
-    <link href="https://parkdoyeon.github.io/dev-env/dev-env-2019-02-27-gitignore/"/>
-    <id>https://parkdoyeon.github.io/dev-env/dev-env-2019-02-27-gitignore/</id>
-    <published>2019-02-27T10:23:00.000Z</published>
-    <updated>2019-06-08T02:58:52.615Z</updated>
-    
-    <content type="html"><![CDATA[<p>gitignore 파일 생성 후에 즉시 적용하고싶다면 아래의 명령어로 캐싱된 history들을 삭제하자.</p><pre><code class="bash">git rm -r --cached .git add .git commit -m &quot;캐싱된 히스토리 삭제!&quot;</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;gitignore 파일 생성 후에 즉시 적용하고싶다면 아래의 명령어로 캐싱된 history들을 삭제하자.&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;git rm -r --cached .
-git add .
-git commit -m &amp;quot
-      
-    
-    </summary>
-    
-      <category term="Dev-Env" scheme="https://parkdoyeon.github.io/dev-env/"/>
-    
-    
-      <category term="git" scheme="https://parkdoyeon.github.io/tags/git/"/>
-    
-      <category term="gitignore" scheme="https://parkdoyeon.github.io/tags/gitignore/"/>
     
   </entry>
   

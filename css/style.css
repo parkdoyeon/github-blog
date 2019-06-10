@@ -379,7 +379,7 @@ html {
 body {
   padding: 0;
   margin: 0;
-  font-family: "나눔고딕", NanumGothic, "Nanum Gothic", AppleSDGothic, "Open Sans", sans-serif;
+  font-family: "Open Sans", AppleSDGothic, "나눔고딕", NanumGothic, "Nanum Gothic", sans-serif;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -401,27 +401,27 @@ a {
 
 h1 {
   font-size: 1.5rem;
-  font-family: "나눔고딕", NanumGothic, "Nanum Gothic", AppleSDGothic, "Open Sans", sans-serif; }
+  font-family: "Open Sans", AppleSDGothic, "나눔고딕", NanumGothic, "Nanum Gothic", sans-serif; }
 
 h2 {
   font-size: 1.4rem;
-  font-family: "나눔고딕", NanumGothic, "Nanum Gothic", AppleSDGothic, "Open Sans", sans-serif; }
+  font-family: "Open Sans", AppleSDGothic, "나눔고딕", NanumGothic, "Nanum Gothic", sans-serif; }
 
 h3 {
   font-size: 1.3rem;
-  font-family: "나눔고딕", NanumGothic, "Nanum Gothic", AppleSDGothic, "Open Sans", sans-serif; }
+  font-family: "Open Sans", AppleSDGothic, "나눔고딕", NanumGothic, "Nanum Gothic", sans-serif; }
 
 h4 {
   font-size: 1.2rem;
-  font-family: "나눔고딕", NanumGothic, "Nanum Gothic", AppleSDGothic, "Open Sans", sans-serif; }
+  font-family: "Open Sans", AppleSDGothic, "나눔고딕", NanumGothic, "Nanum Gothic", sans-serif; }
 
 h5 {
   font-size: 1.1rem;
-  font-family: "나눔고딕", NanumGothic, "Nanum Gothic", AppleSDGothic, "Open Sans", sans-serif; }
+  font-family: "Open Sans", AppleSDGothic, "나눔고딕", NanumGothic, "Nanum Gothic", sans-serif; }
 
 h6 {
   font-size: 1rem;
-  font-family: "나눔고딕", NanumGothic, "Nanum Gothic", AppleSDGothic, "Open Sans", sans-serif; }
+  font-family: "Open Sans", AppleSDGothic, "나눔고딕", NanumGothic, "Nanum Gothic", sans-serif; }
 
 .content-wrapper {
   padding: 0 20px; }
@@ -558,9 +558,7 @@ h6 {
   .post .post-header .post-title {
     margin: 0 0 10px;
     line-height: 1.4;
-    font-size: 1.3em;
-    font-weight: 400;
-    font-family: "나눔고딕", NanumGothic, "Nanum Gothic", AppleSDGothic, "Open Sans", sans-serif; }
+    font-family: "Open Sans", AppleSDGothic, "나눔고딕", NanumGothic, "Nanum Gothic", sans-serif; }
   .post .post-header .post-link {
     display: inline-block;
     vertical-align: middle;
@@ -590,36 +588,21 @@ Atom One Dark With support for ReasonML by Gidi Morris, based off work by Daniel
 Original One Dark Syntax theme from https://github.com/atom/one-dark-syntax
 
 */ }
-    .post .post-content h1 {
-      font-size: 1.3em;
-      font-weight: 400;
-      font-family: "나눔고딕", NanumGothic, "Nanum Gothic", AppleSDGothic, "Open Sans", sans-serif;
-      margin-top: 1.2em; }
-    .post .post-content h2 {
-      font-size: 1.3em;
-      font-weight: 400;
-      font-family: "나눔고딕", NanumGothic, "Nanum Gothic", AppleSDGothic, "Open Sans", sans-serif;
-      margin-top: 1.2em; }
-    .post .post-content h3 {
-      font-size: 1.3em;
-      font-weight: 400;
-      font-family: "나눔고딕", NanumGothic, "Nanum Gothic", AppleSDGothic, "Open Sans", sans-serif;
-      margin-top: 1.2em; }
     .post .post-content h4 {
-      font-size: 1.3em;
-      font-weight: 400;
-      font-family: "나눔고딕", NanumGothic, "Nanum Gothic", AppleSDGothic, "Open Sans", sans-serif;
-      margin-top: 1.2em; }
+      font-size: 1.2em;
+      margin-bottom: 0.5em;
+      font-weight: bold;
+      font-family: "Open Sans", AppleSDGothic, "나눔고딕", NanumGothic, "Nanum Gothic", sans-serif; }
     .post .post-content h5 {
-      font-size: 1.3em;
-      font-weight: 400;
-      font-family: "나눔고딕", NanumGothic, "Nanum Gothic", AppleSDGothic, "Open Sans", sans-serif;
-      margin-top: 1.2em; }
+      font-size: 1.2em;
+      margin-bottom: 0.5em;
+      font-weight: bold;
+      font-family: "Open Sans", AppleSDGothic, "나눔고딕", NanumGothic, "Nanum Gothic", sans-serif; }
     .post .post-content h6 {
-      font-size: 1.3em;
-      font-weight: 400;
-      font-family: "나눔고딕", NanumGothic, "Nanum Gothic", AppleSDGothic, "Open Sans", sans-serif;
-      margin-top: 1.2em; }
+      font-size: 1.2em;
+      margin-bottom: 0.5em;
+      font-weight: bold;
+      font-family: "Open Sans", AppleSDGothic, "나눔고딕", NanumGothic, "Nanum Gothic", sans-serif; }
     .post .post-content .headerlink:hover {
       border-bottom: 0; }
     .post .post-content .headerlink::before {
@@ -655,7 +638,6 @@ Original One Dark Syntax theme from https://github.com/atom/one-dark-syntax
         text-align: left; }
     .post .post-content code {
       font-size: 14px;
-      color: #ff6e00;
       border-radius: 2px;
       background: #f1f1f1; }
     .post .post-content .code, .post .post-content pre {
@@ -726,13 +708,13 @@ Original One Dark Syntax theme from https://github.com/atom/one-dark-syntax
     .post .post-content .read-more .read-more-link {
       color: #4D89FB;
       font-size: 1.1em;
-      font-family: "나눔고딕", NanumGothic, "Nanum Gothic", AppleSDGothic, "Open Sans", sans-serif; }
+      font-family: "Open Sans", AppleSDGothic, "나눔고딕", NanumGothic, "Nanum Gothic", sans-serif; }
       .post .post-content .read-more .read-more-link:hover {
         border-bottom: 1px solid #4D89FB; }
   .post .post-footer {
     margin-top: 20px;
     border-top: 1px solid #eee;
-    font-family: "나눔고딕", NanumGothic, "Nanum Gothic", AppleSDGothic, "Open Sans", sans-serif; }
+    font-family: "Open Sans", AppleSDGothic, "나눔고딕", NanumGothic, "Nanum Gothic", sans-serif; }
     .post .post-footer .post-tags {
       padding: 15px 0; }
       .post .post-footer .post-tags a {
@@ -753,7 +735,7 @@ Original One Dark Syntax theme from https://github.com/atom/one-dark-syntax
         font-weight: 400;
         font-size: 16px;
         color: rgba(0, 0, 0, 0.75);
-        font-family: "나눔고딕", NanumGothic, "Nanum Gothic", AppleSDGothic, "Open Sans", sans-serif;
+        font-family: "Open Sans", AppleSDGothic, "나눔고딕", NanumGothic, "Nanum Gothic", sans-serif;
         transition-property: transform;
         transition-timing-function: ease-out;
         transition-duration: 0.3s; }
@@ -786,7 +768,7 @@ Original One Dark Syntax theme from https://github.com/atom/one-dark-syntax
   .pagination .next {
     font-weight: 400;
     font-size: 16px;
-    font-family: "나눔고딕", NanumGothic, "Nanum Gothic", AppleSDGothic, "Open Sans", sans-serif;
+    font-family: "Open Sans", AppleSDGothic, "나눔고딕", NanumGothic, "Nanum Gothic", sans-serif;
     transition-property: transform;
     transition-timing-function: ease-out;
     transition-duration: 0.3s; }
@@ -878,7 +860,7 @@ Original One Dark Syntax theme from https://github.com/atom/one-dark-syntax
   .archive .archive-post + .collection-title {
     margin-top: 30px; }
   .archive .archive-title {
-    font-family: "나눔고딕", NanumGothic, "Nanum Gothic", AppleSDGothic, "Open Sans", sans-serif; }
+    font-family: "Open Sans", AppleSDGothic, "나눔고딕", NanumGothic, "Nanum Gothic", sans-serif; }
     .archive .archive-title.tag, .archive .archive-title.category {
       margin: 15px 0; }
     .archive .archive-title .archive-name {
@@ -889,7 +871,7 @@ Original One Dark Syntax theme from https://github.com/atom/one-dark-syntax
       font-size: 29px;
       line-height: 31px; }
   .archive .collection-title {
-    font-family: "나눔고딕", NanumGothic, "Nanum Gothic", AppleSDGothic, "Open Sans", sans-serif;
+    font-family: "Open Sans", AppleSDGothic, "나눔고딕", NanumGothic, "Nanum Gothic", sans-serif;
     font-size: 29px; }
     .archive .collection-title .archive-year {
       margin: 18px 0;
@@ -923,7 +905,7 @@ Original One Dark Syntax theme from https://github.com/atom/one-dark-syntax
 .tag-cloud {
   margin: 2em 0 3em;
   text-align: center;
-  font-family: "나눔고딕", NanumGothic, "Nanum Gothic", AppleSDGothic, "Open Sans", sans-serif; }
+  font-family: "Open Sans", AppleSDGothic, "나눔고딕", NanumGothic, "Nanum Gothic", sans-serif; }
   .tag-cloud .tag-cloud-title {
     display: inline-block;
     font-size: 18px;
@@ -965,7 +947,7 @@ Original One Dark Syntax theme from https://github.com/atom/one-dark-syntax
 .categories {
   margin: 2em 0 3em;
   text-align: center;
-  font-family: "나눔고딕", NanumGothic, "Nanum Gothic", AppleSDGothic, "Open Sans", sans-serif; }
+  font-family: "Open Sans", AppleSDGothic, "나눔고딕", NanumGothic, "Nanum Gothic", sans-serif; }
   .categories .categories-title {
     display: inline-block;
     font-size: 18px;
