@@ -6,7 +6,7 @@
   <link href="/feed.xml" rel="self"/>
   
   <link href="https://parkdoyeon.github.io/"/>
-  <updated>2019-06-08T11:13:46.134Z</updated>
+  <updated>2019-06-27T15:33:15.454Z</updated>
   <id>https://parkdoyeon.github.io/</id>
   
   <author>
@@ -15,6 +15,85 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ElasticSearch - unassigned shard 문제 해결 (3) replica 숫자가 부적절할때</title>
+    <link href="https://parkdoyeon.github.io/elk/elk-2019-06-27-es-replica/"/>
+    <id>https://parkdoyeon.github.io/elk/elk-2019-06-27-es-replica/</id>
+    <published>2019-06-27T07:47:13.000Z</published>
+    <updated>2019-06-27T15:33:15.454Z</updated>
+    
+    <content type="html"><![CDATA[<p>엘라스틱서치 테스트 환경에서 일어난 일이다. 마스터노드 1대만 단독으로 서비스가 올라가있는데, 어느 시점부터(아마도 es 버전을 올린 시점부터) index health status가 yellow로 바뀌었다. 확인해보니, 모든 인덱스에서 replica shard만 할당이 되지 못하고 있었다. 이유를 쿼리했더니 동일한 샤드가 있는 곳엔 샤드할당이 되지않는다는 에러메세지가 나왔다.</p><pre><code class="json">GET /_cluster/allocation/explain{    //...생략    cannot allocate because allocation is not permitted to any of the nodes that hold an in-sync shard copy    //...생략}</code></pre><p>좀 더 찾아보니, 스택오버플로우에 <a href="https://stackoverflow.com/questions/37302611/elasticsearch-doesnt-allow-to-allocate-unassigned-shard" rel="external nofollow noopener noreferrer" target="_blank">나와 비슷한 상황</a>인 사람이 있었다. replica는 말그대로 복제 샤드이기 때문에 동일한 노드에 배치될 수 없고, 또 다른 노드에 배치되어야 한다는 답변이 있었다. 즉, 복제샤드가 필요하면 노드를 추가 해야하고, 아니면 복제샤드 갯수 설정을 더 낮게 바꿔야한다는 것이다. </p><p>복제 샤드를 올바르게 설정하려면 “전체 노드 갯수 &gt;원본샤드 노드(1) + 복제샤드 갯수”가 성립해야 한다. ES가 기본값으로 설정하는 샤드의 갯수는 5개, 복제 샤드의 갯수는 1개이다. 테스트환경처럼 단독으로 ES 노드를 운영하는 상황에서는 복제샤드의 갯수를 0으로 맞춰줘야 status를 green으로 유지할 수 있다.</p><p>다행히도 복제샤드에 대한 설정은 이미 생성된 인덱스에도 적용할 수 있다. 다음과같이 쿼리하면 된다.</p><pre><code class="json">PUT /index_name_*/_settings{  &quot;index&quot;: {    &quot;number_of_replicas&quot;: 0  }}</code></pre><p>그리고, 앞으로 생성될 인덱스에 일괄적용하고싶다면 아래와 같이 <a href="/elk/elk-2019-02-27-es-mapping">템플릿을 통해</a> 지정하면 된다.</p><pre><code class="json">GET _template/myindex_shards_control{  &quot;index_patterns&quot;: &quot;index_name_*&quot;,  &quot;settings&quot;: {    &quot;number_of_shards&quot;: 1,    &quot;number_of_replicas&quot;: 0  }}</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;엘라스틱서치 테스트 환경에서 일어난 일이다. 마스터노드 1대만 단독으로 서비스가 올라가있는데, 어느 시점부터(아마도 es 버전을 올린 시점부터) index health status가 yellow로 바뀌었다. 확인해보니, 모든 인덱스에서 repli
+      
+    
+    </summary>
+    
+      <category term="ELK" scheme="https://parkdoyeon.github.io/elk/"/>
+    
+    
+      <category term="elasticsearch" scheme="https://parkdoyeon.github.io/tags/elasticsearch/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Docker 로그로 서버 용량이 꽉찼을 때</title>
+    <link href="https://parkdoyeon.github.io/docker/docker-2019-06-18-docker-logrotate/"/>
+    <id>https://parkdoyeon.github.io/docker/docker-2019-06-18-docker-logrotate/</id>
+    <published>2019-06-18T06:57:18.000Z</published>
+    <updated>2019-06-27T15:33:15.452Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h1><p>평소와 같이 logstash에 파이프라인을 추가하려고 서버에 들어갔다가,<br>자동완성을 하려고 배시에 tab키를 눌렀더니 다음과 같은 텍스트가 출력됐다.</p><pre><code class="bash">$ cd p-bash: cannot create temp file for here-document: No space left on device</code></pre><p>남은 용량이 얼마나 있는지 확인하려고 <code>du</code>명령어를 쳤다. 보아하니 도커 디스크로 마운트된 디렉토리에 문제가 있는 것 같았다.</p><pre><code class="bash">$ df -hFilesystem                              Size  Used Avail Use% Mounted onudev                                    3.9G     0  3.9G   0% /devtmpfs                                   798M   79M  720M  10% /run/dev/mapper/[HOST이름]--vg-root   90G  4.3G   82G   6% /tmpfs                                   3.9G     0  3.9G   0% /dev/shmtmpfs                                   5.0M     0  5.0M   0% /run/locktmpfs                                   3.9G     0  3.9G   0% /sys/fs/cgroup/dev/sda1                               472M  153M  295M  35% /boottmpfs                                   798M     0  798M   0% /run/user/1003overlay                                  90G   90G     0 100% /var/lib/docker/overlay2/a5d0d5380f3e692bccb926c9fbf1c07ba6abc73db094b0e526d71aa19fd51537/mergedshm                                      64M     0   64M   0% /var/lib/docker/containers/ef5745582de101dddc056068c78e024388169af634315348427a80d59148a324/mounts/shm</code></pre><h1 id="원인"><a href="#원인" class="headerlink" title="원인"></a>원인</h1><p>도커의 컨테이너들로부터 출력되는 모든 로그들은 다 json파일로 파일시스템에 남는다.<br>즉, <code>/var/lib/docker/containers/*/*.log</code>와 같은 경로에 컨테이너의 ID로 된 디렉토리에 개별로 저장된다.<br>이 파일들은 관리가 되지 않으면 서서히 디스크 용량을 차지해서 disk full현상을 일으킬 수 있다.</p><p>나의 경우, logstash의 모든 파서들이 파싱된 로그를 stdout으로 출력하다보니 며칠만에 약 90G가 넘는 로그파일때문에 3-4일만에 서버 디스크가 꽉 찼었다.<br>(F.Y.I. 도커로 인한 disk full이 logstash를 운영하는데 별다른 영향을 주진 않았다.)</p><h1 id="해결"><a href="#해결" class="headerlink" title="해결"></a>해결</h1><p>해결방법은 log파일 관리를 자동화 하면 되는데,</p><ol><li>크론으로 json파일을 삭제할수도 있고</li><li>logrotate를 설치해서 실행시킬수도 있다. </li><li>하지만 나는 폐쇄된 네트워크에서 서버세팅을 해야하기때문에, <a href="https://docs.docker.com/config/containers/logging/configure/" rel="external nofollow noopener noreferrer" target="_blank">도커에 내장된 로그 설정</a>을 통해 로그 관리 세팅을 했다.</li></ol><h1 id="방법"><a href="#방법" class="headerlink" title="방법"></a>방법</h1><p>참고로, 내가 채택한 3번 방법은 도커서비스와 컨테이너를 내렸다가 새로 생성해줘야 적용이 되는 번거로움이 있다.</p><ol><li>아래 경로로 다음과 같은 내용의 설정파일을 하나 만든다. 있으면 수정하고, 없으면 새로 만들어주면 된다.<pre><code class="bash"> $ vi /etc/docker/daemon.json { &quot;log-driver&quot;: &quot;json-file&quot;, &quot;log-opts&quot;: {     &quot;max-size&quot;: &quot;100m&quot;,         &quot;max-file&quot;: &quot;3&quot;         } } </code></pre></li><li>도커 서비스를 재시작한다 (나는 스페이스 4개로 indentation을 구분했고, 이때 쉼표를 더 입력하거나 하면 시스템이 시작하지 않으므로 주의해야한다.)<pre><code class="bash"> $ systemctl restart docker</code></pre></li><li>컨테이너를 다시 생성한다</li></ol><p>설정이 적용된 컨테이너의 <code>/var/lib/docker/containers/*</code> 디렉토리 모습이다.</p><pre><code class="bash">$ ls9967b82d7c4059e1fb96ef9f20dc8c8738bf58e6e7418c680ac81019e5c964ec-json.log    checkpoints      hostname  resolv.conf9967b82d7c4059e1fb96ef9f20dc8c8738bf58e6e7418c680ac81019e5c964ec-json.log.1  config.v2.json   hosts     resolv.conf.hash9967b82d7c4059e1fb96ef9f20dc8c8738bf58e6e7418c680ac81019e5c964ec-json.log.2  hostconfig.json  mounts</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;문제&quot;&gt;&lt;a href=&quot;#문제&quot; class=&quot;headerlink&quot; title=&quot;문제&quot;&gt;&lt;/a&gt;문제&lt;/h1&gt;&lt;p&gt;평소와 같이 logstash에 파이프라인을 추가하려고 서버에 들어갔다가,&lt;br&gt;자동완성을 하려고 배시에 tab키를 눌렀더니 다
+      
+    
+    </summary>
+    
+      <category term="Docker" scheme="https://parkdoyeon.github.io/docker/"/>
+    
+    
+      <category term="docker" scheme="https://parkdoyeon.github.io/tags/docker/"/>
+    
+      <category term="container" scheme="https://parkdoyeon.github.io/tags/container/"/>
+    
+      <category term="logrotate" scheme="https://parkdoyeon.github.io/tags/logrotate/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ElasticSearch - unassigned shard 문제 해결 (2) 노드간 버전문제</title>
+    <link href="https://parkdoyeon.github.io/elk/elk-2019-06-18-es-version/"/>
+    <id>https://parkdoyeon.github.io/elk/elk-2019-06-18-es-version/</id>
+    <published>2019-06-18T02:37:18.000Z</published>
+    <updated>2019-06-27T15:33:15.454Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h1><p>Elasticsearch 홈페이지에서 공식 docker 이미지를 받아 새로운 노드가 되는 서버를 구성했는데,<br>그새 버전이 올라서 내가 사용하던 6.7.0이아닌 6.7.1이 설치되었다.</p><p>즉, 마스터를 포함한 두개의 서버에서는 6.7.0 이 실행되고, 새로 추가한 서버에서만 6.7.1의 도커 이미지가 도는 상태였다.<br>버전간 차이는 끝 자리수 +1이니 변화도 미미하고,<br>실제로 실행을 해도 크게 에러메세지나 경고메세지가 발생하지 않아서 하루정도 가만히 두고 있었다.</p><h1 id="원인"><a href="#원인" class="headerlink" title="원인"></a>원인</h1><p>그런데 추가한 노드로 샤드가 assign이 되지 않아서, 이유를 확인하려고 쿼리를 날렸다. </p><pre><code class="curl">GET /_cluster/allocation/explain</code></pre><p>위 쿼리를 날리면 shard정보와 cluster_info, 그리고 node 정보가 출력이 된다.<br>각 노드별 assign이 안되는 사유가 출력되고, 그 출력 사유가 실제 usassign에 있어서 얼만큼의 가중치(weight)를 갖는지도 표시된다. 나의 경우 node_version이 문제였고, 새로 세팅한 6.7.1의 버전이 마스터 노드의 버전과 상이하여 샤딩이 되지 않았다.</p><pre><code class="json">GET /_cluster/allocation/explain// 생략&quot;nodeuuid2&quot;: {            &quot;final_decision&quot;: &quot;NO&quot;            &quot;decisions&quot;: [                {                    &quot;decider&quot; : &quot;node_version&quot;,                    &quot;decision&quot; : &quot;NO&quot;,                    &quot;explanation&quot; : &quot;target node version [6.7.0] is older than source node version [6.7.1]&quot;                }            ],            &quot;weight&quot;: 1.3        }</code></pre><h1 id="해결"><a href="#해결" class="headerlink" title="해결"></a>해결</h1><p>버전을 다시 바꾸어서 ES를 실행시키자, 별도의 액션없이 천천히 샤딩이 되면서 서비스가 정상화 되었다.<br>정상이 된 샤드는 allocation explain쿼리에 다음과 같이 응답한다.</p><pre><code class="json">GET /_cluster/allocation/explain{  &quot;error&quot;: {    &quot;root_cause&quot;: [      {        &quot;type&quot;: &quot;illegal_argument_exception&quot;,        &quot;reason&quot;: &quot;unable to find any unassigned shards to explain [ClusterAllocationExplainRequest[useAnyUnassignedShard=true,includeYesDecisions?=false]&quot;      }    ],    &quot;type&quot;: &quot;illegal_argument_exception&quot;,    &quot;reason&quot;: &quot;unable to find any unassigned shards to explain [ClusterAllocationExplainRequest[useAnyUnassignedShard=true,includeYesDecisions?=false]&quot;  },  &quot;status&quot;: 400}</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;문제&quot;&gt;&lt;a href=&quot;#문제&quot; class=&quot;headerlink&quot; title=&quot;문제&quot;&gt;&lt;/a&gt;문제&lt;/h1&gt;&lt;p&gt;Elasticsearch 홈페이지에서 공식 docker 이미지를 받아 새로운 노드가 되는 서버를 구성했는데,&lt;br&gt;그새 버전이
+      
+    
+    </summary>
+    
+      <category term="ELK" scheme="https://parkdoyeon.github.io/elk/"/>
+    
+    
+      <category term="elasticsearch" scheme="https://parkdoyeon.github.io/tags/elasticsearch/"/>
+    
+  </entry>
   
   <entry>
     <title>hexo에 mathjax 적용하기</title>
@@ -50,9 +129,9 @@
     <link href="https://parkdoyeon.github.io/ml/ml-2019-06-02-deep2/"/>
     <id>https://parkdoyeon.github.io/ml/ml-2019-06-02-deep2/</id>
     <published>2019-06-02T05:20:01.000Z</published>
-    <updated>2019-06-10T14:18:16.119Z</updated>
+    <updated>2019-06-27T15:33:15.455Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="개요"><a href="#개요" class="headerlink" title="개요"></a>개요</h3><ul><li>‘학습’이란 훈련 데이터로부터 가중치 매개변수의 최적값을 <strong>자동</strong>으로 획득하는 것을 뜻한다.</li><li>매개변수 최적값을 학습할 수 있도록 해주는 <strong>지표</strong>는 손실함수이다.<ul><li>왜 정확도가 아닌 손실함수인가?<ul><li>정확도를 지표료 하면 매개변수의 미분이 대부분의 장소에서 0이 되기 때문이다. (= 소숫점 단위로 표현되는 연속적인 수치값이 아닌 단절된 숫자값으로 표현되기가 쉽다.)</li></ul></li></ul></li><li>손실함수를 최대한 작게 만들어주도록 하는 기법중 하나로, 함수의 기울기를 활용하는 것이 ‘경사법’이다.</li><li>입력부터 출력까지 사람의 개입이 없다는 의미에서, 딥러닝을 종단간 기계학습(end-to-end learning)이라고 한다.</li><li>한 데이터셋에만 지나치게 최적화된 상태를 <strong>오버피팅</strong>이라고 한다.</li></ul><h3 id="1-손실함수"><a href="#1-손실함수" class="headerlink" title="1. 손실함수"></a>1. 손실함수</h3><h4 id="1-1-평균-제곱-오차"><a href="#1-1-평균-제곱-오차" class="headerlink" title="1.1 평균 제곱 오차"></a>1.1 평균 제곱 오차</h4><p>$$ E = { { 1\over2 } \sum_ { k } ( y_k-t_k)^2 } $$</p><ul><li>\(y_k\)는 신경망이 추정한 출력값, \(t_k\)는 실제 정답레이블 값(원-핫 인코딩), k는 차원의 수를 의미한다.</li><li>결과값으로 나타난 손실값의 합들이 높을수록 정답과 멀어지고, 적을수록 정답에 가깝다.</li></ul><h4 id="1-2-교차-엔트로피-오차"><a href="#1-2-교차-엔트로피-오차" class="headerlink" title="1.2 교차 엔트로피 오차"></a>1.2 교차 엔트로피 오차</h4><p>$$  E = - { \sum_ { k } t_k logy_k } $$</p><ul><li>여기서 \(logy\)는 자연로그 \(log_en\)를 취한다.</li><li>\(t_k\)는 원-핫 인코딩 값이므로 실질적으로 \(t_k\)가 1일때의 \(logy_k\)을 계산한 값, 즉 정답 추정값의 자연로그를 계산하는 식이 된다.<ul><li>여기서 정답과 거리가 먼 결과가 발생할수록(x가 1에 가까워질수록) 엔트로피 오차(loss)가 더 크게 발생한다.</li><li>\(log_ex=y\)의 그래프<br><img src="/image/ml/2019-06-02-deep2-1.png" alt="log_ex=y의 그래프"></li><li>가령 신경망 출력이 0.6일때 교차 엔트로피 오차가 \(-log0.6 = 0.51\)이라면, 0.1일때는 \(-log0.1=2.3\)이 된다.</li></ul></li></ul><h4 id="1-3-미니-배치-함수"><a href="#1-3-미니-배치-함수" class="headerlink" title="1.3 미니 배치 함수"></a>1.3 미니 배치 함수</h4><p>$$  E = - { 1 \over N } \sum { \sum_ { k } t_k logy_k } $$</p><ul><li>앞서서 구한 쿄차 엔트로피 오차를 모두 구해서 갯수만큼 나누면 평균 교차 엔트로피값을 구할 수 있다. 이렇게 하면 훈련 데이터 개수와 관계없이 통일된 지표를 구할 수 있다.</li><li>전체 데이터가 수천 수십만개가 되면 교차 엔트로피 값을 구하는것은 무리가 있으므로 데이터 일부를 추려서 근사치로 이용할 수 있다.</li><li>추려진 일부 데이터를 <strong>미니배치</strong>라고 한다.</li></ul><h3 id="2-수치미분"><a href="#2-수치미분" class="headerlink" title="2. 수치미분"></a>2. 수치미분</h3><h4 id="2-1-수치미분과-오차"><a href="#2-1-수치미분과-오차" class="headerlink" title="2.1 수치미분과 오차"></a>2.1 수치미분과 오차</h4><ul><li>미분방법에는 수치미분과 해석적미분이 있다.<ol><li>수치미분은 실제 변화량을 수치적으로 계산하는 것으로, 변화값인 h에 최대한 작은 값(보통 \(\lim_{h\to0}\)으로 표현된다.)을 대입하여 계산한다.</li><li>해석적 미분은 수식적으로 미분함수를 만들어 미분값을 찾는 것을 의미한다.</li></ol></li><li>수치미분을 코드로직에 적용할때 h의 최솟값을 대입하다보면 아래와 같은 문제가 발생한다.<br>수치미분을 구하는 파이썬 함수를 예로들면,<pre><code class="python">  def numerical_diff(f, x):      h = 10e-50      return (f(x+h)+f(x)/h)</code></pre>  아래와같이 소숫점 8자리 이하부터 생략이 발생해 최종계산에 오차가 발생한다.<pre><code class="bash">  &gt;&gt;&gt; np.float32(1e-50)  0.0</code></pre>  때문에 \(10^{-4}\)정도의 값을 사용할 것을 권장한다.</li><li>수치미분에서 발생하는 오차는 필연적이기 때문에, 변화량이 +h인 미분과 -h인 미분의 중앙값을 구하기도 한다.</li></ul><h4 id="2-2-편미분"><a href="#2-2-편미분" class="headerlink" title="2.2 편미분"></a>2.2 편미분</h4><ul><li>편미분은 변수가 2개 이상인 경우에 사용한다. 3차원으로 그래프가 그려지므로, 미분값을 구할때는 변수 하나에 초점을 맞추고 다른 변수는 값을 고정한다.</li><li>편미분을 한 기울기값을 마이너스를 붙인 2차원 벡터로 표현하면 각 지점에서 낮아지는 방향을 가리킨다. </li><li>이말인 즉, <strong>기울기가 가리키는 곳은 각 장소의 함수에서 함수의 출력 값을 가장 크게 줄이는 방향</strong>이다.</li></ul><h4 id="2-3-경사법"><a href="#2-3-경사법" class="headerlink" title="2.3 경사법"></a>2.3 경사법</h4><ul><li>경사법은 경사 하강법이라고 한다. 손실함수가 최소가 되는 값을 찾기위해 기울기를 활용하는 방법이다.</li><li>기울기가 가리키는 곳에 정말 함수의 최솟값이 있는지는 보장할 수 없다. 실제로 최솟값이 없는 경우가 대부분이다.</li><li>다만 그 방향으로 가야 줄일 수 있다는 사실은 확실하므로, 기울어진 방향으로 일정 거리만큼 이동해나가면서 줄이는게 경사법이라고 한다.</li><li>최솟값을 찾으면 경사 하강법, 최댓값을 찾으면 경사 상승법이다. 단순히 기울기에 마이너스를 붙이냐 아니냐의 차이이므로 방법과 내용의 실질적인 차이는 없다.</li></ul><h3 id="2-3-1-경사법의-수식"><a href="#2-3-1-경사법의-수식" class="headerlink" title="2.3.1 경사법의 수식"></a>2.3.1 경사법의 수식</h3><p>$$ x_0 = x_0 - \eta { \partial f \over \partial x_0 },  x_1 = x_1 - \eta { \partial f \over \partial x_1 } $$</p><ul><li><p>\( \eta \)(eta)기호는 갱신하는 양을 나타낸다. 보통 0.01이나 0.001 등 특정값으로 정해둔다. 신경망 학습에서는 <strong>학습률</strong>이라고 한다.</p></li><li><p>위의 식은 1회의 갱신이 일어나는 식이며, 만족스러운 값이 나타날때까지 갱신을 반복한다.</p><pre><code class="python">  # f: 최적화함수  # init_x: 초기값  # learning_rate: 학습률  # step_num: 경사법에 따른 반복횟쑤   def gradient_descent (f, init_x, learning_rate=0.01, step_num=100):      x=init_x      for i in range(step_num):          grad = numerical_gradient(f, x)          x -= lr*grad      return x</code></pre></li><li><p>학습률과 같은 매개변수를 하이퍼파라미터라고 한다. 가중치/편향과 같은 신경망 매개변수와는 성질이 다른 매개변수이다.</p></li></ul>]]></content>
+    <content type="html"><![CDATA[<h3 id="개요"><a href="#개요" class="headerlink" title="개요"></a>개요</h3><ul><li>‘학습’이란 훈련 데이터로부터 가중치 매개변수의 최적값을 <strong>자동</strong>으로 획득하는 것을 뜻한다.</li><li>매개변수 최적값을 학습할 수 있도록 해주는 <strong>지표</strong>는 손실함수이다.<ul><li>왜 정확도가 아닌 손실함수인가?<ul><li>정확도를 지표료 하면 매개변수의 미분이 대부분의 장소에서 0이 되기 때문이다. (= 소숫점 단위로 표현되는 연속적인 수치값이 아닌 단절된 숫자값으로 표현되기가 쉽다.)</li></ul></li></ul></li><li>손실함수를 최대한 작게 만들어주도록 하는 기법중 하나로, 함수의 기울기를 활용하는 것이 ‘경사법’이다.</li><li>입력부터 출력까지 사람의 개입이 없다는 의미에서, 딥러닝을 종단간 기계학습(end-to-end learning)이라고 한다.</li><li>한 데이터셋에만 지나치게 최적화된 상태를 <strong>오버피팅</strong>이라고 한다.</li></ul><h3 id="1-손실함수"><a href="#1-손실함수" class="headerlink" title="1. 손실함수"></a>1. 손실함수</h3><h4 id="1-1-평균-제곱-오차"><a href="#1-1-평균-제곱-오차" class="headerlink" title="1.1 평균 제곱 오차"></a>1.1 평균 제곱 오차</h4><p>$$ E = { { 1\over2 } \sum_ { k } ( y_k-t_k)^2 } $$</p><ul><li>\(y_k\)는 신경망이 추정한 출력값, \(t_k\)는 실제 정답레이블 값(원-핫 인코딩), k는 차원의 수를 의미한다.</li><li>결과값으로 나타난 손실값의 합들이 높을수록 정답과 멀어지고, 적을수록 정답에 가깝다.</li></ul><h4 id="1-2-교차-엔트로피-오차"><a href="#1-2-교차-엔트로피-오차" class="headerlink" title="1.2 교차 엔트로피 오차"></a>1.2 교차 엔트로피 오차</h4><p>$$  E = - { \sum_ { k } t_k logy_k } $$</p><ul><li>여기서 \(logy\)는 자연로그 \(log_en\)를 취한다.</li><li>\(t_k\)는 원-핫 인코딩 값이므로 실질적으로 \(t_k\)가 1일때의 \(logy_k\)을 계산한 값, 즉 정답 추정값의 자연로그를 계산하는 식이 된다.<ul><li>여기서 정답과 거리가 먼 결과가 발생할수록(x가 1에 가까워질수록) 엔트로피 오차(loss)가 더 크게 발생한다.</li><li>\(log_ex=y\)의 그래프<br><img src="/image/ml/2019-06-02-deep2-1.png" alt="log_ex=y의 그래프"></li><li>가령 신경망 출력이 0.6일때 교차 엔트로피 오차가 \(-log0.6 = 0.51\)이라면, 0.1일때는 \(-log0.1=2.3\)이 된다.</li></ul></li></ul><h4 id="1-3-미니-배치-함수"><a href="#1-3-미니-배치-함수" class="headerlink" title="1.3 미니 배치 함수"></a>1.3 미니 배치 함수</h4><p>$$  E = - { 1 \over N } \sum { \sum_ { k } t_k logy_k } $$</p><ul><li>앞서서 구한 교차 엔트로피 오차를 모두 구해서 갯수만큼 나누면 평균 교차 엔트로피값을 구할 수 있다. 이렇게 하면 훈련 데이터 개수와 관계없이 통일된 지표를 구할 수 있다.</li><li>전체 데이터가 수천 수십만개가 되면 교차 엔트로피 값을 구하는것은 무리가 있으므로 데이터 일부를 추려서 근사치로 이용할 수 있다.</li><li>추려진 일부 데이터를 <strong>미니배치</strong>라고 한다.</li></ul><h3 id="2-수치미분"><a href="#2-수치미분" class="headerlink" title="2. 수치미분"></a>2. 수치미분</h3><h4 id="2-1-수치미분과-오차"><a href="#2-1-수치미분과-오차" class="headerlink" title="2.1 수치미분과 오차"></a>2.1 수치미분과 오차</h4><ul><li>미분방법에는 수치 미분과 해석적 미분이 있다.<ol><li>수치미분은 실제 변화량을 수치적으로 계산하는 것으로, 변화값인 h에 최대한 작은 값(보통 \(\lim_{h\to0}\)으로 표현된다.)을 대입하여 계산한다.</li><li>해석적 미분은 수식적으로 미분함수를 만들어 미분값을 찾는 것을 의미한다.</li></ol></li><li>수치미분을 코드로직에 적용할 때 h의 최솟값을 대입하다보면 아래와 같은 문제가 발생한다.<br>수치미분을 구하는 파이썬 함수를 예로들면,<pre><code class="python">  def numerical_diff(f, x):      h = 10e-50      return (f(x+h)+f(x)/h)</code></pre>  아래와 같이 소숫점 8자리 이하부터 생략해 최종 계산값에 오차가 발생한다.<pre><code class="bash">  &gt;&gt;&gt; np.float32(1e-50)  0.0</code></pre>  때문에 \(10^{-4}\)정도의 값을 사용할 것을 권장한다.</li><li>수치미분에서 발생하는 오차는 필연적이기 때문에, 변화량이 +h인 미분과 -h인 미분의 중앙값을 구하기도 한다.</li></ul><h4 id="2-2-편미분"><a href="#2-2-편미분" class="headerlink" title="2.2 편미분"></a>2.2 편미분</h4><ul><li>편미분은 변수가 2개 이상인 경우에 사용한다. 3차원으로 그래프가 그려지므로, 미분값을 구할때는 변수 하나에 초점을 맞추고 다른 변수는 값을 고정한다.</li><li>편미분한 기울기 값에 마이너스 부호를 붙이고 2차원 벡터로 표현하면 각 지점에서 낮아지는 방향을 가리킨다. </li><li>이말인 즉, <strong>기울기가 가리키는 곳은 각 장소의 함수에서 함수의 출력 값을 가장 크게 줄이는 방향</strong>이다.</li></ul><h4 id="2-3-경사법"><a href="#2-3-경사법" class="headerlink" title="2.3 경사법"></a>2.3 경사법</h4><ul><li>경사법은 경사 하강법이라고 한다. 손실함수가 최소가 되는 값을 찾기위해 기울기를 활용하는 방법이다.</li><li>기울기가 가리키는 곳에 정말 함수의 최솟값이 있는지는 보장할 수 없다. 실제로 최솟값이 없는 경우가 대부분이다.</li><li>다만 그 방향으로 가야 줄일 수 있다는 사실은 확실하므로, 기울어진 방향으로 일정 거리만큼 이동해나가면서 줄이는게 경사법이라고 한다.</li><li>최솟값을 찾으면 경사 하강법, 최댓값을 찾으면 경사 상승법이다. 단순히 기울기에 마이너스를 붙이냐 아니냐의 차이이므로 방법과 내용의 실질적인 차이는 없다.</li></ul><h3 id="2-3-1-경사법의-수식"><a href="#2-3-1-경사법의-수식" class="headerlink" title="2.3.1 경사법의 수식"></a>2.3.1 경사법의 수식</h3><p>$$ x_0 = x_0 - \eta { \partial f \over \partial x_0 },  x_1 = x_1 - \eta { \partial f \over \partial x_1 } $$</p><ul><li><p>\( \eta \)(eta)기호는 갱신하는 양을 나타낸다. 보통 0.01이나 0.001 등 특정값으로 정해둔다. 신경망 학습에서는 <strong>학습률</strong>이라고 한다.</p></li><li><p>위의 식은 1회의 갱신이 일어나는 식이며, 만족스러운 값이 나타날때까지 갱신을 반복한다.</p><pre><code class="python">  # f: 최적화 함수  # init_x: 초기값  # learning_rate: 학습률  # step_num: 경사법에 따른 반복횟수   def gradient_descent (f, init_x, learning_rate=0.01, step_num=100):      x=init_x      for i in range(step_num):          grad = numerical_gradient(f, x)          x -= lr*grad      return x</code></pre></li><li><p>학습률과 같은 매개변수를 하이퍼파라미터라고 한다. 가중치/편향과 같은 신경망 매개변수와는 성질이 다른 매개변수이다.</p></li></ul>]]></content>
     
     <summary type="html">
     
@@ -70,6 +149,35 @@
       <category term="machine-learning" scheme="https://parkdoyeon.github.io/tags/machine-learning/"/>
     
       <category term="deep-learning" scheme="https://parkdoyeon.github.io/tags/deep-learning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ElasticSearch - unassigned shard 문제 해결 (1) shard가 너무 많을 때</title>
+    <link href="https://parkdoyeon.github.io/elk/elk-2019-05-31-es-shards/"/>
+    <id>https://parkdoyeon.github.io/elk/elk-2019-05-31-es-shards/</id>
+    <published>2019-05-31T01:11:02.000Z</published>
+    <updated>2019-06-27T15:33:15.453Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="문제상황"><a href="#문제상황" class="headerlink" title="문제상황"></a>문제상황</h3><p>ELK 스택을 개발하면서 운영 경험이 전무했던 나는 점진적으로 인덱스를 추가하고, 서비스에 지장이 있는 시점부터 확장을 할 계획이었다. 그리고 과거에 잠시 ES용으로 사용했던 서버 2대로 노드를 운영했다. 서버의 스펙은 아래와 같았다.</p><ul><li>RAM: <code>16G</code></li><li>CPU: <code>8</code></li><li>DISK: <code>/DATA 300G, /ROOT 100G</code></li></ul><p>그런데 어느순간부터 서비스 추가할때마다 ES가 죽거나, 안정적인 상태로 돌아오기까지 너무 오랜 시간(약 4시간 정도)이 소요됐다. </p><p>RAM이 문제였을까, CPU가 문제였을까(RAM이 <a href="https://www.elastic.co/guide/en/elasticsearch/guide/current/hardware.html" rel="external nofollow noopener noreferrer" target="_blank">이상적인 권장 사양</a>이 아님은 확실했다). 표면적인 징후는 bulk insert 큐가 가득 차는 문제이지만, 이는 시간이 지나거나 초기에 insert하는 데이터를 조절하면 해소가 되는 문제였다. 진짜 문제는 shard 할당에 있었다. </p><h3 id="너무-많은-샤드"><a href="#너무-많은-샤드" class="headerlink" title="너무 많은 샤드?"></a>너무 많은 샤드?</h3><p>우선 ES에 찍힌 로그를 봤다. 샤드가 너무 많다는 메세지가 있었다.</p><pre><code>#! Deprecation: In a future major version, this request will fail because this action would add [9xx] total shards,but this cluster currently has [8xxx]/[2000] maximum shards open.Before upgrading, reduce the number of shards in your cluster or adjust the cluster setting [cluster.max_shards_per_node].</code></pre><p> ES는 워낙 버전 업이 잦은데다 위의 메세지는 deprecation 경고였기 때문에, 가볍게 여겼다. 하지만 아래의 또 다른 에러 메세지를 보고 shard 문제임을 알 수 있었다. 샤드의 할당과 라우팅이 잘 이뤄지지 않는다는 내용이다.</p><pre><code>[kr-service-2019.05.25], type [index_stats], id [AV9RswFhsIL8o1ZCN3Mi],message [UnavailableShardsException[[kr-service-2019.05.25][0] Primary shard is not active or isn&#39;t assigned to a known node. Timeout: [1m], request: org.elasticsearch.action.bulk.BulkShardRequest@4f100b34]]]</code></pre><p>ES 노드 1개의 최대 샤드의 갯수 기본 설정은 2000개이다. 노드당 샤드를 늘려주면 문제가 해결될까 해서 샤드갯수를 5000까지 늘렸다.</p><pre><code>PUT /_cluster/settings{    &quot;persistent&quot; : {        &quot;cluster.max_shards_per_nodes&quot; : 5000    }}</code></pre><p>메세지는 사라졌지만, unassigned 문제가 해소되진 않았고, ES에 할당된 메모리는 줄어들 생각을 하지 않고 80%이상으로 치고 올라왔다. 부랴부랴 ES 공식사이트에 있는 shard 관리에 대한 <a href="https://www.elastic.co/kr/blog/how-many-shards-should-i-have-in-my-elasticsearch-cluster" rel="external nofollow noopener noreferrer" target="_blank">문서</a>를 읽었다. 매우 중요한 팁들이 있었는대 아래와 같은 내용이었다.</p><blockquote><p>TIP: 작은 샤드는 작은 세그먼트를 만들며 부하를 증가시킵니다. 평균 샤드 크기를 최소한 수 GB와 수십 GB 사이를 유지하세요. 시간 기반 데이터를 사용한 과거 사례를 보면, 20GB ~ 40GB 정도의 사이즈가 적당합니다.<br><br><br>TIP: 각 샤드의 부하는 세그먼트 개수와 크기에 따라 결정됩니다. forcemerge 기능을 사용하여 작은 세그먼트를 큰 세그먼트로 병합시키세요. 이 작업은 이상적으로 인덱스에 더 이상 데이터가 입력되지 않을 때 실행되어야 합니다. 그리고 무척 부하가 큰 작업이니 피크 시간을 피하여 수행해야 하는 것을 명심하세요.<br><br><br>TIP: 하나의 노드에 저장할 수 있는 샤드의 개수는 가용한 힙의 크기와 비례하지만, Elasticsearch에서 그 크기를 제한하고 있지는 않습니다. 경험상 하나의 노드에 설정한 힙 1GB 당 20개 정도가 적당합니다. 따라서 30GB 힙을 가진 노드는 최대 600개 정도의 샤드를 가지는 것이 가능하지만, 이 보다는 적게 유지하는 것이 더 좋습니다. 일반적으로 이러한 구성은 클러스터를 건강하게 유지하는데 도움이 됩니다</p></blockquote><p>요약하면 샤드의 갯수와 힙의 크기는 비례하는데, 나는 힙과 사용하는 데이터 크기(한 인덱스당 1~2G정도 사용)에 비해 지나치게 많은 샤드 할당을 하고있었다. 애초에 왜 이런 문제가 생겼는가 보니, Logstash에서 인덱스 생성시 샤드갯수가 5개로 생성되고 있었다. 기본 설정으로. (맙소사)</p><h3 id="샤드-줄이기"><a href="#샤드-줄이기" class="headerlink" title="샤드 줄이기"></a>샤드 줄이기</h3><p>우선 생성된 샤드를 일괄로 삭제할수는 없으니, 신규 생성하는 인덱스부터 설정을 바꿔주기로 했다. 방법은 꽤 간단하다. _template 요청으로 인덱스 생성시 샤드 설정을 지정하면 된다.</p><pre><code class="curl">GET _template/kr_shards_control{  &quot;index_patterns&quot;: &quot;kr-*&quot;,  &quot;settings&quot;: {    &quot;number_of_shards&quot;:   2  }}</code></pre><p>추가적으로 문제가 있던 시점에 추가했던 인덱스를 전부 삭제하고, 필요가 없는 오래된 인덱스도 일부 삭제했다. 그리고 데이터를 다시 받아 샤드 2개짜리로 생성했다. 30분 정도 지나니 메모리 수치도 점차 가라앉고, CPU도 안정되는 것을 확인할 수 있었다. 그리고 퇴근을 했다. 하지만 <a href="/elk/elk-2019-06-18-es-version">다른 문제</a>가 있었는데…</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;문제상황&quot;&gt;&lt;a href=&quot;#문제상황&quot; class=&quot;headerlink&quot; title=&quot;문제상황&quot;&gt;&lt;/a&gt;문제상황&lt;/h3&gt;&lt;p&gt;ELK 스택을 개발하면서 운영 경험이 전무했던 나는 점진적으로 인덱스를 추가하고, 서비스에 지장이 있는 시점부터
+      
+    
+    </summary>
+    
+      <category term="ELK" scheme="https://parkdoyeon.github.io/elk/"/>
+    
+    
+      <category term="elasticsearch" scheme="https://parkdoyeon.github.io/tags/elasticsearch/"/>
+    
+      <category term="shards" scheme="https://parkdoyeon.github.io/tags/shards/"/>
+    
+      <category term="template" scheme="https://parkdoyeon.github.io/tags/template/"/>
     
   </entry>
   
@@ -102,11 +210,11 @@
   </entry>
   
   <entry>
-    <title>ElastAlert의 유용한 규칙 종류</title>
-    <link href="https://parkdoyeon.github.io/elk/elk-2019-05-29-elastalert/"/>
-    <id>https://parkdoyeon.github.io/elk/elk-2019-05-29-elastalert/</id>
+    <title>ElastAlert - 유용한 규칙 종류</title>
+    <link href="https://parkdoyeon.github.io/elk/elk-2019-05-29-ea-elastalert/"/>
+    <id>https://parkdoyeon.github.io/elk/elk-2019-05-29-ea-elastalert/</id>
     <published>2019-05-29T11:07:16.000Z</published>
-    <updated>2019-06-08T02:58:52.618Z</updated>
+    <updated>2019-06-27T15:33:15.453Z</updated>
     
     <content type="html"><![CDATA[<p><a href="https://github.com/Yelp/elastalert" target="_blank" rel="noopener">ElastAlert</a>은 조건에 따라 Elasticsearch에서 발생하는 문서에 대한 알럿을 보내주는 오픈소스이다. 각각의 규칙(Rule) yml파일을 생성하면 지정한 Rule 디렉토리에 있는 설정대로 ES에 쿼리하는 구조로,<br>직접 파일을 생성해서 관리해줄수도 있고, Kibana에 ElastAlert 플러그인을 추가해서 규칙 관리를 할수도 있다. </p><p>규칙은 다양한 타입이 있는데, ELK 로그 스택을 운영하면서 가장 많이 활용했던 Rule타입은 아래와 같다. 전반적인 내용은 <a href="https://elastalert.readthedocs.io/en/latest/ruletypes.html" rel="external nofollow noopener noreferrer" target="_blank">공식문서</a>를 참조하면된다.</p><h2 id="cardinality-특정-필드의-값의-종류를-제한하고싶을때"><a href="#cardinality-특정-필드의-값의-종류를-제한하고싶을때" class="headerlink" title="cardinality: 특정 필드의 값의 종류를 제한하고싶을때"></a>cardinality: 특정 필드의 값의 종류를 제한하고싶을때</h2><pre><code class="yml">name: gender alerttype: cardinalityindex: customer-%Y.%m.%duse_strftime_index: truecardinality_field: &quot;gender&quot; # 제약을 두고싶은 필드# 종류의 갯수(반대로 최소값을 설정하고싶으면 min_cardinality으로 세팅)max_cardinality: 2  alert_subject: &quot;남/녀 외의 또 다른 필드값 발생!&quot;</code></pre><h2 id="metric-aggregation-특정-값의-발생-빈도를-카운팅하고싶을-때"><a href="#metric-aggregation-특정-값의-발생-빈도를-카운팅하고싶을-때" class="headerlink" title="metric_aggregation: 특정 값의 발생 빈도를 카운팅하고싶을 때"></a>metric_aggregation: 특정 값의 발생 빈도를 카운팅하고싶을 때</h2><pre><code class="yml">name: sql datatype: metric_aggregationindex: inserted-sql-data-%Y.%m.%duse_strftime_index: truemetric_agg_key: &quot;pk-field&quot; # 카운팅 하고싶은 대상 필드의 이름metric_agg_type: value_count # value가 되는 값의 count를 한다는 것을 의미, 숫자크기와 같은 다른 방식의 카운팅방법 지정도 가능하다.query_key: &quot;pk-field.keyword&quot; # 대상으로 할 value에 대한 쿼리를 넣어주면 된다 max_threshold: 1 # 내 경우 중복이 발생하면 무조건 알럿이 와야하므로 최대 갯수는 1개.doc_type: docalert_subject: &quot;pk-field에 중복된 값이 있습니다.&quot;</code></pre><h2 id="any-어떤-문서든-발생하면-바로"><a href="#any-어떤-문서든-발생하면-바로" class="headerlink" title="any: 어떤 문서든 발생하면 바로!"></a>any: 어떤 문서든 발생하면 바로!</h2><pre><code class="yml">name: Fatal Errortype: anyindex: fatal-log-%Y.%m.%duse_strftime_index: truefilter:- query:    query_string:      query: &quot;log.level: fatal&quot;alert_subject: &quot;fatal 에러가 발생했습니다.&quot;</code></pre><h2 id="frequency-특정-갯수-이상의-문서가-발생했을때"><a href="#frequency-특정-갯수-이상의-문서가-발생했을때" class="headerlink" title="frequency: 특정 갯수 이상의 문서가 발생했을때"></a>frequency: 특정 갯수 이상의 문서가 발생했을때</h2><pre><code class="yml">name: Web Error Alerttype: frequencyindex: web-log-%Y.%m.%duse_strftime_index: true# 10분간 20번의 에러 로그가 발생하면 알럿num_events: 20timeframe:  minutes: 10filter:- query:    query_string:      query: &quot;fields.level: error&quot;alert_subject: &quot;지속적인 에러가 발생했습니다.&quot;</code></pre>]]></content>
     
@@ -122,9 +230,9 @@
       <category term="ELK" scheme="https://parkdoyeon.github.io/elk/"/>
     
     
-      <category term="elk" scheme="https://parkdoyeon.github.io/tags/elk/"/>
-    
       <category term="elasticsearch" scheme="https://parkdoyeon.github.io/tags/elasticsearch/"/>
+    
+      <category term="elk" scheme="https://parkdoyeon.github.io/tags/elk/"/>
     
       <category term="elastalert" scheme="https://parkdoyeon.github.io/tags/elastalert/"/>
     
@@ -165,9 +273,9 @@
     <link href="https://parkdoyeon.github.io/python/python-2019-05-28-jekins-to-pytest/"/>
     <id>https://parkdoyeon.github.io/python/python-2019-05-28-jekins-to-pytest/</id>
     <published>2019-05-28T06:17:02.000Z</published>
-    <updated>2019-06-08T02:58:52.619Z</updated>
+    <updated>2019-06-27T15:33:15.456Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="Jekins에-파이썬-세팅하기"><a href="#Jekins에-파이썬-세팅하기" class="headerlink" title="Jekins에 파이썬 세팅하기"></a>Jekins에 파이썬 세팅하기</h1><ol><li>System Configuration &gt; Global Properties &gt; Environment Variables 체크<ul><li>이름: <code>PYTHON_PATH</code></li><li>값: <code>C:\Python\Python36;C:\Python\Python36\Scripts;</code> (젠킨스가 돌아가는 호스트 환경변수에 세팅된 파이썬 경로 입력)</li></ul></li><li>프로젝트 생성 &gt; 구성 &gt; General 탭 &gt; Build &gt; Add build step<ul><li>윈도우라면 Execute Windows Batch Command 선택하고 아래의 스크립트 추가</li><li>패키지 변경감지를 위해 파이썬 가상환경을 세팅하고 pip install 세팅<pre><code class="bash">SET PATH=%PATH%,%PYTHON_PATH%virtualenv venvcall venv/Scripts/activate.batpip install -r requirements.txtpy.test --alluredir=./allure-results # pytest의 allure report 결과 생성을 위한 디렉토리 설정deactivate</code></pre></li></ul></li></ol><h1 id="Jenkins에-Allure-Report-세팅"><a href="#Jenkins에-Allure-Report-세팅" class="headerlink" title="Jenkins에 Allure Report 세팅"></a>Jenkins에 Allure Report 세팅</h1><ol><li>플러그인 관리 &gt; 설치가능탭 &gt; Allure Jenkins Plugin 설치</li><li>프로젝트 생성 &gt; 구성 &gt; General 탭 &gt; Build &gt; 빌드 후 조치 &gt; 빌드 후 조치 추가<ul><li>Allure Report 선택 후, 위의 py.test에 파라미터로 넘긴 allure-results path를 넣어준다.<br><img src="/image/python/2019-05-28-jekins-to-pytest-1.PNG" alt="jenkins"></li></ul></li></ol>]]></content>
+    <content type="html"><![CDATA[<h1 id="Jekins에-파이썬-세팅하기"><a href="#Jekins에-파이썬-세팅하기" class="headerlink" title="Jekins에 파이썬 세팅하기"></a>Jekins에 파이썬 세팅하기</h1><ol><li>System Configuration &gt; Global Properties &gt; Environment Variables 체크<ul><li>이름: <code>PYTHON_PATH</code></li><li>값: <code>C:\Python\Python36;C:\Python\Python36\Scripts;</code> (젠킨스가 돌아가는 호스트 환경변수에 세팅된 파이썬 경로 입력)</li></ul></li><li>프로젝트 생성 &gt; 구성 &gt; General 탭 &gt; Build &gt; Add build step<ul><li>윈도우라면 Execute Windows Batch Command 선택하고 아래의 스크립트 추가</li><li>패키지 변경감지를 위해 파이썬 가상환경을 세팅하고 pip install 세팅<pre><code class="bash">SET PATH=%PATH%,%PYTHON_PATH%virtualenv venvcall venv/Scripts/activate.batpip install -r requirements.txtpy.test --alluredir=./allure-results # pytest의 allure report 결과 생성을 위한 디렉토리 설정deactivate</code></pre></li></ul></li></ol><h1 id="Jenkins에-Allure-Report-세팅"><a href="#Jenkins에-Allure-Report-세팅" class="headerlink" title="Jenkins에 Allure Report 세팅"></a>Jenkins에 Allure Report 세팅</h1><ol><li>플러그인 관리 &gt; 설치가능탭 &gt; Allure Jenkins Plugin 설치</li><li>프로젝트 생성 &gt; 구성 &gt; General 탭 &gt; Build &gt; 빌드 후 조치 &gt; 빌드 후 조치 추가<ul><li>Allure Report 선택 후, 위의 py.test에 파라미터로 넘긴 allure-results path를 넣어준다.<br><img src="/image/python/2019-05-28-jekins-to-pytest-1.PNG" alt="jenkins"></li></ul></li></ol><h1 id="Jenkins-빌드-실행하기"><a href="#Jenkins-빌드-실행하기" class="headerlink" title="Jenkins 빌드 실행하기"></a>Jenkins 빌드 실행하기</h1><p>빌드를 실행하면 대시보드에 다음과 같은 그래프가 생성된다. 그래프에는 테스트 성공케이스와 실패 케이스가 표시되어있다. 빌드 히스토리에는 케이스별 Allure-Report를 조회할 수 있는 아이콘이 생긴다.</p><p><img src="/image/python/2019-05-28-jekins-to-pytest-3.PNG" alt="jenkins"></p><h1 id="Allure-Report"><a href="#Allure-Report" class="headerlink" title="Allure Report"></a>Allure Report</h1><p>Allure Report 페이지에 들어가면 더 자세한 테스트 현황 그래프가 조회된다. Suites에 들어가면 케이스별 테스트 정보가 확인된다.</p><p>작성했던 테스트 코드 내에서 저장한 스크린샷도 테스트 함수 단위로 함께 첨부된 것을 볼 수 있다.</p>]]></content>
     
     <summary type="html">
     
@@ -273,18 +381,18 @@
       <category term="Dev-Env" scheme="https://parkdoyeon.github.io/dev-env/"/>
     
     
-      <category term="Hyper-V" scheme="https://parkdoyeon.github.io/tags/hyper-v/"/>
-    
       <category term="network" scheme="https://parkdoyeon.github.io/tags/network/"/>
+    
+      <category term="Hyper-V" scheme="https://parkdoyeon.github.io/tags/hyper-v/"/>
     
   </entry>
   
   <entry>
-    <title>Python - 독립실행환경 virtualenv 만들기</title>
+    <title>Python 독립실행환경 virtualenv 만들기</title>
     <link href="https://parkdoyeon.github.io/python/python-2019-04-18-python-venv/"/>
     <id>https://parkdoyeon.github.io/python/python-2019-04-18-python-venv/</id>
     <published>2019-04-18T09:32:00.000Z</published>
-    <updated>2019-06-08T02:58:52.619Z</updated>
+    <updated>2019-06-27T15:33:15.456Z</updated>
     
     <content type="html"><![CDATA[<p>virtaulenv를 통해 활상화된 가상환경 아래에서 개발하면,<br>파이썬 실행환경을 독립적으로 관리할 수 있는 것은 물론이고, 모듈관리를 체계적으로 할 수 있다.</p><p>pip 인스톨을 통해 virtualenv를 설치하고,<br>해당 프로젝트 경로에서 virtualenv 명령어를 통해 가상환경 이름을 명명하면<br>해당 디렉토리에 가상환경 디렉토리가 생성된다.</p><pre><code class="bash">pip3 install virtualenvcd [프로젝트 폴더]virtualenv venv</code></pre><h1 id="가상환경-활성화하기"><a href="#가상환경-활성화하기" class="headerlink" title="가상환경 활성화하기"></a>가상환경 활성화하기</h1><p>윈도우와 리눅스 활성화 방식이 조금씩 다르다. 위에가 윈도우고 아래가 리눅스 실행 명령어이다. </p><pre><code class="bash">venv/scripts/activatesource venv/bin/activate</code></pre><h1 id="비활성화-하기"><a href="#비활성화-하기" class="headerlink" title="비활성화 하기"></a>비활성화 하기</h1><pre><code class="bash">deactivate</code></pre><h1 id="패키지-정리-파일-만들기"><a href="#패키지-정리-파일-만들기" class="headerlink" title="패키지 정리 파일 만들기"></a>패키지 정리 파일 만들기</h1><pre><code class="bash">pip freeze &gt; requirement.txt</code></pre>]]></content>
     
@@ -476,121 +584,6 @@
       <category term="machine-learning" scheme="https://parkdoyeon.github.io/tags/machine-learning/"/>
     
       <category term="svm" scheme="https://parkdoyeon.github.io/tags/svm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>SVM - 1. yi(x·w+b) &gt;= 1 도출하기</title>
-    <link href="https://parkdoyeon.github.io/ml/ml-2019-03-19-svm/"/>
-    <id>https://parkdoyeon.github.io/ml/ml-2019-03-19-svm/</id>
-    <published>2019-03-19T06:09:00.000Z</published>
-    <updated>2019-06-08T02:58:52.618Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="/image/ml/2019-03-19-svm-1.jpeg" alt="그래프"></p><p>위 그래프는 두개의 그룹을 나누는 가장 최단의 경계가 되는 서포트 벡터 라인 두개와,<br>두 그룹의 경계가 되는 점선라인(dicision boundary)을 표현하고 있다. </p><p>여기서  dicision boundary를 통과하는 범선 벡터 w와(파란색), 특정할 수 없는 어떤 벡터 u(주황색)가 있다.</p><p><img src="/image/ml/2019-03-19-svm-2.png" alt="정의"></p><p>이 둘의 내적(dot product) 값은 상수 c보다 크다고 할 수 있다고 했을때,<br>c를 이항하여 b(c=-b)로 치환하면 다음과 같다.</p><p><img src="/image/ml/2019-03-19-svm-3.png" alt="수식1"><br><img src="/image/ml/2019-03-19-svm-4.png" alt="수식2"></p><p>여기서 벡터 u가 decision boundary에 위치한 벡터 X중 하나라고 했을 때,<br>w와 X의 정의에 따라 직교하는 벡터의 내적은 0이 되므로, 아래와 같다.</p><p><img src="/image/ml/2019-03-19-svm-5.png" alt="수식3"></p><p>나아가, w와 X의 내적과 좌표계상의 위치를 조정하는 편향값(bias, Decision Boundary 그래프가 원점에서 이동한 거리)인 상수 b를 더하고,</p><p>그 합이 0이되면 벡터 X는 decision boundary에 해당하는 좌표 (x, y)값이라고 할 수 있다.<br>(다시말해, 상수 b가 0이라면 decision boundary는 원점을 지나는 그래프가 된다.)</p><p><img src="/image/ml/2019-03-19-svm-6.png" alt="수식4"></p><p>여기에 두가지 가정을 추가한다.<br>두가지 값이 1 이상이면 positive class로, -1 이하이면 negative vector class로 분류한다는 것이다.<br>값이 0이되는 식이 decision boundary의 조건식이라면,<br>값이 1, 혹은 -1이 되는 식은 각 클래스의 값과 최단거리 그래프가 되는 support vector 조건식이 된다.</p><p><img src="/image/ml/2019-03-19-svm-7.png" alt="가정"></p><p>그러나 이런 가정만으로 어떤 수학적인 법칙을 찾기에는 어려움이 있다. 이를 해소하기위해 각 항에 class값(+1, -1)인 yi를 곱한다.</p><p><img src="/image/ml/2019-03-19-svm-8.jpeg" alt="정의"></p><p>이렇게 곱셈을 하면 두개의 다른 식이 하나의 부등식으로 도출된다. (마이너스 곱을 하면 우항의 값이 플러스로 변형되고 부등호의 방향이 바뀐다)</p><p><strong>도움이 됐던 자료/강의</strong></p><blockquote><p>MIT 6.034 Artificial Intelligence, Fall 2010:  <a href="https://www.youtube.com/watch?v=_PwhiWxHK8o" rel="external nofollow noopener noreferrer" target="_blank">https://www.youtube.com/watch?v=_PwhiWxHK8o</a></p><p>Chapter 3: Support Vector machine with Math: <a href="https://medium.com/deep-math-machine-learning-ai/chapter-3-support-vector-machine-with-math-47d6193c82be" rel="external nofollow noopener noreferrer" target="_blank">https://medium.com/deep-math-machine-learning-ai/chapter-3-support-vector-machine-with-math-47d6193c82be</a></p><p>초짜 대학원생의 입장에서 이해하는 Support Vector Machine (1): <a href="http://jaejunyoo.blogspot.com/2018/01/support-vector-machine-1.html" rel="external nofollow noopener noreferrer" target="_blank">http://jaejunyoo.blogspot.com/2018/01/support-vector-machine-1.html</a></p><p>서포트 벡터 머신 (Support Vector Machine): <a href="https://ratsgo.github.io/machine%20learning/2017/05/23/SVM/" rel="external nofollow noopener noreferrer" target="_blank">https://ratsgo.github.io/machine%20learning/2017/05/23/SVM/</a></p></blockquote>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;img src=&quot;/image/ml/2019-03-19-svm-1.jpeg&quot; alt=&quot;그래프&quot;&gt;&lt;/p&gt;
-&lt;p&gt;위 그래프는 두개의 그룹을 나누는 가장 최단의 경계가 되는 서포트 벡터 라인 두개와,&lt;br&gt;두 그룹의 경계가 되는 점선라인(dicisio
-      
-    
-    </summary>
-    
-      <category term="ML" scheme="https://parkdoyeon.github.io/ml/"/>
-    
-    
-      <category term="machine-learning" scheme="https://parkdoyeon.github.io/tags/machine-learning/"/>
-    
-      <category term="svm" scheme="https://parkdoyeon.github.io/tags/svm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>insert into select 사용하기</title>
-    <link href="https://parkdoyeon.github.io/sql/sql-2019-03-14-insertselect/"/>
-    <id>https://parkdoyeon.github.io/sql/sql-2019-03-14-insertselect/</id>
-    <published>2019-03-14T09:14:00.000Z</published>
-    <updated>2019-06-08T02:58:52.620Z</updated>
-    
-    <content type="html"><![CDATA[<p>다음과 같은 상황이 있다.</p><ol><li>table_1의 특정 컬럼값(Coupon)을 table_2에 인서트하고 싶을때.</li><li>table_2에 다른 컬럼(RegDate)이 있어서 고정된 값(‘2019-03-04’)을 넣어줘야 할때.</li><li>인서트하는 pk 컬럼(AccountNo)이 있어서 인서트 row마다 값을 임의로 지정해줘야 할때. (table_2 인덱스 넘버에서 1씩 추가 하는 것으로지정)</li></ol><p>이때 서브쿼리처럼 조회 쿼리를 생성해서 insert할 수 있다.</p><pre><code class="SQL">INSERT INTO [table_2]    (AccountNo,    Coupon,    RegDate)    (SELECT        (SELECT MAX(Seq) FROM [table_2])+(ROW_NUMBER() OVER(Order BY @@identity)),        Coupon,        &#39;2019-03-04&#39;    FROM table_1)</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;다음과 같은 상황이 있다.&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;table_1의 특정 컬럼값(Coupon)을 table_2에 인서트하고 싶을때.&lt;/li&gt;
-&lt;li&gt;table_2에 다른 컬럼(RegDate)이 있어서 고정된 값(‘2019-03-04’)을 넣어줘야 
-      
-    
-    </summary>
-    
-      <category term="SQL" scheme="https://parkdoyeon.github.io/sql/"/>
-    
-    
-      <category term="mssql" scheme="https://parkdoyeon.github.io/tags/mssql/"/>
-    
-      <category term="insert" scheme="https://parkdoyeon.github.io/tags/insert/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>기존 테이블에 PK키 추가하기</title>
-    <link href="https://parkdoyeon.github.io/sql/sql-2019-04-22-addpk/"/>
-    <id>https://parkdoyeon.github.io/sql/sql-2019-04-22-addpk/</id>
-    <published>2019-03-14T09:14:00.000Z</published>
-    <updated>2019-06-08T02:58:52.620Z</updated>
-    
-    <content type="html"><![CDATA[<p>mssql에서 PK를 추가하려면 기존의 PK를 삭제해주고 재생성해줘야한다.<br>mytable에 PK을 하나 더 추가하려고 PK 추가 구문을 아래와 같이 호출하면,<br>아래와 같이 이미 기본키가 정의되었다는 에러메세지가 나오면서 실패한다.</p><pre><code class="SQL">ALTER TABLE [dbo].[mytable] ADD  CONSTRAINT [PK_mytable] PRIMARY KEY CLUSTERED (    [otherPKColumn] ASC)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]GO</code></pre><pre><code class="SQL">메시지 1779, 수준 16, 상태 0, 줄 9테이블 &#39;mytable&#39;에 이미 기본 키가 정의되어 있습니다.메시지 1750, 수준 16, 상태 0, 줄 9제약 조건을 만들 수 없습니다. 이전 오류를 참조하십시오.</code></pre><p>때문에 아래 호출을 통해 기본키를 정의한 PK 테이블 이름을 확인한다음, </p><pre><code class="SQL">sp_helpconstraint [mytable]</code></pre><pre><code class="SQL">constraint_type constraint_name delete_action   update_action   status_enabled  status_for_replication  constraint_keysPRIMARY KEY(clustered)  PK_mytable  (n/a)  (n/a)  (n/a)  (n/a) Seq</code></pre><p>Drop문으로 날려주고 재생성해야한다.</p><pre><code class="SQL">ALTER TABLE dbo.mytable DROP CONSTRAINT PK_mytableALTER TABLE [dbo].[mytable] ADD  CONSTRAINT [PK_mytable] PRIMARY KEY CLUSTERED (    [Seq] ASC,    [otherPKColumn] ASC)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]GO</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;mssql에서 PK를 추가하려면 기존의 PK를 삭제해주고 재생성해줘야한다.&lt;br&gt;mytable에 PK을 하나 더 추가하려고 PK 추가 구문을 아래와 같이 호출하면,&lt;br&gt;아래와 같이 이미 기본키가 정의되었다는 에러메세지가 나오면서 실패한다.&lt;/p
-      
-    
-    </summary>
-    
-      <category term="SQL" scheme="https://parkdoyeon.github.io/sql/"/>
-    
-    
-      <category term="mssql" scheme="https://parkdoyeon.github.io/tags/mssql/"/>
-    
-      <category term="insert" scheme="https://parkdoyeon.github.io/tags/insert/"/>
-    
-      <category term="pk" scheme="https://parkdoyeon.github.io/tags/pk/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ElasticSearch - 403 index read-only 에러가 발생했을 때</title>
-    <link href="https://parkdoyeon.github.io/elk/elk-2019-03-10-es-readonly-err/"/>
-    <id>https://parkdoyeon.github.io/elk/elk-2019-03-10-es-readonly-err/</id>
-    <published>2019-03-10T09:24:00.000Z</published>
-    <updated>2019-06-08T02:58:52.617Z</updated>
-    
-    <content type="html"><![CDATA[<p>어느날 ElasticSearch index에 데이터가 제대로 들어오지 않는 것같아서 logstash의 log를 열어보니 다음과 같은 로그가 여러개 발생해 있었다.</p><pre><code class="bash">logstash.outputs.elasticsearch] retrying failed action with response code: 403 ({&quot;type&quot;=&gt;&quot;cluster_block_exception&quot;, &quot;reason&quot;=&gt;&quot;blocked by: [FORBIDDEN/12/index read-only / allow delete (api)]</code></pre><p>그래서 찾아보니 이런 내용의 글이 있었다.</p><p>(원문 페이지: <a href="https://discuss.elastic.co/t/forbidden-12-index-read-only-allow-delete-api/110282" rel="external nofollow noopener noreferrer" target="_blank">https://discuss.elastic.co/t/forbidden-12-index-read-only-allow-delete-api/110282</a>)</p><p>Edit: i think my problem is low storage. just check your storage first.</p><p>when it’s low, kibana auto changes its config to read-only mode. to deal with it, go to your dev tools console and run below command:</p><pre><code class="curl">PUT .kibana/_settings{    &quot;index&quot;: {        &quot;blocks&quot;: {        &quot;read_only_allow_delete&quot;: &quot;false&quot;        }    }}</code></pre><p>즉, ES에 용량대비 데이터가 지나치가 많이 쌓이면 키바나에서 데이터를 read-only모드로 바꾼다는 내용이다.<br>실제로 쿼리를 날리니까 문제는 해결됐다. 원문을 잘 읽어보면 ‘.kibana’ 인덱스 자체를 날리고 해결했다는 사람도 있는데,<br>대시보드 세팅이 매우 많이 진행 되었기 때문에 그럴순 없었다. (문제를 해결하는 적절한 방법 같지도 않다.)</p><p>찜찜한 마음에 더 찾아보니,<br>kibana가 설치가 되어있지 않은 ES에서도 디스크 용량이 가득차면 ES내부 옵션에서 read-only로 바뀐다고한다.<br>이럴땐 .kibana 인덱스 말고 전체(_all) 혹은 특정 인덱스 대상으로 아래와 같이 쿼리를 날리면 해결된다.</p><pre><code class="curl">PUT _all/_settings{    &quot;index&quot;: {        &quot;blocks&quot;: {        &quot;read_only_allow_delete&quot;: &quot;false&quot;        }    }}</code></pre><p>kibana 내부 옵션만으로도 데이터 전달이 되지 않는 것을 보면, ES의 insert과정에서 키바나 설정과 동기화되는 요소가 있는 것 같다.</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;어느날 ElasticSearch index에 데이터가 제대로 들어오지 않는 것같아서 logstash의 log를 열어보니 다음과 같은 로그가 여러개 발생해 있었다.&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;logstash.outputs.e
-      
-    
-    </summary>
-    
-      <category term="ELK" scheme="https://parkdoyeon.github.io/elk/"/>
-    
-    
-      <category term="elasticsearch" scheme="https://parkdoyeon.github.io/tags/elasticsearch/"/>
-    
-      <category term="err" scheme="https://parkdoyeon.github.io/tags/err/"/>
     
   </entry>
   

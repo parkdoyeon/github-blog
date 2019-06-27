@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang>
+  <head><meta name="generator" content="Hexo 3.8.0">
+    
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta name="google-site-verification" content="ZPpg1XKRwaiB4lPx6SawBAA96ROVlVBmZ8s6pigFEVc">
+
+
+
+<meta name="naver-site-verification" content="a31e494cb7e78d5a64696ea234dc6c9006b251ff">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://parkdoyeon.github.io/elk/elk-2019-06-18-es-version/">
+
+
+  <meta property="og:title" content="ElasticSearch - unassigned shard 문제 해결 (2) 노드간 버전문제">
+
+
+
+
+  <meta name="description" content="ElasticSearch - unassigned shard 문제 해결 (2) 노드간 버전문제">
+  <meta property="og:description" content="ElasticSearch - unassigned shard 문제 해결 (2) 노드간 버전문제">
+
+
+
+
+
+  <meta name="keywords" content="elasticsearch,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Park Doyeon">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=">
+
+
+
+<link rel="canonical" href="https://parkdoyeon.github.io/elk/elk-2019-06-18-es-version/">
+
+
+<meta name="description" content="문제Elasticsearch 홈페이지에서 공식 docker 이미지를 받아 새로운 노드가 되는 서버를 구성했는데,그새 버전이 올라서 내가 사용하던 6.7.0이아닌 6.7.1이 설치되었다. 즉, 마스터를 포함한 두개의 서버에서는 6.7.0 이 실행되고, 새로 추가한 서버에서만 6.7.1의 도커 이미지가 도는 상태였다.버전간 차이는 끝 자리수 +1이니 변화도 미">
+<meta name="keywords" content="elasticsearch">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ElasticSearch - unassigned shard 문제 해결 (2) 노드간 버전문제">
+<meta property="og:url" content="https://parkdoyeon.github.io/elk/elk-2019-06-18-es-version/index.html">
+<meta property="og:site_name" content="Park Doyeon">
+<meta property="og:description" content="문제Elasticsearch 홈페이지에서 공식 docker 이미지를 받아 새로운 노드가 되는 서버를 구성했는데,그새 버전이 올라서 내가 사용하던 6.7.0이아닌 6.7.1이 설치되었다. 즉, 마스터를 포함한 두개의 서버에서는 6.7.0 이 실행되고, 새로 추가한 서버에서만 6.7.1의 도커 이미지가 도는 상태였다.버전간 차이는 끝 자리수 +1이니 변화도 미">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-06-27T15:33:15.454Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ElasticSearch - unassigned shard 문제 해결 (2) 노드간 버전문제">
+<meta name="twitter:description" content="문제Elasticsearch 홈페이지에서 공식 docker 이미지를 받아 새로운 노드가 되는 서버를 구성했는데,그새 버전이 올라서 내가 사용하던 6.7.0이아닌 6.7.1이 설치되었다. 즉, 마스터를 포함한 두개의 서버에서는 6.7.0 이 실행되고, 새로 추가한 서버에서만 6.7.1의 도커 이미지가 도는 상태였다.버전간 차이는 끝 자리수 +1이니 변화도 미">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141653278-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-141653278-1');
+  </script>
+
+
+
+
+
+  
+
+
+    <title> ElasticSearch - unassigned shard 문제 해결 (2) 노드간 버전문제 - Park Doyeon </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </head>
+
+  <body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Park Doyeon</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+      </header>
+
+      <div id="post-categories"><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/csharp/">C#</a></li><li class="category-list-item"><a class="category-list-link" href="/dev-env/">Dev-Env</a></li><li class="category-list-item"><a class="category-list-link" href="/docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/elk/">ELK</a></li><li class="category-list-item"><a class="category-list-link" href="/ml/">ML</a></li><li class="category-list-item"><a class="category-list-link" href="/python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/sql/">SQL</a></li><li class="category-list-item"><a class="category-list-link" href="/web/">Web</a></li></ul>
+      </div>
+
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          ElasticSearch - unassigned shard 문제 해결 (2) 노드간 버전문제
+        
+      </h1>
+
+      <time class="post-time">
+          Jun 18 2019
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <h1 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h1><p>Elasticsearch 홈페이지에서 공식 docker 이미지를 받아 새로운 노드가 되는 서버를 구성했는데,<br>그새 버전이 올라서 내가 사용하던 6.7.0이아닌 6.7.1이 설치되었다.</p>
+<p>즉, 마스터를 포함한 두개의 서버에서는 6.7.0 이 실행되고, 새로 추가한 서버에서만 6.7.1의 도커 이미지가 도는 상태였다.<br>버전간 차이는 끝 자리수 +1이니 변화도 미미하고,<br>실제로 실행을 해도 크게 에러메세지나 경고메세지가 발생하지 않아서 하루정도 가만히 두고 있었다.</p>
+<h1 id="원인"><a href="#원인" class="headerlink" title="원인"></a>원인</h1><p>그런데 추가한 노드로 샤드가 assign이 되지 않아서, 이유를 확인하려고 쿼리를 날렸다. </p>
+<pre><code class="curl">GET /_cluster/allocation/explain</code></pre>
+<p>위 쿼리를 날리면 shard정보와 cluster_info, 그리고 node 정보가 출력이 된다.<br>각 노드별 assign이 안되는 사유가 출력되고, 그 출력 사유가 실제 usassign에 있어서 얼만큼의 가중치(weight)를 갖는지도 표시된다. 나의 경우 node_version이 문제였고, 새로 세팅한 6.7.1의 버전이 마스터 노드의 버전과 상이하여 샤딩이 되지 않았다.</p>
+<pre><code class="json">GET /_cluster/allocation/explain
+// 생략
+&quot;nodeuuid2&quot;: {
+            &quot;final_decision&quot;: &quot;NO&quot;
+            &quot;decisions&quot;: [
+                {
+                    &quot;decider&quot; : &quot;node_version&quot;,
+                    &quot;decision&quot; : &quot;NO&quot;,
+                    &quot;explanation&quot; : &quot;target node version [6.7.0] is older than source node version [6.7.1]&quot;
+                }
+            ],
+            &quot;weight&quot;: 1.3
+        }</code></pre>
+<h1 id="해결"><a href="#해결" class="headerlink" title="해결"></a>해결</h1><p>버전을 다시 바꾸어서 ES를 실행시키자, 별도의 액션없이 천천히 샤딩이 되면서 서비스가 정상화 되었다.<br>정상이 된 샤드는 allocation explain쿼리에 다음과 같이 응답한다.</p>
+<pre><code class="json">GET /_cluster/allocation/explain
+{
+  &quot;error&quot;: {
+    &quot;root_cause&quot;: [
+      {
+        &quot;type&quot;: &quot;illegal_argument_exception&quot;,
+        &quot;reason&quot;: &quot;unable to find any unassigned shards to explain [ClusterAllocationExplainRequest[useAnyUnassignedShard=true,includeYesDecisions?=false]&quot;
+      }
+    ],
+    &quot;type&quot;: &quot;illegal_argument_exception&quot;,
+    &quot;reason&quot;: &quot;unable to find any unassigned shards to explain [ClusterAllocationExplainRequest[useAnyUnassignedShard=true,includeYesDecisions?=false]&quot;
+  },
+  &quot;status&quot;: 400
+}</code></pre>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+        <div class="post-tags">
+          
+            <a href="/tags/elasticsearch/">elasticsearch</a>
+          
+        </div>
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/docker/docker-2019-06-18-docker-logrotate/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Docker 로그로 서버 용량이 꽉찼을 때</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="/web/web-2019-06-07-mathjax/">
+        <span class="next-text nav-default">hexo에 mathjax 적용하기</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+    <!--<div style="text-align:center;">
+        <button class="btn" id="load-disqus" onclick="disqus.load();">load Disqus review</button>
+    </div>-->
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+    2019
+    <span class="footer-author">Park Doyeon.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> and <a class="theme-link" href="https://github.com/parkdoyeon">Me</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+<script type="text/javascript">
+  var disqus_shortname = 'parkdoyeon';
+  var disqus_identifier = 'elk/elk-2019-06-18-es-version/';
+  var disqus_url = 'https://parkdoyeon.github.io/elk/elk-2019-06-18-es-version/index.html';
+
+  
+  var disqus_config = function () {
+      this.page.url = disqus_url;
+      this.page.identifier = disqus_identifier;
+  };
+  
+  (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+  
+  
+  // var disqus = {
+  //   load : function disqus(){
+  //       if(typeof DISQUS !== 'object') {
+  //         (function () {
+  //         var s = document.createElement('script'); s.async = true;
+  //         s.type = 'text/javascript';
+  //         s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  //         (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+  //         }());
+  //         $('#load-disqus').remove(); ///Delete Button
+  //       }
+  //   }
+  // }
+
+</script>
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script src="/js/src/theme.js?v="></script>
+<script src="/js/src/bootstrap.js?v="></script>
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+<script src="/js/src/highlight.pack.js?v="></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.7.0/highlightjs-line-numbers.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', (event) => {
+  document.querySelectorAll('figure.highlight').forEach((block) => {
+    hljs.highlightBlock(block);
+  });
+});
+hljs.initHighlightingOnLoad();
+hljs.initLineNumbersOnLoad();
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </body>
+</html>

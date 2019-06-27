@@ -1,0 +1,66 @@
+---
+title: Resume
+date: 2019-05-28 15:12:03
+comments: false
+---
+
+안녕하세요, 올해로 3년차가 된 서버 개발자 박도연입니다.
+웹 기획자로 커리어를 시작해 서버개발을 하고 있습니다.
+좋은 웹사이트를 만들기 위한 모든 기술에 관심이 있습니다.
+
+
+------------
+# Career
+
+#### 2017 07. ~ Current. 웹젠 포털개발팀 공채
+
+**통합테스트 인프라 구축** <sub>2019 03. ~ 진행중</sub>
+  Open Source [Allure-Report](https://github.com/allure-framework/allure2) Korean Translation Contribution
+  ```Docker, Linux, Jenkins, Python (Pytest, Selenium)```
+
+**국내 포털사이트 전체 로그 모니터링/알럿 시스템 구축** <sub>2018 08. ~ 2019 01.</sub>
+  서비스 구축, 국내 웹서버 약 150대 kafka서버로 연결
+  Fatal/Error 레벨 알럿 및 로그 정보(요청시간, 에러 내용과 빈도)에 따른 알럿 시스템 구성
+  관련 모니터링 서비스 세팅(Kafka Manager, Kibana, 접근 권한관리 위한 NginX Proxy 세팅 등)
+  ```Docker, Linux, Kafka, ElasticSearch, Kibana, Logstash, Filebeat, ElastAlert, NginX, Ldap```
+
+**[게임 사이트](https://r2.webzen.co.kr/main) 리뉴얼** <sub>2018 02. ~ 2018 08.</sub>
+  디자인 개편 및 일부 소스 리팩토링, 메뉴 추가, 백오피스 구축
+  ```.NET Framework 6.4.2, .NET Web API, JQuery, Gitlab CI```
+
+**PWA Web Push System 구축** <sub>2017 12. ~ 2018 02.</sub>
+  윈도우 서비스를 통해 정해진 시간에 지정된 내용의 알럿을 클라이언트 웹에 발송하는 시스템 구축
+  ```Google Firebase, JavaScript, Quartz Window Service, .NET Framework```
+
+**사내용 게임 동접자 수 확인 IOS 앱 개발** <sub>2017 10. ~ 2017 12.</sub>
+  웹뷰 OAuth 2.0 연동을 통한 접근관리 개발
+  ```Swift 4.0, OAuth 2.0, Realm Database, Google Firebase```
+
+**국내 게임사이트 이벤트 페이지 서버 개발** <sub>2017 11. ~ 진행중</sub>
+  출석체크 아이템 지급 이벤트, 룰렛 이벤트를 통한 게임 아이템 지급, 웹 미니게임 점수 암호화 등
+  ```.NET Framework, Javascript, JQuery```
+
+**회의실예약, 구내식당 메뉴 확인 챗봇 "Zenny" 개발** <sub>2017 07. ~ 2018 09.</sub>
+  Python Django API를 통해 자연어 처리 기술을 활용한 대화형 챗봇 시스템 구축
+  ```Node.js, Python Django, NLP, .Net Web API, Mongo DB, Ldap```
+
+
+#### 2016 02. - 2016. 08 Midas IT. 특채
+회사 홍보 사이트 기획, 채용 기획
+
+------------
+# Other Experiences
+
+마이다스IT 자연과학/철학 논문 공모전 입상 <sub>2016 02.</sub>
+동국대학교 양자물리반도체연구소(QSRC) 한영/영한 번역 조교<sub>2015 01. - 2016. 02</sub>
+대홍기획 마케팅 기획안 공모전 대상<sub>2015 09.</sub>
+제일기획 마케팅 기획안 공모전 동상<sub>2015 08.</sub>
+롯데그룹 마케팅 기획안 공모전 동상<sub>2014 11.</sub>
+
+------------
+# Education
+
+**동국대학교 학사 영어통번역/철학 복수전공**<sub>2012. 03 - 2016. 02.</sub>
+
+**국비지원 Java 개발자 양성과정**<sub>2016 08. - 2017. 03.</sub>
+    점심메뉴 추천/근처 식당안내 안드로이드 앱 "20초 점심" 개발, 안드로이드 스토어 등록

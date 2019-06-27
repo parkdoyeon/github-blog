@@ -20,22 +20,22 @@
 
 
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://parkdoyeon.github.io/elk/elk-2018-01-08-logstash-multiline/">
+<meta property="og:url" content="https://parkdoyeon.github.io/elk/elk-2019-06-27-es-replica/">
 
 
-  <meta property="og:title" content="Logstash - 멀티라인 세팅하기">
-
-
-
-
-  <meta name="description" content="Logstash - 멀티라인 세팅하기">
-  <meta property="og:description" content="Logstash - 멀티라인 세팅하기">
+  <meta property="og:title" content="ElasticSearch - unassigned shard 문제 해결 (3) replica 숫자가 부적절할때">
 
 
 
 
+  <meta name="description" content="ElasticSearch - unassigned shard 문제 해결 (3) replica 숫자가 부적절할때">
+  <meta property="og:description" content="ElasticSearch - unassigned shard 문제 해결 (3) replica 숫자가 부적절할때">
 
-  <meta name="keywords" content="logstash,filebeat,elk,logger,">
+
+
+
+
+  <meta name="keywords" content="elasticsearch,">
 
 
 
@@ -50,21 +50,21 @@
 
 
 
-<link rel="canonical" href="https://parkdoyeon.github.io/elk/elk-2018-01-08-logstash-multiline/">
+<link rel="canonical" href="https://parkdoyeon.github.io/elk/elk-2019-06-27-es-replica/">
 
 
-<meta name="description" content="hostseditValue type is uriDefault value is [//127.0.0.1]Sets the host(s) of the remote instance. If given an array it will load balance requests across the hosts specified in the hosts parameter. Reme">
-<meta name="keywords" content="logstash,filebeat,elk,logger">
+<meta name="description" content="엘라스틱서치 테스트 환경에서 일어난 일이다. 마스터노드 1대만 단독으로 서비스가 올라가있는데, 어느 시점부터(아마도 es 버전을 올린 시점부터) index health status가 yellow로 바뀌었다. 확인해보니, 모든 인덱스에서 replica shard만 할당이 되지 못하고 있었다. 이유를 쿼리했더니 동일한 샤드가 있는 곳엔 샤드할당이 되지않는다는">
+<meta name="keywords" content="elasticsearch">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Logstash - 멀티라인 세팅하기">
-<meta property="og:url" content="https://parkdoyeon.github.io/elk/elk-2018-01-08-logstash-multiline/index.html">
+<meta property="og:title" content="ElasticSearch - unassigned shard 문제 해결 (3) replica 숫자가 부적절할때">
+<meta property="og:url" content="https://parkdoyeon.github.io/elk/elk-2019-06-27-es-replica/index.html">
 <meta property="og:site_name" content="Park Doyeon">
-<meta property="og:description" content="hostseditValue type is uriDefault value is [//127.0.0.1]Sets the host(s) of the remote instance. If given an array it will load balance requests across the hosts specified in the hosts parameter. Reme">
+<meta property="og:description" content="엘라스틱서치 테스트 환경에서 일어난 일이다. 마스터노드 1대만 단독으로 서비스가 올라가있는데, 어느 시점부터(아마도 es 버전을 올린 시점부터) index health status가 yellow로 바뀌었다. 확인해보니, 모든 인덱스에서 replica shard만 할당이 되지 못하고 있었다. 이유를 쿼리했더니 동일한 샤드가 있는 곳엔 샤드할당이 되지않는다는">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-08T02:58:52.616Z">
+<meta property="og:updated_time" content="2019-06-27T15:33:15.454Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Logstash - 멀티라인 세팅하기">
-<meta name="twitter:description" content="hostseditValue type is uriDefault value is [//127.0.0.1]Sets the host(s) of the remote instance. If given an array it will load balance requests across the hosts specified in the hosts parameter. Reme">
+<meta name="twitter:title" content="ElasticSearch - unassigned shard 문제 해결 (3) replica 숫자가 부적절할때">
+<meta name="twitter:description" content="엘라스틱서치 테스트 환경에서 일어난 일이다. 마스터노드 1대만 단독으로 서비스가 올라가있는데, 어느 시점부터(아마도 es 버전을 올린 시점부터) index health status가 yellow로 바뀌었다. 확인해보니, 모든 인덱스에서 replica shard만 할당이 되지 못하고 있었다. 이유를 쿼리했더니 동일한 샤드가 있는 곳엔 샤드할당이 되지않는다는">
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=">
@@ -104,7 +104,7 @@
   
 
 
-    <title> Logstash - 멀티라인 세팅하기 - Park Doyeon </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <title> ElasticSearch - unassigned shard 문제 해결 (3) replica 숫자가 부적절할때 - Park Doyeon </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   </head>
 
   <body>
@@ -119,10 +119,10 @@
             <ul id="menu-top" class="nav-top-items">
                 
                     <li class="menu-item">
-                        <a href="/resume">
+                        <a href="/about">
                             
                             
-                                Resume
+                                About
                             
                         </a>
                     </li>
@@ -144,12 +144,12 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          Logstash - 멀티라인 세팅하기
+          ElasticSearch - unassigned shard 문제 해결 (3) replica 숫자가 부적절할때
         
       </h1>
 
       <time class="post-time">
-          Oct 28 2018
+          Jun 27 2019
       </time>
     </header>
 
@@ -157,8 +157,31 @@
 
     
             <div class="post-content">
-            <p>hostsedit<br>Value type is uri<br>Default value is [//127.0.0.1]<br>Sets the host(s) of the remote instance. If given an array it will load balance requests across the hosts specified in the hosts parameter. Remember the http protocol uses the http address (eg. 9200, not 9300). “127.0.0.1” [“127.0.0.1:9200”,”127.0.0.2:9200”] [“<a href="http://127.0.0.1&quot;]" rel="external nofollow noopener noreferrer" target="_blank">http://127.0.0.1&quot;]</a> [“<a href="https://127.0.0.1:9200&quot;]" rel="external nofollow noopener noreferrer" target="_blank">https://127.0.0.1:9200&quot;]</a> [“<a href="https://127.0.0.1:9200/mypath&quot;]" rel="external nofollow noopener noreferrer" target="_blank">https://127.0.0.1:9200/mypath&quot;]</a> (If using a proxy on a subpath) It is important to exclude dedicated master nodes from the hosts list to prevent LS from sending bulk requests to the master nodes. So this parameter should only reference either data or client nodes in Elasticsearch.</p>
-<p>Any special characters present in the URLs here MUST be URL escaped! This means # should be put in as %23 for instance.</p>
+            <p>엘라스틱서치 테스트 환경에서 일어난 일이다. 마스터노드 1대만 단독으로 서비스가 올라가있는데, 어느 시점부터(아마도 es 버전을 올린 시점부터) index health status가 yellow로 바뀌었다. 확인해보니, 모든 인덱스에서 replica shard만 할당이 되지 못하고 있었다. 이유를 쿼리했더니 동일한 샤드가 있는 곳엔 샤드할당이 되지않는다는 에러메세지가 나왔다.</p>
+<pre><code class="json">GET /_cluster/allocation/explain
+{
+    //...생략
+    cannot allocate because allocation is not permitted to any of the nodes that hold an in-sync shard copy
+    //...생략
+}</code></pre>
+<p>좀 더 찾아보니, 스택오버플로우에 <a href="https://stackoverflow.com/questions/37302611/elasticsearch-doesnt-allow-to-allocate-unassigned-shard" rel="external nofollow noopener noreferrer" target="_blank">나와 비슷한 상황</a>인 사람이 있었다. replica는 말그대로 복제 샤드이기 때문에 동일한 노드에 배치될 수 없고, 또 다른 노드에 배치되어야 한다는 답변이 있었다. 즉, 복제샤드가 필요하면 노드를 추가 해야하고, 아니면 복제샤드 갯수 설정을 더 낮게 바꿔야한다는 것이다. </p>
+<p>복제 샤드를 올바르게 설정하려면 “전체 노드 갯수 &gt;원본샤드 노드(1) + 복제샤드 갯수”가 성립해야 한다. ES가 기본값으로 설정하는 샤드의 갯수는 5개, 복제 샤드의 갯수는 1개이다. 테스트환경처럼 단독으로 ES 노드를 운영하는 상황에서는 복제샤드의 갯수를 0으로 맞춰줘야 status를 green으로 유지할 수 있다.</p>
+<p>다행히도 복제샤드에 대한 설정은 이미 생성된 인덱스에도 적용할 수 있다. 다음과같이 쿼리하면 된다.</p>
+<pre><code class="json">PUT /index_name_*/_settings
+{
+  &quot;index&quot;: {
+    &quot;number_of_replicas&quot;: 0
+  }
+}</code></pre>
+<p>그리고, 앞으로 생성될 인덱스에 일괄적용하고싶다면 아래와 같이 <a href="/elk/elk-2019-02-27-es-mapping">템플릿을 통해</a> 지정하면 된다.</p>
+<pre><code class="json">GET _template/myindex_shards_control
+{
+  &quot;index_patterns&quot;: &quot;index_name_*&quot;,
+  &quot;settings&quot;: {
+    &quot;number_of_shards&quot;: 1,
+    &quot;number_of_replicas&quot;: 0
+  }
+}</code></pre>
 
             </div>
           
@@ -167,13 +190,7 @@
       <footer class="post-footer">
         <div class="post-tags">
           
-            <a href="/tags/logstash/">logstash</a>
-          
-            <a href="/tags/filebeat/">filebeat</a>
-          
-            <a href="/tags/elk/">elk</a>
-          
-            <a href="/tags/logger/">logger</a>
+            <a href="/tags/elasticsearch/">elasticsearch</a>
           
         </div>
 
@@ -181,15 +198,9 @@
         
   <nav class="post-nav">
     
-      <a class="prev" href="/csharp/csharp-2018-11-06-csharp-basic/">
-        <i class="iconfont icon-left"></i>
-        <span class="prev-text nav-default">c# 기본서 - 빌드환경과 GC, 힙과 스택</span>
-        <span class="prev-text nav-mobile">Prev</span>
-      </a>
     
-    
-      <a class="next" href="/elk/elk-2018-10-28-logstash-pipeline/">
-        <span class="next-text nav-default">Logstash - 파이프라인 만들기</span>
+      <a class="next" href="/docker/docker-2019-06-18-docker-logrotate/">
+        <span class="next-text nav-default">Docker 로그로 서버 용량이 꽉찼을 때</span>
         <span class="prev-text nav-mobile">Next</span>
         <i class="iconfont icon-right"></i>
       </a>
@@ -241,8 +252,8 @@
 
 <script type="text/javascript">
   var disqus_shortname = 'parkdoyeon';
-  var disqus_identifier = 'elk/elk-2018-01-08-logstash-multiline/';
-  var disqus_url = 'https://parkdoyeon.github.io/elk/elk-2018-01-08-logstash-multiline/index.html';
+  var disqus_identifier = 'elk/elk-2019-06-27-es-replica/';
+  var disqus_url = 'https://parkdoyeon.github.io/elk/elk-2019-06-27-es-replica/index.html';
 
   
   var disqus_config = function () {

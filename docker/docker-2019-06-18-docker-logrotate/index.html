@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang>
+  <head><meta name="generator" content="Hexo 3.8.0">
+    
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta name="google-site-verification" content="ZPpg1XKRwaiB4lPx6SawBAA96ROVlVBmZ8s6pigFEVc">
+
+
+
+<meta name="naver-site-verification" content="a31e494cb7e78d5a64696ea234dc6c9006b251ff">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://parkdoyeon.github.io/docker/docker-2019-06-18-docker-logrotate/">
+
+
+  <meta property="og:title" content="Docker 로그로 서버 용량이 꽉찼을 때">
+
+
+
+
+  <meta name="description" content="Docker 로그로 서버 용량이 꽉찼을 때">
+  <meta property="og:description" content="Docker 로그로 서버 용량이 꽉찼을 때">
+
+
+
+
+
+  <meta name="keywords" content="docker,container,logrotate,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Park Doyeon">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=">
+
+
+
+<link rel="canonical" href="https://parkdoyeon.github.io/docker/docker-2019-06-18-docker-logrotate/">
+
+
+<meta name="description" content="문제평소와 같이 logstash에 파이프라인을 추가하려고 서버에 들어갔다가,자동완성을 하려고 배시에 tab키를 눌렀더니 다음과 같은 텍스트가 출력됐다. $ cd p-bash: cannot create temp file for here-document: No space left on device 남은 용량이 얼마나 있는지 확인하려고 du명령어를 쳤다. 보아하">
+<meta name="keywords" content="docker,container,logrotate">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Docker 로그로 서버 용량이 꽉찼을 때">
+<meta property="og:url" content="https://parkdoyeon.github.io/docker/docker-2019-06-18-docker-logrotate/index.html">
+<meta property="og:site_name" content="Park Doyeon">
+<meta property="og:description" content="문제평소와 같이 logstash에 파이프라인을 추가하려고 서버에 들어갔다가,자동완성을 하려고 배시에 tab키를 눌렀더니 다음과 같은 텍스트가 출력됐다. $ cd p-bash: cannot create temp file for here-document: No space left on device 남은 용량이 얼마나 있는지 확인하려고 du명령어를 쳤다. 보아하">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-06-27T15:33:15.452Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Docker 로그로 서버 용량이 꽉찼을 때">
+<meta name="twitter:description" content="문제평소와 같이 logstash에 파이프라인을 추가하려고 서버에 들어갔다가,자동완성을 하려고 배시에 tab키를 눌렀더니 다음과 같은 텍스트가 출력됐다. $ cd p-bash: cannot create temp file for here-document: No space left on device 남은 용량이 얼마나 있는지 확인하려고 du명령어를 쳤다. 보아하">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141653278-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-141653278-1');
+  </script>
+
+
+
+
+
+  
+
+
+    <title> Docker 로그로 서버 용량이 꽉찼을 때 - Park Doyeon </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </head>
+
+  <body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Park Doyeon</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+      </header>
+
+      <div id="post-categories"><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/csharp/">C#</a></li><li class="category-list-item"><a class="category-list-link" href="/dev-env/">Dev-Env</a></li><li class="category-list-item"><a class="category-list-link" href="/docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/elk/">ELK</a></li><li class="category-list-item"><a class="category-list-link" href="/ml/">ML</a></li><li class="category-list-item"><a class="category-list-link" href="/python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/sql/">SQL</a></li><li class="category-list-item"><a class="category-list-link" href="/web/">Web</a></li></ul>
+      </div>
+
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          Docker 로그로 서버 용량이 꽉찼을 때
+        
+      </h1>
+
+      <time class="post-time">
+          Jun 18 2019
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <h1 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h1><p>평소와 같이 logstash에 파이프라인을 추가하려고 서버에 들어갔다가,<br>자동완성을 하려고 배시에 tab키를 눌렀더니 다음과 같은 텍스트가 출력됐다.</p>
+<pre><code class="bash">$ cd p-bash: cannot create temp file for here-document: No space left on device</code></pre>
+<p>남은 용량이 얼마나 있는지 확인하려고 <code>du</code>명령어를 쳤다. 보아하니 도커 디스크로 마운트된 디렉토리에 문제가 있는 것 같았다.</p>
+<pre><code class="bash">$ df -h
+Filesystem                              Size  Used Avail Use% Mounted on
+udev                                    3.9G     0  3.9G   0% /dev
+tmpfs                                   798M   79M  720M  10% /run
+/dev/mapper/[HOST이름]--vg-root   90G  4.3G   82G   6% /
+tmpfs                                   3.9G     0  3.9G   0% /dev/shm
+tmpfs                                   5.0M     0  5.0M   0% /run/lock
+tmpfs                                   3.9G     0  3.9G   0% /sys/fs/cgroup
+/dev/sda1                               472M  153M  295M  35% /boot
+tmpfs                                   798M     0  798M   0% /run/user/1003
+overlay                                  90G   90G     0 100% /var/lib/docker/overlay2/a5d0d5380f3e692bccb926c9fbf1c07ba6abc73db094b0e526d71aa19fd51537/merged
+shm                                      64M     0   64M   0% /var/lib/docker/containers/ef5745582de101dddc056068c78e024388169af634315348427a80d59148a324/mounts/shm</code></pre>
+<h1 id="원인"><a href="#원인" class="headerlink" title="원인"></a>원인</h1><p>도커의 컨테이너들로부터 출력되는 모든 로그들은 다 json파일로 파일시스템에 남는다.<br>즉, <code>/var/lib/docker/containers/*/*.log</code>와 같은 경로에 컨테이너의 ID로 된 디렉토리에 개별로 저장된다.<br>이 파일들은 관리가 되지 않으면 서서히 디스크 용량을 차지해서 disk full현상을 일으킬 수 있다.</p>
+<p>나의 경우, logstash의 모든 파서들이 파싱된 로그를 stdout으로 출력하다보니 며칠만에 약 90G가 넘는 로그파일때문에 3-4일만에 서버 디스크가 꽉 찼었다.<br>(F.Y.I. 도커로 인한 disk full이 logstash를 운영하는데 별다른 영향을 주진 않았다.)</p>
+<h1 id="해결"><a href="#해결" class="headerlink" title="해결"></a>해결</h1><p>해결방법은 log파일 관리를 자동화 하면 되는데,</p>
+<ol>
+<li>크론으로 json파일을 삭제할수도 있고</li>
+<li>logrotate를 설치해서 실행시킬수도 있다. </li>
+<li>하지만 나는 폐쇄된 네트워크에서 서버세팅을 해야하기때문에, <a href="https://docs.docker.com/config/containers/logging/configure/" rel="external nofollow noopener noreferrer" target="_blank">도커에 내장된 로그 설정</a>을 통해 로그 관리 세팅을 했다.</li>
+</ol>
+<h1 id="방법"><a href="#방법" class="headerlink" title="방법"></a>방법</h1><p>참고로, 내가 채택한 3번 방법은 도커서비스와 컨테이너를 내렸다가 새로 생성해줘야 적용이 되는 번거로움이 있다.</p>
+<ol>
+<li>아래 경로로 다음과 같은 내용의 설정파일을 하나 만든다. 있으면 수정하고, 없으면 새로 만들어주면 된다.<pre><code class="bash"> $ vi /etc/docker/daemon.json
+ {
+ &quot;log-driver&quot;: &quot;json-file&quot;,
+ &quot;log-opts&quot;: {
+     &quot;max-size&quot;: &quot;100m&quot;,    
+     &quot;max-file&quot;: &quot;3&quot;    
+     }
+ } </code></pre>
+</li>
+<li>도커 서비스를 재시작한다 (나는 스페이스 4개로 indentation을 구분했고, 이때 쉼표를 더 입력하거나 하면 시스템이 시작하지 않으므로 주의해야한다.)<pre><code class="bash"> $ systemctl restart docker</code></pre>
+</li>
+<li>컨테이너를 다시 생성한다</li>
+</ol>
+<p>설정이 적용된 컨테이너의 <code>/var/lib/docker/containers/*</code> 디렉토리 모습이다.</p>
+<pre><code class="bash">$ ls
+9967b82d7c4059e1fb96ef9f20dc8c8738bf58e6e7418c680ac81019e5c964ec-json.log    checkpoints      hostname  resolv.conf
+9967b82d7c4059e1fb96ef9f20dc8c8738bf58e6e7418c680ac81019e5c964ec-json.log.1  config.v2.json   hosts     resolv.conf.hash
+9967b82d7c4059e1fb96ef9f20dc8c8738bf58e6e7418c680ac81019e5c964ec-json.log.2  hostconfig.json  mounts</code></pre>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+        <div class="post-tags">
+          
+            <a href="/tags/docker/">docker</a>
+          
+            <a href="/tags/container/">container</a>
+          
+            <a href="/tags/logrotate/">logrotate</a>
+          
+        </div>
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/elk/elk-2019-06-27-es-replica/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">ElasticSearch - unassigned shard 문제 해결 (3) replica 숫자가 부적절할때</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="/elk/elk-2019-06-18-es-version/">
+        <span class="next-text nav-default">ElasticSearch - unassigned shard 문제 해결 (2) 노드간 버전문제</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+    <!--<div style="text-align:center;">
+        <button class="btn" id="load-disqus" onclick="disqus.load();">load Disqus review</button>
+    </div>-->
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+    2019
+    <span class="footer-author">Park Doyeon.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> and <a class="theme-link" href="https://github.com/parkdoyeon">Me</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+<script type="text/javascript">
+  var disqus_shortname = 'parkdoyeon';
+  var disqus_identifier = 'docker/docker-2019-06-18-docker-logrotate/';
+  var disqus_url = 'https://parkdoyeon.github.io/docker/docker-2019-06-18-docker-logrotate/index.html';
+
+  
+  var disqus_config = function () {
+      this.page.url = disqus_url;
+      this.page.identifier = disqus_identifier;
+  };
+  
+  (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+  
+  
+  // var disqus = {
+  //   load : function disqus(){
+  //       if(typeof DISQUS !== 'object') {
+  //         (function () {
+  //         var s = document.createElement('script'); s.async = true;
+  //         s.type = 'text/javascript';
+  //         s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  //         (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+  //         }());
+  //         $('#load-disqus').remove(); ///Delete Button
+  //       }
+  //   }
+  // }
+
+</script>
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script src="/js/src/theme.js?v="></script>
+<script src="/js/src/bootstrap.js?v="></script>
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+<script src="/js/src/highlight.pack.js?v="></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.7.0/highlightjs-line-numbers.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', (event) => {
+  document.querySelectorAll('figure.highlight').forEach((block) => {
+    hljs.highlightBlock(block);
+  });
+});
+hljs.initHighlightingOnLoad();
+hljs.initLineNumbersOnLoad();
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </body>
+</html>
