@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang>
+  <head><meta name="generator" content="Hexo 3.8.0">
+    
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta name="google-site-verification" content="ZPpg1XKRwaiB4lPx6SawBAA96ROVlVBmZ8s6pigFEVc">
+
+
+
+<meta name="naver-site-verification" content="a31e494cb7e78d5a64696ea234dc6c9006b251ff">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://parkdoyeon.github.io/web/web-2019-06-12-appium/">
+
+
+  <meta property="og:title" content="테스트 자동화 - (1) Appium 서버 실행하기 (+안드로이드 테스트환경 세팅)">
+
+
+
+
+  <meta name="description" content="테스트 자동화 - (1) Appium 서버 실행하기 (+안드로이드 테스트환경 세팅)">
+  <meta property="og:description" content="테스트 자동화 - (1) Appium 서버 실행하기 (+안드로이드 테스트환경 세팅)">
+
+
+
+
+
+  <meta name="keywords" content="web,android,appium,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Park Doyeon">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=">
+
+
+
+<link rel="canonical" href="https://parkdoyeon.github.io/web/web-2019-06-12-appium/">
+
+
+<meta name="description" content="AppiumAppium은 네이티브/하이브리드/웹앱 모바일 테스트 자동화를 위한 오픈소스로,HTTP통신을 통해 타겟 디바이스에 요청을 보내는 서버 역할을 한다.IOS 테스트시에는 애플에서 제공하는 XCUITest Driver를 통해 요청을 전달하고, Android 테스트시에는 구글에서 제공하는 UIAutomator2를 사용한다. 설치appium은 npm을 통">
+<meta name="keywords" content="web,android,appium">
+<meta property="og:type" content="article">
+<meta property="og:title" content="테스트 자동화 - (1) Appium 서버 실행하기 (+안드로이드 테스트환경 세팅)">
+<meta property="og:url" content="https://parkdoyeon.github.io/web/web-2019-06-12-appium/index.html">
+<meta property="og:site_name" content="Park Doyeon">
+<meta property="og:description" content="AppiumAppium은 네이티브/하이브리드/웹앱 모바일 테스트 자동화를 위한 오픈소스로,HTTP통신을 통해 타겟 디바이스에 요청을 보내는 서버 역할을 한다.IOS 테스트시에는 애플에서 제공하는 XCUITest Driver를 통해 요청을 전달하고, Android 테스트시에는 구글에서 제공하는 UIAutomator2를 사용한다. 설치appium은 npm을 통">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://parkdoyeon.github.io/image/web/2019-06-12-appium-android.PNG">
+<meta property="og:updated_time" content="2019-06-29T00:20:20.292Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="테스트 자동화 - (1) Appium 서버 실행하기 (+안드로이드 테스트환경 세팅)">
+<meta name="twitter:description" content="AppiumAppium은 네이티브/하이브리드/웹앱 모바일 테스트 자동화를 위한 오픈소스로,HTTP통신을 통해 타겟 디바이스에 요청을 보내는 서버 역할을 한다.IOS 테스트시에는 애플에서 제공하는 XCUITest Driver를 통해 요청을 전달하고, Android 테스트시에는 구글에서 제공하는 UIAutomator2를 사용한다. 설치appium은 npm을 통">
+<meta name="twitter:image" content="https://parkdoyeon.github.io/image/web/2019-06-12-appium-android.PNG">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141653278-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-141653278-1');
+  </script>
+
+
+
+
+
+  
+
+
+    <title> 테스트 자동화 - (1) Appium 서버 실행하기 (+안드로이드 테스트환경 세팅) - Park Doyeon </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </head>
+
+  <body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Park Doyeon</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+      </header>
+
+      <div id="post-categories"><ul class="category-list">
+
+    <li>
+    
+        <a href="/dev-env">Dev-Env</a>
+    
+    </li>
+
+    <li>
+    
+        <a href="/csharp">C#</a>
+    
+    </li>
+
+    <li>
+    
+        <a href="/docker">Docker</a>
+    
+    </li>
+
+    <li>
+    
+        <a href="/elk">ELK</a>
+    
+    </li>
+
+    <li>
+    
+        <a href="/sql">SQL</a>
+    
+    </li>
+
+    <li>
+    
+        <a href="/ml">ML</a>
+    
+    </li>
+
+    <li>
+    
+        <a href="/web" class="on">Web</a>
+    
+    </li>
+
+    <li>
+    
+        <a href="/python">Python</a>
+    
+    </li>
+
+</ul>
+
+      </div>
+
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          테스트 자동화 - (1) Appium 서버 실행하기 (+안드로이드 테스트환경 세팅)
+        
+      </h1>
+
+      <time class="post-time">
+          Jun 12 2019
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <h1 id="Appium"><a href="#Appium" class="headerlink" title="Appium"></a>Appium</h1><p>Appium은 네이티브/하이브리드/웹앱 모바일 테스트 자동화를 위한 오픈소스로,<br>HTTP통신을 통해 타겟 디바이스에 요청을 보내는 서버 역할을 한다.<br>IOS 테스트시에는 애플에서 제공하는 XCUITest Driver를 통해 요청을 전달하고, Android 테스트시에는 구글에서 제공하는 UIAutomator2를 사용한다.</p>
+<h1 id="설치"><a href="#설치" class="headerlink" title="설치"></a>설치</h1><p>appium은 npm을 통해 간단히 설치할 수 있다.<br>서비스가 돌아가기위한 환경세팅이 잘 되었는지 확인하기 위해 appium-doctor도 함께 설치하는 것이 좋다.</p>
+<pre><code>&gt; npm install -g appium
+&gt; npm install -g appium-doctor</code></pre><h1 id="환경-세팅"><a href="#환경-세팅" class="headerlink" title="환경 세팅"></a>환경 세팅</h1><p>설치가 다  됐다면 명령창에서 appium-doctor을 실행해보자.</p>
+<pre><code class="bash">&gt; appium-doctor</code></pre>
+<p>아마 몇가지 변수들이 세팅이 안됐다는 에러가 나올 것이다.<br>(적어도 윈도우환경에서) appium을 실행하려면 다음과 같이 환경변수를 세팅해줘야한다.<br>환경 세팅과 관해서는 <a href="https://dejavuqa.tistory.com/222" rel="external nofollow noopener noreferrer" target="_blank">이 글</a>을 참고했다.<br>아래의 변수 세팅내용이 이해가 어려우면 링크를 타고 들어가 순서대로 세팅하면 된다.<br>간략하게 정리하면 다음과 같다.</p>
+<h4 id="시스템-변수-Path에-추가해줘야-하는-내용"><a href="#시스템-변수-Path에-추가해줘야-하는-내용" class="headerlink" title="시스템 변수 Path에 추가해줘야 하는 내용"></a>시스템 변수 Path에 추가해줘야 하는 내용</h4><ul>
+<li><code>%JAVA_HOME%\bin</code></li>
+<li><code>%ANDROID_HOME%\emulator</code></li>
+<li><code>%ANDROID_HOME%\tools</code></li>
+<li><code>%ANDROID_HOME%\platform-tools</code></li>
+</ul>
+<p>변수가 잘 설정되었는지 커맨드창에서 확인하면 된다.</p>
+<pre><code class="bash">&gt; set JAVA_HOME
+&gt; set ANDROID_HOME
+&gt; set Path</code></pre>
+<p>혹시 내가 설정한 경로가 출력되지 않는다면 설정창을 확인버튼을 눌러서 잘 껐는지 확인하고,<br>그래도 안된다면 커맨드창을 종료했다 켜면 잘 나올 것이다.</p>
+<h4 id="시스템-변수에-새로운-변수로-추가해줘야하는-변수"><a href="#시스템-변수에-새로운-변수로-추가해줘야하는-변수" class="headerlink" title="시스템 변수에 새로운 변수로 추가해줘야하는 변수"></a>시스템 변수에 새로운 변수로 추가해줘야하는 변수</h4><ul>
+<li>JAVA_HOME <code>C:\Program Files\Java\jdk-9.0.1</code></li>
+<li>ANDROID_HOME <code>C:\Users\doyeon\AppData\Local\Android\Sdk</code></li>
+</ul>
+<p>경로 끝에 세미콜론을 붙이면 appium이 인식하지 못하므로, 붙이지 않도록 주의한다.</p>
+<p>각 경로는 서버의 PC환경마다 다를 수 있으므로 확인이 필요하다.<br><code>ANDROID_HOME</code>의 경우 안드로이드 스튜디오의 <code>Tools &gt; SDK Manager</code>에 들어가면 SDK 경로를 확인할 수 있다.<br><img src="/image/web/2019-06-12-appium-android.PNG" alt="android"></p>
+<h4 id="Android-SDK-기본-세팅-설치"><a href="#Android-SDK-기본-세팅-설치" class="headerlink" title="Android SDK 기본 세팅 설치"></a>Android SDK 기본 세팅 설치</h4><p>환경변수가 세팅이 됐다면 안드로이드 테스트를 위해 몇가지 설치해야하는 툴들이 있다.<br>appium은 <code>ANDROID_HOME</code>변수를 통해 필요한 설치툴의 경로를 찾는다.<br>위 이미지 <code>Tools &gt; SDK Manager</code> 하단에 보면 SDK Tools탭이 있다.<br>탭을 누르고 들어가 아래의 내용을 체크하고 확인버튼을 누르면 설치를 시작한다.</p>
+<ul>
+<li>Android Emulator</li>
+<li>Android SDK Platform-Tools</li>
+<li>Android SDK Tools</li>
+<li>Google Play Licensing Library</li>
+<li>Google USB Driver</li>
+</ul>
+<h3 id="세팅-완료"><a href="#세팅-완료" class="headerlink" title="세팅 완료"></a>세팅 완료</h3><p>정상적으로 설치 되었다면 <code>appium</code>명령어를 입력하면 서비스가 실행될 것이다</p>
+<pre><code class="bash">&gt; appium
+[Appium] Welcome to Appium v1.13.0
+[Appium] Appium REST http interface listener started on 0.0.0.0:4723</code></pre>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+        <div class="post-tags">
+          
+            <a href="/tags/web/">web</a>
+          
+            <a href="/tags/android/">android</a>
+          
+            <a href="/tags/appium/">appium</a>
+          
+        </div>
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/elk/elk-2019-06-18-es-version/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">ElasticSearch - unassigned shard 문제 해결 (2) 노드간 버전문제</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="/web/web-2019-06-07-mathjax/">
+        <span class="next-text nav-default">hexo에 mathjax 적용하기</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+    <!--<div style="text-align:center;">
+        <button class="btn" id="load-disqus" onclick="disqus.load();">load Disqus review</button>
+    </div>-->
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+    2019
+    <span class="footer-author">Park Doyeon.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> and <a class="theme-link" href="https://github.com/parkdoyeon">Me</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+<script type="text/javascript">
+  var disqus_shortname = 'parkdoyeon';
+  var disqus_identifier = 'web/web-2019-06-12-appium/';
+  var disqus_url = 'https://parkdoyeon.github.io/web/web-2019-06-12-appium/index.html';
+
+  
+  var disqus_config = function () {
+      this.page.url = disqus_url;
+      this.page.identifier = disqus_identifier;
+  };
+  
+  (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+  
+  
+  // var disqus = {
+  //   load : function disqus(){
+  //       if(typeof DISQUS !== 'object') {
+  //         (function () {
+  //         var s = document.createElement('script'); s.async = true;
+  //         s.type = 'text/javascript';
+  //         s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  //         (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+  //         }());
+  //         $('#load-disqus').remove(); ///Delete Button
+  //       }
+  //   }
+  // }
+
+</script>
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script src="/js/src/theme.js?v="></script>
+<script src="/js/src/bootstrap.js?v="></script>
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+<script src="/js/src/highlight.pack.js?v="></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.7.0/highlightjs-line-numbers.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', (event) => {
+  document.querySelectorAll('figure.highlight').forEach((block) => {
+    hljs.highlightBlock(block);
+  });
+});
+hljs.initHighlightingOnLoad();
+hljs.initLineNumbersOnLoad();
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </body>
+</html>
