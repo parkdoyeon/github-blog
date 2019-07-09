@@ -941,22 +941,10 @@ Original One Dark Syntax theme from https://github.com/atom/one-dark-syntax
   #post-categories li {
     display: inline-block;
     margin: 0.7em 1em; }
-    #post-categories li a::after {
-      content: '';
-      display: block;
-      width: 0;
-      height: 2px;
-      background: #0066ffbb;
-      transition: width .3s; }
-    #post-categories li .on::after {
-      content: '';
-      display: block;
-      width: 0;
-      height: 2px;
-      background: #0066ffbb;
-      width: 100%; }
-    #post-categories li a:hover::after {
-      width: 100%; }
+    #post-categories li .on {
+      color: #5A5A5A;
+      padding-bottom: 17px;
+      border-bottom: 2px solid #0066ffbb; }
 
 .categories {
   margin: 2em 0 3em;
