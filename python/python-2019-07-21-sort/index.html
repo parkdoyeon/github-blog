@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang>
+  <head><meta name="generator" content="Hexo 3.8.0">
+    
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta name="google-site-verification" content="ZPpg1XKRwaiB4lPx6SawBAA96ROVlVBmZ8s6pigFEVc">
+
+
+
+<meta name="naver-site-verification" content="a31e494cb7e78d5a64696ea234dc6c9006b251ff">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://parkdoyeon.github.io/python/python-2019-07-21-sort/">
+
+
+  <meta property="og:title" content="big sort 문제 풀기 - sort()함수에 대한 고찰">
+
+
+
+
+  <meta name="description" content="big sort 문제 풀기 - sort()함수에 대한 고찰">
+  <meta property="og:description" content="big sort 문제 풀기 - sort()함수에 대한 고찰">
+
+
+
+
+
+  <meta name="keywords" content="python,algorithm,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Park Doyeon">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=">
+
+
+
+<link rel="canonical" href="https://parkdoyeon.github.io/python/python-2019-07-21-sort/">
+
+
+<meta name="description" content="hackerrank에서 string으로 이루어진 무작위 순서의 리스트를 정렬하는 big-sorting문제를 풀었다. 내장된 sort()함수를 쓰면 안될 것 같아 직접 선택정렬을 활용한 sort함수를 구현했는데 케이스 절반만 통과했다. def bigSorting(unsorted):     for i in range(len(unsorted)-1, -1, -1)">
+<meta name="keywords" content="python,algorithm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="big sort 문제 풀기 - sort()함수에 대한 고찰">
+<meta property="og:url" content="https://parkdoyeon.github.io/python/python-2019-07-21-sort/index.html">
+<meta property="og:site_name" content="Park Doyeon">
+<meta property="og:description" content="hackerrank에서 string으로 이루어진 무작위 순서의 리스트를 정렬하는 big-sorting문제를 풀었다. 내장된 sort()함수를 쓰면 안될 것 같아 직접 선택정렬을 활용한 sort함수를 구현했는데 케이스 절반만 통과했다. def bigSorting(unsorted):     for i in range(len(unsorted)-1, -1, -1)">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-07-21T15:24:58.989Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="big sort 문제 풀기 - sort()함수에 대한 고찰">
+<meta name="twitter:description" content="hackerrank에서 string으로 이루어진 무작위 순서의 리스트를 정렬하는 big-sorting문제를 풀었다. 내장된 sort()함수를 쓰면 안될 것 같아 직접 선택정렬을 활용한 sort함수를 구현했는데 케이스 절반만 통과했다. def bigSorting(unsorted):     for i in range(len(unsorted)-1, -1, -1)">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141653278-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-141653278-1');
+  </script>
+
+
+
+
+
+  
+
+
+    <title> big sort 문제 풀기 - sort()함수에 대한 고찰 - Park Doyeon </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </head>
+
+  <body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Park Doyeon</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+      </header>
+
+      <div id="post-categories"><ul class="category-list">
+
+    <li>
+    
+        <a href="/docker">Docker</a>
+    
+    </li>
+
+    <li>
+    
+        <a href="/dev-env">Dev-Env</a>
+    
+    </li>
+
+    <li>
+    
+        <a href="/ml">ML</a>
+    
+    </li>
+
+    <li>
+    
+        <a href="/csharp">C#</a>
+    
+    </li>
+
+    <li>
+    
+        <a href="/python" class="on">Python</a>
+    
+    </li>
+
+    <li>
+    
+        <a href="/undefined">python</a>
+    
+    </li>
+
+    <li>
+    
+        <a href="/sql">SQL</a>
+    
+    </li>
+
+    <li>
+    
+        <a href="/web">Web</a>
+    
+    </li>
+
+    <li>
+    
+        <a href="/elk">ELK</a>
+    
+    </li>
+
+</ul>
+
+      </div>
+
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          big sort 문제 풀기 - sort()함수에 대한 고찰
+        
+      </h1>
+
+      <time class="post-time">
+          Jul 21 2019
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <p>hackerrank에서 string으로 이루어진 무작위 순서의 리스트를 정렬하는 <a href="https://www.hackerrank.com/challenges/big-sorting/" rel="external nofollow noopener noreferrer" target="_blank">big-sorting</a>문제를 풀었다. 내장된 sort()함수를 쓰면 안될 것 같아 직접 선택정렬을 활용한 sort함수를 구현했는데 케이스 절반만 통과했다.</p>
+<pre><code class="python">def bigSorting(unsorted):
+    for i in range(len(unsorted)-1, -1, -1):
+        lgidx, largest = i, unsorted[i]
+        j = -1
+        while i+j &gt;= 0:
+            if len(unsorted[j+i]) &gt; len(largest): # 자릿수가 다르면 바로 순서 변경
+                lgidx = j+i
+                largest = unsorted[j+i]
+            elif len(unsorted[j+i]) == len(largest):  # 자릿수가 같으면 숫자로 캐스팅한 다음 비교
+                if int(unsorted[j+i]) &gt; int(largest):
+                    lgidx = j+i
+                    largest = unsorted[j+i]
+            j-=1
+        if unsorted[i] != largest:
+            temp = unsorted[i]
+            unsorted[i] = largest
+            unsorted[lgidx] = temp
+    return unsorted</code></pre>
+<p>이 문제의 핵심은 string에서 int로 캐스팅할때 발생하는 비용처리이다. 내 코드는 자릿수가 다른 경우만 처리한다는 점, 그리고 선택정렬 자체가 효율적이지 못했던 점이 문제였던 것 같다. 꽤 오랜시간을 들였는데도 답이 나오지 않아서 discussion을 읽기 시작했는데, 알지 못했던 사실들이 많았다.</p>
+<h3 id="sort-는-꽤-훌륭한-구현속도를-자랑하며-sorted-와-성능상-큰-차이가-없다"><a href="#sort-는-꽤-훌륭한-구현속도를-자랑하며-sorted-와-성능상-큰-차이가-없다" class="headerlink" title="sort()는 꽤 훌륭한 구현속도를 자랑하며, sorted()와 성능상 큰 차이가 없다."></a>sort()는 꽤 훌륭한 구현속도를 자랑하며, sorted()와 성능상 큰 차이가 없다.</h3><p>sort()만 사용해도 테스트 케이스는 3문제를 제외하고(숫자 대소 확인이 안되어서 wrong answer가 된다) 모두 통과한다. 정렬은 둘 중 어느 함수를 써도 상관없다. 차이라면 sort()는 배열 원본의 순서를 변경하지만 sorted는 정렬된 리스트를 반환한다는 점이다.</p>
+<pre><code class="python">arr.sort()
+copy_arr = sorted(arr)</code></pre>
+<h3 id="int에서-string으로-캐스팅할-때-비용이-반대의-경우보다-훨씬-크다"><a href="#int에서-string으로-캐스팅할-때-비용이-반대의-경우보다-훨씬-크다" class="headerlink" title="int에서 string으로 캐스팅할 때 비용이 반대의 경우보다 훨씬 크다."></a>int에서 string으로 캐스팅할 때 비용이 반대의 경우보다 훨씬 크다.</h3><p>big sorting 문제풀이를 하려면 비교를 위해 필연적으로 string을 int로 변환하고, print구문으로 출력을 위해 string으로 변환하는 과정을 거친다. 여기서 숫자간 대소비교를 위해 int캐스팅 하는 과정은 비교적 빠르게 이루어지지만, 비교를 위해 변경한 int값을 string으로 바꾸는것은 꽤 오래걸린다.</p>
+<h3 id="해법-sort-key-int"><a href="#해법-sort-key-int" class="headerlink" title="해법: sort(key=int)"></a>해법: sort(key=int)</h3><p>결론적으로 캐스팅 과정을 최소화 해야하는데, 3.6의 sort함수는 비교를 위한 ‘선택적 casting’을 지원한다. 즉, 필요시에만 대소비교를 위해 캐스팅을 하고, 본래의 원소는 string으로 배열된다.</p>
+<pre><code class="python">arr.sort(key=int)
+copy_arr = sorted(arr, key=int)</code></pre>
+<h3 id="더-좋은-해결-sort-key-len"><a href="#더-좋은-해결-sort-key-len" class="headerlink" title="더 좋은 해결!: sort(key=len)"></a>더 좋은 해결!: sort(key=len)</h3><p>하지만 위의 경우도 여전히 캐스팅은 발생한다. 캐스팅 없이 정렬할때의 문제는 숫자 대소인데, string기준으로 sorting을 한 다음에 key값으로 int가 아니라 문자열의 길이로 한번 더 sorting 해주면 통과할 수 있다.</p>
+<pre><code class="python">arr = sorted(sorted(arr), key=len)</code></pre>
+<p>그러나 이건 제출의 문제이고, key값에 비교 람다함수를 넣어서 한번의 정렬만 일어나게 하면 훨씬 빠르게 연산이 일어난다.</p>
+<pre><code class="python">import timeit
+def bigSortinglen(unsorted):
+    return sorted(unsorted, key=lambda x: (len(x), x))
+def bigSortingint(unsorted):
+    return sorted(unsorted, key=lambda x: int(x))
+
+print(
+    &quot;bigSorting - len:&quot;,
+    timeit.timeit(&quot;bigSortinglen(unsorted)&quot;, 
+    globals=globals(), 
+    number=1),
+)
+print(
+    &quot;bigSorting - int:&quot;,
+    timeit.timeit(&quot;bigSortingint(unsorted)&quot;, 
+    globals=globals(), 
+    number=1),
+)</code></pre>
+<p>실제로 timeit 라이브러리를 통해 시간을 비교하면 550배나 더 빠르다는 것을 알 수 있다.<br><code>bigSorting - len: 0.007199285000751843</code><br><code>bigSorting - int: 3.989389060998292</code></p>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+        <div class="post-tags">
+          
+            <a href="/tags/python/">python</a>
+          
+            <a href="/tags/algorithm/">algorithm</a>
+          
+        </div>
+
+        
+        
+  <nav class="post-nav">
+    
+    
+      <a class="next" href="/dev-env/dev-env-2019-07-10-powershell-auth/">
+        <span class="next-text nav-default">윈도우 파워쉘 권한 변경하기</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+    <!--<div style="text-align:center;">
+        <button class="btn" id="load-disqus" onclick="disqus.load();">load Disqus review</button>
+    </div>-->
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+    2019
+    <span class="footer-author">Park Doyeon.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> and <a class="theme-link" href="https://github.com/parkdoyeon">Me</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+<script type="text/javascript">
+  var disqus_shortname = 'parkdoyeon';
+  var disqus_identifier = 'python/python-2019-07-21-sort/';
+  var disqus_url = 'https://parkdoyeon.github.io/python/python-2019-07-21-sort/index.html';
+
+  
+  var disqus_config = function () {
+      this.page.url = disqus_url;
+      this.page.identifier = disqus_identifier;
+  };
+  
+  (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+  
+  
+  // var disqus = {
+  //   load : function disqus(){
+  //       if(typeof DISQUS !== 'object') {
+  //         (function () {
+  //         var s = document.createElement('script'); s.async = true;
+  //         s.type = 'text/javascript';
+  //         s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  //         (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+  //         }());
+  //         $('#load-disqus').remove(); ///Delete Button
+  //       }
+  //   }
+  // }
+
+</script>
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script src="/js/src/theme.js?v="></script>
+<script src="/js/src/bootstrap.js?v="></script>
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+<script src="/js/src/highlight.pack.js?v="></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.7.0/highlightjs-line-numbers.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', (event) => {
+  document.querySelectorAll('figure.highlight').forEach((block) => {
+    hljs.highlightBlock(block);
+  });
+});
+hljs.initHighlightingOnLoad();
+hljs.initLineNumbersOnLoad();
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </body>
+</html>
