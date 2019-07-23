@@ -175,9 +175,9 @@
     
       <category term="docker" scheme="https://parkdoyeon.github.io/tags/docker/"/>
     
-      <category term="logrotate" scheme="https://parkdoyeon.github.io/tags/logrotate/"/>
-    
       <category term="container" scheme="https://parkdoyeon.github.io/tags/container/"/>
+    
+      <category term="logrotate" scheme="https://parkdoyeon.github.io/tags/logrotate/"/>
     
   </entry>
   
@@ -523,9 +523,9 @@
       <category term="Dev-Env" scheme="https://parkdoyeon.github.io/dev-env/"/>
     
     
-      <category term="network" scheme="https://parkdoyeon.github.io/tags/network/"/>
-    
       <category term="hyper-v" scheme="https://parkdoyeon.github.io/tags/hyper-v/"/>
+    
+      <category term="network" scheme="https://parkdoyeon.github.io/tags/network/"/>
     
   </entry>
   
