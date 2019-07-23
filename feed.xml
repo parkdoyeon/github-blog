@@ -6,7 +6,7 @@
   <link href="/feed.xml" rel="self"/>
   
   <link href="https://parkdoyeon.github.io/"/>
-  <updated>2019-07-21T15:26:29.851Z</updated>
+  <updated>2019-07-23T15:42:12.195Z</updated>
   <id>https://parkdoyeon.github.io/</id>
   
   <author>
@@ -17,13 +17,42 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>.NET CORE nuget package 배포하기</title>
+    <link href="https://parkdoyeon.github.io/csharp/csharp-2019-07-23-nuget/"/>
+    <id>https://parkdoyeon.github.io/csharp/csharp-2019-07-23-nuget/</id>
+    <published>2019-07-23T06:08:12.000Z</published>
+    <updated>2019-07-23T15:42:12.195Z</updated>
+    
+    <content type="html"><![CDATA[<p>사실 누겟패키지 생성방법은 <a href="https://docs.microsoft.com/ko-kr/nuget/quickstart/create-and-publish-a-package-using-the-dotnet-cli" rel="external nofollow noopener noreferrer" target="_blank">공식문서</a>에 아주 잘 정리되어있다. 이 글은 공식문서를 내 언어로 한번 더 정리하고, 내부 패키지 서버에 배포하는 과정과 거기서 발생한 트러블 슈팅과정을 덧붙이는 것을 목적으로 한다. 닷넷 코어로 빌드한 누겟 패키지를 배포하고 또 닷넷 코어 프로젝트에 적용하면서 기록용으로 글을 작성하게 됐는데, 이전에 일반 닷넷 프레임워크 누겟 패키지 빌드/배포와 크게 달라진 점은 없는 것 같다.</p><p>패키지의 빌드방식은 크게 세가지라고 할 수 있다.</p><h1 id="방법-1-빌드-옵션을-통한-패키지-파일-자동생성"><a href="#방법-1-빌드-옵션을-통한-패키지-파일-자동생성" class="headerlink" title="방법 1. 빌드 옵션을 통한 패키지 파일 자동생성"></a>방법 1. 빌드 옵션을 통한 패키지 파일 자동생성</h1><p>csproj에 아래의 설정값을 추가해주고 빌드하면 bin디렉토리 내 빌드 버전 폴더에 .nupkg파일이 생성된다.</p><pre><code class="xml">  &lt;PropertyGroup Condition=&quot;&#39;$(Configuration)|$(Platform)&#39;==&#39;Debug|AnyCPU&#39;&quot;&gt;    &lt;PackageId&gt;something.for.core&lt;/PackageId&gt;    &lt;Version&gt;1.0.0&lt;/Version&gt;    &lt;Authors&gt;someauthor&lt;/Authors&gt;    &lt;Company&gt;somecompany&lt;/Company&gt;    &lt;GeneratePackageOnBuild&gt;true&lt;/GeneratePackageOnBuild&gt;  &lt;/PropertyGroup&gt;</code></pre><h1 id="방법-2-명령어로-생성하기"><a href="#방법-2-명령어로-생성하기" class="headerlink" title="방법 2. 명령어로 생성하기"></a>방법 2. 명령어로 생성하기</h1><p>빌드 설정에 누겟패키지 설정을 추가하는 것이 귀찮다면(혹은 property값을 굳이 남기고 싶지 않다면) 커맨드라인 명령어로 생성할수도 있다.</p><pre><code class="powershell">dotnet pack -c release</code></pre><h1 id="방법-3-nuget-package-explorer에서-생성하기"><a href="#방법-3-nuget-package-explorer에서-생성하기" class="headerlink" title="방법 3. nuget package explorer에서 생성하기"></a>방법 3. nuget package explorer에서 생성하기</h1><p>GUI를 통해 패키지를 생성할 수 있다. 윈도우 마켓에서 nuget package explorer를 설치해서 빌드하면 된다. 처음에 쓰면 혼란스러운 구석은 있어도 사용 자체는 어렵지 않아서 설명은 생략한다. 빌드 파일의 디렉토리 구성이나 버전별 관리까지 이래저래 손이 가는 부분이 있어서 특별한 경우가 아니면 사용하지 않는 것이 좋은 것 같다.</p><h1 id="배포하기-cmd를-사용한-배포"><a href="#배포하기-cmd를-사용한-배포" class="headerlink" title="배포하기 - cmd를 사용한 배포"></a>배포하기 - cmd를 사용한 배포</h1><p>배포도 마찬가지로 위의 방법 세가지를 다 쓸 수 있다.누겟 익스플로러에서 해도되고, cmd에서 해도 된다. cmd는 아래와 같이 작성하면 된다. </p><pre><code class="powershell">dotnet nuget push something.for.core.nupkg -k somecompany -s https://api.nuget.org/v3/index.json</code></pre><p><code>-k</code>는 키값을 넣는 파라미터인데, 내부서버에 배포하는 경우 키값을 임의로(아무거나) 작성해도 되지만, 누겟서버에 배포하는 경우 발급받은 키값을 입력해야한다.  내 경우 사내에서 사용하는 sonatype nexus package서버에 배포를 해야야 하므로 키값을 임의로 지정했다. 배포 url은 다운로드용으로 연결할때는 <code>https://package.mycompany.com/repository/nuget-group/</code> 주소로 했는데, 배포시에는 <code>https://package.mycompany.com/repository/nuget-hosted/</code>주소로 배포해야 했다. 이 점을 몰라서 조금 헤맸다.</p><h1 id="배포하기-누겟-익스플로러를-사용한-배포"><a href="#배포하기-누겟-익스플로러를-사용한-배포" class="headerlink" title="배포하기 - 누겟 익스플로러를 사용한 배포"></a>배포하기 - 누겟 익스플로러를 사용한 배포</h1><p>누겟 익스플로러에서 배포하는 경우 생성된 로컬 누겟패키지를 익스플로러에서 연 다음 <code>File &gt; Publish</code>를 누르면 아래와같은 팝업이 나온다. 주소와 키값을 넣고 배포 버튼을 누르면 된다.<br><img src="/image/csharp/2019-07-23-nuget-1.png" alt="nuget"><br> 주소입력창 하단에 <code>api/v2/package</code>경로를 배포경로에 더할것인지 체크하는 체크박스가 있는데 하지 않아도 된다.</p><h1 id="FYI-Trouble-Shooting"><a href="#FYI-Trouble-Shooting" class="headerlink" title="FYI - Trouble Shooting"></a>FYI - Trouble Shooting</h1><p>누겟 패키지를 게시하고 프로젝트에서 정상적으로 설치까지 했지만, cs 파일에서 패키지 호출시 네임스페이스를 인식 못하는 문제가 있었다. 이때 패키지 버전을 올려서 게시한 다음 패키지 업데이트를 하니 문제가 해결됐다. 또 그 이후에 다른 누겟 프로젝트를 최초로 빌드해 올렸을때는 정상적으로 레퍼런스 참조가 됐다. 해결법은 찾았지만 재현이 안된다. 대체 무엇이 문제였던 것일까.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;사실 누겟패키지 생성방법은 &lt;a href=&quot;https://docs.microsoft.com/ko-kr/nuget/quickstart/create-and-publish-a-package-using-the-dotnet-cli&quot; rel=&quot;externa
+      
+    
+    </summary>
+    
+      <category term="C#" scheme="https://parkdoyeon.github.io/csharp/"/>
+    
+    
+      <category term="csharp" scheme="https://parkdoyeon.github.io/tags/csharp/"/>
+    
+      <category term="dotnetcore" scheme="https://parkdoyeon.github.io/tags/dotnetcore/"/>
+    
+      <category term="nuget" scheme="https://parkdoyeon.github.io/tags/nuget/"/>
+    
+  </entry>
+  
+  <entry>
     <title>big sort 문제 풀기 - sort()함수에 대한 고찰</title>
     <link href="https://parkdoyeon.github.io/python/python-2019-07-21-sort/"/>
     <id>https://parkdoyeon.github.io/python/python-2019-07-21-sort/</id>
     <published>2019-07-21T07:29:01.000Z</published>
-    <updated>2019-07-21T15:26:29.851Z</updated>
+    <updated>2019-07-23T15:30:49.352Z</updated>
     
-    <content type="html"><![CDATA[<p>hackerrank에서 string으로 이루어진 무작위 순서의 리스트를 정렬하는 <a href="https://www.hackerrank.com/challenges/big-sorting/" rel="external nofollow noopener noreferrer" target="_blank">big-sorting</a>문제를 풀었다. 내장된 sort()함수를 쓰면 안될 것 같아 직접 선택정렬을 활용한 sort함수를 구현했는데 케이스 절반만 통과했다.</p><pre><code class="python">def bigSorting(unsorted):    for i in range(len(unsorted)-1, -1, -1):        lgidx, largest = i, unsorted[i]        j = -1        while i+j &gt;= 0:            if len(unsorted[j+i]) &gt; len(largest): # 자릿수가 다르면 바로 순서 변경                lgidx = j+i                largest = unsorted[j+i]            elif len(unsorted[j+i]) == len(largest):  # 자릿수가 같으면 숫자로 캐스팅한 다음 비교                if int(unsorted[j+i]) &gt; int(largest):                    lgidx = j+i                    largest = unsorted[j+i]            j-=1        if unsorted[i] != largest:            temp = unsorted[i]            unsorted[i] = largest            unsorted[lgidx] = temp    return unsorted</code></pre><p>이 문제의 핵심은 string에서 int로 캐스팅할때 발생하는 비용처리이다. 내 코드는 자릿수가 다른 경우만 처리한다는 점, 그리고 선택정렬 자체가 효율적이지 못했던 점이 문제였던 것 같다. 꽤 오랜시간을 들였는데도 답이 나오지 않아서 discussion을 읽기 시작했는데, 알지 못했던 사실들이 많았다.</p><h3 id="sort-는-꽤-훌륭한-구현속도를-자랑하며-sorted-와-성능상-큰-차이가-없다"><a href="#sort-는-꽤-훌륭한-구현속도를-자랑하며-sorted-와-성능상-큰-차이가-없다" class="headerlink" title="sort()는 꽤 훌륭한 구현속도를 자랑하며, sorted()와 성능상 큰 차이가 없다."></a>sort()는 꽤 훌륭한 구현속도를 자랑하며, sorted()와 성능상 큰 차이가 없다.</h3><p>sort()만 사용해도 테스트 케이스는 3문제를 제외하고(숫자 대소 확인이 안되어서 wrong answer가 된다) 모두 통과한다. 정렬은 둘 중 어느 함수를 써도 상관없다. 차이라면 sort()는 배열 원본의 순서를 변경하지만 sorted는 정렬된 리스트를 반환한다는 점이다.</p><pre><code class="python">arr.sort()copy_arr = sorted(arr)</code></pre><h3 id="int에서-string으로-캐스팅할-때-비용이-반대의-경우보다-훨씬-크다"><a href="#int에서-string으로-캐스팅할-때-비용이-반대의-경우보다-훨씬-크다" class="headerlink" title="int에서 string으로 캐스팅할 때 비용이 반대의 경우보다 훨씬 크다."></a>int에서 string으로 캐스팅할 때 비용이 반대의 경우보다 훨씬 크다.</h3><p>big sorting 문제풀이를 하려면 비교를 위해 필연적으로 string을 int로 변환하고, print구문으로 출력을 위해 string으로 변환하는 과정을 거친다. 여기서 숫자간 대소비교를 위해 int캐스팅 하는 과정은 비교적 빠르게 이루어지지만, 비교를 위해 변경한 int값을 string으로 바꾸는것은 꽤 오래걸린다.</p><h3 id="해법-sort-key-int"><a href="#해법-sort-key-int" class="headerlink" title="해법: sort(key=int)"></a>해법: sort(key=int)</h3><p>결론적으로 캐스팅 과정을 최소화 해야하는데, 3.6의 sort함수는 비교를 위한 ‘선택적 casting’을 지원한다. 즉, 필요시에만 대소비교를 위해 캐스팅을 하고, 본래의 원소는 string으로 배열된다.</p><pre><code class="python">arr.sort(key=int)copy_arr = sorted(arr, key=int)</code></pre><h3 id="더-좋은-해결-sort-key-len"><a href="#더-좋은-해결-sort-key-len" class="headerlink" title="더 좋은 해결!: sort(key=len)"></a>더 좋은 해결!: sort(key=len)</h3><p>하지만 위의 경우도 여전히 캐스팅은 발생한다. 캐스팅 없이 정렬할때의 문제는 숫자 대소인데, string기준으로 sorting을 한 다음에 key값으로 int가 아니라 문자열의 길이로 한번 더 sorting 해주면 통과할 수 있다.</p><pre><code class="python">arr = sorted(sorted(arr), key=len)</code></pre><p>그러나 이건 제출의 문제이고, key값에 비교 람다함수를 넣어서 한번의 정렬만 일어나게 하면 훨씬 빠르게 연산이 일어난다.</p><pre><code class="python">import timeitdef bigSortinglen(unsorted):    return sorted(unsorted, key=lambda x: (len(x), x))def bigSortingint(unsorted):    return sorted(unsorted, key=lambda x: int(x))print(    &quot;bigSorting - len:&quot;,    timeit.timeit(&quot;bigSortinglen(unsorted)&quot;,     globals=globals(),     number=1),)print(    &quot;bigSorting - int:&quot;,    timeit.timeit(&quot;bigSortingint(unsorted)&quot;,     globals=globals(),     number=1),)</code></pre><p>실제로 timeit 라이브러리를 통해 시간을 비교하면 550배나 더 빠르다는 것을 알 수 있다.<br><code>bigSorting - len: 0.007199285000751843</code><br><code>bigSorting - int: 3.989389060998292</code></p>]]></content>
+    <content type="html"><![CDATA[<p>hackerrank에서 string으로 이루어진 무작위 순서의 리스트를 정렬하는 <a href="https://www.hackerrank.com/challenges/big-sorting/" rel="external nofollow noopener noreferrer" target="_blank">big-sorting</a>문제를 풀었다. 내장된 sort()함수를 쓰면 안될 것 같아 직접 선택정렬을 활용한 sort함수를 구현했는데 케이스 절반만 통과했다.</p><pre><code class="python">def bigSorting(unsorted):    for i in range(len(unsorted)-1, -1, -1):        lgidx, largest = i, unsorted[i]        j = -1        while i+j &gt;= 0:            if len(unsorted[j+i]) &gt; len(largest): # 자릿수가 다르면 바로 순서 변경                lgidx = j+i                largest = unsorted[j+i]            elif len(unsorted[j+i]) == len(largest):  # 자릿수가 같으면 숫자로 캐스팅한 다음 비교                if int(unsorted[j+i]) &gt; int(largest):                    lgidx = j+i                    largest = unsorted[j+i]            j-=1        if unsorted[i] != largest:            temp = unsorted[i]            unsorted[i] = largest            unsorted[lgidx] = temp    return unsorted</code></pre><p>이 문제의 핵심은 string에서 int로 캐스팅할때 발생하는 비용처리이다. 내 코드는 자릿수가 다른 경우만 처리한다는 점, 그리고 선택정렬 자체가 효율적이지 못했던 점이 문제였던 것 같다. 꽤 오랜시간을 들였는데도 답이 나오지 않아서 discussion을 읽기 시작했는데, 알지 못했던 사실들이 많았다.</p><h3 id="sort-는-꽤-훌륭한-구현속도를-자랑하며-sorted-와-성능상-큰-차이가-없다"><a href="#sort-는-꽤-훌륭한-구현속도를-자랑하며-sorted-와-성능상-큰-차이가-없다" class="headerlink" title="sort()는 꽤 훌륭한 구현속도를 자랑하며, sorted()와 성능상 큰 차이가 없다."></a>sort()는 꽤 훌륭한 구현속도를 자랑하며, sorted()와 성능상 큰 차이가 없다.</h3><p>sort()만 사용해도 테스트 케이스는 3문제를 제외하고(숫자 대소 확인이 안되어서 wrong answer가 된다) 모두 통과한다. 정렬은 둘 중 어느 함수를 써도 상관없다. 차이라면 sort()는 배열 원본의 순서를 변경하지만 sorted는 정렬된 리스트를 반환한다는 점이다.</p><pre><code class="python">arr.sort()copy_arr = sorted(arr)</code></pre><h3 id="int에서-string으로-캐스팅할-때-비용이-반대의-경우보다-훨씬-크다"><a href="#int에서-string으로-캐스팅할-때-비용이-반대의-경우보다-훨씬-크다" class="headerlink" title="int에서 string으로 캐스팅할 때 비용이 반대의 경우보다 훨씬 크다."></a>int에서 string으로 캐스팅할 때 비용이 반대의 경우보다 훨씬 크다.</h3><p>big sorting 문제풀이를 하려면 비교를 위해 필연적으로 string을 int로 변환하고, print구문으로 출력을 위해 string으로 변환하는 과정을 거친다. 여기서 숫자간 대소비교를 위해 int캐스팅 하는 과정은 비교적 빠르게 이루어지지만, 비교를 위해 변경한 int값을 string으로 바꾸는것은 꽤 오래걸린다.</p><h3 id="해법-sort-key-int"><a href="#해법-sort-key-int" class="headerlink" title="해법: sort(key=int)"></a>해법: sort(key=int)</h3><p>결론적으로 캐스팅 과정을 최소화 해야하는데, 3.6의 sort함수는 비교를 위한 키값을 파라미터로 받는다. 즉, key값으로 int를 지정해주면 정렬의 대소비교를 위해서만 캐스팅을 하고, 본래의 원소는 string으로 정렬된다.</p><pre><code class="python">arr.sort(key=int)copy_arr = sorted(arr, key=int)</code></pre><h3 id="더-좋은-해결-sort-key-len"><a href="#더-좋은-해결-sort-key-len" class="headerlink" title="더 좋은 해결!: sort(key=len)"></a>더 좋은 해결!: sort(key=len)</h3><p>하지만 위의 경우도 여전히 캐스팅은 발생한다. 캐스팅 없이 정렬할때의 문제는 숫자 대소인데, string기준으로 sorting을 한 다음에 key값으로 int가 아니라 문자열의 길이로 한번 더 sorting 해주면 통과할 수 있다.</p><pre><code class="python">arr = sorted(sorted(arr), key=len)</code></pre><p>그러나 이건 제출의 문제이고, key값에 비교 람다함수를 넣어서 한번의 정렬만 일어나게 하면 훨씬 빠르게 연산이 일어난다.</p><pre><code class="python">import timeitdef bigSortinglen(unsorted):    return sorted(unsorted, key=lambda x: (len(x), x))def bigSortingint(unsorted):    return sorted(unsorted, key=lambda x: int(x))print(    &quot;bigSorting - len:&quot;,    timeit.timeit(&quot;bigSortinglen(unsorted)&quot;,     globals=globals(),     number=1),)print(    &quot;bigSorting - int:&quot;,    timeit.timeit(&quot;bigSortingint(unsorted)&quot;,     globals=globals(),     number=1),)</code></pre><p>실제로 timeit 라이브러리를 통해 시간을 비교하면 550배나 더 빠르다는 것을 알 수 있다.<br><code>bigSorting - len: 0.007199285000751843</code><br><code>bigSorting - int: 3.989389060998292</code></p>]]></content>
     
     <summary type="html">
     
@@ -34,7 +63,7 @@
     
     </summary>
     
-      <category term="Python" scheme="https://parkdoyeon.github.io/python/"/>
+      <category term="python" scheme="https://parkdoyeon.github.io/python/"/>
     
     
       <category term="python" scheme="https://parkdoyeon.github.io/tags/python/"/>
@@ -554,37 +583,6 @@
       <category term="git" scheme="https://parkdoyeon.github.io/tags/git/"/>
     
       <category term="filter-branch" scheme="https://parkdoyeon.github.io/tags/filter-branch/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ElasticSearch - 도커를 이용해 인덱스 주기적으로 삭제하기</title>
-    <link href="https://parkdoyeon.github.io/elk/elk-2019-04-02-es-curator/"/>
-    <id>https://parkdoyeon.github.io/elk/elk-2019-04-02-es-curator/</id>
-    <published>2019-04-02T08:35:00.000Z</published>
-    <updated>2019-06-08T02:58:52.618Z</updated>
-    
-    <content type="html"><![CDATA[<p>로그를 끊임없이 ES에 저장하다보면 디스크 용량이 부족한 문제가 발생한다.<br>수동으로 인덱스를 삭제하다보면 단순히 번거로울 뿐만이 아니라 삭제하지 않으려고 했던 인덱스도 삭제될 수 있기 때문에, 삭제 자동화는 ES 운영에 반드시 필요하다.<br>curator는 elasticsearch의 인덱스를 관리를 위한 어플리케이션으로, ES와 격리된 환경에서 http 통신으로 동작이 가능하다.</p><p>여기에는 인덱스 삭제만 나와있지만, 샤드의 삭제나 엘라스틱서치의 스냅샷 삭제, 샤드 라우팅 변경도 가능하다.<br>나의 경우 curator를 세팅할 서버는 폐쇄된 환경이었기 때문에,<br>로컬에서 curator 공식사이트의 dockerfile을 받아 이미지를 빌드한 다음,<br>이미지를 파일로 압축해 서버에 세팅하고 cronjob을 통해 매일 인덱스 삭제작업을 진행하도록 했다.</p><h4 id="docker-image-빌드"><a href="#docker-image-빌드" class="headerlink" title="docker image 빌드"></a>docker image 빌드</h4><p>github에 올라와있는 dockerfile을 다운받아 빌드한다 <a href="https://github.com/elastic/curator" target="_blank" rel="noopener">https://github.com/elastic/curator</a></p><pre><code class="bash">docker build .</code></pre><h4 id="큐레이터-기본-설정파일-생성하기-curator-yml"><a href="#큐레이터-기본-설정파일-생성하기-curator-yml" class="headerlink" title="큐레이터 기본 설정파일 생성하기: curator.yml"></a>큐레이터 기본 설정파일 생성하기: curator.yml</h4><pre><code class="yml">client:  hosts:   - elasticsearch  port: 9200  url_prefix:  use_ssl: False  certificate:  client_cert:  client_key:  ssl_no_validate: False  http_auth:  timeout: 30  master_only: Falselogging:  loglevel: INFO  logfile: /volume/curator.log #로그 디렉토리 설정, 어플리케이션 수행   logformat: default  blacklist: [&#39;elasticsearch&#39;, &#39;urllib3&#39;]</code></pre><h4 id="인덱스-삭제-규칙파일-생성하기-delete-indices-yml"><a href="#인덱스-삭제-규칙파일-생성하기-delete-indices-yml" class="headerlink" title="인덱스 삭제 규칙파일 생성하기: delete-indices.yml"></a>인덱스 삭제 규칙파일 생성하기: delete-indices.yml</h4><pre><code class="yml">actions:  1:    action: delete_indices    options:      ignore_empty_list: True      disable_action: False    filters:     - filtertype: pattern       kind: prefix       value: kr-*-     - filtertype: age       source: name       direction: older       timestring: &#39;%Y.%m.%d&#39;       unit: days       unit_count: 8 #생성한지 8일이 된 데이터는 삭제한다</code></pre><h4 id="도커-컴포즈-설정"><a href="#도커-컴포즈-설정" class="headerlink" title="도커 컴포즈 설정"></a>도커 컴포즈 설정</h4><p>빌드된 이미지의 entrypoint는 아무 옵션 없이 단순히 어플리케이션을 실행하는 ‘curator/curator’이다.<br>때문에 설정파일이나 규칙들을 정의해주고싶다면 아래와 같이 entrypoint override를 해야한다.<br>또한, 어떤 인덱스가 삭제될지 확인하고싶다면 dry run 옵션을 통해 위의 curator.yml에 지정한 log파일에서 리스트확인이 가능하다.<br>최초 실행시 반드시 dry run을 통해 curator.log에 삭제 대상이 되는 인덱스들을 확인하자.</p><pre><code class="yml">version: &#39;3.3&#39;  services:    curator:      image: curator:5.6      container_name: curator      user: $USER      volumes:        - /data/volume/curator:/volume  # 테스트시 주석 해제 후 실행  #    entrypoint: [&quot;curator/curator&quot;, &quot;--config&quot;, &quot;/volume/config/curator.yml&quot;, &quot;--dry-run&quot;, &quot;/volume/config/delete-indices.yml&quot;]      entrypoint: [&quot;curator/curator&quot;, &quot;--config&quot;, &quot;/volume/config/curator.yml&quot;, &quot;/volume/config/delete-indices.yml&quot;]      network_mode: esmaster #엘라스틱 서치가 있는 네트워크와 맞춰주기</code></pre><h4 id="큐레이터로-도커컴포즈-실행하기"><a href="#큐레이터로-도커컴포즈-실행하기" class="headerlink" title="큐레이터로 도커컴포즈 실행하기"></a>큐레이터로 도커컴포즈 실행하기</h4><p>도커 컨테이너는 규칙 실행후 exit code 0을 반환하며 종료된다.<br>정기적으로 실행되도록 설정하려면 리눅스 cronjob 등록을 해줘야한다.</p><ol><li>도커 컴포즈 실행 스크립트 만들기<pre><code class="bash">#!/bin/bashcd /path/to/docker-composedocker-compose up</code></pre></li></ol><pre><code>2. 크론탭 에디터 열기``` bashcrontab -e</code></pre><ol start="3"><li>규칙 추가<br>매일 17시에 실행되고, cronjob 작업 수행 이력이 crontab.log에 남는다.<pre><code class="bash">0 17 * * * /data/volume/curator-run.sh &gt; /data/crontab.log 2&gt;&amp;1</code></pre></li></ol><p>완료후 반영은 wq를 통해 하면 된다.</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;로그를 끊임없이 ES에 저장하다보면 디스크 용량이 부족한 문제가 발생한다.&lt;br&gt;수동으로 인덱스를 삭제하다보면 단순히 번거로울 뿐만이 아니라 삭제하지 않으려고 했던 인덱스도 삭제될 수 있기 때문에, 삭제 자동화는 ES 운영에 반드시 필요하다.&lt;b
-      
-    
-    </summary>
-    
-      <category term="ELK" scheme="https://parkdoyeon.github.io/elk/"/>
-    
-    
-      <category term="elasticsearch" scheme="https://parkdoyeon.github.io/tags/elasticsearch/"/>
-    
-      <category term="docker" scheme="https://parkdoyeon.github.io/tags/docker/"/>
-    
-      <category term="curator" scheme="https://parkdoyeon.github.io/tags/curator/"/>
-    
-      <category term="index" scheme="https://parkdoyeon.github.io/tags/index/"/>
     
   </entry>
   

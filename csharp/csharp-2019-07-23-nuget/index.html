@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang>
+  <head><meta name="generator" content="Hexo 3.8.0">
+    
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta name="google-site-verification" content="ZPpg1XKRwaiB4lPx6SawBAA96ROVlVBmZ8s6pigFEVc">
+
+
+
+<meta name="naver-site-verification" content="a31e494cb7e78d5a64696ea234dc6c9006b251ff">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://parkdoyeon.github.io/csharp/csharp-2019-07-23-nuget/">
+
+
+  <meta property="og:title" content=".NET CORE nuget package 배포하기">
+
+
+
+
+  <meta name="description" content=".NET CORE nuget package 배포하기">
+  <meta property="og:description" content=".NET CORE nuget package 배포하기">
+
+
+
+
+
+  <meta name="keywords" content="csharp,dotnetcore,nuget,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Park Doyeon">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=">
+
+
+
+<link rel="canonical" href="https://parkdoyeon.github.io/csharp/csharp-2019-07-23-nuget/">
+
+
+<meta name="description" content="사실 누겟패키지 생성방법은 공식문서에 아주 잘 정리되어있다. 이 글은 공식문서를 내 언어로 한번 더 정리하고, 내부 패키지 서버에 배포하는 과정과 거기서 발생한 트러블 슈팅과정을 덧붙이는 것을 목적으로 한다. 닷넷 코어로 빌드한 누겟 패키지를 배포하고 또 닷넷 코어 프로젝트에 적용하면서 기록용으로 글을 작성하게 됐는데, 이전에 일반 닷넷 프레임워크 누겟 패">
+<meta name="keywords" content="csharp,dotnetcore,nuget">
+<meta property="og:type" content="article">
+<meta property="og:title" content=".NET CORE nuget package 배포하기">
+<meta property="og:url" content="https://parkdoyeon.github.io/csharp/csharp-2019-07-23-nuget/index.html">
+<meta property="og:site_name" content="Park Doyeon">
+<meta property="og:description" content="사실 누겟패키지 생성방법은 공식문서에 아주 잘 정리되어있다. 이 글은 공식문서를 내 언어로 한번 더 정리하고, 내부 패키지 서버에 배포하는 과정과 거기서 발생한 트러블 슈팅과정을 덧붙이는 것을 목적으로 한다. 닷넷 코어로 빌드한 누겟 패키지를 배포하고 또 닷넷 코어 프로젝트에 적용하면서 기록용으로 글을 작성하게 됐는데, 이전에 일반 닷넷 프레임워크 누겟 패">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://parkdoyeon.github.io/image/csharp/2019-07-23-nuget-1.png">
+<meta property="og:updated_time" content="2019-07-23T15:42:12.195Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content=".NET CORE nuget package 배포하기">
+<meta name="twitter:description" content="사실 누겟패키지 생성방법은 공식문서에 아주 잘 정리되어있다. 이 글은 공식문서를 내 언어로 한번 더 정리하고, 내부 패키지 서버에 배포하는 과정과 거기서 발생한 트러블 슈팅과정을 덧붙이는 것을 목적으로 한다. 닷넷 코어로 빌드한 누겟 패키지를 배포하고 또 닷넷 코어 프로젝트에 적용하면서 기록용으로 글을 작성하게 됐는데, 이전에 일반 닷넷 프레임워크 누겟 패">
+<meta name="twitter:image" content="https://parkdoyeon.github.io/image/csharp/2019-07-23-nuget-1.png">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141653278-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-141653278-1');
+  </script>
+
+
+
+
+
+  
+
+
+    <title> .NET CORE nuget package 배포하기 - Park Doyeon </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </head>
+
+  <body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Park Doyeon</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+      </header>
+
+      <div id="post-categories"><ul class="category-list">
+
+    <li>
+    
+        <a href="/csharp" class="on">C#</a>
+    
+    </li>
+
+    <li>
+    
+        <a href="/dev-env">Dev-Env</a>
+    
+    </li>
+
+    <li>
+    
+        <a href="/elk">ELK</a>
+    
+    </li>
+
+    <li>
+    
+        <a href="/docker">Docker</a>
+    
+    </li>
+
+    <li>
+    
+        <a href="/ml">ML</a>
+    
+    </li>
+
+    <li>
+    
+        <a href="/python">Python</a>
+    
+    </li>
+
+    <li>
+    
+        <a href="/undefined">python</a>
+    
+    </li>
+
+    <li>
+    
+        <a href="/sql">SQL</a>
+    
+    </li>
+
+    <li>
+    
+        <a href="/web">Web</a>
+    
+    </li>
+
+</ul>
+
+      </div>
+
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          .NET CORE nuget package 배포하기
+        
+      </h1>
+
+      <time class="post-time">
+          Jul 23 2019
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <p>사실 누겟패키지 생성방법은 <a href="https://docs.microsoft.com/ko-kr/nuget/quickstart/create-and-publish-a-package-using-the-dotnet-cli" rel="external nofollow noopener noreferrer" target="_blank">공식문서</a>에 아주 잘 정리되어있다. 이 글은 공식문서를 내 언어로 한번 더 정리하고, 내부 패키지 서버에 배포하는 과정과 거기서 발생한 트러블 슈팅과정을 덧붙이는 것을 목적으로 한다. 닷넷 코어로 빌드한 누겟 패키지를 배포하고 또 닷넷 코어 프로젝트에 적용하면서 기록용으로 글을 작성하게 됐는데, 이전에 일반 닷넷 프레임워크 누겟 패키지 빌드/배포와 크게 달라진 점은 없는 것 같다.</p>
+<p>패키지의 빌드방식은 크게 세가지라고 할 수 있다.</p>
+<h1 id="방법-1-빌드-옵션을-통한-패키지-파일-자동생성"><a href="#방법-1-빌드-옵션을-통한-패키지-파일-자동생성" class="headerlink" title="방법 1. 빌드 옵션을 통한 패키지 파일 자동생성"></a>방법 1. 빌드 옵션을 통한 패키지 파일 자동생성</h1><p>csproj에 아래의 설정값을 추가해주고 빌드하면 bin디렉토리 내 빌드 버전 폴더에 .nupkg파일이 생성된다.</p>
+<pre><code class="xml">  &lt;PropertyGroup Condition=&quot;&#39;$(Configuration)|$(Platform)&#39;==&#39;Debug|AnyCPU&#39;&quot;&gt;
+    &lt;PackageId&gt;something.for.core&lt;/PackageId&gt;
+    &lt;Version&gt;1.0.0&lt;/Version&gt;
+    &lt;Authors&gt;someauthor&lt;/Authors&gt;
+    &lt;Company&gt;somecompany&lt;/Company&gt;
+    &lt;GeneratePackageOnBuild&gt;true&lt;/GeneratePackageOnBuild&gt;
+  &lt;/PropertyGroup&gt;</code></pre>
+<h1 id="방법-2-명령어로-생성하기"><a href="#방법-2-명령어로-생성하기" class="headerlink" title="방법 2. 명령어로 생성하기"></a>방법 2. 명령어로 생성하기</h1><p>빌드 설정에 누겟패키지 설정을 추가하는 것이 귀찮다면(혹은 property값을 굳이 남기고 싶지 않다면) 커맨드라인 명령어로 생성할수도 있다.</p>
+<pre><code class="powershell">dotnet pack -c release</code></pre>
+<h1 id="방법-3-nuget-package-explorer에서-생성하기"><a href="#방법-3-nuget-package-explorer에서-생성하기" class="headerlink" title="방법 3. nuget package explorer에서 생성하기"></a>방법 3. nuget package explorer에서 생성하기</h1><p>GUI를 통해 패키지를 생성할 수 있다. 윈도우 마켓에서 nuget package explorer를 설치해서 빌드하면 된다. 처음에 쓰면 혼란스러운 구석은 있어도 사용 자체는 어렵지 않아서 설명은 생략한다. 빌드 파일의 디렉토리 구성이나 버전별 관리까지 이래저래 손이 가는 부분이 있어서 특별한 경우가 아니면 사용하지 않는 것이 좋은 것 같다.</p>
+<h1 id="배포하기-cmd를-사용한-배포"><a href="#배포하기-cmd를-사용한-배포" class="headerlink" title="배포하기 - cmd를 사용한 배포"></a>배포하기 - cmd를 사용한 배포</h1><p>배포도 마찬가지로 위의 방법 세가지를 다 쓸 수 있다.누겟 익스플로러에서 해도되고, cmd에서 해도 된다. cmd는 아래와 같이 작성하면 된다. </p>
+<pre><code class="powershell">dotnet nuget push something.for.core.nupkg -k somecompany -s https://api.nuget.org/v3/index.json</code></pre>
+<p><code>-k</code>는 키값을 넣는 파라미터인데, 내부서버에 배포하는 경우 키값을 임의로(아무거나) 작성해도 되지만, 누겟서버에 배포하는 경우 발급받은 키값을 입력해야한다.  내 경우 사내에서 사용하는 sonatype nexus package서버에 배포를 해야야 하므로 키값을 임의로 지정했다. 배포 url은 다운로드용으로 연결할때는 <code>https://package.mycompany.com/repository/nuget-group/</code> 주소로 했는데, 배포시에는 <code>https://package.mycompany.com/repository/nuget-hosted/</code>주소로 배포해야 했다. 이 점을 몰라서 조금 헤맸다.</p>
+<h1 id="배포하기-누겟-익스플로러를-사용한-배포"><a href="#배포하기-누겟-익스플로러를-사용한-배포" class="headerlink" title="배포하기 - 누겟 익스플로러를 사용한 배포"></a>배포하기 - 누겟 익스플로러를 사용한 배포</h1><p>누겟 익스플로러에서 배포하는 경우 생성된 로컬 누겟패키지를 익스플로러에서 연 다음 <code>File &gt; Publish</code>를 누르면 아래와같은 팝업이 나온다. 주소와 키값을 넣고 배포 버튼을 누르면 된다.<br><img src="/image/csharp/2019-07-23-nuget-1.png" alt="nuget"><br> 주소입력창 하단에 <code>api/v2/package</code>경로를 배포경로에 더할것인지 체크하는 체크박스가 있는데 하지 않아도 된다.</p>
+<h1 id="FYI-Trouble-Shooting"><a href="#FYI-Trouble-Shooting" class="headerlink" title="FYI - Trouble Shooting"></a>FYI - Trouble Shooting</h1><p>누겟 패키지를 게시하고 프로젝트에서 정상적으로 설치까지 했지만, cs 파일에서 패키지 호출시 네임스페이스를 인식 못하는 문제가 있었다. 이때 패키지 버전을 올려서 게시한 다음 패키지 업데이트를 하니 문제가 해결됐다. 또 그 이후에 다른 누겟 프로젝트를 최초로 빌드해 올렸을때는 정상적으로 레퍼런스 참조가 됐다. 해결법은 찾았지만 재현이 안된다. 대체 무엇이 문제였던 것일까.</p>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+        <div class="post-tags">
+          
+            <a href="/tags/csharp/">csharp</a>
+          
+            <a href="/tags/dotnetcore/">dotnetcore</a>
+          
+            <a href="/tags/nuget/">nuget</a>
+          
+        </div>
+
+        
+        
+  <nav class="post-nav">
+    
+    
+      <a class="next" href="/python/python-2019-07-21-sort/">
+        <span class="next-text nav-default">big sort 문제 풀기 - sort()함수에 대한 고찰</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+    <!--<div style="text-align:center;">
+        <button class="btn" id="load-disqus" onclick="disqus.load();">load Disqus review</button>
+    </div>-->
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+    2019
+    <span class="footer-author">Park Doyeon.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> and <a class="theme-link" href="https://github.com/parkdoyeon">Me</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+<script type="text/javascript">
+  var disqus_shortname = 'parkdoyeon';
+  var disqus_identifier = 'csharp/csharp-2019-07-23-nuget/';
+  var disqus_url = 'https://parkdoyeon.github.io/csharp/csharp-2019-07-23-nuget/index.html';
+
+  
+  var disqus_config = function () {
+      this.page.url = disqus_url;
+      this.page.identifier = disqus_identifier;
+  };
+  
+  (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+  
+  
+  // var disqus = {
+  //   load : function disqus(){
+  //       if(typeof DISQUS !== 'object') {
+  //         (function () {
+  //         var s = document.createElement('script'); s.async = true;
+  //         s.type = 'text/javascript';
+  //         s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  //         (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+  //         }());
+  //         $('#load-disqus').remove(); ///Delete Button
+  //       }
+  //   }
+  // }
+
+</script>
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script src="/js/src/theme.js?v="></script>
+<script src="/js/src/bootstrap.js?v="></script>
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+<script src="/js/src/highlight.pack.js?v="></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.7.0/highlightjs-line-numbers.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', (event) => {
+  document.querySelectorAll('figure.highlight').forEach((block) => {
+    hljs.highlightBlock(block);
+  });
+});
+hljs.initHighlightingOnLoad();
+hljs.initLineNumbersOnLoad();
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </body>
+</html>

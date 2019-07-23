@@ -8,8 +8,15 @@
     </url>
 
     <url>
+        <loc>https://parkdoyeon.github.io/csharp/</loc>
+        <lastmod>2019-07-23T15:42:12.195Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://parkdoyeon.github.io/python/</loc>
-        <lastmod>2019-07-21T15:26:29.851Z</lastmod>
+        <lastmod>2019-07-23T15:30:49.352Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -36,6 +43,13 @@
     </url>
 
     <url>
+        <loc>https://parkdoyeon.github.io/python/</loc>
+        <lastmod>2019-06-27T15:33:15.456Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://parkdoyeon.github.io/ml/</loc>
         <lastmod>2019-06-27T15:33:15.455Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -52,13 +66,6 @@
     <url>
         <loc>https://parkdoyeon.github.io/sql/</loc>
         <lastmod>2019-06-08T18:03:26.928Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://parkdoyeon.github.io/csharp/</loc>
-        <lastmod>2019-06-08T02:58:52.614Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
