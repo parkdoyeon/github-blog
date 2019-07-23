@@ -6,7 +6,7 @@
   <link href="/feed.xml" rel="self"/>
   
   <link href="https://parkdoyeon.github.io/"/>
-  <updated>2019-07-23T15:42:12.195Z</updated>
+  <updated>2019-07-23T15:43:30.450Z</updated>
   <id>https://parkdoyeon.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>.NET CORE nuget package 배포하기</title>
+    <title>ASP.NET Core nuget package 배포하기</title>
     <link href="https://parkdoyeon.github.io/csharp/csharp-2019-07-23-nuget/"/>
     <id>https://parkdoyeon.github.io/csharp/csharp-2019-07-23-nuget/</id>
     <published>2019-07-23T06:08:12.000Z</published>
-    <updated>2019-07-23T15:42:12.195Z</updated>
+    <updated>2019-07-23T15:43:30.450Z</updated>
     
     <content type="html"><![CDATA[<p>사실 누겟패키지 생성방법은 <a href="https://docs.microsoft.com/ko-kr/nuget/quickstart/create-and-publish-a-package-using-the-dotnet-cli" rel="external nofollow noopener noreferrer" target="_blank">공식문서</a>에 아주 잘 정리되어있다. 이 글은 공식문서를 내 언어로 한번 더 정리하고, 내부 패키지 서버에 배포하는 과정과 거기서 발생한 트러블 슈팅과정을 덧붙이는 것을 목적으로 한다. 닷넷 코어로 빌드한 누겟 패키지를 배포하고 또 닷넷 코어 프로젝트에 적용하면서 기록용으로 글을 작성하게 됐는데, 이전에 일반 닷넷 프레임워크 누겟 패키지 빌드/배포와 크게 달라진 점은 없는 것 같다.</p><p>패키지의 빌드방식은 크게 세가지라고 할 수 있다.</p><h1 id="방법-1-빌드-옵션을-통한-패키지-파일-자동생성"><a href="#방법-1-빌드-옵션을-통한-패키지-파일-자동생성" class="headerlink" title="방법 1. 빌드 옵션을 통한 패키지 파일 자동생성"></a>방법 1. 빌드 옵션을 통한 패키지 파일 자동생성</h1><p>csproj에 아래의 설정값을 추가해주고 빌드하면 bin디렉토리 내 빌드 버전 폴더에 .nupkg파일이 생성된다.</p><pre><code class="xml">  &lt;PropertyGroup Condition=&quot;&#39;$(Configuration)|$(Platform)&#39;==&#39;Debug|AnyCPU&#39;&quot;&gt;    &lt;PackageId&gt;something.for.core&lt;/PackageId&gt;    &lt;Version&gt;1.0.0&lt;/Version&gt;    &lt;Authors&gt;someauthor&lt;/Authors&gt;    &lt;Company&gt;somecompany&lt;/Company&gt;    &lt;GeneratePackageOnBuild&gt;true&lt;/GeneratePackageOnBuild&gt;  &lt;/PropertyGroup&gt;</code></pre><h1 id="방법-2-명령어로-생성하기"><a href="#방법-2-명령어로-생성하기" class="headerlink" title="방법 2. 명령어로 생성하기"></a>방법 2. 명령어로 생성하기</h1><p>빌드 설정에 누겟패키지 설정을 추가하는 것이 귀찮다면(혹은 property값을 굳이 남기고 싶지 않다면) 커맨드라인 명령어로 생성할수도 있다.</p><pre><code class="powershell">dotnet pack -c release</code></pre><h1 id="방법-3-nuget-package-explorer에서-생성하기"><a href="#방법-3-nuget-package-explorer에서-생성하기" class="headerlink" title="방법 3. nuget package explorer에서 생성하기"></a>방법 3. nuget package explorer에서 생성하기</h1><p>GUI를 통해 패키지를 생성할 수 있다. 윈도우 마켓에서 nuget package explorer를 설치해서 빌드하면 된다. 처음에 쓰면 혼란스러운 구석은 있어도 사용 자체는 어렵지 않아서 설명은 생략한다. 빌드 파일의 디렉토리 구성이나 버전별 관리까지 이래저래 손이 가는 부분이 있어서 특별한 경우가 아니면 사용하지 않는 것이 좋은 것 같다.</p><h1 id="배포하기-cmd를-사용한-배포"><a href="#배포하기-cmd를-사용한-배포" class="headerlink" title="배포하기 - cmd를 사용한 배포"></a>배포하기 - cmd를 사용한 배포</h1><p>배포도 마찬가지로 위의 방법 세가지를 다 쓸 수 있다.누겟 익스플로러에서 해도되고, cmd에서 해도 된다. cmd는 아래와 같이 작성하면 된다. </p><pre><code class="powershell">dotnet nuget push something.for.core.nupkg -k somecompany -s https://api.nuget.org/v3/index.json</code></pre><p><code>-k</code>는 키값을 넣는 파라미터인데, 내부서버에 배포하는 경우 키값을 임의로(아무거나) 작성해도 되지만, 누겟서버에 배포하는 경우 발급받은 키값을 입력해야한다.  내 경우 사내에서 사용하는 sonatype nexus package서버에 배포를 해야야 하므로 키값을 임의로 지정했다. 배포 url은 다운로드용으로 연결할때는 <code>https://package.mycompany.com/repository/nuget-group/</code> 주소로 했는데, 배포시에는 <code>https://package.mycompany.com/repository/nuget-hosted/</code>주소로 배포해야 했다. 이 점을 몰라서 조금 헤맸다.</p><h1 id="배포하기-누겟-익스플로러를-사용한-배포"><a href="#배포하기-누겟-익스플로러를-사용한-배포" class="headerlink" title="배포하기 - 누겟 익스플로러를 사용한 배포"></a>배포하기 - 누겟 익스플로러를 사용한 배포</h1><p>누겟 익스플로러에서 배포하는 경우 생성된 로컬 누겟패키지를 익스플로러에서 연 다음 <code>File &gt; Publish</code>를 누르면 아래와같은 팝업이 나온다. 주소와 키값을 넣고 배포 버튼을 누르면 된다.<br><img src="/image/csharp/2019-07-23-nuget-1.png" alt="nuget"><br> 주소입력창 하단에 <code>api/v2/package</code>경로를 배포경로에 더할것인지 체크하는 체크박스가 있는데 하지 않아도 된다.</p><h1 id="FYI-Trouble-Shooting"><a href="#FYI-Trouble-Shooting" class="headerlink" title="FYI - Trouble Shooting"></a>FYI - Trouble Shooting</h1><p>누겟 패키지를 게시하고 프로젝트에서 정상적으로 설치까지 했지만, cs 파일에서 패키지 호출시 네임스페이스를 인식 못하는 문제가 있었다. 이때 패키지 버전을 올려서 게시한 다음 패키지 업데이트를 하니 문제가 해결됐다. 또 그 이후에 다른 누겟 프로젝트를 최초로 빌드해 올렸을때는 정상적으로 레퍼런스 참조가 됐다. 해결법은 찾았지만 재현이 안된다. 대체 무엇이 문제였던 것일까.</p>]]></content>
     
@@ -523,9 +523,9 @@
       <category term="Dev-Env" scheme="https://parkdoyeon.github.io/dev-env/"/>
     
     
-      <category term="network" scheme="https://parkdoyeon.github.io/tags/network/"/>
-    
       <category term="hyper-v" scheme="https://parkdoyeon.github.io/tags/hyper-v/"/>
+    
+      <category term="network" scheme="https://parkdoyeon.github.io/tags/network/"/>
     
   </entry>
   
