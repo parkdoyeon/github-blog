@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang>
+  <head><meta name="generator" content="Hexo 3.8.0">
+    
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta name="google-site-verification" content="ZPpg1XKRwaiB4lPx6SawBAA96ROVlVBmZ8s6pigFEVc">
+
+
+
+<meta name="naver-site-verification" content="a31e494cb7e78d5a64696ea234dc6c9006b251ff">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://parkdoyeon.github.io/python/python-2019-07-24-python-dict/">
+
+
+  <meta property="og:title" content="파이썬 dictionary활용을 위한 빌트인 함수들">
+
+
+
+
+  <meta name="description" content="파이썬 dictionary활용을 위한 빌트인 함수들">
+  <meta property="og:description" content="파이썬 dictionary활용을 위한 빌트인 함수들">
+
+
+
+
+
+  <meta name="keywords" content="dictionary,python,algorithm,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Park Doyeon">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=">
+
+
+
+<link rel="canonical" href="https://parkdoyeon.github.io/python/python-2019-07-24-python-dict/">
+
+
+<meta name="description" content="DB를 잘 쓰려면 쿼리를 알아야 하듯이, 알고리즘 문제를 풀다보면 정확한 자료형을 구현하기위해선 빌트인 함수를 잘 써야한다. 가령 아래 배열에서 같은 인덱스 값을 갖는 값들이 어떤 곡의 장르와 플레이 횟수라고 했을때, 장르별 플레이 횟수 합산을 하고, 횟수 단위로 순위를 매기려면 어떻게 해야할까? genres = [&amp;quot;classic&amp;quot;, &amp;q">
+<meta name="keywords" content="dictionary,python,algorithm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="파이썬 dictionary활용을 위한 빌트인 함수들">
+<meta property="og:url" content="https://parkdoyeon.github.io/python/python-2019-07-24-python-dict/index.html">
+<meta property="og:site_name" content="Park Doyeon">
+<meta property="og:description" content="DB를 잘 쓰려면 쿼리를 알아야 하듯이, 알고리즘 문제를 풀다보면 정확한 자료형을 구현하기위해선 빌트인 함수를 잘 써야한다. 가령 아래 배열에서 같은 인덱스 값을 갖는 값들이 어떤 곡의 장르와 플레이 횟수라고 했을때, 장르별 플레이 횟수 합산을 하고, 횟수 단위로 순위를 매기려면 어떻게 해야할까? genres = [&amp;quot;classic&amp;quot;, &amp;q">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-07-31T15:29:54.629Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="파이썬 dictionary활용을 위한 빌트인 함수들">
+<meta name="twitter:description" content="DB를 잘 쓰려면 쿼리를 알아야 하듯이, 알고리즘 문제를 풀다보면 정확한 자료형을 구현하기위해선 빌트인 함수를 잘 써야한다. 가령 아래 배열에서 같은 인덱스 값을 갖는 값들이 어떤 곡의 장르와 플레이 횟수라고 했을때, 장르별 플레이 횟수 합산을 하고, 횟수 단위로 순위를 매기려면 어떻게 해야할까? genres = [&amp;quot;classic&amp;quot;, &amp;q">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141653278-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-141653278-1');
+  </script>
+
+
+
+
+
+  
+
+
+    <title> 파이썬 dictionary활용을 위한 빌트인 함수들 - Park Doyeon </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </head>
+
+  <body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Park Doyeon</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+      </header>
+
+      <div id="post-categories"><ul class="category-list">
+
+    <li>
+    
+        <a href="/csharp">C#</a>
+    
+    </li>
+
+    <li>
+    
+        <a href="/dev-env">Dev-Env</a>
+    
+    </li>
+
+    <li>
+    
+        <a href="/docker">Docker</a>
+    
+    </li>
+
+    <li>
+    
+        <a href="/elk">ELK</a>
+    
+    </li>
+
+    <li>
+    
+        <a href="/ml">ML</a>
+    
+    </li>
+
+    <li>
+    
+        <a href="/python" class="on">Python</a>
+    
+    </li>
+
+    <li>
+    
+        <a href="/sql">SQL</a>
+    
+    </li>
+
+    <li>
+    
+        <a href="/web">Web</a>
+    
+    </li>
+
+</ul>
+
+      </div>
+
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          파이썬 dictionary활용을 위한 빌트인 함수들
+        
+      </h1>
+
+      <time class="post-time">
+          Jul 24 2019
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <p>DB를 잘 쓰려면 쿼리를 알아야 하듯이, 알고리즘 문제를 풀다보면 정확한 자료형을 구현하기위해선 빌트인 함수를 잘 써야한다. 가령 아래 배열에서 같은 인덱스 값을 갖는 값들이 어떤 곡의 장르와 플레이 횟수라고 했을때, 장르별 플레이 횟수 합산을 하고, 횟수 단위로 순위를 매기려면 어떻게 해야할까?</p>
+<pre><code class="python">genres = [&quot;classic&quot;, &quot;pop&quot;, &quot;classic&quot;, &quot;classic&quot;, &quot;pop&quot;]
+plays = [500, 600, 150, 500, 2500]
+</code></pre>
+<p>코드적으로 의미를 해석하면, 장르별 데이터라면 2개의 값이 서로 key-value관계를 가지며, 특정 장르별로 합산이 되어야한다는 것은 중복되지 않는 key값 단위로 합산이 이루어진다는 것을 의미한다. 이것을 순서로 정리하면</p>
+<ol>
+<li>해당 key값을 갖는 딕셔너리를 생성한 다음에</li>
+<li>연산을 위해 0을 value로 할당하고 </li>
+<li>순회하면서 더하고</li>
+<li>순위를 매긴다.<br>단순해보이지만 여기까지도 다양한 선택지가 존재한다. 여기 동일한 로직을 적용했지만 코드가 다른 두개의 방법이 있다. <h3 id="방법-1-fromkeys로-딕셔너리-생성후-index를-직접-순회하며-더하기"><a href="#방법-1-fromkeys로-딕셔너리-생성후-index를-직접-순회하며-더하기" class="headerlink" title="방법 1: fromkeys로 딕셔너리 생성후 index를 직접 순회하며 더하기"></a>방법 1: fromkeys로 딕셔너리 생성후 index를 직접 순회하며 더하기</h3>fromkeys는 순회가능한 리스트를 key값으로 생성한 딕셔너리를 만든다. 주의할점은 두번째 파라미터값으로 초기값을 받는데, 여기에 list()를 할당하면 <strong>같은 주소값을 갖는다.</strong> 즉, 해당 value값의 변형이 일어나면 <strong><em>모든 key에 대응하는 list값이 영향을 받는다.</em></strong> 때문에 list할당시에는 comprehension이나 아래에 defaultdict()함수를 사용해야한다. fromkeys르 딕셔너리 생성후, genres와 plays는 서로 같은 인덱스에 대응하하므로 직접 인덱스 값을 순회하며 플레이 횟수를 더해준다. 합산된 딕셔너리는 다시 순서값이 있는 데이터형인 tuple자료형으로 변환된 다음, sort()로 정렬된다. 2차원 이상의 자료형은 제일 앞의 인자를 기준으로 sort된다.<pre><code class="python">genre_rank_dict = dict.fromkeys(genres, 0) # 딕셔너리 생성
+for i in range(len(plays)):
+ genre_rank_dict[genres[i]] += plays[i]
+</code></pre>
+</li>
+</ol>
+<p>genre_rank = [(albumrank[g], g) for g in albumrank.keys()]<br>genre_rank.sort(reverse=True)</p>
+<pre><code>### 방법 2: defaultdict으로 생성하고 zip으로 순회하기
+두번째 바법은 defaultdict으로 빈 딕셔너리를 생성하는데, 람다함수로 초기값을 지정할 수 있다. 초기값을 지정해놓으면 함수연산이 바로 가능하다는 장점이 있다. 딕셔너리 생성 후에는 tuple자료형으로 장르와 재생횟수를 묶어서 dictionary에 넣어준다. zip은 iterable 오브젝트이기 때문에, 위의 방식과 성능적으로 전혀 차이가 없지만 더 명확하고 깔끔한 코드를 작성할 수 있는 장점이 있다. dict자료형이 완성되면 아래도 마찬가지로 items()함수를 호출해 tuple형으로 바꿔주는데, 컴프리헨션을 통해 플레이 휫수 기준으로 정렬된 tuple 리스트에서 장르만 순서대로 빼놓은 리스트를 새로 생성한다.
+``` python
+genre_rank_dict = defaultdict(lambda: 0) # 딕셔너리 생성
+for genre, play in zip(genres, plays):
+    genre_rank_dict[genre] += play
+
+genre_rank = [genre for genre, play in sorted(genre_play_dict.items(), key=itemgetter(1), reverse=True)]</code></pre>
+            </div>
+          
+
+    
+      <footer class="post-footer">
+        <div class="post-tags">
+          
+            <a href="/tags/dictionary/">dictionary</a>
+          
+            <a href="/tags/python/">python</a>
+          
+            <a href="/tags/algorithm/">algorithm</a>
+          
+        </div>
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/python/python-2019-07-28-python-sort-key/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">파이썬 sort()함수 key 파라미터 제대로 사용하기</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="/csharp/csharp-2019-07-23-nuget/">
+        <span class="next-text nav-default">ASP.NET Core nuget package 배포하기</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+    <!--<div style="text-align:center;">
+        <button class="btn" id="load-disqus" onclick="disqus.load();">load Disqus review</button>
+    </div>-->
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+    2019
+    <span class="footer-author">Park Doyeon.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> and <a class="theme-link" href="https://github.com/parkdoyeon">Me</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+<script type="text/javascript">
+  var disqus_shortname = 'parkdoyeon';
+  var disqus_identifier = 'python/python-2019-07-24-python-dict/';
+  var disqus_url = 'https://parkdoyeon.github.io/python/python-2019-07-24-python-dict/index.html';
+
+  
+  var disqus_config = function () {
+      this.page.url = disqus_url;
+      this.page.identifier = disqus_identifier;
+  };
+  
+  (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+  
+  
+  // var disqus = {
+  //   load : function disqus(){
+  //       if(typeof DISQUS !== 'object') {
+  //         (function () {
+  //         var s = document.createElement('script'); s.async = true;
+  //         s.type = 'text/javascript';
+  //         s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  //         (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+  //         }());
+  //         $('#load-disqus').remove(); ///Delete Button
+  //       }
+  //   }
+  // }
+
+</script>
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script src="/js/src/theme.js?v="></script>
+<script src="/js/src/bootstrap.js?v="></script>
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+<script src="/js/src/highlight.pack.js?v="></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.7.0/highlightjs-line-numbers.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', (event) => {
+  document.querySelectorAll('figure.highlight').forEach((block) => {
+    hljs.highlightBlock(block);
+  });
+});
+hljs.initHighlightingOnLoad();
+hljs.initLineNumbersOnLoad();
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </body>
+</html>

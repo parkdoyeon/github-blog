@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang>
+  <head><meta name="generator" content="Hexo 3.8.0">
+    
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta name="google-site-verification" content="ZPpg1XKRwaiB4lPx6SawBAA96ROVlVBmZ8s6pigFEVc">
+
+
+
+<meta name="naver-site-verification" content="a31e494cb7e78d5a64696ea234dc6c9006b251ff">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://parkdoyeon.github.io/python/python-2019-07-31-python-heapq/">
+
+
+  <meta property="og:title" content="파이썬 heapq로 리스트 빠르게 정렬하기">
+
+
+
+
+  <meta name="description" content="파이썬 heapq로 리스트 빠르게 정렬하기">
+  <meta property="og:description" content="파이썬 heapq로 리스트 빠르게 정렬하기">
+
+
+
+
+
+  <meta name="keywords" content="python,sort,heapq,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Park Doyeon">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=">
+
+
+
+<link rel="canonical" href="https://parkdoyeon.github.io/python/python-2019-07-31-python-heapq/">
+
+
+<meta name="description" content="문제 어떤 리스트(somearr)에서 가장 작은 원소 두개를 꺼내서 연산(원소1+원소2*2)한 다음 연산결과를 리스트(somearr)에 다시 넣는다.  리스트의 모든 원소가 일정 기준(point) 이상이 될 때 까지 이 동작을 반복한다.  somearr = [1, 2, 3, 9, 10, 12] point = 7 list.sort()이 동작을 일반 리스트를">
+<meta name="keywords" content="python,sort,heapq">
+<meta property="og:type" content="article">
+<meta property="og:title" content="파이썬 heapq로 리스트 빠르게 정렬하기">
+<meta property="og:url" content="https://parkdoyeon.github.io/python/python-2019-07-31-python-heapq/index.html">
+<meta property="og:site_name" content="Park Doyeon">
+<meta property="og:description" content="문제 어떤 리스트(somearr)에서 가장 작은 원소 두개를 꺼내서 연산(원소1+원소2*2)한 다음 연산결과를 리스트(somearr)에 다시 넣는다.  리스트의 모든 원소가 일정 기준(point) 이상이 될 때 까지 이 동작을 반복한다.  somearr = [1, 2, 3, 9, 10, 12] point = 7 list.sort()이 동작을 일반 리스트를">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-07-31T15:42:53.408Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="파이썬 heapq로 리스트 빠르게 정렬하기">
+<meta name="twitter:description" content="문제 어떤 리스트(somearr)에서 가장 작은 원소 두개를 꺼내서 연산(원소1+원소2*2)한 다음 연산결과를 리스트(somearr)에 다시 넣는다.  리스트의 모든 원소가 일정 기준(point) 이상이 될 때 까지 이 동작을 반복한다.  somearr = [1, 2, 3, 9, 10, 12] point = 7 list.sort()이 동작을 일반 리스트를">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141653278-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-141653278-1');
+  </script>
+
+
+
+
+
+  
+
+
+    <title> 파이썬 heapq로 리스트 빠르게 정렬하기 - Park Doyeon </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </head>
+
+  <body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Park Doyeon</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+      </header>
+
+      <div id="post-categories"><ul class="category-list">
+
+    <li>
+    
+        <a href="/csharp">C#</a>
+    
+    </li>
+
+    <li>
+    
+        <a href="/dev-env">Dev-Env</a>
+    
+    </li>
+
+    <li>
+    
+        <a href="/docker">Docker</a>
+    
+    </li>
+
+    <li>
+    
+        <a href="/elk">ELK</a>
+    
+    </li>
+
+    <li>
+    
+        <a href="/ml">ML</a>
+    
+    </li>
+
+    <li>
+    
+        <a href="/python" class="on">Python</a>
+    
+    </li>
+
+    <li>
+    
+        <a href="/sql">SQL</a>
+    
+    </li>
+
+    <li>
+    
+        <a href="/web">Web</a>
+    
+    </li>
+
+</ul>
+
+      </div>
+
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          파이썬 heapq로 리스트 빠르게 정렬하기
+        
+      </h1>
+
+      <time class="post-time">
+          Jul 31 2019
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <h3 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h3><ol>
+<li>어떤 리스트(somearr)에서 가장 작은 원소 두개를 꺼내서</li>
+<li>연산(원소1+원소2*2)한 다음</li>
+<li>연산결과를 리스트(somearr)에 다시 넣는다. </li>
+<li>리스트의 모든 원소가 일정 기준(point) 이상이 될 때 까지 이 동작을 반복한다.</li>
+</ol>
+<pre><code class="python">somearr = [1, 2, 3, 9, 10, 12]
+point = 7</code></pre>
+<h3 id="list-sort"><a href="#list-sort" class="headerlink" title="list.sort()"></a>list.sort()</h3><p>이 동작을 일반 리스트를 통해 구현하면 어떨까? 코드자체는 단순하다. 그러나 가장 작은 원소를 찾기위해 정렬을 해야하며, 모든 원소를 확인하며 정렬하는 sort()로는 리스트가 길어질수록 여기에 비례한만큼 긴 시간이 소요된다.</p>
+<pre><code class="python">somearr.sort()
+while somearr[0] &lt; point:
+    if len(sorsomearr) &lt; 3: return -1
+    sorsomearr.append(sorsomearr.pop(0)+(sorsomearr.pop(0)*2))
+    somearr.sort()</code></pre>
+<h3 id="deque-popleft-deque-appendleft"><a href="#deque-popleft-deque-appendleft" class="headerlink" title="deque.popleft(), deque.appendleft()"></a>deque.popleft(), deque.appendleft()</h3><p>그렇다면 pop과 append연산을 deque모듈을 임포트해서 구현하는 것은 어떨까? </p>
+<pre><code class="python">from collections import deque
+deque_arr = deque(sorted(somearr))
+while deque_arr[0] &lt; point:
+    if len(deque_arr) &lt; 3: return -1
+    deque_arr.appendleft(deque_arr.popleft()+(deque_arr.popleft()*2))
+    sorted(deque_arr)</code></pre>
+<p>왼쪽에 연산 결과를 추가한다고해서 더 빠르게 정렬이 일어난다는 보장도 없거니와, 연산 결과값으로 추가되는 왼쪽 원소가 반드시 최소가 된다는 보장은 없으므로, 결국엔 리스트 정렬을 해야한다. 특별히 효과를 보지 못한다.</p>
+<h3 id="heapq-heappop-heapq-heappush"><a href="#heapq-heappop-heapq-heappush" class="headerlink" title="heapq.heappop(), heapq.heappush()"></a>heapq.heappop(), heapq.heappush()</h3><p>이 때 활용하면 좋은 모듈이 heapq다. heapq는 이진트리의 자료구조를 구현해낸 모듈로, 일반 리스트 데이터를 파라미터로 받아 이진트리 알고리즘으로 정렬한 다음 원소를 꺼내거나 삭제한다. </p>
+<pre><code class="python">import heapq
+
+heapq.heapify(somearr) # 리스트 오브젝트를 정렬한다
+answer = 0
+while somearr[0] &lt; K:
+    if len(somearr) &lt; 2: return -1
+    heapq.heappush(somearr, heapq.heappop(somearr)+heapq.heappop(somearr)*2)</code></pre>
+<p>heappush, heappop 모두 자료 삭제/추가와 동시에 정렬이 이어나는 자료구조로, 별도의 sort가 필요없다.</p>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+        <div class="post-tags">
+          
+            <a href="/tags/python/">python</a>
+          
+            <a href="/tags/sort/">sort</a>
+          
+            <a href="/tags/heapq/">heapq</a>
+          
+        </div>
+
+        
+        
+  <nav class="post-nav">
+    
+    
+      <a class="next" href="/python/python-2019-07-28-python-sort-key/">
+        <span class="next-text nav-default">파이썬 sort()함수 key 파라미터 제대로 사용하기</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+    <!--<div style="text-align:center;">
+        <button class="btn" id="load-disqus" onclick="disqus.load();">load Disqus review</button>
+    </div>-->
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+    2019
+    <span class="footer-author">Park Doyeon.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> and <a class="theme-link" href="https://github.com/parkdoyeon">Me</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+<script type="text/javascript">
+  var disqus_shortname = 'parkdoyeon';
+  var disqus_identifier = 'python/python-2019-07-31-python-heapq/';
+  var disqus_url = 'https://parkdoyeon.github.io/python/python-2019-07-31-python-heapq/index.html';
+
+  
+  var disqus_config = function () {
+      this.page.url = disqus_url;
+      this.page.identifier = disqus_identifier;
+  };
+  
+  (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+  
+  
+  // var disqus = {
+  //   load : function disqus(){
+  //       if(typeof DISQUS !== 'object') {
+  //         (function () {
+  //         var s = document.createElement('script'); s.async = true;
+  //         s.type = 'text/javascript';
+  //         s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  //         (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+  //         }());
+  //         $('#load-disqus').remove(); ///Delete Button
+  //       }
+  //   }
+  // }
+
+</script>
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script src="/js/src/theme.js?v="></script>
+<script src="/js/src/bootstrap.js?v="></script>
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+<script src="/js/src/highlight.pack.js?v="></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.7.0/highlightjs-line-numbers.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', (event) => {
+  document.querySelectorAll('figure.highlight').forEach((block) => {
+    hljs.highlightBlock(block);
+  });
+});
+hljs.initHighlightingOnLoad();
+hljs.initLineNumbersOnLoad();
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </body>
+</html>
