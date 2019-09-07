@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>https://parkdoyeon.github.io/elk/elk-2019-06-27-es-nori/</loc>
+        <lastmod>2019-09-07T11:17:19.318Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://parkdoyeon.github.io/python/python-2019-07-31-python-heapq/</loc>
         <lastmod>2019-07-31T15:42:53.408Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -58,14 +66,6 @@
     <url>
         <loc>https://parkdoyeon.github.io/dev-env/dev-env-2019-04-29-hyperv/</loc>
         <lastmod>2019-07-13T09:32:43.641Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://parkdoyeon.github.io/uncategorized/elk-2019-06-27-es-nori/</loc>
-        <lastmod>2019-07-09T13:36:23.201Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
