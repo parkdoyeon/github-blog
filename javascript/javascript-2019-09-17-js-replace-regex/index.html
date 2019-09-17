@@ -53,18 +53,18 @@
 <link rel="canonical" href="https://parkdoyeon.github.io/javascript/javascript-2019-09-17-js-replace-regex/">
 
 
-<meta name="description" content="&amp;#39;2019-09-17&amp;#39;을 &amp;#39;2019/09/17&amp;#39;으로 바꾸려면 .replace()함수만으로는 안된다. replace()는 가장 먼저 등장하는 문자열만 교체하기 때문이다. 때문에 전체 문자열에서 변경사항을 적용하려면 다음과 같이 정규식을 사용해야한다. var item = &amp;#39;2019-09-17&amp;#39; item.replace(">
+<meta name="description" content="&amp;#39;2019-09-17&amp;#39;을 &amp;#39;2019/09/17&amp;#39;으로 바꾸려면 replace()를 사용해야 될 것같지만, replace()는 가장 먼저 등장하는 문자열만 교체한다. 때문에 전체 문자열에서 변경사항을 적용하려면 다음과 같이 정규식을 사용해야한다. var item = &amp;#39;2019-09-17&amp;#39; item.replace(/-/">
 <meta name="keywords" content="regex,javascript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="javascript - 정규식으로 문자열 replace하기">
 <meta property="og:url" content="https://parkdoyeon.github.io/javascript/javascript-2019-09-17-js-replace-regex/index.html">
 <meta property="og:site_name" content="Park Doyeon">
-<meta property="og:description" content="&amp;#39;2019-09-17&amp;#39;을 &amp;#39;2019/09/17&amp;#39;으로 바꾸려면 .replace()함수만으로는 안된다. replace()는 가장 먼저 등장하는 문자열만 교체하기 때문이다. 때문에 전체 문자열에서 변경사항을 적용하려면 다음과 같이 정규식을 사용해야한다. var item = &amp;#39;2019-09-17&amp;#39; item.replace(">
+<meta property="og:description" content="&amp;#39;2019-09-17&amp;#39;을 &amp;#39;2019/09/17&amp;#39;으로 바꾸려면 replace()를 사용해야 될 것같지만, replace()는 가장 먼저 등장하는 문자열만 교체한다. 때문에 전체 문자열에서 변경사항을 적용하려면 다음과 같이 정규식을 사용해야한다. var item = &amp;#39;2019-09-17&amp;#39; item.replace(/-/">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-09-17T15:58:52.158Z">
+<meta property="og:updated_time" content="2019-09-17T16:06:01.444Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javascript - 정규식으로 문자열 replace하기">
-<meta name="twitter:description" content="&amp;#39;2019-09-17&amp;#39;을 &amp;#39;2019/09/17&amp;#39;으로 바꾸려면 .replace()함수만으로는 안된다. replace()는 가장 먼저 등장하는 문자열만 교체하기 때문이다. 때문에 전체 문자열에서 변경사항을 적용하려면 다음과 같이 정규식을 사용해야한다. var item = &amp;#39;2019-09-17&amp;#39; item.replace(">
+<meta name="twitter:description" content="&amp;#39;2019-09-17&amp;#39;을 &amp;#39;2019/09/17&amp;#39;으로 바꾸려면 replace()를 사용해야 될 것같지만, replace()는 가장 먼저 등장하는 문자열만 교체한다. 때문에 전체 문자열에서 변경사항을 적용하려면 다음과 같이 정규식을 사용해야한다. var item = &amp;#39;2019-09-17&amp;#39; item.replace(/-/">
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=">
@@ -214,7 +214,7 @@
 
     
             <div class="post-content">
-            <p><code>&#39;2019-09-17&#39;</code>을 <code>&#39;2019/09/17&#39;</code>으로 바꾸려면 .replace()함수만으로는 안된다. replace()는 가장 먼저 등장하는 문자열만 교체하기 때문이다. 때문에 전체 문자열에서 변경사항을 적용하려면 다음과 같이 정규식을 사용해야한다.</p>
+            <p><code>&#39;2019-09-17&#39;</code>을 <code>&#39;2019/09/17&#39;</code>으로 바꾸려면 replace()를 사용해야 될 것같지만, replace()는 <strong>가장 먼저 등장하는 문자열만</strong> 교체한다. 때문에 전체 문자열에서 변경사항을 적용하려면 다음과 같이 정규식을 사용해야한다.</p>
 <pre><code class="javascript">var item = &#39;2019-09-17&#39;
 item.replace(/-/g, &#39;/&#39;)</code></pre>
 <p>정규식 끝에 있는 소문자는 ‘전체탐색’을 의미한다. i와 함께 많이 사용되는데, 정리하면 아래와 같다.</p>
