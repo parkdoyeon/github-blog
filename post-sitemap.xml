@@ -40,7 +40,7 @@
     </url>
 
     <url>
-        <loc>https://parkdoyeon.github.io/python/python-2019-07-21-python-sort/</loc>
+        <loc>https://parkdoyeon.github.io/python/python-2019-07-24-python-dict/</loc>
         <lastmod>2019-07-31T15:29:54.629Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -48,7 +48,7 @@
     </url>
 
     <url>
-        <loc>https://parkdoyeon.github.io/python/python-2019-07-24-python-dict/</loc>
+        <loc>https://parkdoyeon.github.io/python/python-2019-07-21-python-sort/</loc>
         <lastmod>2019-07-31T15:29:54.629Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -64,7 +64,7 @@
     </url>
 
     <url>
-        <loc>https://parkdoyeon.github.io/dev-env/dev-env-2019-07-10-powershell-auth/</loc>
+        <loc>https://parkdoyeon.github.io/dev-env/dev-env-2019-04-29-hyperv/</loc>
         <lastmod>2019-07-13T09:32:43.641Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -72,7 +72,7 @@
     </url>
 
     <url>
-        <loc>https://parkdoyeon.github.io/dev-env/dev-env-2019-04-29-hyperv/</loc>
+        <loc>https://parkdoyeon.github.io/dev-env/dev-env-2019-07-10-powershell-auth/</loc>
         <lastmod>2019-07-13T09:32:43.641Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -96,7 +96,7 @@
     </url>
 
     <url>
-        <loc>https://parkdoyeon.github.io/python/python-2019-05-28-jekins-to-pytest/</loc>
+        <loc>https://parkdoyeon.github.io/python/python-2019-04-18-python-venv/</loc>
         <lastmod>2019-06-27T15:33:15.456Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -104,7 +104,7 @@
     </url>
 
     <url>
-        <loc>https://parkdoyeon.github.io/python/python-2019-04-18-python-venv/</loc>
+        <loc>https://parkdoyeon.github.io/python/python-2019-05-28-jekins-to-pytest/</loc>
         <lastmod>2019-06-27T15:33:15.456Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -208,22 +208,6 @@
     </url>
 
     <url>
-        <loc>https://parkdoyeon.github.io/sql/sql-2019-02-12-idinsert/</loc>
-        <lastmod>2019-06-08T02:58:52.620Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://parkdoyeon.github.io/sql/sql-2019-03-14-insertselect/</loc>
-        <lastmod>2019-06-08T02:58:52.620Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://parkdoyeon.github.io/sql/sql-2019-02-12-datacheck/</loc>
         <lastmod>2019-06-08T02:58:52.620Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -232,7 +216,23 @@
     </url>
 
     <url>
+        <loc>https://parkdoyeon.github.io/sql/sql-2019-02-12-idinsert/</loc>
+        <lastmod>2019-06-08T02:58:52.620Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://parkdoyeon.github.io/sql/sql-2019-04-22-addpk/</loc>
+        <lastmod>2019-06-08T02:58:52.620Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://parkdoyeon.github.io/sql/sql-2019-03-14-insertselect/</loc>
         <lastmod>2019-06-08T02:58:52.620Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -416,7 +416,7 @@
     </url>
 
     <url>
-        <loc>https://parkdoyeon.github.io/csharp/csharp-2018-12-18-effectivecsharp-1/</loc>
+        <loc>https://parkdoyeon.github.io/csharp/csharp-2018-12-11-csharp-7-1-tuple-async-is/</loc>
         <lastmod>2019-06-08T02:58:52.613Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -424,7 +424,7 @@
     </url>
 
     <url>
-        <loc>https://parkdoyeon.github.io/csharp/csharp-2018-12-11-csharp-7-1-tuple-async-is/</loc>
+        <loc>https://parkdoyeon.github.io/csharp/csharp-2018-12-18-effectivecsharp-1/</loc>
         <lastmod>2019-06-08T02:58:52.613Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -464,14 +464,6 @@
     </url>
 
     <url>
-        <loc>https://parkdoyeon.github.io/csharp/csharp-2018-12-06-csharp-3-0-LINQ/</loc>
-        <lastmod>2019-06-08T02:58:52.612Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://parkdoyeon.github.io/csharp/csharp-2018-12-06-csharp-3-0-Lambda/</loc>
         <lastmod>2019-06-08T02:58:52.612Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -488,7 +480,31 @@
     </url>
 
     <url>
+        <loc>https://parkdoyeon.github.io/csharp/csharp-2018-12-06-csharp-3-0-LINQ/</loc>
+        <lastmod>2019-06-08T02:58:52.612Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://parkdoyeon.github.io/csharp/csharp-2018-11-14-csharp-basic/</loc>
+        <lastmod>2019-06-08T02:58:52.611Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://parkdoyeon.github.io/csharp/csharp-2018-11-06-csharp-basic/</loc>
+        <lastmod>2019-06-08T02:58:52.611Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://parkdoyeon.github.io/csharp/csharp-2018-11-30-csharp-async/</loc>
         <lastmod>2019-06-08T02:58:52.611Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -504,23 +520,7 @@
     </url>
 
     <url>
-        <loc>https://parkdoyeon.github.io/csharp/csharp-2018-11-14-csharp-basic/</loc>
-        <lastmod>2019-06-08T02:58:52.611Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://parkdoyeon.github.io/csharp/csharp-2018-11-27-csharp-thread/</loc>
-        <lastmod>2019-06-08T02:58:52.611Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://parkdoyeon.github.io/csharp/csharp-2018-11-30-csharp-async/</loc>
         <lastmod>2019-06-08T02:58:52.611Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
