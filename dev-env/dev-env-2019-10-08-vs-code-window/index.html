@@ -20,22 +20,22 @@
 
 
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://parkdoyeon.github.io/javascript/javascript-2019-09-17-js-replace-regex/">
+<meta property="og:url" content="https://parkdoyeon.github.io/dev-env/dev-env-2019-10-08-vs-code-window/">
 
 
-  <meta property="og:title" content="JavaScript - 정규식으로 문자열 replace하기">
-
-
-
-
-  <meta name="description" content="JavaScript - 정규식으로 문자열 replace하기">
-  <meta property="og:description" content="JavaScript - 정규식으로 문자열 replace하기">
+  <meta property="og:title" content="Visual Studio Code 유용한/기본적인 세팅들">
 
 
 
 
+  <meta name="description" content="Visual Studio Code 유용한/기본적인 세팅들">
+  <meta property="og:description" content="Visual Studio Code 유용한/기본적인 세팅들">
 
-  <meta name="keywords" content="regex,javascript,">
+
+
+
+
+  <meta name="keywords" content="vscode,ide,">
 
 
 
@@ -50,21 +50,21 @@
 
 
 
-<link rel="canonical" href="https://parkdoyeon.github.io/javascript/javascript-2019-09-17-js-replace-regex/">
+<link rel="canonical" href="https://parkdoyeon.github.io/dev-env/dev-env-2019-10-08-vs-code-window/">
 
 
-<meta name="description" content="&amp;#39;2019-09-17&amp;#39;을 &amp;#39;2019/09/17&amp;#39;으로 바꾸려면 replace()를 사용해야 될 것같지만, replace()는 가장 먼저 등장하는 문자열만 교체한다. 때문에 전체 문자열에서 변경사항을 적용하려면 다음과 같이 정규식을 사용해야한다. var item = &amp;#39;2019-09-17&amp;#39; item.replace(/-/">
-<meta name="keywords" content="regex,javascript">
+<meta name="description" content="2019년 10월 8일부터 작성 시작, 꾸준히 업데이트할 예정이다. IDE 디자인 unique window colors새로운 윈도우 띄울때마다 컬러가 바뀐다. 여러창 띄워놓고 작업할 때 유용하다.https://marketplace.visualstudio.com/items?itemName=stuart.unique-window-colors  rainbow br">
+<meta name="keywords" content="vscode,ide">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaScript - 정규식으로 문자열 replace하기">
-<meta property="og:url" content="https://parkdoyeon.github.io/javascript/javascript-2019-09-17-js-replace-regex/index.html">
+<meta property="og:title" content="Visual Studio Code 유용한&#x2F;기본적인 세팅들">
+<meta property="og:url" content="https://parkdoyeon.github.io/dev-env/dev-env-2019-10-08-vs-code-window/index.html">
 <meta property="og:site_name" content="Park Doyeon">
-<meta property="og:description" content="&amp;#39;2019-09-17&amp;#39;을 &amp;#39;2019/09/17&amp;#39;으로 바꾸려면 replace()를 사용해야 될 것같지만, replace()는 가장 먼저 등장하는 문자열만 교체한다. 때문에 전체 문자열에서 변경사항을 적용하려면 다음과 같이 정규식을 사용해야한다. var item = &amp;#39;2019-09-17&amp;#39; item.replace(/-/">
+<meta property="og:description" content="2019년 10월 8일부터 작성 시작, 꾸준히 업데이트할 예정이다. IDE 디자인 unique window colors새로운 윈도우 띄울때마다 컬러가 바뀐다. 여러창 띄워놓고 작업할 때 유용하다.https://marketplace.visualstudio.com/items?itemName=stuart.unique-window-colors  rainbow br">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-09-17T16:07:37.754Z">
+<meta property="og:updated_time" content="2019-10-08T09:44:23.755Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JavaScript - 정규식으로 문자열 replace하기">
-<meta name="twitter:description" content="&amp;#39;2019-09-17&amp;#39;을 &amp;#39;2019/09/17&amp;#39;으로 바꾸려면 replace()를 사용해야 될 것같지만, replace()는 가장 먼저 등장하는 문자열만 교체한다. 때문에 전체 문자열에서 변경사항을 적용하려면 다음과 같이 정규식을 사용해야한다. var item = &amp;#39;2019-09-17&amp;#39; item.replace(/-/">
+<meta name="twitter:title" content="Visual Studio Code 유용한&#x2F;기본적인 세팅들">
+<meta name="twitter:description" content="2019년 10월 8일부터 작성 시작, 꾸준히 업데이트할 예정이다. IDE 디자인 unique window colors새로운 윈도우 띄울때마다 컬러가 바뀐다. 여러창 띄워놓고 작업할 때 유용하다.https://marketplace.visualstudio.com/items?itemName=stuart.unique-window-colors  rainbow br">
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=">
@@ -104,7 +104,7 @@
   
 
 
-    <title> JavaScript - 정규식으로 문자열 replace하기 - Park Doyeon </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <title> Visual Studio Code 유용한/기본적인 세팅들 - Park Doyeon </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   </head>
 
   <body>
@@ -143,7 +143,7 @@
 
     <li>
     
-        <a href="/dev-env">Dev-Env</a>
+        <a href="/dev-env" class="on">Dev-Env</a>
     
     </li>
 
@@ -161,7 +161,7 @@
 
     <li>
     
-        <a href="/javascript" class="on">JavaScript</a>
+        <a href="/javascript">JavaScript</a>
     
     </li>
 
@@ -201,12 +201,12 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          JavaScript - 정규식으로 문자열 replace하기
+          Visual Studio Code 유용한/기본적인 세팅들
         
       </h1>
 
       <time class="post-time">
-          Sep 17 2019
+          Oct 8 2019
       </time>
     </header>
 
@@ -214,19 +214,16 @@
 
     
             <div class="post-content">
-            <p><code>&#39;2019-09-17&#39;</code>을 <code>&#39;2019/09/17&#39;</code>으로 바꾸려면 replace()를 사용해야 될 것같지만, replace()는 <strong>가장 먼저 등장하는 문자열만</strong> 교체한다. 때문에 전체 문자열에서 변경사항을 적용하려면 다음과 같이 정규식을 사용해야한다.</p>
-<pre><code class="javascript">var item = &#39;2019-09-17&#39;
-item.replace(/-/g, &#39;/&#39;)</code></pre>
-<p>정규식 끝에 있는 소문자는 ‘전체탐색’을 의미한다. i와 함께 많이 사용되는데, 정리하면 아래와 같다.</p>
-<ul>
-<li>i: ignore case, 대문자/소문자 구분하지 않음</li>
-<li>g: global, 전체 탐색</li>
+            <p><em>2019년 10월 8일부터 작성 시작, 꾸준히 업데이트할 예정이다.</em></p>
+<h1 id="IDE-디자인"><a href="#IDE-디자인" class="headerlink" title="IDE 디자인"></a>IDE 디자인</h1><ul>
+<li><p>unique window colors<br>새로운 윈도우 띄울때마다 컬러가 바뀐다. 여러창 띄워놓고 작업할 때 유용하다.<br><a href="https://marketplace.visualstudio.com/items?itemName=stuart.unique-window-colors" rel="external nofollow noopener noreferrer" target="_blank">https://marketplace.visualstudio.com/items?itemName=stuart.unique-window-colors</a></p>
+</li>
+<li><p>rainbow brakets<br>괄호를 여닫을 때 다양한 색상으로 표기. Elasticsearch 쿼리 만들때 유용하게 썼다.<br><a href="https://marketplace.visualstudio.com/items?itemName=2gua.rainbow-brackets" rel="external nofollow noopener noreferrer" target="_blank">https://marketplace.visualstudio.com/items?itemName=2gua.rainbow-brackets</a></p>
+</li>
 </ul>
-<p><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/replace" rel="external nofollow noopener noreferrer" target="_blank">MDN 문서</a>에 좋은 예시들이 많이 나오는데, 아래와 같은 사용도 가능하다.</p>
-<pre><code class="javascript">var re = /(\w+)\s(\w+)/;
-var str = &#39;John Smith&#39;;
-var newstr = str.replace(re, &#39;$2, $1&#39;);
-console.log(newstr);  // Smith, John</code></pre>
+<h1 id="마크다운"><a href="#마크다운" class="headerlink" title="마크다운"></a>마크다운</h1><ul>
+<li>markdown all in one<br>마크다운 작성할때 단축키를 써서 작업할 수 있다<br><a href="https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one" rel="external nofollow noopener noreferrer" target="_blank">https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one</a></li>
+</ul>
 
             </div>
           
@@ -235,9 +232,9 @@ console.log(newstr);  // Smith, John</code></pre>
       <footer class="post-footer">
         <div class="post-tags">
           
-            <a href="/tags/regex/">regex</a>
+            <a href="/tags/vscode/">vscode</a>
           
-            <a href="/tags/javascript/">javascript</a>
+            <a href="/tags/ide/">ide</a>
           
         </div>
 
@@ -245,15 +242,9 @@ console.log(newstr);  // Smith, John</code></pre>
         
   <nav class="post-nav">
     
-      <a class="prev" href="/javascript/javascript-2019-10-08-yarn-node/">
-        <i class="iconfont icon-left"></i>
-        <span class="prev-text nav-default">yarn으로 다른 경로에 있는 node_modules 참조하기</span>
-        <span class="prev-text nav-mobile">Prev</span>
-      </a>
     
-    
-      <a class="next" href="/python/python-2019-07-31-python-heapq/">
-        <span class="next-text nav-default">파이썬 heapq로 리스트 빠르게 정렬하기</span>
+      <a class="next" href="/javascript/javascript-2019-10-08-yarn-node/">
+        <span class="next-text nav-default">yarn으로 다른 경로에 있는 node_modules 참조하기</span>
         <span class="prev-text nav-mobile">Next</span>
         <i class="iconfont icon-right"></i>
       </a>
@@ -305,8 +296,8 @@ console.log(newstr);  // Smith, John</code></pre>
 
 <script type="text/javascript">
   var disqus_shortname = 'parkdoyeon';
-  var disqus_identifier = 'javascript/javascript-2019-09-17-js-replace-regex/';
-  var disqus_url = 'https://parkdoyeon.github.io/javascript/javascript-2019-09-17-js-replace-regex/index.html';
+  var disqus_identifier = 'dev-env/dev-env-2019-10-08-vs-code-window/';
+  var disqus_url = 'https://parkdoyeon.github.io/dev-env/dev-env-2019-10-08-vs-code-window/index.html';
 
   
   var disqus_config = function () {

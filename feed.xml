@@ -6,7 +6,7 @@
   <link href="/feed.xml" rel="self"/>
   
   <link href="https://parkdoyeon.github.io/"/>
-  <updated>2019-09-17T16:07:37.754Z</updated>
+  <updated>2019-10-08T09:44:23.755Z</updated>
   <id>https://parkdoyeon.github.io/</id>
   
   <author>
@@ -15,6 +15,67 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Visual Studio Code 유용한/기본적인 세팅들</title>
+    <link href="https://parkdoyeon.github.io/dev-env/dev-env-2019-10-08-vs-code-window/"/>
+    <id>https://parkdoyeon.github.io/dev-env/dev-env-2019-10-08-vs-code-window/</id>
+    <published>2019-10-08T07:26:55.000Z</published>
+    <updated>2019-10-08T09:44:23.755Z</updated>
+    
+    <content type="html"><![CDATA[<p><em>2019년 10월 8일부터 작성 시작, 꾸준히 업데이트할 예정이다.</em></p><h1 id="IDE-디자인"><a href="#IDE-디자인" class="headerlink" title="IDE 디자인"></a>IDE 디자인</h1><ul><li><p>unique window colors<br>새로운 윈도우 띄울때마다 컬러가 바뀐다. 여러창 띄워놓고 작업할 때 유용하다.<br><a href="https://marketplace.visualstudio.com/items?itemName=stuart.unique-window-colors" rel="external nofollow noopener noreferrer" target="_blank">https://marketplace.visualstudio.com/items?itemName=stuart.unique-window-colors</a></p></li><li><p>rainbow brakets<br>괄호를 여닫을 때 다양한 색상으로 표기. Elasticsearch 쿼리 만들때 유용하게 썼다.<br><a href="https://marketplace.visualstudio.com/items?itemName=2gua.rainbow-brackets" rel="external nofollow noopener noreferrer" target="_blank">https://marketplace.visualstudio.com/items?itemName=2gua.rainbow-brackets</a></p></li></ul><h1 id="마크다운"><a href="#마크다운" class="headerlink" title="마크다운"></a>마크다운</h1><ul><li>markdown all in one<br>마크다운 작성할때 단축키를 써서 작업할 수 있다<br><a href="https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one" rel="external nofollow noopener noreferrer" target="_blank">https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one</a></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;em&gt;2019년 10월 8일부터 작성 시작, 꾸준히 업데이트할 예정이다.&lt;/em&gt;&lt;/p&gt;
+&lt;h1 id=&quot;IDE-디자인&quot;&gt;&lt;a href=&quot;#IDE-디자인&quot; class=&quot;headerlink&quot; title=&quot;IDE 디자인&quot;&gt;&lt;/a&gt;IDE 디자인&lt;/h1
+      
+    
+    </summary>
+    
+      <category term="Dev-Env" scheme="https://parkdoyeon.github.io/dev-env/"/>
+    
+    
+      <category term="vscode" scheme="https://parkdoyeon.github.io/tags/vscode/"/>
+    
+      <category term="ide" scheme="https://parkdoyeon.github.io/tags/ide/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>yarn으로 다른 경로에 있는 node_modules 참조하기</title>
+    <link href="https://parkdoyeon.github.io/javascript/javascript-2019-10-08-yarn-node/"/>
+    <id>https://parkdoyeon.github.io/javascript/javascript-2019-10-08-yarn-node/</id>
+    <published>2019-10-08T07:25:28.000Z</published>
+    <updated>2019-10-08T09:33:02.535Z</updated>
+    
+    <content type="html"><![CDATA[<p>vue.js 개발환경을 구축하면서 노드파일을 관리해야하는 이슈가 생겼다. 배포시 디렉토리 구조가 아래와 같은데</p><pre><code class="powershell"> MYDIR/   projects/     project_a        /package.json        /node_modules     project_b        /package.json        /node_modules     project_c        /package.json        /node_modules</code></pre><p>  이 상태에서 신규 디렉토리 배포가 나가면 npm i 명령 마다 이미 빌드서버에 설치를 해놓은 패키지를 중복되게 설치하게 되는 것은 물론, 중복된 모듈이 하드디스크를 가득 차지하는 문제가 발생한다. </p><p>  그래서 아래와 같이 각 프로젝트가 하나의 노드 모듈을 바라보도록 수정하기로 했다.</p><pre><code class="powershell"> MYDIR/   projects/     node_modules/     project_a        /package.json     project_b        /package.json     project_c        /package.json</code></pre><h1 id="방법"><a href="#방법" class="headerlink" title="방법"></a>방법</h1><p><a href="https://stackoverflow.com/questions/26293049/specify-path-to-node-modules-in-package-json" rel="external nofollow noopener noreferrer" target="_blank">스택오버플로우</a>에서 찾은 환경변수 변경하는 방법은 윈도우 환경에서는 잘 동작하지 않았다. yarn을 사용하는 방법이 있길래, 이참에 한번 설치해보았다.</p><h1 id="yarn이란"><a href="#yarn이란" class="headerlink" title="yarn이란?"></a>yarn이란?</h1><p>node 모듈관리를 조금 더 체계적으로 하기 위한 패키지 관리 툴이다. 별도의 용도를 목적으로 하지만 기본적으로 기존에 세팅된 npm프로젝트와 함께 사용해도 된다는 점이 좋다. 나는 단순히 노드 모듈 참조를 조금더 간단한 설정으로 세팅하고싶어 설치했지만, <a href="https://academy.realm.io/kr/posts/mobilization-konstantin-raev-taming-node-modules-at-facebook/" rel="external nofollow noopener noreferrer" target="_blank">이 포스트(Facebook은 Node_Modules를 어떻게 관리할까요?)</a>를 참조하길 권한다. 2017년에 작성된 오래된 글이지만 yarn의 개념과 도입의도를 파악할 수 있는 좋은 글이다.</p><h1 id="yarn-설치와-사용법"><a href="#yarn-설치와-사용법" class="headerlink" title="yarn 설치와 사용법"></a>yarn 설치와 사용법</h1><p>간단하다. npm을 통해 설치하고 npm대신 yarn을 사용하면 된다.</p><pre><code>npm i -g yarn# vue.js 시작인 경우npm run devyarn run dev</code></pre><h1 id="다른-경로의-노드-모듈-참조하기"><a href="#다른-경로의-노드-모듈-참조하기" class="headerlink" title="다른 경로의 노드 모듈 참조하기"></a>다른 경로의 노드 모듈 참조하기</h1><p>아래와같이 서로 다른 package.json설정을 갖는 프로젝트가 있을때, yarn을 통해 프로젝트 디렉토리마다 node_modules를 생성하지 않고 상위에 있는 node_modules를 참조할 수 있다.</p><p>방법 1. 실행 명령어를 통해 설정하기</p><pre><code class="powershell">yarn run dev --modules-folder ../node_modules</code></pre><p>방법 2. 설정파일 만들기<br>package.json이 있는 root 경로에 .yarnrc파일을 생성하고 아래 내용을 입력한다</p><pre><code class="powershell">--modules-folder ../node_modules</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;vue.js 개발환경을 구축하면서 노드파일을 관리해야하는 이슈가 생겼다. 배포시 디렉토리 구조가 아래와 같은데&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;powershell&quot;&gt; MYDIR/
+   projects/
+     project_a
+     
+      
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="https://parkdoyeon.github.io/javascript/"/>
+    
+    
+      <category term="javascript" scheme="https://parkdoyeon.github.io/tags/javascript/"/>
+    
+      <category term="yarn" scheme="https://parkdoyeon.github.io/tags/yarn/"/>
+    
+      <category term="node" scheme="https://parkdoyeon.github.io/tags/node/"/>
+    
+  </entry>
   
   <entry>
     <title>JavaScript - 정규식으로 문자열 replace하기</title>
@@ -523,62 +584,6 @@
       <category term="selenium" scheme="https://parkdoyeon.github.io/tags/selenium/"/>
     
       <category term="pytest" scheme="https://parkdoyeon.github.io/tags/pytest/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Jenkins에 Python 환경세팅하고 Allure Report 연동하기</title>
-    <link href="https://parkdoyeon.github.io/python/python-2019-05-28-jekins-to-pytest/"/>
-    <id>https://parkdoyeon.github.io/python/python-2019-05-28-jekins-to-pytest/</id>
-    <published>2019-05-28T06:17:02.000Z</published>
-    <updated>2019-06-27T15:33:15.456Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Jekins에-파이썬-세팅하기"><a href="#Jekins에-파이썬-세팅하기" class="headerlink" title="Jekins에 파이썬 세팅하기"></a>Jekins에 파이썬 세팅하기</h1><ol><li>System Configuration &gt; Global Properties &gt; Environment Variables 체크<ul><li>이름: <code>PYTHON_PATH</code></li><li>값: <code>C:\Python\Python36;C:\Python\Python36\Scripts;</code> (젠킨스가 돌아가는 호스트 환경변수에 세팅된 파이썬 경로 입력)</li></ul></li><li>프로젝트 생성 &gt; 구성 &gt; General 탭 &gt; Build &gt; Add build step<ul><li>윈도우라면 Execute Windows Batch Command 선택하고 아래의 스크립트 추가</li><li>패키지 변경감지를 위해 파이썬 가상환경을 세팅하고 pip install 세팅<pre><code class="bash">SET PATH=%PATH%,%PYTHON_PATH%virtualenv venvcall venv/Scripts/activate.batpip install -r requirements.txtpy.test --alluredir=./allure-results # pytest의 allure report 결과 생성을 위한 디렉토리 설정deactivate</code></pre></li></ul></li></ol><h1 id="Jenkins에-Allure-Report-세팅"><a href="#Jenkins에-Allure-Report-세팅" class="headerlink" title="Jenkins에 Allure Report 세팅"></a>Jenkins에 Allure Report 세팅</h1><ol><li>플러그인 관리 &gt; 설치가능탭 &gt; Allure Jenkins Plugin 설치</li><li>프로젝트 생성 &gt; 구성 &gt; General 탭 &gt; Build &gt; 빌드 후 조치 &gt; 빌드 후 조치 추가<ul><li>Allure Report 선택 후, 위의 py.test에 파라미터로 넘긴 allure-results path를 넣어준다.<br><img src="/image/python/2019-05-28-jekins-to-pytest-1.PNG" alt="jenkins"></li></ul></li></ol><h1 id="Jenkins-빌드-실행하기"><a href="#Jenkins-빌드-실행하기" class="headerlink" title="Jenkins 빌드 실행하기"></a>Jenkins 빌드 실행하기</h1><p>빌드를 실행하면 대시보드에 다음과 같은 그래프가 생성된다. 그래프에는 테스트 성공케이스와 실패 케이스가 표시되어있다. 빌드 히스토리에는 케이스별 Allure-Report를 조회할 수 있는 아이콘이 생긴다.</p><p><img src="/image/python/2019-05-28-jekins-to-pytest-3.PNG" alt="jenkins"></p><h1 id="Allure-Report"><a href="#Allure-Report" class="headerlink" title="Allure Report"></a>Allure Report</h1><p>Allure Report 페이지에 들어가면 더 자세한 테스트 현황 그래프가 조회된다. Suites에 들어가면 케이스별 테스트 정보가 확인된다.</p><p>작성했던 테스트 코드 내에서 저장한 스크린샷도 테스트 함수 단위로 함께 첨부된 것을 볼 수 있다.</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;Jekins에-파이썬-세팅하기&quot;&gt;&lt;a href=&quot;#Jekins에-파이썬-세팅하기&quot; class=&quot;headerlink&quot; title=&quot;Jekins에 파이썬 세팅하기&quot;&gt;&lt;/a&gt;Jekins에 파이썬 세팅하기&lt;/h1&gt;&lt;ol&gt;
-&lt;li&gt;System C
-      
-    
-    </summary>
-    
-      <category term="Python" scheme="https://parkdoyeon.github.io/python/"/>
-    
-    
-      <category term="python" scheme="https://parkdoyeon.github.io/tags/python/"/>
-    
-      <category term="jenkins" scheme="https://parkdoyeon.github.io/tags/jenkins/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Deep Learning From Scratch - 1. 퍼셉트론과 신경망</title>
-    <link href="https://parkdoyeon.github.io/ml/ml-2019-05-27-deep/"/>
-    <id>https://parkdoyeon.github.io/ml/ml-2019-05-27-deep/</id>
-    <published>2019-05-27T10:38:00.000Z</published>
-    <updated>2019-06-08T02:58:52.619Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="1-퍼셉트론"><a href="#1-퍼셉트론" class="headerlink" title="1. 퍼셉트론"></a>1. 퍼셉트론</h2><ul><li>뉴런에서 보내온 신호 총합이 정해진 한계(임계값)를 넘어서면 1, 아니면 0을 출력하는게 기본 원리.</li><li>신호는 가중치값 \(w\)와 곱한다.<ul><li>전류에서 말하는 저항을 생각하면 된다.</li><li>가중치가 높으면 신호가 크고, 가중치가 낮으면 신호가 낮다.</li></ul></li><li>활성화를 조정하는 상수 편향값 \(b\)를 더한다.</li><li>한계: AND, NAND(Not And: And의 반대 진리표), OR의 연산 구현이 가능하지만, XOR 게이트는 구현할 수 없다.</li></ul><h2 id="2-다층-퍼셉트론"><a href="#2-다층-퍼셉트론" class="headerlink" title="2. 다층 퍼셉트론"></a>2. 다층 퍼셉트론</h2><ul><li>선형구조인 퍼셉트론의 대안으로, 다층적으로 구현하는 퍼셉트론을 말한다.</li><li>다층 퍼셉트론의 NAND 연산만으로 컴퓨터를 구현할 수 있다.</li></ul><h2 id="3-신경망"><a href="#3-신경망" class="headerlink" title="3. 신경망"></a>3. 신경망</h2><ul><li>입력층, 은닉층, 출력층으로 구성되어있다.</li><li>두개의 신호 \(w_1\), \(w_2\)와 편향값 b가 있다고 가정할때, 다음과 같이 표현할 수 있다.<br>$$ y= h(b+w_1x_1+w_2x_2) $$</li><li>여기서 출력값 y를 도출하는 h(a)로 표현되는 함수는 활성화 함수라고 한다.</li></ul><h4 id="3-1-활성화-함수"><a href="#3-1-활성화-함수" class="headerlink" title="3.1 활성화 함수"></a>3.1 활성화 함수</h4><ul><li>활성화 함수는 신호의 총합을 출력의 신호로 변환하는 함수를 말한다.</li><li>신경망은 활성화 함수를 통해 신호를 변환하고, 그 변환된 신호를 다음 뉴런에 전달한다.</li><li>책에서는 활성화 함수로 세 가지를 소개한다.<ol><li>계단함수<ul><li>입력이 0을 넘으면 1을, 그 외에는 0을 출력하는 함수이다.</li></ul></li><li>시그모이드 함수<ul><li>시그모이드 함수는 아래의 공식을 나타내며, e는 자연상수이다.<br>$$ h(x)= {1 \over 1+exp(-x)}$$<br>$$  exp(-x) = e^{-x}, e=2.7182… $$</li></ul></li><li>ReLU 함수<ul><li>입력이 0을 넘으면 그 입력을 그대로 출력하고, 0이하면 0을 출력하는 함수이다.</li></ul></li></ol></li><li>세 함수는 공통적으로 비선형 함수이고, 신경망에서는 활성화 함수로 비선형 함수를 사용해야한다<ul><li>선형함수를 이용하면 미분값이 값이 상수가 되며, 변화량이 상수면 신경망 층을 깊게하는 의미가 없어지기 때문이다.</li></ul></li></ul><h4 id="3-2-출력층-설계하기"><a href="#3-2-출력층-설계하기" class="headerlink" title="3.2 출력층 설계하기"></a>3.2 출력층 설계하기</h4><ul><li>기계학습은 분석(classification, 입력데이터를 구분), 회귀(regression, 입력데이터에서 연속적인 수치 예측)따라 활성화 함수를 달리쓴다.</li><li>두가지를 소개한다.<ol><li>항등함수<ul><li>회귀에서 주로 사용한다. 입력을 그대로 출력함.</li></ul></li><li>소프트맥스<ul><li>분류에서 주로 사용한다.</li><li>분자는 입력신호의 지수함수, 분모는 n개의 모든 입력신호의 지수함수의 합으로 구성된다<br> $$  y_k = {exp(a_k) \over \sum_ {i=0}^n exp(a_i)} $$<ul><li>분모의 값을 보면 모든 출력층의 뉴런이 모든 신호로부터 영향을 받는 것을 알 수 있다.</li><li>소프트 맥스 함수는 코드 구현시 지수값으로 인한 오버플로 문제가 있다. 이를 개선하기 위해 입력신호중 최대값을 뺀다.</li><li>아래의 식을 보면 어떤값을 더하거나 뺴도 결과값은 동일하다는 것을 보여준다.<br>$$  y_k = {exp(a_k) \over \sum_ {i=0}^n exp(a_i)} = {Cexp(a_k) \over C\sum_ {i=0}^n exp(a_i)}  $$<br>\(exp(n)\)는 지수함수이므로 C를 지수식에 밑이 e인 자연로그($log_e$)으로 취하면 덧셈식에 넣을 수 있다.<br>$$  = {exp(a_k+logC) \over \sum_ {i=0}^n exp(a_i+logC)} = {exp(a_k+C’) \over \sum_ {i=0}^n exp(a_i+C’)}$$</li></ul></li><li>소프트 맥스 함수의 출력은 0부터 1사이의 실수이며, 그렇기 때문에 출력을 확률로 해석할 수 있다.</li><li>\(y=exp(x)\)형식의 단조 증가함수이므로 원소간의 대소관계가 바뀌지는 않는다.</li><li>그렇기 떄문에 지수함수 계산에 드는 자원 낭비를 줄이기 위해 현업에서는 출력층의 소프트맥스 함수를 생략하기도 한다.</li></ul></li></ol></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;1-퍼셉트론&quot;&gt;&lt;a href=&quot;#1-퍼셉트론&quot; class=&quot;headerlink&quot; title=&quot;1. 퍼셉트론&quot;&gt;&lt;/a&gt;1. 퍼셉트론&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;뉴런에서 보내온 신호 총합이 정해진 한계(임계값)를 넘어서면 1, 아니면 0을 출력
-      
-    
-    </summary>
-    
-      <category term="ML" scheme="https://parkdoyeon.github.io/ml/"/>
-    
-    
-      <category term="machine-learning" scheme="https://parkdoyeon.github.io/tags/machine-learning/"/>
-    
-      <category term="deep-learning" scheme="https://parkdoyeon.github.io/tags/deep-learning/"/>
     
   </entry>
   

@@ -8,8 +8,15 @@
     </url>
 
     <url>
+        <loc>https://parkdoyeon.github.io/dev-env/</loc>
+        <lastmod>2019-10-08T09:44:23.755Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://parkdoyeon.github.io/javascript/</loc>
-        <lastmod>2019-09-17T16:07:37.754Z</lastmod>
+        <lastmod>2019-10-08T09:33:02.535Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -31,13 +38,6 @@
     <url>
         <loc>https://parkdoyeon.github.io/csharp/</loc>
         <lastmod>2019-07-23T15:43:30.450Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://parkdoyeon.github.io/dev-env/</loc>
-        <lastmod>2019-07-13T09:32:43.641Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

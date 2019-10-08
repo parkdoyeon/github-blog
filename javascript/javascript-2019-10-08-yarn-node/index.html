@@ -20,22 +20,22 @@
 
 
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://parkdoyeon.github.io/javascript/javascript-2019-09-17-js-replace-regex/">
+<meta property="og:url" content="https://parkdoyeon.github.io/javascript/javascript-2019-10-08-yarn-node/">
 
 
-  <meta property="og:title" content="JavaScript - 정규식으로 문자열 replace하기">
-
-
-
-
-  <meta name="description" content="JavaScript - 정규식으로 문자열 replace하기">
-  <meta property="og:description" content="JavaScript - 정규식으로 문자열 replace하기">
+  <meta property="og:title" content="yarn으로 다른 경로에 있는 node_modules 참조하기">
 
 
 
 
+  <meta name="description" content="yarn으로 다른 경로에 있는 node_modules 참조하기">
+  <meta property="og:description" content="yarn으로 다른 경로에 있는 node_modules 참조하기">
 
-  <meta name="keywords" content="regex,javascript,">
+
+
+
+
+  <meta name="keywords" content="javascript,yarn,node,">
 
 
 
@@ -50,21 +50,21 @@
 
 
 
-<link rel="canonical" href="https://parkdoyeon.github.io/javascript/javascript-2019-09-17-js-replace-regex/">
+<link rel="canonical" href="https://parkdoyeon.github.io/javascript/javascript-2019-10-08-yarn-node/">
 
 
-<meta name="description" content="&amp;#39;2019-09-17&amp;#39;을 &amp;#39;2019/09/17&amp;#39;으로 바꾸려면 replace()를 사용해야 될 것같지만, replace()는 가장 먼저 등장하는 문자열만 교체한다. 때문에 전체 문자열에서 변경사항을 적용하려면 다음과 같이 정규식을 사용해야한다. var item = &amp;#39;2019-09-17&amp;#39; item.replace(/-/">
-<meta name="keywords" content="regex,javascript">
+<meta name="description" content="vue.js 개발환경을 구축하면서 노드파일을 관리해야하는 이슈가 생겼다. 배포시 디렉토리 구조가 아래와 같은데  MYDIR/    projects/      project_a         /package.json         /node_modules      project_b         /package.json         /node_modules">
+<meta name="keywords" content="javascript,yarn,node">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaScript - 정규식으로 문자열 replace하기">
-<meta property="og:url" content="https://parkdoyeon.github.io/javascript/javascript-2019-09-17-js-replace-regex/index.html">
+<meta property="og:title" content="yarn으로 다른 경로에 있는 node_modules 참조하기">
+<meta property="og:url" content="https://parkdoyeon.github.io/javascript/javascript-2019-10-08-yarn-node/index.html">
 <meta property="og:site_name" content="Park Doyeon">
-<meta property="og:description" content="&amp;#39;2019-09-17&amp;#39;을 &amp;#39;2019/09/17&amp;#39;으로 바꾸려면 replace()를 사용해야 될 것같지만, replace()는 가장 먼저 등장하는 문자열만 교체한다. 때문에 전체 문자열에서 변경사항을 적용하려면 다음과 같이 정규식을 사용해야한다. var item = &amp;#39;2019-09-17&amp;#39; item.replace(/-/">
+<meta property="og:description" content="vue.js 개발환경을 구축하면서 노드파일을 관리해야하는 이슈가 생겼다. 배포시 디렉토리 구조가 아래와 같은데  MYDIR/    projects/      project_a         /package.json         /node_modules      project_b         /package.json         /node_modules">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-09-17T16:07:37.754Z">
+<meta property="og:updated_time" content="2019-10-08T09:33:02.535Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JavaScript - 정규식으로 문자열 replace하기">
-<meta name="twitter:description" content="&amp;#39;2019-09-17&amp;#39;을 &amp;#39;2019/09/17&amp;#39;으로 바꾸려면 replace()를 사용해야 될 것같지만, replace()는 가장 먼저 등장하는 문자열만 교체한다. 때문에 전체 문자열에서 변경사항을 적용하려면 다음과 같이 정규식을 사용해야한다. var item = &amp;#39;2019-09-17&amp;#39; item.replace(/-/">
+<meta name="twitter:title" content="yarn으로 다른 경로에 있는 node_modules 참조하기">
+<meta name="twitter:description" content="vue.js 개발환경을 구축하면서 노드파일을 관리해야하는 이슈가 생겼다. 배포시 디렉토리 구조가 아래와 같은데  MYDIR/    projects/      project_a         /package.json         /node_modules      project_b         /package.json         /node_modules">
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=">
@@ -104,7 +104,7 @@
   
 
 
-    <title> JavaScript - 정규식으로 문자열 replace하기 - Park Doyeon </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <title> yarn으로 다른 경로에 있는 node_modules 참조하기 - Park Doyeon </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   </head>
 
   <body>
@@ -201,12 +201,12 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          JavaScript - 정규식으로 문자열 replace하기
+          yarn으로 다른 경로에 있는 node_modules 참조하기
         
       </h1>
 
       <time class="post-time">
-          Sep 17 2019
+          Oct 8 2019
       </time>
     </header>
 
@@ -214,19 +214,41 @@
 
     
             <div class="post-content">
-            <p><code>&#39;2019-09-17&#39;</code>을 <code>&#39;2019/09/17&#39;</code>으로 바꾸려면 replace()를 사용해야 될 것같지만, replace()는 <strong>가장 먼저 등장하는 문자열만</strong> 교체한다. 때문에 전체 문자열에서 변경사항을 적용하려면 다음과 같이 정규식을 사용해야한다.</p>
-<pre><code class="javascript">var item = &#39;2019-09-17&#39;
-item.replace(/-/g, &#39;/&#39;)</code></pre>
-<p>정규식 끝에 있는 소문자는 ‘전체탐색’을 의미한다. i와 함께 많이 사용되는데, 정리하면 아래와 같다.</p>
-<ul>
-<li>i: ignore case, 대문자/소문자 구분하지 않음</li>
-<li>g: global, 전체 탐색</li>
-</ul>
-<p><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/replace" rel="external nofollow noopener noreferrer" target="_blank">MDN 문서</a>에 좋은 예시들이 많이 나오는데, 아래와 같은 사용도 가능하다.</p>
-<pre><code class="javascript">var re = /(\w+)\s(\w+)/;
-var str = &#39;John Smith&#39;;
-var newstr = str.replace(re, &#39;$2, $1&#39;);
-console.log(newstr);  // Smith, John</code></pre>
+            <p>vue.js 개발환경을 구축하면서 노드파일을 관리해야하는 이슈가 생겼다. 배포시 디렉토리 구조가 아래와 같은데</p>
+<pre><code class="powershell"> MYDIR/
+   projects/
+     project_a
+        /package.json
+        /node_modules
+     project_b
+        /package.json
+        /node_modules
+     project_c
+        /package.json
+        /node_modules</code></pre>
+<p>  이 상태에서 신규 디렉토리 배포가 나가면 npm i 명령 마다 이미 빌드서버에 설치를 해놓은 패키지를 중복되게 설치하게 되는 것은 물론, 중복된 모듈이 하드디스크를 가득 차지하는 문제가 발생한다. </p>
+<p>  그래서 아래와 같이 각 프로젝트가 하나의 노드 모듈을 바라보도록 수정하기로 했다.</p>
+<pre><code class="powershell"> MYDIR/
+   projects/
+     node_modules/
+     project_a
+        /package.json
+     project_b
+        /package.json
+     project_c
+        /package.json</code></pre>
+<h1 id="방법"><a href="#방법" class="headerlink" title="방법"></a>방법</h1><p><a href="https://stackoverflow.com/questions/26293049/specify-path-to-node-modules-in-package-json" rel="external nofollow noopener noreferrer" target="_blank">스택오버플로우</a>에서 찾은 환경변수 변경하는 방법은 윈도우 환경에서는 잘 동작하지 않았다. yarn을 사용하는 방법이 있길래, 이참에 한번 설치해보았다.</p>
+<h1 id="yarn이란"><a href="#yarn이란" class="headerlink" title="yarn이란?"></a>yarn이란?</h1><p>node 모듈관리를 조금 더 체계적으로 하기 위한 패키지 관리 툴이다. 별도의 용도를 목적으로 하지만 기본적으로 기존에 세팅된 npm프로젝트와 함께 사용해도 된다는 점이 좋다. 나는 단순히 노드 모듈 참조를 조금더 간단한 설정으로 세팅하고싶어 설치했지만, <a href="https://academy.realm.io/kr/posts/mobilization-konstantin-raev-taming-node-modules-at-facebook/" rel="external nofollow noopener noreferrer" target="_blank">이 포스트(Facebook은 Node_Modules를 어떻게 관리할까요?)</a>를 참조하길 권한다. 2017년에 작성된 오래된 글이지만 yarn의 개념과 도입의도를 파악할 수 있는 좋은 글이다.</p>
+<h1 id="yarn-설치와-사용법"><a href="#yarn-설치와-사용법" class="headerlink" title="yarn 설치와 사용법"></a>yarn 설치와 사용법</h1><p>간단하다. npm을 통해 설치하고 npm대신 yarn을 사용하면 된다.</p>
+<pre><code>npm i -g yarn
+
+# vue.js 시작인 경우
+npm run dev
+yarn run dev</code></pre><h1 id="다른-경로의-노드-모듈-참조하기"><a href="#다른-경로의-노드-모듈-참조하기" class="headerlink" title="다른 경로의 노드 모듈 참조하기"></a>다른 경로의 노드 모듈 참조하기</h1><p>아래와같이 서로 다른 package.json설정을 갖는 프로젝트가 있을때, yarn을 통해 프로젝트 디렉토리마다 node_modules를 생성하지 않고 상위에 있는 node_modules를 참조할 수 있다.</p>
+<p>방법 1. 실행 명령어를 통해 설정하기</p>
+<pre><code class="powershell">yarn run dev --modules-folder ../node_modules</code></pre>
+<p>방법 2. 설정파일 만들기<br>package.json이 있는 root 경로에 .yarnrc파일을 생성하고 아래 내용을 입력한다</p>
+<pre><code class="powershell">--modules-folder ../node_modules</code></pre>
 
             </div>
           
@@ -235,9 +257,11 @@ console.log(newstr);  // Smith, John</code></pre>
       <footer class="post-footer">
         <div class="post-tags">
           
-            <a href="/tags/regex/">regex</a>
-          
             <a href="/tags/javascript/">javascript</a>
+          
+            <a href="/tags/yarn/">yarn</a>
+          
+            <a href="/tags/node/">node</a>
           
         </div>
 
@@ -245,15 +269,15 @@ console.log(newstr);  // Smith, John</code></pre>
         
   <nav class="post-nav">
     
-      <a class="prev" href="/javascript/javascript-2019-10-08-yarn-node/">
+      <a class="prev" href="/dev-env/dev-env-2019-10-08-vs-code-window/">
         <i class="iconfont icon-left"></i>
-        <span class="prev-text nav-default">yarn으로 다른 경로에 있는 node_modules 참조하기</span>
+        <span class="prev-text nav-default">Visual Studio Code 유용한/기본적인 세팅들</span>
         <span class="prev-text nav-mobile">Prev</span>
       </a>
     
     
-      <a class="next" href="/python/python-2019-07-31-python-heapq/">
-        <span class="next-text nav-default">파이썬 heapq로 리스트 빠르게 정렬하기</span>
+      <a class="next" href="/javascript/javascript-2019-09-17-js-replace-regex/">
+        <span class="next-text nav-default">JavaScript - 정규식으로 문자열 replace하기</span>
         <span class="prev-text nav-mobile">Next</span>
         <i class="iconfont icon-right"></i>
       </a>
@@ -305,8 +329,8 @@ console.log(newstr);  // Smith, John</code></pre>
 
 <script type="text/javascript">
   var disqus_shortname = 'parkdoyeon';
-  var disqus_identifier = 'javascript/javascript-2019-09-17-js-replace-regex/';
-  var disqus_url = 'https://parkdoyeon.github.io/javascript/javascript-2019-09-17-js-replace-regex/index.html';
+  var disqus_identifier = 'javascript/javascript-2019-10-08-yarn-node/';
+  var disqus_url = 'https://parkdoyeon.github.io/javascript/javascript-2019-10-08-yarn-node/index.html';
 
   
   var disqus_config = function () {

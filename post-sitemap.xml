@@ -8,6 +8,22 @@
     </url>
 
     <url>
+        <loc>https://parkdoyeon.github.io/dev-env/dev-env-2019-10-08-vs-code-window/</loc>
+        <lastmod>2019-10-08T09:44:23.755Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://parkdoyeon.github.io/javascript/javascript-2019-10-08-yarn-node/</loc>
+        <lastmod>2019-10-08T09:33:02.535Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://parkdoyeon.github.io/javascript/javascript-2019-09-17-js-replace-regex/</loc>
         <lastmod>2019-09-17T16:07:37.754Z</lastmod>
         <changefreq>weekly</changefreq>
