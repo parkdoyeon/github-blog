@@ -23,13 +23,13 @@
 <meta property="og:url" content="https://parkdoyeon.github.io/javascript/javascript-2019-10-08-yarn-node/">
 
 
-  <meta property="og:title" content="yarn으로 다른 경로에 있는 node_modules 참조하기">
+  <meta property="og:title" content="yarn 설치하고 다른 경로에 있는 node_modules 참조하기">
 
 
 
 
-  <meta name="description" content="yarn으로 다른 경로에 있는 node_modules 참조하기">
-  <meta property="og:description" content="yarn으로 다른 경로에 있는 node_modules 참조하기">
+  <meta name="description" content="yarn 설치하고 다른 경로에 있는 node_modules 참조하기">
+  <meta property="og:description" content="yarn 설치하고 다른 경로에 있는 node_modules 참조하기">
 
 
 
@@ -56,14 +56,14 @@
 <meta name="description" content="vue.js 개발환경을 구축하면서 노드파일을 관리해야하는 이슈가 생겼다. 배포시 디렉토리 구조가 아래와 같은데  MYDIR/    projects/      project_a         /package.json         /node_modules      project_b         /package.json         /node_modules">
 <meta name="keywords" content="javascript,yarn,node">
 <meta property="og:type" content="article">
-<meta property="og:title" content="yarn으로 다른 경로에 있는 node_modules 참조하기">
+<meta property="og:title" content="yarn 설치하고 다른 경로에 있는 node_modules 참조하기">
 <meta property="og:url" content="https://parkdoyeon.github.io/javascript/javascript-2019-10-08-yarn-node/index.html">
 <meta property="og:site_name" content="Park Doyeon">
 <meta property="og:description" content="vue.js 개발환경을 구축하면서 노드파일을 관리해야하는 이슈가 생겼다. 배포시 디렉토리 구조가 아래와 같은데  MYDIR/    projects/      project_a         /package.json         /node_modules      project_b         /package.json         /node_modules">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-10-08T09:33:02.535Z">
+<meta property="og:updated_time" content="2019-10-08T09:47:57.660Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="yarn으로 다른 경로에 있는 node_modules 참조하기">
+<meta name="twitter:title" content="yarn 설치하고 다른 경로에 있는 node_modules 참조하기">
 <meta name="twitter:description" content="vue.js 개발환경을 구축하면서 노드파일을 관리해야하는 이슈가 생겼다. 배포시 디렉토리 구조가 아래와 같은데  MYDIR/    projects/      project_a         /package.json         /node_modules      project_b         /package.json         /node_modules">
 
 
@@ -104,7 +104,7 @@
   
 
 
-    <title> yarn으로 다른 경로에 있는 node_modules 참조하기 - Park Doyeon </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <title> yarn 설치하고 다른 경로에 있는 node_modules 참조하기 - Park Doyeon </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   </head>
 
   <body>
@@ -201,7 +201,7 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          yarn으로 다른 경로에 있는 node_modules 참조하기
+          yarn 설치하고 다른 경로에 있는 node_modules 참조하기
         
       </h1>
 
@@ -226,7 +226,7 @@
      project_c
         /package.json
         /node_modules</code></pre>
-<p>  이 상태에서 신규 디렉토리 배포가 나가면 npm i 명령 마다 이미 빌드서버에 설치를 해놓은 패키지를 중복되게 설치하게 되는 것은 물론, 중복된 모듈이 하드디스크를 가득 차지하는 문제가 발생한다. </p>
+<p>  이 상태에서 신규 디렉토리 배포가 나가면 <code>npm i</code>명령 마다 이미 빌드서버에 설치한 패키지가 중복되는 것은 물론, <code>node_modules</code> 디렉토리가 하드디스크를 가득 차지하는 문제가 발생한다. </p>
 <p>  그래서 아래와 같이 각 프로젝트가 하나의 노드 모듈을 바라보도록 수정하기로 했다.</p>
 <pre><code class="powershell"> MYDIR/
    projects/
