@@ -6,7 +6,7 @@
   <link href="/feed.xml" rel="self"/>
   
   <link href="https://parkdoyeon.github.io/"/>
-  <updated>2019-10-08T09:44:23.755Z</updated>
+  <updated>2019-10-16T14:43:27.904Z</updated>
   <id>https://parkdoyeon.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vue cli 3.X 버전에 typscript, webpack 세팅하기</title>
+    <link href="https://parkdoyeon.github.io/javascript/javascript-2019-10-16-vue-cli-typescript/"/>
+    <id>https://parkdoyeon.github.io/javascript/javascript-2019-10-16-vue-cli-typescript/</id>
+    <published>2019-10-16T07:37:08.000Z</published>
+    <updated>2019-10-16T14:43:27.904Z</updated>
+    
+    <content type="html"><![CDATA[<p>처음에 엄청나게 삽질을 하게되는데 하고나면 또 별거아닌… 것중 하나가 웹팩세팅 아닌가 싶다. 이번에 SPA도입하면서 본격적으로 vue 빌드환경을 세팅해보게 되었는데, vue.js도 그렇지만 프론트엔드 개발환경구성 관련 기술들을 처음 접해봐서 그런지 많이 헤맸다. 해보고나니 헤맨만큼 더 잘 알것같은 느낌이 들어 좋은 경험이었다.</p><h1 id="vue-cli-설치하기"><a href="#vue-cli-설치하기" class="headerlink" title="vue cli 설치하기"></a>vue cli 설치하기</h1><p>vue cli는 2.X대랑 3.X대가 변화가 큰 편이다. 혹시 구버전이 있으면 프로젝트 생성 명령어부터 다르니 반드시 두 버전을 확인하고 개발해야한다.</p><pre><code class="bash">npm i -g @vue/cli</code></pre><h1 id="vue-cli-프로젝트-생성하기"><a href="#vue-cli-프로젝트-생성하기" class="headerlink" title="vue cli 프로젝트 생성하기"></a>vue cli 프로젝트 생성하기</h1><pre><code class="bash">vue create [project-name]</code></pre><p>타입스크립트를 추가하고싶으면 프로젝트 생성시 설정단계를 통해 타입스크립트를 추가해도 되고, 생성된 프로젝트에 명령어로 typescript를 추가해도 된다.</p><h1 id="생성된-vue-프로젝트에-typescript-추가하는-법"><a href="#생성된-vue-프로젝트에-typescript-추가하는-법" class="headerlink" title="생성된 vue 프로젝트에 typescript 추가하는 법"></a>생성된 vue 프로젝트에 typescript 추가하는 법</h1><pre><code class="bash">vue add typescript</code></pre><p>타입스크립트 추가를 하면 <code>main.js</code>가 <code>main.ts</code>로 변경되고, 내가 설정한 옵션에 따라 이 경로에 <code>shims-tsx.d.ts</code>와 <code>shims-vue.d.ts</code>파일이 생성된다.</p><h1 id="webpack-연동하기"><a href="#webpack-연동하기" class="headerlink" title="webpack 연동하기"></a>webpack 연동하기</h1><p>vue cli는 웹팩 위에서 빌드되는 프로젝트이므로 기본 설정만으로도 당장 테스트하기에 충분하지만 그래도 webpack에서 사용하던 설정들을 몇가지 붙여야하면 <code>vue.config.js</code>를 통해 세팅하면 된다. 최초에 기본 생성되는 파일이 아니므로 직접 만들어야한다.</p><p>기본적으로 지원되는 옵션은 <a href="https://cli.vuejs.org/config/#global-cli-config" rel="external nofollow noopener noreferrer" target="_blank">공식문서</a>를 참조해서 작성하고, 나머지는 <code>configureWebpack</code>을 통해 설정한다. 해당 키값으로 설정된 옵션들은 <code>webpack</code>옵션에 <code>merge</code>되면서 빌드된다.</p><pre><code class="javascript">const path          = require(&#39;path&#39;),    UglifyJsPlugin  = require(&#39;uglifyjs-webpack-plugin&#39;);    rootconfig      = require(&#39;./root.config&#39;)();module.exports = {    publicPath: &#39;/&#39;,    outputDir: path.resolve(__dirname, &#39;./dist/&#39;+ rootconfig.buildpath),    configureWebpack: {        entry: {            app : &#39;./src/&#39; + rootconfig.buildpath + &#39;main.ts&#39;,        },        output: {            filename: &#39;bundle.js&#39;        },        resolve: {            alias: {                &#39;@&#39;: path.resolve(__dirname, &#39;src/&#39; + rootconfig.buildpath)            }        },        optimization: {            minimize: true,            minimizer: [                new UglifyJsPlugin({                    uglifyOptions:                    {                        sourceMap: true,                        warnings: false,                        compress: {                            unused: true                        },                        mangle: false,                        beautify: true,                        output: {                            comments: false                        }                    }                })            ]        }    }};</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;처음에 엄청나게 삽질을 하게되는데 하고나면 또 별거아닌… 것중 하나가 웹팩세팅 아닌가 싶다. 이번에 SPA도입하면서 본격적으로 vue 빌드환경을 세팅해보게 되었는데, vue.js도 그렇지만 프론트엔드 개발환경구성 관련 기술들을 처음 접해봐서 그런
+      
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="https://parkdoyeon.github.io/javascript/"/>
+    
+    
+      <category term="javascript" scheme="https://parkdoyeon.github.io/tags/javascript/"/>
+    
+      <category term="node" scheme="https://parkdoyeon.github.io/tags/node/"/>
+    
+      <category term="typescript" scheme="https://parkdoyeon.github.io/tags/typescript/"/>
+    
+  </entry>
   
   <entry>
     <title>Visual Studio Code 유용한/기본적인 세팅들</title>
@@ -554,36 +583,6 @@
       <category term="elk" scheme="https://parkdoyeon.github.io/tags/elk/"/>
     
       <category term="elastalert" scheme="https://parkdoyeon.github.io/tags/elastalert/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>셀레니움과 pytest로 브라우저 테스트 하기</title>
-    <link href="https://parkdoyeon.github.io/python/python-2019-05-28-selenium-to-pytest/"/>
-    <id>https://parkdoyeon.github.io/python/python-2019-05-28-selenium-to-pytest/</id>
-    <published>2019-05-28T06:55:53.000Z</published>
-    <updated>2019-06-10T14:18:16.119Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="디렉토리-구조"><a href="#디렉토리-구조" class="headerlink" title="디렉토리 구조"></a>디렉토리 구조</h1><p>우선 pytest 샘플 프로젝트의 이렇다. 각각의 파일의 특징들은 아래와 같다.</p><pre><code class="bash">D:.│  conftest.py # 파이테스트에서 공통적으로 사용할 객체들을 구현한 모듈│  inspection_test.py # 브라우저를 테스트하는 클래스/함수가 구현된 모듈│  requirements.txt # pip으로 설치된 패키지 리스트│├─allure-results├─bin│      chromedriver72.exe│      IEDriverServer.exe├─venv└─__pycache__</code></pre><h1 id="conftest-py-공통-객체-설정하기"><a href="#conftest-py-공통-객체-설정하기" class="headerlink" title="conftest.py: 공통 객체 설정하기"></a>conftest.py: 공통 객체 설정하기</h1><p>pytest는 conftest.py라는 이름을 가진 스크립트에서 터미널 실행시 지정할 옵션값을 설정하거나,<br>각 테스트 함수에서 공통으로 사용하는 오브젝트(가령 셀레니움에서 사용할 브라우저 엔진같은)를 생성할 수 있다.</p><pre><code class="python">import pytestimport allure# 터미널 옵션 설정def pytest_addoption(parser):    # 아래에서 params 값에 세팅해줄 예정이니 패스    # parser.addoption(&quot;--driver&quot;, action=&quot;store&quot;, default=&quot;chrome&quot;, help=&quot;Type in browser type&quot;)    parser.addoption(&quot;--url&quot;, action=&quot;store&quot;, default=&quot;http://test.website.co.kr&quot;, help=&quot;url&quot;)# @pytest.fixture 데코레이터를 통해 리스트 형식인 파라미터를 넘기면,# params값이 루프를 돌면서 인자 순서대로 함수가 여러번 호출된다.@pytest.fixture(params=[&quot;chrome&quot;, &quot;ie&quot;], scope=&quot;class&quot;)def driver_get(request):    from selenium import webdriver    if request.param == &quot;chrome&quot;:        web_driver = webdriver.Chrome(&quot;bin/chromedriver72.exe&quot;)    if request.param == &quot;ie&quot;:        web_driver = webdriver.Ie(&quot;bin/IEDriverServer.exe&quot;)    request.cls.driver = web_driver    yield # yield 예약어를 통해 web_driver사용을 일시적으로 브라우저 엔진을 반환한다.</code></pre><h1 id="inspection-test-py-테스트-함수를-만드는-클래스-모듈"><a href="#inspection-test-py-테스트-함수를-만드는-클래스-모듈" class="headerlink" title="inspection_test.py: 테스트 함수를 만드는 클래스 모듈"></a>inspection_test.py: 테스트 함수를 만드는 클래스 모듈</h1><p>pytest를 실행하면 conftest.py에서 설정을 읽은 후 test가 접두어로 붙은 함수를 차례대로 호출한다.<br>이때, 호출 데코레이터에 파라미터를 지정해놓으면, 앞에서 설명한 conftest.py의 fixture 파라미터 처럼 값을 순차적으로 순회하면서 함수를 여러번 실행시킨다.</p><pre><code class="python">import pytestimport seleniumimport allurefrom selenium.webdriver.support.ui import WebDriverWaitfrom selenium.webdriver.support import expected_conditions as ECfrom selenium.webdriver.common.by import Byfrom selenium.common import exceptions as eximport dao@pytest.mark.usefixtures(&quot;driver_get&quot;)class TestInspection(object):    def get_targets():        # 타겟에 해당하는 튜플값을 반환하는 함수        # 데코레이터에서 직접 호출해도 된다.        return targets    @pytest.mark.parametrize(&quot;url, title&quot;, get_targets())    def test_search_inspection(self, url, title):        wait = WebDriverWait(self.driver, 3)        self.driver.get(url)        # 해당 ID값을 가진 태그가 화면에 등장하지 않으면 pytest의 결과를 통해 확인할 익셉션을 발생시킨다        with pytest.raises(ex.TimeoutException):            wait.until(EC.visibility_of_element_located((By.ID, &quot;alertSiteInspection&quot;)))        # allure report에 화면 스크린샷을 남긴다.        screenshot = &quot;data/&quot;+title+&quot;.png&quot;        self.driver.save_screenshot(screenshot)        allure.attach.file(screenshot, title+&quot;.png&quot;, attachment_type=allure.attachment_type.PNG)</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;디렉토리-구조&quot;&gt;&lt;a href=&quot;#디렉토리-구조&quot; class=&quot;headerlink&quot; title=&quot;디렉토리 구조&quot;&gt;&lt;/a&gt;디렉토리 구조&lt;/h1&gt;&lt;p&gt;우선 pytest 샘플 프로젝트의 이렇다. 각각의 파일의 특징들은 아래와 같다.&lt;/p&gt;
-&lt;
-      
-    
-    </summary>
-    
-      <category term="Python" scheme="https://parkdoyeon.github.io/python/"/>
-    
-    
-      <category term="python" scheme="https://parkdoyeon.github.io/tags/python/"/>
-    
-      <category term="selenium" scheme="https://parkdoyeon.github.io/tags/selenium/"/>
-    
-      <category term="pytest" scheme="https://parkdoyeon.github.io/tags/pytest/"/>
     
   </entry>
   

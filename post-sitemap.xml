@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>https://parkdoyeon.github.io/javascript/javascript-2019-10-16-vue-cli-typescript/</loc>
+        <lastmod>2019-10-16T14:43:27.904Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://parkdoyeon.github.io/javascript/javascript-2019-10-08-yarn-node/</loc>
         <lastmod>2019-10-08T09:47:57.660Z</lastmod>
         <changefreq>weekly</changefreq>
