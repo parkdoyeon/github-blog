@@ -102,6 +102,35 @@
   </entry>
   
   <entry>
+    <title>Programming Elixir 4 - 타입과 모듈</title>
+    <link href="https://parkdoyeon.github.io/elixir/elixir-2020-01-28-elixir-basic-typeandmodule/"/>
+    <id>https://parkdoyeon.github.io/elixir/elixir-2020-01-28-elixir-basic-typeandmodule/</id>
+    <published>2020-01-28T01:59:24.000Z</published>
+    <updated>2020-02-23T01:36:35.772Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="리스트와-재귀"><a href="#리스트와-재귀" class="headerlink" title="리스트와 재귀"></a>리스트와 재귀</h3><h4 id="Heads-and-Tails"><a href="#Heads-and-Tails" class="headerlink" title="Heads and Tails"></a>Heads and Tails</h4><p>엘릭서는 join operator인 파이프 연산자로 머리와 나머지(tail)를 나눌 수 있다.<br>파이프 연산자와 재귀를 통해 길이 함수를 간단하게 구현할 수 있다.</p><pre><code>defmodule MyList do  def len([]), do: 0  def len([_head|tail]), do: 1 + len(tail)#head는 함수내에서 사용하는 일이 없으므로 컴파일시 경고를 띄우지않게 언더스코어를 넣는다.</code></pre><h4 id="문자열과-리스트"><a href="#문자열과-리스트" class="headerlink" title="문자열과 리스트"></a>문자열과 리스트</h4><p>엘릭서에서 문자열은 우리가 알고있는 일련의 단어들의 조합과 쿼테이션마크이면서,<br>리스트로 표기된 코드포인트의 값들이다. 후자의 경우 iEX에서 ‘리스트의 모든 값이 문자열로 표현가능한지’ 여부에 따라 구분한다. (heuristically; trial and error)</p><h3 id="다른-타입들"><a href="#다른-타입들" class="headerlink" title="다른 타입들"></a>다른 타입들</h3><h4 id="Structs"><a href="#Structs" class="headerlink" title="Structs"></a>Structs</h4><p>모듈의 이름이 곧 맵타입이 됨. 딕셔너리 기능이 없으므로 키값이 반드시 아톰이어야 한다.<br>구조체는 구조체에 특정한 행위를 정의하기위해 모듈 안에 정의한다.<br>구조체 안에 구조체를 넣는 Nested Structs 구현이 가능하다. Nested Struct의 접근자(Nested Accessor)는 기본적으로 컴파일 타임에 동작하는 매크로인데, 컴파일 타임에 동작하면 static하게 기능할 수 밖에 없으므로 다이나믹하게  </p><h3 id="엘릭서에서의-타입이란"><a href="#엘릭서에서의-타입이란" class="headerlink" title="엘릭서에서의 타입이란?"></a>엘릭서에서의 타입이란?</h3><p>primitive type vs functionality of module<br>In my mind, there’s a difference between the primitive list and the functional- ity of the List module. The primitive list is an implementation, whereas the List module adds a layer of abstraction.<br>-&gt; 엘릭서의 원시타입은 구현체이며, 모듈은 원시타입 구현체에 추상레이어를 추가한 것이다.<br>-&gt; 가령 Map은 원시타입이지만, keyword 타입을 통해 딕셔너리 튜플 리스트 형태로 표현할 수 있다. 이 경우, 리스트에서 제공하는 풍부한 모듈을 함께 사용할 수 있다.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;리스트와-재귀&quot;&gt;&lt;a href=&quot;#리스트와-재귀&quot; class=&quot;headerlink&quot; title=&quot;리스트와 재귀&quot;&gt;&lt;/a&gt;리스트와 재귀&lt;/h3&gt;&lt;h4 id=&quot;Heads-and-Tails&quot;&gt;&lt;a href=&quot;#Heads-and-Tails&quot; c
+      
+    
+    </summary>
+    
+      <category term="Elixir" scheme="https://parkdoyeon.github.io/elixir/"/>
+    
+    
+      <category term="elixir" scheme="https://parkdoyeon.github.io/tags/elixir/"/>
+    
+      <category term="type" scheme="https://parkdoyeon.github.io/tags/type/"/>
+    
+      <category term="module" scheme="https://parkdoyeon.github.io/tags/module/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Programming Elixir 3 - 함수</title>
     <link href="https://parkdoyeon.github.io/elixir/elixir-2020-01-27-elixir-basic-function/"/>
     <id>https://parkdoyeon.github.io/elixir/elixir-2020-01-27-elixir-basic-function/</id>
@@ -178,35 +207,6 @@
     
     
       <category term="elixir" scheme="https://parkdoyeon.github.io/tags/elixir/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Programming Elixir 4 - 타입과 모듈</title>
-    <link href="https://parkdoyeon.github.io/elixir/elixir-2020-01-28-elixir-basic-typeandmodule/"/>
-    <id>https://parkdoyeon.github.io/elixir/elixir-2020-01-28-elixir-basic-typeandmodule/</id>
-    <published>2020-01-18T01:59:24.000Z</published>
-    <updated>2020-02-23T01:34:49.543Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="리스트와-재귀"><a href="#리스트와-재귀" class="headerlink" title="리스트와 재귀"></a>리스트와 재귀</h3><h4 id="Heads-and-Tails"><a href="#Heads-and-Tails" class="headerlink" title="Heads and Tails"></a>Heads and Tails</h4><p>엘릭서는 join operator인 파이프 연산자로 머리와 나머지(tail)를 나눌 수 있다.<br>파이프 연산자와 재귀를 통해 길이 함수를 간단하게 구현할 수 있다.</p><pre><code>defmodule MyList do  def len([]), do: 0  def len([_head|tail]), do: 1 + len(tail)#head는 함수내에서 사용하는 일이 없으므로 컴파일시 경고를 띄우지않게 언더스코어를 넣는다.</code></pre><h4 id="문자열과-리스트"><a href="#문자열과-리스트" class="headerlink" title="문자열과 리스트"></a>문자열과 리스트</h4><p>엘릭서에서 문자열은 우리가 알고있는 일련의 단어들의 조합과 쿼테이션마크이면서,<br>리스트로 표기된 코드포인트의 값들이다. 후자의 경우 iEX에서 ‘리스트의 모든 값이 문자열로 표현가능한지’ 여부에 따라 구분한다. (heuristically; trial and error)</p><h3 id="다른-타입들"><a href="#다른-타입들" class="headerlink" title="다른 타입들"></a>다른 타입들</h3><h4 id="Structs"><a href="#Structs" class="headerlink" title="Structs"></a>Structs</h4><p>모듈의 이름이 곧 맵타입이 됨. 딕셔너리 기능이 없으므로 키값이 반드시 아톰이어야 한다.<br>구조체는 구조체에 특정한 행위를 정의하기위해 모듈 안에 정의한다.<br>구조체 안에 구조체를 넣는 Nested Structs 구현이 가능하다. Nested Struct의 접근자(Nested Accessor)는 기본적으로 컴파일 타임에 동작하는 매크로인데, 컴파일 타임에 동작하면 static하게 기능할 수 밖에 없으므로 다이나믹하게  </p><h3 id="엘릭서에서의-타입이란"><a href="#엘릭서에서의-타입이란" class="headerlink" title="엘릭서에서의 타입이란?"></a>엘릭서에서의 타입이란?</h3><p>primitive type vs functionality of module<br>In my mind, there’s a difference between the primitive list and the functional- ity of the List module. The primitive list is an implementation, whereas the List module adds a layer of abstraction.<br>-&gt; 엘릭서의 원시타입은 구현체이며, 모듈은 원시타입 구현체에 추상레이어를 추가한 것이다.<br>-&gt; 가령 Map은 원시타입이지만, keyword 타입을 통해 딕셔너리 튜플 리스트 형태로 표현할 수 있다. 이 경우, 리스트에서 제공하는 풍부한 모듈을 함께 사용할 수 있다.</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;리스트와-재귀&quot;&gt;&lt;a href=&quot;#리스트와-재귀&quot; class=&quot;headerlink&quot; title=&quot;리스트와 재귀&quot;&gt;&lt;/a&gt;리스트와 재귀&lt;/h3&gt;&lt;h4 id=&quot;Heads-and-Tails&quot;&gt;&lt;a href=&quot;#Heads-and-Tails&quot; c
-      
-    
-    </summary>
-    
-      <category term="Elixir" scheme="https://parkdoyeon.github.io/elixir/"/>
-    
-    
-      <category term="elixir" scheme="https://parkdoyeon.github.io/tags/elixir/"/>
-    
-      <category term="type" scheme="https://parkdoyeon.github.io/tags/type/"/>
-    
-      <category term="module" scheme="https://parkdoyeon.github.io/tags/module/"/>
     
   </entry>
   
