@@ -8,15 +8,29 @@
     </url>
 
     <url>
+        <loc>https://parkdoyeon.github.io/elixir/</loc>
+        <lastmod>2020-02-23T01:34:49.543Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://parkdoyeon.github.io/python/</loc>
+        <lastmod>2020-02-23T01:34:13.474Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://parkdoyeon.github.io/javascript/</loc>
-        <lastmod>2019-10-16T14:43:27.904Z</lastmod>
+        <lastmod>2020-02-23T01:34:13.472Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://parkdoyeon.github.io/dev-env/</loc>
-        <lastmod>2019-10-08T09:44:23.755Z</lastmod>
+        <lastmod>2020-02-23T01:34:13.470Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -24,13 +38,6 @@
     <url>
         <loc>https://parkdoyeon.github.io/elk/</loc>
         <lastmod>2019-09-07T11:17:19.318Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://parkdoyeon.github.io/python/</loc>
-        <lastmod>2019-07-31T15:42:53.408Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -52,13 +59,6 @@
     <url>
         <loc>https://parkdoyeon.github.io/ml/</loc>
         <lastmod>2019-06-27T15:33:15.455Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://parkdoyeon.github.io/docker/</loc>
-        <lastmod>2019-06-27T15:33:15.452Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

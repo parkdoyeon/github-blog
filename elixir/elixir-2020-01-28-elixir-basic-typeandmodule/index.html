@@ -20,22 +20,22 @@
 
 
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://parkdoyeon.github.io/docker/docker-2019-03-29-docker-image/">
+<meta property="og:url" content="https://parkdoyeon.github.io/elixir/elixir-2020-01-28-elixir-basic-typeandmodule/">
 
 
-  <meta property="og:title" content="docker - 이미지/컨테이너 파일로 저장하고 불러오기">
-
-
-
-
-  <meta name="description" content="docker - 이미지/컨테이너 파일로 저장하고 불러오기">
-  <meta property="og:description" content="docker - 이미지/컨테이너 파일로 저장하고 불러오기">
+  <meta property="og:title" content="Programming Elixir 4 - 타입과 모듈">
 
 
 
 
+  <meta name="description" content="Programming Elixir 4 - 타입과 모듈">
+  <meta property="og:description" content="Programming Elixir 4 - 타입과 모듈">
 
-  <meta name="keywords" content="docker,image,container,">
+
+
+
+
+  <meta name="keywords" content="elixir,type,module,">
 
 
 
@@ -50,21 +50,21 @@
 
 
 
-<link rel="canonical" href="https://parkdoyeon.github.io/docker/docker-2019-03-29-docker-image/">
+<link rel="canonical" href="https://parkdoyeon.github.io/elixir/elixir-2020-01-28-elixir-basic-typeandmodule/">
 
 
-<meta name="description" content="도커의 장점을 폐쇄된 네트워크 환경에서 활용하기란 쉽지가 않다.그나마 도커를 사용하니까 폐쇄된 리눅스 환경에서 이만큼의 편의를 가질수 있기도 하고.암튼 매번 업데이트마다 자꾸 여러명의 결재를 거쳐야하는 네트워크인가를 통해 서버를 열기가 껄그러워서, 이미지를 파일로 만들어서 사용하게되었다. 용량때문에 ftp서버 통해서 옮기는데 시간이 조금 걸리지만 그런대로">
-<meta name="keywords" content="docker,image,container">
+<meta name="description" content="리스트와 재귀Heads and Tails엘릭서는 join operator인 파이프 연산자로 머리와 나머지(tail)를 나눌 수 있다.파이프 연산자와 재귀를 통해 길이 함수를 간단하게 구현할 수 있다. defmodule MyList do   def len([]), do: 0   def len([_head|tail]), do: 1 + len(tail) #hea">
+<meta name="keywords" content="elixir,type,module">
 <meta property="og:type" content="article">
-<meta property="og:title" content="docker - 이미지&#x2F;컨테이너 파일로 저장하고 불러오기">
-<meta property="og:url" content="https://parkdoyeon.github.io/docker/docker-2019-03-29-docker-image/index.html">
+<meta property="og:title" content="Programming Elixir 4 - 타입과 모듈">
+<meta property="og:url" content="https://parkdoyeon.github.io/elixir/elixir-2020-01-28-elixir-basic-typeandmodule/index.html">
 <meta property="og:site_name" content="Park Doyeon">
-<meta property="og:description" content="도커의 장점을 폐쇄된 네트워크 환경에서 활용하기란 쉽지가 않다.그나마 도커를 사용하니까 폐쇄된 리눅스 환경에서 이만큼의 편의를 가질수 있기도 하고.암튼 매번 업데이트마다 자꾸 여러명의 결재를 거쳐야하는 네트워크인가를 통해 서버를 열기가 껄그러워서, 이미지를 파일로 만들어서 사용하게되었다. 용량때문에 ftp서버 통해서 옮기는데 시간이 조금 걸리지만 그런대로">
+<meta property="og:description" content="리스트와 재귀Heads and Tails엘릭서는 join operator인 파이프 연산자로 머리와 나머지(tail)를 나눌 수 있다.파이프 연산자와 재귀를 통해 길이 함수를 간단하게 구현할 수 있다. defmodule MyList do   def len([]), do: 0   def len([_head|tail]), do: 1 + len(tail) #hea">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-08T02:58:52.616Z">
+<meta property="og:updated_time" content="2020-02-23T01:34:49.543Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="docker - 이미지&#x2F;컨테이너 파일로 저장하고 불러오기">
-<meta name="twitter:description" content="도커의 장점을 폐쇄된 네트워크 환경에서 활용하기란 쉽지가 않다.그나마 도커를 사용하니까 폐쇄된 리눅스 환경에서 이만큼의 편의를 가질수 있기도 하고.암튼 매번 업데이트마다 자꾸 여러명의 결재를 거쳐야하는 네트워크인가를 통해 서버를 열기가 껄그러워서, 이미지를 파일로 만들어서 사용하게되었다. 용량때문에 ftp서버 통해서 옮기는데 시간이 조금 걸리지만 그런대로">
+<meta name="twitter:title" content="Programming Elixir 4 - 타입과 모듈">
+<meta name="twitter:description" content="리스트와 재귀Heads and Tails엘릭서는 join operator인 파이프 연산자로 머리와 나머지(tail)를 나눌 수 있다.파이프 연산자와 재귀를 통해 길이 함수를 간단하게 구현할 수 있다. defmodule MyList do   def len([]), do: 0   def len([_head|tail]), do: 1 + len(tail) #hea">
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=">
@@ -104,7 +104,7 @@
   
 
 
-    <title> docker - 이미지/컨테이너 파일로 저장하고 불러오기 - Park Doyeon </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <title> Programming Elixir 4 - 타입과 모듈 - Park Doyeon </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   </head>
 
   <body>
@@ -149,7 +149,7 @@
 
     <li>
     
-        <a href="/docker" class="on">Docker</a>
+        <a href="/undefined">Docker</a>
     
     </li>
 
@@ -189,6 +189,12 @@
     
     </li>
 
+    <li>
+    
+        <a href="/elixir" class="on">Elixir</a>
+    
+    </li>
+
 </ul>
 
       </div>
@@ -201,12 +207,12 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          docker - 이미지/컨테이너 파일로 저장하고 불러오기
+          Programming Elixir 4 - 타입과 모듈
         
       </h1>
 
       <time class="post-time">
-          Mar 29 2019
+          Jan 18 2020
       </time>
     </header>
 
@@ -214,12 +220,13 @@
 
     
             <div class="post-content">
-            <p>도커의 장점을 폐쇄된 네트워크 환경에서 활용하기란 쉽지가 않다.<br>그나마 도커를 사용하니까 폐쇄된 리눅스 환경에서 이만큼의 편의를 가질수 있기도 하고.<br>암튼 매번 업데이트마다 자꾸 여러명의 결재를 거쳐야하는 네트워크인가를 통해 서버를 열기가 껄그러워서, 이미지를 파일로 만들어서 사용하게되었다. 용량때문에 ftp서버 통해서 옮기는데 시간이 조금 걸리지만 그런대로 쓸만하다. 퇴근시간쯤에 이미지를 날려서 처음 이 명령어를 써봤는데, 덕분에 일찍 집에갈 수 있었다.</p>
-<h1 id="이미지-저장하기"><a href="#이미지-저장하기" class="headerlink" title="이미지 저장하기"></a>이미지 저장하기</h1><pre><code class="bash">docker save [option] [image:tag] -o [저장할파일명.tar]</code></pre>
-<h1 id="이미지-불러오기"><a href="#이미지-불러오기" class="headerlink" title="이미지 불러오기"></a>이미지 불러오기</h1><pre><code class="bash">docker load &lt; [tar파일 이름]</code></pre>
-<h1 id="컨테이너-저장하기"><a href="#컨테이너-저장하기" class="headerlink" title="컨테이너 저장하기"></a>컨테이너 저장하기</h1><p>이미지 말고도 컨테이너도 저장하고 불러올 수 있다.</p>
-<pre><code class="bash">docker export [container name] &gt; [저장할파일명.tar]</code></pre>
-<h1 id="컨테이너-불러오기"><a href="#컨테이너-불러오기" class="headerlink" title="컨테이너 불러오기"></a>컨테이너 불러오기</h1><pre><code class="bash">docker import [tar파일 이름]</code></pre>
+            <h3 id="리스트와-재귀"><a href="#리스트와-재귀" class="headerlink" title="리스트와 재귀"></a>리스트와 재귀</h3><h4 id="Heads-and-Tails"><a href="#Heads-and-Tails" class="headerlink" title="Heads and Tails"></a>Heads and Tails</h4><p>엘릭서는 join operator인 파이프 연산자로 머리와 나머지(tail)를 나눌 수 있다.<br>파이프 연산자와 재귀를 통해 길이 함수를 간단하게 구현할 수 있다.</p>
+<pre><code>defmodule MyList do
+  def len([]), do: 0
+  def len([_head|tail]), do: 1 + len(tail)
+#head는 함수내에서 사용하는 일이 없으므로 컴파일시 경고를 띄우지않게 언더스코어를 넣는다.</code></pre><h4 id="문자열과-리스트"><a href="#문자열과-리스트" class="headerlink" title="문자열과 리스트"></a>문자열과 리스트</h4><p>엘릭서에서 문자열은 우리가 알고있는 일련의 단어들의 조합과 쿼테이션마크이면서,<br>리스트로 표기된 코드포인트의 값들이다. 후자의 경우 iEX에서 ‘리스트의 모든 값이 문자열로 표현가능한지’ 여부에 따라 구분한다. (heuristically; trial and error)</p>
+<h3 id="다른-타입들"><a href="#다른-타입들" class="headerlink" title="다른 타입들"></a>다른 타입들</h3><h4 id="Structs"><a href="#Structs" class="headerlink" title="Structs"></a>Structs</h4><p>모듈의 이름이 곧 맵타입이 됨. 딕셔너리 기능이 없으므로 키값이 반드시 아톰이어야 한다.<br>구조체는 구조체에 특정한 행위를 정의하기위해 모듈 안에 정의한다.<br>구조체 안에 구조체를 넣는 Nested Structs 구현이 가능하다. Nested Struct의 접근자(Nested Accessor)는 기본적으로 컴파일 타임에 동작하는 매크로인데, 컴파일 타임에 동작하면 static하게 기능할 수 밖에 없으므로 다이나믹하게  </p>
+<h3 id="엘릭서에서의-타입이란"><a href="#엘릭서에서의-타입이란" class="headerlink" title="엘릭서에서의 타입이란?"></a>엘릭서에서의 타입이란?</h3><p>primitive type vs functionality of module<br>In my mind, there’s a difference between the primitive list and the functional- ity of the List module. The primitive list is an implementation, whereas the List module adds a layer of abstraction.<br>-&gt; 엘릭서의 원시타입은 구현체이며, 모듈은 원시타입 구현체에 추상레이어를 추가한 것이다.<br>-&gt; 가령 Map은 원시타입이지만, keyword 타입을 통해 딕셔너리 튜플 리스트 형태로 표현할 수 있다. 이 경우, 리스트에서 제공하는 풍부한 모듈을 함께 사용할 수 있다.</p>
 
             </div>
           
@@ -228,11 +235,11 @@
       <footer class="post-footer">
         <div class="post-tags">
           
-            <a href="/tags/docker/">docker</a>
+            <a href="/tags/elixir/">elixir</a>
           
-            <a href="/tags/image/">image</a>
+            <a href="/tags/type/">type</a>
           
-            <a href="/tags/container/">container</a>
+            <a href="/tags/module/">module</a>
           
         </div>
 
@@ -240,15 +247,15 @@
         
   <nav class="post-nav">
     
-      <a class="prev" href="/elk/elk-2019-04-02-es-curator/">
+      <a class="prev" href="/elixir/elixir-2020-01-23-elixir-basic-principle/">
         <i class="iconfont icon-left"></i>
-        <span class="prev-text nav-default">ElasticSearch - 도커를 이용해 인덱스 주기적으로 삭제하기</span>
+        <span class="prev-text nav-default">Programming Elixir 1 - 원리</span>
         <span class="prev-text nav-mobile">Prev</span>
       </a>
     
     
-      <a class="next" href="/docker/docker-2019-03-29-compose-network/">
-        <span class="next-text nav-default">docker-compose up에서 네트워크 생성이 되지 않을 때</span>
+      <a class="next" href="/dev-env/dev-env-2019-11-21-docker-lftp-ci/">
+        <span class="next-text nav-default">리눅스 도커 lftp로 파일 배포하기</span>
         <span class="prev-text nav-mobile">Next</span>
         <i class="iconfont icon-right"></i>
       </a>
@@ -283,7 +290,7 @@
     
         &copy;
     
-    2019
+    2020
     <span class="footer-author">Park Doyeon.</span>
     <span class="power-by">
         Powered by <a class="hexo-link" href="https://hexo.io/" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> and <a class="theme-link" href="https://github.com/parkdoyeon">Me</a>
@@ -300,8 +307,8 @@
 
 <script type="text/javascript">
   var disqus_shortname = 'parkdoyeon';
-  var disqus_identifier = 'docker/docker-2019-03-29-docker-image/';
-  var disqus_url = 'https://parkdoyeon.github.io/docker/docker-2019-03-29-docker-image/index.html';
+  var disqus_identifier = 'elixir/elixir-2020-01-28-elixir-basic-typeandmodule/';
+  var disqus_url = 'https://parkdoyeon.github.io/elixir/elixir-2020-01-28-elixir-basic-typeandmodule/index.html';
 
   
   var disqus_config = function () {

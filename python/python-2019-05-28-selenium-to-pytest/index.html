@@ -23,19 +23,19 @@
 <meta property="og:url" content="https://parkdoyeon.github.io/python/python-2019-05-28-selenium-to-pytest/">
 
 
-  <meta property="og:title" content="셀레니움과 pytest로 브라우저 테스트 하기">
+  <meta property="og:title" content="TDD - 셀레니움과 pytest로 브라우저 테스트 코드 작성하기">
 
 
 
 
-  <meta name="description" content="셀레니움과 pytest로 브라우저 테스트 하기">
-  <meta property="og:description" content="셀레니움과 pytest로 브라우저 테스트 하기">
+  <meta name="description" content="TDD - 셀레니움과 pytest로 브라우저 테스트 코드 작성하기">
+  <meta property="og:description" content="TDD - 셀레니움과 pytest로 브라우저 테스트 코드 작성하기">
 
 
 
 
 
-  <meta name="keywords" content="python,selenium,pytest,">
+  <meta name="keywords" content="python,selenium,pytest,tdd,">
 
 
 
@@ -53,18 +53,18 @@
 <link rel="canonical" href="https://parkdoyeon.github.io/python/python-2019-05-28-selenium-to-pytest/">
 
 
-<meta name="description" content="디렉토리 구조우선 pytest 샘플 프로젝트의 이렇다. 각각의 파일의 특징들은 아래와 같다. D:. │  conftest.py # 파이테스트에서 공통적으로 사용할 객체들을 구현한 모듈 │  inspection_test.py # 브라우저를 테스트하는 클래스/함수가 구현된 모듈 │  requirements.txt # pip으로 설치된 패키지 리스트 │ ├─al">
-<meta name="keywords" content="python,selenium,pytest">
+<meta name="description" content="디렉토리 구조pytest 샘플 프로젝트 구조는 이렇다. allure 라이브러리를 연동해서 부가적으로 allure-results 디렉토리가 생성되어있다. pytest 관련 파일을 설명하면 아래와 같다. D:. │  conftest.py # 파이테스트에서 공통적으로 사용할 객체들을 구현한 모듈 │  inspection_test.py # 브라우저를 테스트하는 클">
+<meta name="keywords" content="python,selenium,pytest,tdd">
 <meta property="og:type" content="article">
-<meta property="og:title" content="셀레니움과 pytest로 브라우저 테스트 하기">
+<meta property="og:title" content="TDD - 셀레니움과 pytest로 브라우저 테스트 코드 작성하기">
 <meta property="og:url" content="https://parkdoyeon.github.io/python/python-2019-05-28-selenium-to-pytest/index.html">
 <meta property="og:site_name" content="Park Doyeon">
-<meta property="og:description" content="디렉토리 구조우선 pytest 샘플 프로젝트의 이렇다. 각각의 파일의 특징들은 아래와 같다. D:. │  conftest.py # 파이테스트에서 공통적으로 사용할 객체들을 구현한 모듈 │  inspection_test.py # 브라우저를 테스트하는 클래스/함수가 구현된 모듈 │  requirements.txt # pip으로 설치된 패키지 리스트 │ ├─al">
+<meta property="og:description" content="디렉토리 구조pytest 샘플 프로젝트 구조는 이렇다. allure 라이브러리를 연동해서 부가적으로 allure-results 디렉토리가 생성되어있다. pytest 관련 파일을 설명하면 아래와 같다. D:. │  conftest.py # 파이테스트에서 공통적으로 사용할 객체들을 구현한 모듈 │  inspection_test.py # 브라우저를 테스트하는 클">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-10T14:18:16.119Z">
+<meta property="og:updated_time" content="2020-02-23T01:34:13.474Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="셀레니움과 pytest로 브라우저 테스트 하기">
-<meta name="twitter:description" content="디렉토리 구조우선 pytest 샘플 프로젝트의 이렇다. 각각의 파일의 특징들은 아래와 같다. D:. │  conftest.py # 파이테스트에서 공통적으로 사용할 객체들을 구현한 모듈 │  inspection_test.py # 브라우저를 테스트하는 클래스/함수가 구현된 모듈 │  requirements.txt # pip으로 설치된 패키지 리스트 │ ├─al">
+<meta name="twitter:title" content="TDD - 셀레니움과 pytest로 브라우저 테스트 코드 작성하기">
+<meta name="twitter:description" content="디렉토리 구조pytest 샘플 프로젝트 구조는 이렇다. allure 라이브러리를 연동해서 부가적으로 allure-results 디렉토리가 생성되어있다. pytest 관련 파일을 설명하면 아래와 같다. D:. │  conftest.py # 파이테스트에서 공통적으로 사용할 객체들을 구현한 모듈 │  inspection_test.py # 브라우저를 테스트하는 클">
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=">
@@ -104,7 +104,7 @@
   
 
 
-    <title> 셀레니움과 pytest로 브라우저 테스트 하기 - Park Doyeon </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <title> TDD - 셀레니움과 pytest로 브라우저 테스트 코드 작성하기 - Park Doyeon </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   </head>
 
   <body>
@@ -149,7 +149,7 @@
 
     <li>
     
-        <a href="/docker">Docker</a>
+        <a href="/undefined">Docker</a>
     
     </li>
 
@@ -189,6 +189,12 @@
     
     </li>
 
+    <li>
+    
+        <a href="/elixir">Elixir</a>
+    
+    </li>
+
 </ul>
 
       </div>
@@ -201,7 +207,7 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          셀레니움과 pytest로 브라우저 테스트 하기
+          TDD - 셀레니움과 pytest로 브라우저 테스트 코드 작성하기
         
       </h1>
 
@@ -214,7 +220,7 @@
 
     
             <div class="post-content">
-            <h1 id="디렉토리-구조"><a href="#디렉토리-구조" class="headerlink" title="디렉토리 구조"></a>디렉토리 구조</h1><p>우선 pytest 샘플 프로젝트의 이렇다. 각각의 파일의 특징들은 아래와 같다.</p>
+            <h1 id="디렉토리-구조"><a href="#디렉토리-구조" class="headerlink" title="디렉토리 구조"></a>디렉토리 구조</h1><p>pytest 샘플 프로젝트 구조는 이렇다. allure 라이브러리를 연동해서 부가적으로 allure-results 디렉토리가 생성되어있다. pytest 관련 파일을 설명하면 아래와 같다.</p>
 <pre><code class="bash">D:.
 │  conftest.py # 파이테스트에서 공통적으로 사용할 객체들을 구현한 모듈
 │  inspection_test.py # 브라우저를 테스트하는 클래스/함수가 구현된 모듈
@@ -295,6 +301,8 @@ class TestInspection(object):
           
             <a href="/tags/pytest/">pytest</a>
           
+            <a href="/tags/tdd/">tdd</a>
+          
         </div>
 
         
@@ -309,7 +317,7 @@ class TestInspection(object):
     
     
       <a class="next" href="/python/python-2019-05-28-jekins-to-pytest/">
-        <span class="next-text nav-default">Jenkins에 Python 환경세팅하고 Allure Report 연동하기</span>
+        <span class="next-text nav-default">TDD - Jenkins에 Python 환경세팅하고 테스트 대시보드 Allure Report 연동하기</span>
         <span class="prev-text nav-mobile">Next</span>
         <i class="iconfont icon-right"></i>
       </a>
@@ -344,7 +352,7 @@ class TestInspection(object):
     
         &copy;
     
-    2019
+    2020
     <span class="footer-author">Park Doyeon.</span>
     <span class="power-by">
         Powered by <a class="hexo-link" href="https://hexo.io/" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> and <a class="theme-link" href="https://github.com/parkdoyeon">Me</a>

@@ -6,7 +6,7 @@
   <link href="/feed.xml" rel="self"/>
   
   <link href="https://parkdoyeon.github.io/"/>
-  <updated>2019-10-16T14:43:27.904Z</updated>
+  <updated>2020-02-23T01:34:13.470Z</updated>
   <id>https://parkdoyeon.github.io/</id>
   
   <author>
@@ -15,6 +15,324 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Mac OS에서 asdf을 통한 언어 버전관리 + elixir 설치하기</title>
+    <link href="https://parkdoyeon.github.io/dev-env/dev-env-2020-02-01-asdf/"/>
+    <id>https://parkdoyeon.github.io/dev-env/dev-env-2020-02-01-asdf/</id>
+    <published>2020-02-01T04:22:22.000Z</published>
+    <updated>2020-02-23T01:34:13.470Z</updated>
+    
+    <content type="html"><![CDATA[<p>asdf는 개발환경에서 언어 사용 버전을 관리할 수 있도록 하는 오픈소스이다. 솔루션마다 적용되는 언어가 다를 경우 개발환경에서 커맨드 라인을 통해 손쉽게 현재 사용되는 언어의 버전 포인터를 바꿔줄 수 있다. 설치나 사용방법이 간단하고, <a href="https://asdf-vm.com/#/core-manage-asdf-vm" rel="external nofollow noopener noreferrer" target="_blank">asdf 공식문서</a>에도 설명이 잘 나와있지만 할때마다 elixir와 erlang 세팅을 할때 한번씩 빼먹는게 있어서 순서대로 정리해놓기로 했다. 내가 사용하는 환경은 Mac OS Catalina 이상에 패키지 매니저로 homebrew가 설치되어있다.</p><ol><li><p>asdf설치하기 (Mac OS 중심으로)<br>Homebrew를 통해 asdf을 설치한다.</p><pre><code class="shell">$ brew install asdf</code></pre><p>Mac OS Catalina 버전에서 다음과 같이 쉘에 입력한다. </p><pre><code class="shell">$ echo -e &#39;\n. $HOME/.asdf/asdf.sh&#39; &gt;&gt; ~/.zprofile</code></pre><p>미만 버전에서는 아래를 입력하면 된다.</p><pre><code class="shell">$ echo -e &#39;\n. $HOME/.asdf/asdf.sh&#39; &gt;&gt; ~/.bash_profile$ echo -e &#39;\n. $HOME/.asdf/completions/asdf.bash&#39; &gt;&gt; ~/.bash_profile</code></pre></li><li><p>플러그인 추가하기<br>각 버전을 관리할 수 있도록 플러그인을 추가한다</p><pre><code class="shell">$ asdf plugin-add erlang$ asdf plugin-add elixir</code></pre></li><li><p>erlang 설치하기<br>이제 언어를 설치하면 되는데, elixir는 erlang VM환경에서 동작하므로 <a href="https://github.com/asdf-vm/asdf-erlang" target="_blank" rel="noopener">erlang</a>이 설치되어 있어야 한다. 그리고 erlang을 설치를 위해서는 build tool을 설치해야 한다. Mac OS의 경우 이미 있을 확률이 높다.</p><pre><code class="shell">$ brew install autoconf</code></pre><p>확인이 되었다면 이제 erlang OTP를 다운로드하자. 나는 현재 최신버전인 22.2를 받았다. 다운로드가 완료되면 다운로드 받은 erlang언어 버전중에 사용하고싶은 버전을 global하게 지정해주면 된다. local로 지정하면 로그인한 시스템 유저만 사용할 수 있다.</p><pre><code class="shell">$ asdf install erlang 22.2$ asdf global erlang 22.2</code></pre></li><li><p>elixir 설치하기<br>erlang이 잘 설치되었다면 이제 <a href="https://github.com/asdf-vm/asdf-elixir" target="_blank" rel="noopener">엘릭서</a> 설치를 하면 된다.</p><pre><code class="shell">$ asdf install elixir 1.10$ asdf global elixir 1.10</code></pre><p>설치가 완료되면 아래와 같은 명령어를 통해 리스폰스가 잘 나오는지 확인해보자.</p><pre><code class="shell">$ elixir -v$ iex # elixir의 인터렉티브 쉘</code></pre></li><li><p>asdf 사용 현황 보기</p><pre><code class="shell">$ asdf currentelixir         1.10     (set by /Users/doyeon/.tool-versions)erlang         22.2     (set by /Users/doyeon/.tool-versions)</code></pre></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;asdf는 개발환경에서 언어 사용 버전을 관리할 수 있도록 하는 오픈소스이다. 솔루션마다 적용되는 언어가 다를 경우 개발환경에서 커맨드 라인을 통해 손쉽게 현재 사용되는 언어의 버전 포인터를 바꿔줄 수 있다. 설치나 사용방법이 간단하고, &lt;a h
+      
+    
+    </summary>
+    
+      <category term="Dev-Env" scheme="https://parkdoyeon.github.io/dev-env/"/>
+    
+    
+      <category term="linux" scheme="https://parkdoyeon.github.io/tags/linux/"/>
+    
+      <category term="asdf" scheme="https://parkdoyeon.github.io/tags/asdf/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Programming Elixir 6 - 문자열, 제어흐름</title>
+    <link href="https://parkdoyeon.github.io/elixir/elixir-2020-01-30-elixir-basic-string/"/>
+    <id>https://parkdoyeon.github.io/elixir/elixir-2020-01-30-elixir-basic-string/</id>
+    <published>2020-01-30T02:02:34.000Z</published>
+    <updated>2020-02-23T01:34:13.471Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="문자열"><a href="#문자열" class="headerlink" title="문자열"></a>문자열</h3><h4 id="Sigils-symbols-with-magical-power"><a href="#Sigils-symbols-with-magical-power" class="headerlink" title="Sigils ( symbols with magical power )"></a>Sigils ( symbols with magical power )</h4><p>물결로 시작하는 접두어를 sigil로 부른다</p><p>~C A character list with no escaping or interpolation<br>~c A character list, escaped and interpolated just like a single-quoted string<br>~D A Date in the format yyyy-mm-dd<br>~N A naive (raw) DateTime in the format yyyy-mm-dd hh:mm:ss[.ddd]<br>~R A regular expression with no escaping or interpolation<br>~r A regular expression, escaped and interpolated<br>~S A string with no escaping or interpolation<br>~s A string, escaped and interpolated just like a double-quoted string<br>~T A Time in the format hh:mm:ss[.dddd]<br>~W A list of whitespace-delimited words, with no escaping or interpolation ~w A list of whitespace-delimited words, with escaping and interpolation</p><p>sigil안에서 구분자(delimiter, (, [, {, &lt;)는 닫히지 않으면 이스케이프가 필요 없다.</p><h4 id="Single-quotations"><a href="#Single-quotations" class="headerlink" title="Single quotations"></a>Single quotations</h4><p>엘릭서에서 작은 따옴표 안에 문자는 캐릭터 리스트로 판단한다.</p><pre><code>iex&gt; ‘cat’‘cat&#39;iex&gt; [67, 65, 84]‘CAT&#39;iex&gt; [67, 65, 84, 101][67, 65, 84, 101]</code></pre><pre><code>iex&gt; str = ‘wombat&#39;‘wombat&#39;iex&gt; :io.format &quot;~w~n&quot;, [ str ] [119,111,109,98,97,116]:okiex&gt; List.to_tuple str{119, 111, 109, 98, 97, 116}iex&gt; str ++ [0][119, 111, 109, 98, 97, 116, 0]</code></pre><p>~n은 새줄 바꾸기를 의미한다.</p><p>~w은 언랭 언어로 스트링을 표기하는 것을 강제하는 것으로, 언랭 내에서 해당 표현이 불가능하면 그냥 반환된다.</p><pre><code>iex(12)&gt; &#39;∂x/∂y&#39;[8706, 120, 47, 8706, 121]iex(13)&gt; ~w&#39;∂x/∂y&#39; [&quot;∂x/∂y”]</code></pre><h4 id="Binaries"><a href="#Binaries" class="headerlink" title="Binaries"></a>Binaries</h4><p>바이너리는 &lt;&lt;&gt;&gt;안에 담긴 0부터 255까지의 연속된 숫자 리스트이다.<br>바이너리 안에 integer, float값을 담을 수 있다.</p><h4 id="Double-Quoted-Strings-Are-Binaries"><a href="#Double-Quoted-Strings-Are-Binaries" class="headerlink" title="Double-Quoted Strings Are Binaries"></a>Double-Quoted Strings Are Binaries</h4><p>single quotation으로 감싼 문자열은 리스트라면,<br>double quotation으로 감싸진 string은 utf-8인코딩된 일련의 바이트 데이터다.<br>이렇게 정의하면 합리적인데, 다음과 같은 이유에서이다.</p><p>첫째, 반드시 글자별로 다른 메모리값을 가질 수 있어 메모리 사용이 합리적이다.<br>둘째, 리스트를 다루는 방식으로 문자열을 조작할 필요가 없다. 접근 방식이 편리함.</p><p>문자열 데이터를 list 모듈에서 head-tail 구조로 분리할 수도 있는데.<br>이 경우 아래와 같이 바이너리 바이너리데이터 형식을 빌려서 분리할 수 있다.</p><pre><code>defmodule Utf8 do  def each(str, func) when is_binary(str), do: _each(str, func(  defp _each(&lt;&lt; head :: utf8, tail :: binary &gt;&gt;, func) do    func.(head)    _each(tail, func)  end  defp _each(&lt;&lt;&gt;&gt;, _func), do []end</code></pre><h3 id="제어흐름"><a href="#제어흐름" class="headerlink" title="제어흐름"></a>제어흐름</h3><p>제어문을 사용하는 것보다 함수로 처리하는 것을 더 권장.<br>코드가 더 간결하고 핵심적일 수 있기 때문.</p><p>Cond vs Case<br>cond는 여러 조건 체크가 필요한 경우 사용, case의 경우 패턴 매칭되는 요소를 찾을 때 사용</p><p>Exception<br>사용자 정의 예외 클래스의 경우 반드시 message를 구현해야 한다.<br>예외가 절대 발생하면 안되는 경우 별도로 예외처리를 별도로 하지 않지만,<br>그렇지 않다면 함수 끝에 느낌표를 넣으면 예외가 raise 되며, 유의미한 예외일 것이라는 관습적인 의미를 갖는다.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;문자열&quot;&gt;&lt;a href=&quot;#문자열&quot; class=&quot;headerlink&quot; title=&quot;문자열&quot;&gt;&lt;/a&gt;문자열&lt;/h3&gt;&lt;h4 id=&quot;Sigils-symbols-with-magical-power&quot;&gt;&lt;a href=&quot;#Sigils-symbols-w
+      
+    
+    </summary>
+    
+      <category term="Elixir" scheme="https://parkdoyeon.github.io/elixir/"/>
+    
+    
+      <category term="string" scheme="https://parkdoyeon.github.io/tags/string/"/>
+    
+      <category term="elixir" scheme="https://parkdoyeon.github.io/tags/elixir/"/>
+    
+      <category term="control" scheme="https://parkdoyeon.github.io/tags/control/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Programming Elixir 5 - 콜렉션 처리</title>
+    <link href="https://parkdoyeon.github.io/elixir/elixir-2020-01-29-elixir-basic-collections/"/>
+    <id>https://parkdoyeon.github.io/elixir/elixir-2020-01-29-elixir-basic-collections/</id>
+    <published>2020-01-29T02:01:04.000Z</published>
+    <updated>2020-02-23T01:34:13.471Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Enum"><a href="#Enum" class="headerlink" title="Enum"></a>Enum</h3><p>Enum은 엘릭서의 모든 콜렉션 타입을 다루는 workhorse이다.<br>그러나 데이터 변환작업시 메모리에 중간 결과물을 포함한 모든 콜렉션 데이터를 올려놓기 때문에 lazy하게 동작하도록 하려면 Stream을 사용해야한다.<br>Stream은 스트림간의 모든 함수와 호환된다. 따라서 Stream은 Composable하다.</p><pre><code>IO.puts File.open!(“/usr/share/dict/words”)             |&gt; IO.stream(:line)             |&gt; Enum.max_by(&amp;String.length/1)# 위 코드의 shortcut코드IO.puts File.stream!(“/usr/share/dict/words”)             |&gt; Enum.max_by(&amp;String.length/1)# Stream을 사용한 구현은 중간 storage가 없는 대신 두배 이상 느리다는 단점이 있지만,# 데이터가 도달하면 바로바로 처리된다는 장점이 있다.# 가령 Enum으로만 구현한 경우 연속된 스트림라인이 늦게 도달했을 때 처리가 훨씬 더 오래걸릴 수 있다.</code></pre><h3 id="Collectable-Protocol"><a href="#Collectable-Protocol" class="headerlink" title="Collectable Protocol"></a>Collectable Protocol</h3><p>Enumerable Protocol은 타입 안의 요소를 순회하는 것이라면, Collectable은 반대의 개념으로 요소를 더해서 Collection을 빌드한다.<br>그러나 모든 콜렉션이 collectable한것은 아니다. Range 타입의 경우 요소 추가가 불가능 하며, Enum을 통한 Collectable 타입의 전환을 통해서 요소 추가가 가능하다. 이때, 이미 데이터가 있는 리스트와 병합되는 경우 range가 리스트 tail에 붙는다</p><pre><code>iex&gt; Enum.into 1..5, [100, 101][100, 101, 1, 2, 3, 4, 5]</code></pre><h3 id="Comprehension-Works-on-Bits-Too"><a href="#Comprehension-Works-on-Bits-Too" class="headerlink" title="Comprehension Works on Bits, Too"></a>Comprehension Works on Bits, Too</h3><pre><code>iex&gt; for &lt;&lt; &lt;&lt; b1::size(2), b2::size(3), b3::size(3) &gt;&gt; &lt;- “hello” &gt;&gt; , do: “0#{b1}#{b2}#{b3}”[&quot;0150&quot;, &quot;0145&quot;, &quot;0154&quot;, &quot;0154&quot;, &quot;0157”]</code></pre><p>여기서 &lt;&lt;&gt;&gt;은 바이너리를 가리킨다</p><h3 id="Moving-Past-Divinity"><a href="#Moving-Past-Divinity" class="headerlink" title="Moving Past Divinity"></a>Moving Past Divinity</h3><p>엘릭서를 효율적으로 학습하는 과정의 일부는 재귀와 순회를 적재적소에 사용하는 것을 고민하는 것이다.<br>가능하면 순회를 사용할 것을 권장한다.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;Enum&quot;&gt;&lt;a href=&quot;#Enum&quot; class=&quot;headerlink&quot; title=&quot;Enum&quot;&gt;&lt;/a&gt;Enum&lt;/h3&gt;&lt;p&gt;Enum은 엘릭서의 모든 콜렉션 타입을 다루는 workhorse이다.&lt;br&gt;그러나 데이터 변환작업시 메모리에 중
+      
+    
+    </summary>
+    
+      <category term="Elixir" scheme="https://parkdoyeon.github.io/elixir/"/>
+    
+    
+      <category term="enum" scheme="https://parkdoyeon.github.io/tags/enum/"/>
+    
+      <category term="collection" scheme="https://parkdoyeon.github.io/tags/collection/"/>
+    
+      <category term="elixir" scheme="https://parkdoyeon.github.io/tags/elixir/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Programming Elixir 3 - 함수</title>
+    <link href="https://parkdoyeon.github.io/elixir/elixir-2020-01-27-elixir-basic-function/"/>
+    <id>https://parkdoyeon.github.io/elixir/elixir-2020-01-27-elixir-basic-function/</id>
+    <published>2020-01-27T01:58:08.000Z</published>
+    <updated>2020-02-23T01:34:13.471Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="엘릭서의-함수"><a href="#엘릭서의-함수" class="headerlink" title="엘릭서의 함수"></a>엘릭서의 함수</h3><p>엘릭서는 같은 이름을 가졌더라도 인자로 받는 파라미터 갯수가 다른 함수를 서로 구분한다. 그러나 코드 작성의 관점에서 혼란을 줄 수 있으므로 이런 상황은 피하는 것이 좋다.</p><h3 id="함수의-매칭"><a href="#함수의-매칭" class="headerlink" title="함수의 매칭"></a>함수의 매칭</h3><p>앨릭서는 같은 이름의 함수를 호출할 때 매칭되는 함수를 ‘순서대로’호출한다. 예컨데 다음과 같이 재귀함수를 구현할 때,</p><pre><code>defmodule Factorial do  def of(0), do: 1  def of(n), do: n*of(n-1)end</code></pre><p>첫번째에 해당하는 케이스가 아니면 두번째 of함수를 호출한다.<br>만약 Factorial내부의 함수가 <code>of(n)</code>이 먼저 등장하는 순서로 구현이 되어있으면, <code>f(0)</code>이 절대 도달불가능하므로 컴파일시 경고를 띄운다.</p><h3 id="When"><a href="#When" class="headerlink" title="When"></a>When</h3><p>함수 인자의 validity를 체크할때 사용. 더 명확하게 표현 가능하다.</p><h3 id="함수의-기본값"><a href="#함수의-기본값" class="headerlink" title="함수의 기본값"></a>함수의 기본값</h3><p><code>\\</code>를 통해 함수인자의 기본 값 부여가 가능하다</p><pre><code>iex&gt; def func(p1 \\ 1) do: IO inspect p1#p1이 없으면 파라미터로 1이 넘어감.</code></pre><p>그러나 같은 이름을 갖는 함수의 경우 혼란을 막기 위해 기본값을 사용하는 함수가 먼저 매칭되지 않도록 하자.</p><h3 id="defp"><a href="#defp" class="headerlink" title="defp"></a>defp</h3><p>모듈 내 프라이빗 함수선언은 <code>defp</code>로 가능하다.<br>그러나 모뉼 내 같은 이름을 가지면서 어떤 함수는 프라이빗하고 어떤 함수는 퍼블릭할 수 없다.</p><h3 id="pipe-operator-gt-을-통한-메소드-체이닝"><a href="#pipe-operator-gt-을-통한-메소드-체이닝" class="headerlink" title="pipe operator |&gt;을 통한 메소드 체이닝"></a>pipe operator |&gt;을 통한 메소드 체이닝</h3><p>DB커넥션 구문같이 호출 결과를 인자로 받을 때 <code>|&gt;</code>를 사용하면 더 깔끔하게 표현가능하다.<br><code>|&gt;</code>구문은 왼쪽의 구문 결과값을 인자로 오른쪽 메소드를 호출한다</p><pre><code>list|&gt; sales_tax(2018)|&gt; prepare_filing#아래와 동일prepare_filing(sales_tax(list, 2018))</code></pre><p>*주의, 파이프 오퍼레이터 사용시 함수의 경우 반드시 괄호를 사용해야한다.<br>파이프 오퍼레이터는 ‘프로그래밍은 데이터를 변환하는 것’이라는 정의에 맞게, 데이터 변환 과정을 명시적으로 표기할 수 있도록 한다.</p><h3 id="Module"><a href="#Module" class="headerlink" title="Module"></a>Module</h3><p>엘릭서에서 모듈 내에 내장된 모듈은 환상이다. 모든 모듈은 최상위 레벨에 존재하며, 마침표는 하위 모듈을 불러오지 않고 네임스페이스로만 동작한다. 가령 Mix.Tasks.Doctest와 Mix라는 두 모듈은 서로 어떤 연관성도 갖지 않는다.</p><h3 id="Directive"><a href="#Directive" class="headerlink" title="Directive"></a>Directive</h3><p>import는 불러온 모듈의 이름을 일일히 호명하지 않아도 스코프 안에서 모듈 내 내장된 함수를 사용할 수 있도록 한다.<br><code>alias, defmodule, import, def</code>와 같은 derective구문은 <code>end</code>를 만날때 까지 해당 스코프 내에서 유효하다.<br><code>alias … as</code>를 통해 import하는 모듈의 표현을 단축할 수 있다. <code>as</code>를 생략하면 마지막 네임스페이스만 사용하면 된다.</p><pre><code>defmodule Example do  def compile_and_go(source) do    alias My.Other.Module.Parser, as: Parser    alias My.Other.Module.Runner, as: Runner#혹은 #    alias My.Other.Module.Parser#    alias My.Other.Module.Runner 로도 쓸 수 있다.  endend</code></pre><h3 id="모듈의-이름"><a href="#모듈의-이름" class="headerlink" title="모듈의 이름"></a>모듈의 이름</h3><p>내부적으로 모듈의 이름은 전부 아톰타입이다. 대문자로 시작하는 모든 이름을 지으면 엘릭서는 자동적으로 Elixir라는 접두어를 붙인다. 때문에 모든 함수는 아톰+점(.)+함수명형태의 아톰이다.</p><pre><code>iex&gt; is_atom IOTrueiex&gt; to_string IO“Elixir.IO&quot;iex&gt; :”Elixir.IO” === IOtrueiex&gt; :”Elixir.IO”.puts 123123:ok</code></pre><h3 id="erlang과-elixir"><a href="#erlang과-elixir" class="headerlink" title="erlang과 elixir"></a>erlang과 elixir</h3><p>언랭 컨벤션은 엘릭서와 다르므로, 언랭 함수 호출시에는 언랭 규칙에 따라 호출하면 된다.<br>엘릭서와 달리 언랭은 아톰타입이 소문자로 시작하고 변수가 대문자로 시작한다.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;엘릭서의-함수&quot;&gt;&lt;a href=&quot;#엘릭서의-함수&quot; class=&quot;headerlink&quot; title=&quot;엘릭서의 함수&quot;&gt;&lt;/a&gt;엘릭서의 함수&lt;/h3&gt;&lt;p&gt;엘릭서는 같은 이름을 가졌더라도 인자로 받는 파라미터 갯수가 다른 함수를 서로 구분한다. 
+      
+    
+    </summary>
+    
+      <category term="Elixir" scheme="https://parkdoyeon.github.io/elixir/"/>
+    
+    
+      <category term="elixir" scheme="https://parkdoyeon.github.io/tags/elixir/"/>
+    
+      <category term="function" scheme="https://parkdoyeon.github.io/tags/function/"/>
+    
+      <category term="functional" scheme="https://parkdoyeon.github.io/tags/functional/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Programming Elixir 2 - 자료형과 오퍼레이터</title>
+    <link href="https://parkdoyeon.github.io/elixir/elixir-2020-01-24-elixir-basic-types/"/>
+    <id>https://parkdoyeon.github.io/elixir/elixir-2020-01-24-elixir-basic-types/</id>
+    <published>2020-01-24T01:53:30.000Z</published>
+    <updated>2020-02-23T01:34:13.471Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Interger"><a href="#Interger" class="headerlink" title="Interger"></a>Interger</h3><p>언더스코어(_)를 통해 콤마를 대체해서 1000단위를 구분할 수 있다. (편의상 표기할때 사용, 컴파일시 무시됨)</p><pre><code>iex&gt; 123_456_789123456789</code></pre><p>숫자 앞에 0x, 0o, 0b 등을 써서 16진수, 8진수, 2진수 등을 표기할 수 있음</p><pre><code>iex&gt; 0x4165</code></pre><p><code>?c</code> 처럼 쓰면 c의 UTF 문자열 코드포인트를 반환한다</p><pre><code>iex&gt; ?≠ 88008800</code></pre><h3 id="Atom"><a href="#Atom" class="headerlink" title="Atom"></a>Atom</h3><p>엘릭서에서 등장하는 값 자료형 중 하나.<br>값이 곧 이름인 자료형으로, 콜론을 앞에 붙여서 표현하거나, 대문자로 시작하는 단어로 표현한다.</p><pre><code>iex&gt; DictionaryDictionaryiex&gt; is_atom(Dictionary)True</code></pre><p>따라서 같은 이름을 갖는 아톰타임은 어떤 프로그램끼리 만나도 동일한 값으로 취급한다. ex) 내장함수에서 사용하는 :ok</p><h3 id="Boolean"><a href="#Boolean" class="headerlink" title="Boolean"></a>Boolean</h3><p>엘릭서에서 nil은 falsy한 값으로 취급한다</p><h3 id="Tuple"><a href="#Tuple" class="headerlink" title="Tuple"></a>Tuple</h3><p>보통 2-3개 정도의 작은 데이터들을 다룰때 사용. 플래그 된 값들을 표기할때 많이 쓴다.</p><h3 id="List"><a href="#List" class="headerlink" title="List"></a>List</h3><p>엘릭서의 list는 중심기능으로서,  array가 아닌 linked list이다.<br>따라서 array와 달리 재귀적으로 사용되며, 암시적으로 전체를 순회하며 사용되는 array와 달리 선언적인 함수형 언어에 더 적합한 자료형이다.<br>데이터 수정시 변형하지 않고 포인터를 활용한다.<br>keyword lists: 튜플형 인자를 사용하여 Key-value페어 형식으로도 표현가능하다. 함수의 인자로 받을때는 브라켓과 리스트 꺽쇄도 제거 하고 표현 할 수 있다.</p><blockquote><p>The chances are very good that your current language has arrays. They’re probably one of your go-to data structures. You like being able to say “go get the nth element.”</p></blockquote><blockquote><p>But arrays are a data structure suited more to imperative programming, because you must explicitly iterate over them, using an external index. And they are prone to off-by-one errors.</p></blockquote><blockquote><p>On the other hand, lists are a recursive data structure, and turn out to be well suited to a functional or declarative style.</p></blockquote><blockquote><p>It’s a change of perspective that can be hard to make. Stick at it, because once you’re comfortable with lists, you won’t want to go back.</p></blockquote><blockquote><p>To show you some of the power of lists, we need to cover just one more language topic: pattern matching. That’s what the next chapter is about</p></blockquote><h3 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h3><p>리스트와 달리 중복된 키값을 허용하지 않는 자료형. 따라서 value접근하는 방법이 하나다. 서로 다른 자료형을 가진 key값을 허용한다. 예컨데 key값으로 아톰이나 튜플도 가능.<br>아톰 키값의 경우 map[:key]와 같이 접근하면 키값이 없으면 nil이 반환되지만, dot notation(map.key)의 경우 no matching keys 익셉션이 발생한다.<br>key값을 0부터 순차적으로 커지는 숫자값으로 지정해 array처럼 구현하기도 할 수 있다. 엘릭서에서 pure array가 있다면 그것보다는 못하겠지만, reasonable한 size의 콜렉션이라면 O(1)의 빅오를 가지며 나쁘지 않은 성능을 보인다고한다.</p><h3 id="With"><a href="#With" class="headerlink" title="With"></a>With</h3><p><code>with … do … end</code> 형식으로 사용<br>함수와 같은 구문형식을 갖기 때문에 첫번째 arg는 꼭 <code>with</code>옆에 위치시키거나 괄호로 감싸줘야한다.<br><code>with</code>과 <code>do</code> 구문 사이에 로컬스코프 생성<br>패턴매칭에 실패할때 실패 결과를 다룰 수 있게 해줌<br><code>=</code>대신 <code>&lt;-</code> 사용하므로써 예외 상황 발생시 nil처리<br>do와 같은 라인에 작성하면 end 쓰지 않고 숏컷으로 작성할 수 있다</p><h3 id="amp-Operator"><a href="#amp-Operator" class="headerlink" title="&amp; Operator"></a>&amp; Operator</h3><p>두가지 의미를 갖는다.</p><p>첫째, 함수표현 다음에 나타나는 표현식을 가리키는 숏컷<br>ex) <code>fn p1, p2 -&gt; p1+p2</code>은 <code>&amp;(&amp;1+&amp;2)</code>와 같음</p><p>둘째, 문자식과 함께 사용되는 연산자를 가리킨다</p><pre><code>iex&gt; s = &amp;”bacon and #{&amp;1}”#Function&lt;6.99386804/1 in :erl_eval.expr/5&gt;iex&gt; s.(“custard”)“bacon and custard&quot;</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;Interger&quot;&gt;&lt;a href=&quot;#Interger&quot; class=&quot;headerlink&quot; title=&quot;Interger&quot;&gt;&lt;/a&gt;Interger&lt;/h3&gt;&lt;p&gt;언더스코어(_)를 통해 콤마를 대체해서 1000단위를 구분할 수 있다. (편의상 표
+      
+    
+    </summary>
+    
+      <category term="Elixir" scheme="https://parkdoyeon.github.io/elixir/"/>
+    
+    
+      <category term="elixir" scheme="https://parkdoyeon.github.io/tags/elixir/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Programming Elixir 1 - 원리</title>
+    <link href="https://parkdoyeon.github.io/elixir/elixir-2020-01-23-elixir-basic-principle/"/>
+    <id>https://parkdoyeon.github.io/elixir/elixir-2020-01-23-elixir-basic-principle/</id>
+    <published>2020-01-23T01:48:16.000Z</published>
+    <updated>2020-02-23T01:34:13.470Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="확장자-convention"><a href="#확장자-convention" class="headerlink" title="확장자 convention"></a>확장자 convention</h3><p><code>.ex</code></p><ul><li>바이트코드로 컴파일 되고 실행됨</li><li>바이너리 파일로 컴파일 해야할때 사용하는 확장자</li><li>프로그램 어플리케이션으로 사용됨</li></ul><p><code>.exs</code></p><ul><li>컴파일 없이 쓰는 스크립트 프로그램</li><li>소스레벨에서 interpret됨</li><li>보통 테스트 코드에 사용</li></ul><h3 id="Elixir-asserts-variable-not-assigns"><a href="#Elixir-asserts-variable-not-assigns" class="headerlink" title="Elixir asserts variable, not assigns."></a>Elixir asserts variable, not assigns.</h3><p>엘릭서는 변수를 merge 하듯이 사용한다. 하지만 이미 값이 부여된 변수의 경우 그 값을 보관하기때문에(variables bind once per match), 이와 다른 값(value)과 매치하면 매치에러가 발생한다. 다시말해, 엘릭서에서의 ‘=’ 수학에서의 수식과 유사한 의미를 갖는다. 프로그래밍을 하면서 제일 먼저 버리게되는 등호에 대한 직관을 다시 되찾아옴. (하지만 왼쪽 항에서 계산연산을 하지는 않음)</p><pre><code>iex&gt; a = 11ies&gt; 1 = a1Iex&gt; 2 = a** (MatchError) no match of right hand side value: 1</code></pre><p>2와 a는 매치되지 않으므로 매치에러 발생</p><p>엘릭서는 “Fail early”하는 것이 reliable한 코드 작성을 위한 방법이다. 때문에 아래와 같은 패턴이 자주 사용된다.</p><pre><code>{ :ok, file } = File.open(“/etc/passwd”)</code></pre><p>성공하면 file에 객체가 담기겠지만 그렇지 않으면 :error가 리턴되면서 MatchError 익셉션이 발생할 것이다.<br>패턴매칭, 파이프 오퍼레이터를 사용하면 </p><h3 id="variables-bind-once-per-match"><a href="#variables-bind-once-per-match" class="headerlink" title="variables bind once per match"></a>variables bind once per match</h3><pre><code>iex&gt; [a, a] = [1, 1][1, 1]iex&gt; a1iex&gt; [b, b] = [1, 2]** (MatchError) no match of right hand side value: [1, 2]iex&gt; [a, a] = [2, 2]# 새로운 매치이기 때문에 에러발생 안함</code></pre><p>Force existing value<br>기존 값을 고수하고싶다면 캐럿(caret)마크로 표기한다. 기존 값이 아닌 다른 값이 매치되면 Exception이 발생한다.</p><pre><code>Iex&gt; a = 11iex&gt; [^a, 2, 3] = [8, 2, 3]MatchError </code></pre><h3 id="Immutability"><a href="#Immutability" class="headerlink" title="Immutability"></a>Immutability</h3><p>일반 언어는 기존 데이터를 통해 새로운 데이터를 생성할때 기존 데이터가 “변할 수도 있기”때문에 복제본을 생성한다.<br>그러나 엘릭서의 모든 값은 변하지 않는다는 약속이 지켜지므로, 원본 데이터의 단순 참조를 통해 새로운 데이터를 생성할 수도 있다. 무척 효율적.</p><h3 id="GC"><a href="#GC" class="headerlink" title="GC"></a>GC</h3><p>엘릭서는 여러 프로세스에서 실행되기 때문에 각 프로세스별로 힙이 생성되고, 프로세스가 종료되면 바로 힙을 날리기 때문에 gc가 무척 빠르게 돌아간다. 때문에 기존 언어에서 사용되지 않은 오래된 값이 메모리를 잡고 있는 문제를 해소한다.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;확장자-convention&quot;&gt;&lt;a href=&quot;#확장자-convention&quot; class=&quot;headerlink&quot; title=&quot;확장자 convention&quot;&gt;&lt;/a&gt;확장자 convention&lt;/h3&gt;&lt;p&gt;&lt;code&gt;.ex&lt;/code&gt;&lt;/p&gt;
+&lt;
+      
+    
+    </summary>
+    
+      <category term="Elixir" scheme="https://parkdoyeon.github.io/elixir/"/>
+    
+    
+      <category term="elixir" scheme="https://parkdoyeon.github.io/tags/elixir/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Programming Elixir 4 - 타입과 모듈</title>
+    <link href="https://parkdoyeon.github.io/elixir/elixir-2020-01-28-elixir-basic-typeandmodule/"/>
+    <id>https://parkdoyeon.github.io/elixir/elixir-2020-01-28-elixir-basic-typeandmodule/</id>
+    <published>2020-01-18T01:59:24.000Z</published>
+    <updated>2020-02-23T01:34:49.543Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="리스트와-재귀"><a href="#리스트와-재귀" class="headerlink" title="리스트와 재귀"></a>리스트와 재귀</h3><h4 id="Heads-and-Tails"><a href="#Heads-and-Tails" class="headerlink" title="Heads and Tails"></a>Heads and Tails</h4><p>엘릭서는 join operator인 파이프 연산자로 머리와 나머지(tail)를 나눌 수 있다.<br>파이프 연산자와 재귀를 통해 길이 함수를 간단하게 구현할 수 있다.</p><pre><code>defmodule MyList do  def len([]), do: 0  def len([_head|tail]), do: 1 + len(tail)#head는 함수내에서 사용하는 일이 없으므로 컴파일시 경고를 띄우지않게 언더스코어를 넣는다.</code></pre><h4 id="문자열과-리스트"><a href="#문자열과-리스트" class="headerlink" title="문자열과 리스트"></a>문자열과 리스트</h4><p>엘릭서에서 문자열은 우리가 알고있는 일련의 단어들의 조합과 쿼테이션마크이면서,<br>리스트로 표기된 코드포인트의 값들이다. 후자의 경우 iEX에서 ‘리스트의 모든 값이 문자열로 표현가능한지’ 여부에 따라 구분한다. (heuristically; trial and error)</p><h3 id="다른-타입들"><a href="#다른-타입들" class="headerlink" title="다른 타입들"></a>다른 타입들</h3><h4 id="Structs"><a href="#Structs" class="headerlink" title="Structs"></a>Structs</h4><p>모듈의 이름이 곧 맵타입이 됨. 딕셔너리 기능이 없으므로 키값이 반드시 아톰이어야 한다.<br>구조체는 구조체에 특정한 행위를 정의하기위해 모듈 안에 정의한다.<br>구조체 안에 구조체를 넣는 Nested Structs 구현이 가능하다. Nested Struct의 접근자(Nested Accessor)는 기본적으로 컴파일 타임에 동작하는 매크로인데, 컴파일 타임에 동작하면 static하게 기능할 수 밖에 없으므로 다이나믹하게  </p><h3 id="엘릭서에서의-타입이란"><a href="#엘릭서에서의-타입이란" class="headerlink" title="엘릭서에서의 타입이란?"></a>엘릭서에서의 타입이란?</h3><p>primitive type vs functionality of module<br>In my mind, there’s a difference between the primitive list and the functional- ity of the List module. The primitive list is an implementation, whereas the List module adds a layer of abstraction.<br>-&gt; 엘릭서의 원시타입은 구현체이며, 모듈은 원시타입 구현체에 추상레이어를 추가한 것이다.<br>-&gt; 가령 Map은 원시타입이지만, keyword 타입을 통해 딕셔너리 튜플 리스트 형태로 표현할 수 있다. 이 경우, 리스트에서 제공하는 풍부한 모듈을 함께 사용할 수 있다.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;리스트와-재귀&quot;&gt;&lt;a href=&quot;#리스트와-재귀&quot; class=&quot;headerlink&quot; title=&quot;리스트와 재귀&quot;&gt;&lt;/a&gt;리스트와 재귀&lt;/h3&gt;&lt;h4 id=&quot;Heads-and-Tails&quot;&gt;&lt;a href=&quot;#Heads-and-Tails&quot; c
+      
+    
+    </summary>
+    
+      <category term="Elixir" scheme="https://parkdoyeon.github.io/elixir/"/>
+    
+    
+      <category term="elixir" scheme="https://parkdoyeon.github.io/tags/elixir/"/>
+    
+      <category term="type" scheme="https://parkdoyeon.github.io/tags/type/"/>
+    
+      <category term="module" scheme="https://parkdoyeon.github.io/tags/module/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>리눅스 도커 lftp로 파일 배포하기</title>
+    <link href="https://parkdoyeon.github.io/dev-env/dev-env-2019-11-21-docker-lftp-ci/"/>
+    <id>https://parkdoyeon.github.io/dev-env/dev-env-2019-11-21-docker-lftp-ci/</id>
+    <published>2019-11-21T02:58:43.000Z</published>
+    <updated>2020-02-23T01:34:13.470Z</updated>
+    
+    <content type="html"><![CDATA[<p>CI 서버에서 npm 빌드가 완료되면 빌드된 파일을 ftp 통해서 웹서버에 배포하기로했다.<br>CI서버에서 설치하고 쓸 ftp를 찾다가 lftp의 도커 이미지가 있어서 CI 파이프라인에 추가했다.<br>lftp는 리눅스에서 많이 사용하는 ftp 프로그램으로, http를 포함한 다양한 프로토콜을 지원한다. 기본적인 명령어 형식은 아래와 같다.</p><pre><code>lftp ftp://[user_id]:[user_password]@[host]:[port] -e &quot;mirror -R -n -v -p -X *.md -X *.db -X *.yml -X @html/ -X *.git/ $CI_PROJECT_DIR/vue/vue-proj/dist /R2/vue/vue-proj-1125;&quot;</code></pre><p>명령어에 담긴 flag 의미는 아래와 같다</p><ul><li>e: –delete, 동기화 과정중에 없는 파일을 삭제한다</li><li>R: –recursive, 본래 mirror는 [목적지] [로컬] 순서로 디렉토리 표기가 되고 로컬에 목적지에 있는 파일을 다운로드 받는 명령어인데, 반대로 목적지에 파일을 전달하고 싶으면 R 플래그를 넣어줘야 한다.</li><li>n: –only-newer, 새롭게 변경된 파일만 다운로드하기</li><li>v: –verbose, 파일 전송 로그를 표기하기</li><li>p: –no-perms, 작업이 완료되고 리눅스에서 원격에 있는 파일 권한을 변경하려하는데 </li><li>X: –exclude-glob, glob 정규식으로 제외파일을 표기한다. 일반 정규식과 달리 asterisk(*)가 와일드카드 의미를 갖는다.</li></ul><p>자세한 내용 및 더 많은 옵션은 <a href="https://lftp.yar.ru/lftp-man.html" rel="external nofollow noopener noreferrer" target="_blank">lftp 공식 문서</a>를 통해 확인하면 된다.</p><p>해당 stage 스크립트를  <code>gitlab-ci.yml</code>에 작성하니 아래와 같아졌다.</p><pre><code>deploy_prod_vue_event:    image: registry.mycompany.com:5001/mwienk/docker-lftp:latest    stage: deploy    variables:        GIT_STRATEGY: none    script:        - echo &quot;Deploy to alpha server&quot;        - lftp ftp://deploy:$FTP_PASSWORD@172.0.0.1:2100 -e &quot;mirror -R -n -v -p -X *.md -X *.db -X *.yml -X @html/ -X *.git/ $CI_PROJECT_DIR/vue/vue-proj/dist /R2/vue/vue-proj-1125;&quot;    environment:        name: production    tags:        - ci-linux    when: manual    only:    - master</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;CI 서버에서 npm 빌드가 완료되면 빌드된 파일을 ftp 통해서 웹서버에 배포하기로했다.&lt;br&gt;CI서버에서 설치하고 쓸 ftp를 찾다가 lftp의 도커 이미지가 있어서 CI 파이프라인에 추가했다.&lt;br&gt;lftp는 리눅스에서 많이 사용하는 ftp
+      
+    
+    </summary>
+    
+      <category term="Dev-Env" scheme="https://parkdoyeon.github.io/dev-env/"/>
+    
+    
+      <category term="docker" scheme="https://parkdoyeon.github.io/tags/docker/"/>
+    
+      <category term="ci/cd" scheme="https://parkdoyeon.github.io/tags/ci-cd/"/>
+    
+      <category term="ftp" scheme="https://parkdoyeon.github.io/tags/ftp/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>리눅스 계정잠금 해제</title>
+    <link href="https://parkdoyeon.github.io/dev-env/dev-env-2019-11-05-linux-password/"/>
+    <id>https://parkdoyeon.github.io/dev-env/dev-env-2019-11-05-linux-password/</id>
+    <published>2019-11-05T08:41:56.000Z</published>
+    <updated>2020-02-23T01:34:13.469Z</updated>
+    
+    <content type="html"><![CDATA[<p>리눅스 계정 잠금 제어는 보통 pam_tally2로 한다. 접속 시도 횟수가 정책상 설정된 횟수를 초과하면 계정 잠금이 일어나는데 이때 다른 계정으로 접근해서 아래 명령어로 잠금 계정을 해제해줘야 한다.</p><pre><code>pam_tally2 -u [lockeduser] -r</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;리눅스 계정 잠금 제어는 보통 pam_tally2로 한다. 접속 시도 횟수가 정책상 설정된 횟수를 초과하면 계정 잠금이 일어나는데 이때 다른 계정으로 접근해서 아래 명령어로 잠금 계정을 해제해줘야 한다.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;pam_tall
+      
+    
+    </summary>
+    
+      <category term="Dev-Env" scheme="https://parkdoyeon.github.io/dev-env/"/>
+    
+    
+      <category term="linux" scheme="https://parkdoyeon.github.io/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>npm 빌드위한 docker gitlab CI 세팅 삽질기</title>
+    <link href="https://parkdoyeon.github.io/javascript/javascript-2019-10-28-gitlab-ci-docker/"/>
+    <id>https://parkdoyeon.github.io/javascript/javascript-2019-10-28-gitlab-ci-docker/</id>
+    <published>2019-10-28T06:13:20.000Z</published>
+    <updated>2020-02-23T01:34:13.472Z</updated>
+    
+    <content type="html"><![CDATA[<p>vue.js를 프로덕션에 도입하면서 빌드와 배포를 하는 파이프라인 구축이 필요했다. 젠킨스와 깃랩을 함께 사용할수도 있었겠지만, 기존에 설정되어있는 깃랩 CI를 확장해 도커 깃랩 러너를 통해 npm 빌드를 하는 환경구성을 해보기로 했다.</p><h1 id="How-To"><a href="#How-To" class="headerlink" title="How To"></a>How To</h1><p>gitlab runner docker로 설치하고, 설정파일 생성하기</p><blockquote><p>참고 - <a href="https://docs.gitlab.com/runner/install/" rel="external nofollow noopener noreferrer" target="_blank">깃랩 러너 설치 가이드</a></p></blockquote><pre><code>docker pull gitlab/gitlab-runnerdocker run --rm \-v /gitlab-runner/config:/etc/gitlab-runner/config \-it gitlab/gitlab-runner register</code></pre><p>register 과정에서 깃랩 프로젝트 내에서 생성된 gitlab runner token값과 코디네이션 url을(ex. <a href="https://gilab.mycompany.com/ci" rel="external nofollow noopener noreferrer" target="_blank">https://gilab.mycompany.com/ci</a>) 넣어줘야한다. 그러면 볼륨 매핑한 config 디렉토리에 <code>config.toml</code>파일이 생성된다.</p><p>설정이 완료되고 러너가 돌아가면 깃랩 페이지에서 내가 생성한 러너가 확인 된다. 이 자체로 러너를 돌리기엔 부족할 확률이 높다. 아래와 같이 상황에 맞춰 내가 원하는 설정을 추가적으로 넣어줘야한다.</p><pre><code>concurrent = 1check_interval = 0listen_address = &quot;0.0.0.0:443&quot;[session_server]  listen_address = &quot;0.0.0.0:5092&quot;  session_timeout = 1800[[runners]]  name = &quot;gitlab runner linux&quot;  url = &quot;https://gitlab.mycompany.com/ci&quot;  token = &quot;***************&quot;  executor = &quot;docker&quot;  [runners.custom_build_dir]  [runners.docker]    tls_verify = false    pull_policy = &quot;if-not-present&quot;    privileged = true    disable_entrypoint_overwrite = false    oom_kill_disable = false    disable_cache = false    environment = [ &quot;DOCKER_DRIVER=overlay2&quot; ]    cache_dir = &quot;/data/volume/gitlab-runner/cache&quot;    volumes = [&quot;/var/run/docker.sock:/var/run/docker.sock&quot;, &quot;/data/volume/gitlab-runner/builds:/builds&quot;]    shm_size = 0  [runners.cache]    [runners.cache.s3]    [runners.cache.gcs]</code></pre><h1 id="Trouble-Shooting"><a href="#Trouble-Shooting" class="headerlink" title="Trouble Shooting"></a>Trouble Shooting</h1><p>하지만 이 설정파일을 만들기까지 매우 많은 삽질이 있었다.</p><h4 id="도커-통신이-정상적으로-안되는-경우"><a href="#도커-통신이-정상적으로-안되는-경우" class="headerlink" title="도커 통신이 정상적으로 안되는 경우"></a>도커 통신이 정상적으로 안되는 경우</h4><p> 나는 docker로 깃랩러너를 돌린 다음에 깃랩 러너 컨테이너와 같은 층위에 다른 도커 이미지(node나 python 이미지와 같은)를 사용해서 빌드를 하고싶었다. 이 때 이미지를 불러와야하는데 계속 볼륨으로 바인딩한 도커 서비스간에 통신이 안돼서 build failure가 발생했다.</p><blockquote><p>빌드 로그</p></blockquote><pre><code class="bash">Skipping Git submodules setup$ docker infoClient:Debug Mode: falseServer:errors pretty printing infoERROR: error during connect: Get http://docker:2375/v1.40/info: dial tcp: lookup docker on 10.101.200.3:53: server misbehavingERROR: Job failed: exit code 1</code></pre><p>혹시 볼륨 바인딩에 문제가 있는건 아닐까? 싶어서 찾아봤더니 깃랩 러너가 돌아가고있는 드라이버를 따로 표기를 해줘야한다는 글이 있어서, 환경변수로 overlay2를 넣어줬더니 정상빌드 됐다. 여기서 볼륨설정을 모든 컨테이너에 적용하고싶다면 위와같이 runner.docker에 환경변수로 넣어주면된다. 프로젝트별로 바인딩 하고싶다면 variable값으로 <code>.gitlab-ci</code> 파일에 설정해주면 된다.</p><pre><code>variables:    DOCKER_DRIVER: overlay2</code></pre><h4 id="npm-프록시-세팅하기"><a href="#npm-프록시-세팅하기" class="headerlink" title="npm 프록시 세팅하기"></a>npm 프록시 세팅하기</h4><p>폐쇄된 네트워크이기 때문에 npm 패키지를 설치할때 proxy설정을 해줘야했다. 처음에 도커 이미지에 프록시 세팅을 하려했다. 러너를 통해 생성되는 도커이미지에 프록시를 세팅하려면 아래와 같이 <code>.gitlab-ci.yml</code>파일을 수정하면 된다.</p><blockquote><p>참고 <a href="https://docs.docker.com/network/proxy/" rel="external nofollow noopener noreferrer" target="_blank">도커 프록시 설정</a></p></blockquote><pre><code class="yaml">#.gitlab-ci.ymlimage: node:13variables:    HTTPS_PROXY: &quot;https://registry.mycompany.com/repository/npm-group/&quot;    HTTP_PROXY: &quot;http://registry.mycompany.com/repository/npm-group&quot;</code></pre><p>하지만 이렇게 하면 gitlab 코드를 받아올때도 프록시 설정이 적용되어 문제가 된다. no proxy옵션을 지정해주면 되지만, 앞으로 빌드하면서 어떤 url을 호출할지 알 수 없기 때문에 npm만 지정된 프록시로 우회하도록 설정하는게 깔끔하다. npm 자체적인 설정을 통해 가능하므로, ci 파일에 npm 프록시를 설정하는 스크립트를 넣어준다.</p><pre><code class="yml">before_script:    - npm config set registry http://packages.webzen.com/repository/npm-group/</code></pre><p>사실 이 부분도 삽질을 조금 했다. npm config에 https_proxy라는 값을 세팅해줄 수 있는데, 여기에 세팅되는 프록시 주소는 registry 프록시가 아니라 패키지가 다운로드하는 url들의 프록시를 의미한다. <a href="https://docs.npmjs.com/misc/config" rel="external nofollow noopener noreferrer" target="_blank">공식문서</a>에 나와있는 설명은 이렇다.</p><blockquote><p>https-proxy§<br>Default: null<br>Type: url<br>A proxy to use for outgoing https requests. If the HTTPS_PROXY or https_proxy or HTTP_PROXY or http_proxy environment variables are set, proxy settings will be honored by the underlying request library.</p></blockquote><p>완성된 .gitlab-ci.yml파일은 이렇다.</p><pre><code class="yml">image: node:13variables:    CHROMEDRIVER_FILEPATH: &quot;/builds/chromedriver/chromedriver_linux64.zip&quot;before_script:    - npm config set registry http://registry.mycompany.com/repository/npm-group/stages:    - buildtest_build:    stage: build    script:        - echo &quot;build vue js&quot;        - cd $CI_PROJECT_DIR/vue/somepage        - npm i        - npm run build    environment:        name: test    tags:        - linux-runner    only:    - vue-branch</code></pre><blockquote><p>공식문서/참고자료<br><a href="https://docs.gitlab.com/runner/executors/docker.html" rel="external nofollow noopener noreferrer" target="_blank">도커 executor 가이드</a><br><a href="https://docs.gitlab.com/ee/ci/docker/using_docker_images.html" rel="external nofollow noopener noreferrer" target="_blank">도커 이미지와 함께 빌드하기</a><br><a href="https://docs.gitlab.com/ee/ci/docker/using_docker_build.html" rel="external nofollow noopener noreferrer" target="_blank">도커 빌드하기</a><br><a href="https://docs.gitlab.com/runner/configuration/proxy.html" rel="external nofollow noopener noreferrer" target="_blank">깃랩 러너 프록시 가이드</a><br><a href="https://gitlab.com/gitlab-org/gitlab-ci-runner/issues/10" rel="external nofollow noopener noreferrer" target="_blank">coordinator url이란?</a><br><a href="https://gitlab.com/johandurancerdas/gitlab-cicd-tutorial" rel="external nofollow noopener noreferrer" target="_blank">참고 프로젝트</a><br><a href="https://www.youtube.com/watch?v=8h6IK9VkCQQ" rel="external nofollow noopener noreferrer" target="_blank">참고 강의</a></p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;vue.js를 프로덕션에 도입하면서 빌드와 배포를 하는 파이프라인 구축이 필요했다. 젠킨스와 깃랩을 함께 사용할수도 있었겠지만, 기존에 설정되어있는 깃랩 CI를 확장해 도커 깃랩 러너를 통해 npm 빌드를 하는 환경구성을 해보기로 했다.&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="https://parkdoyeon.github.io/javascript/"/>
+    
+    
+      <category term="docker" scheme="https://parkdoyeon.github.io/tags/docker/"/>
+    
+      <category term="container" scheme="https://parkdoyeon.github.io/tags/container/"/>
+    
+      <category term="javascript" scheme="https://parkdoyeon.github.io/tags/javascript/"/>
+    
+      <category term="node" scheme="https://parkdoyeon.github.io/tags/node/"/>
+    
+      <category term="npm" scheme="https://parkdoyeon.github.io/tags/npm/"/>
+    
+      <category term="gitlab" scheme="https://parkdoyeon.github.io/tags/gitlab/"/>
+    
+      <category term="ci" scheme="https://parkdoyeon.github.io/tags/ci/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>window에서 python 버전 구분해서 실행하기</title>
+    <link href="https://parkdoyeon.github.io/python/python-2019-10-18-window-python2/"/>
+    <id>https://parkdoyeon.github.io/python/python-2019-10-18-window-python2/</id>
+    <published>2019-10-18T09:16:19.000Z</published>
+    <updated>2019-10-28T16:08:17.108Z</updated>
+    
+    <content type="html"><![CDATA[<p>node-sass을 폐쇄된 윈도우 ci에서 빌드하기위해 어쩔수없이 python 2.x버전을 설치했는데, 에러가 발생했다. node-sass를 빌드하는 node-gyp이 파이썬을 실행할 때 커맨드라인에서 <code>python2</code>를 사용하는데, unix기반 os에서는 파이썬 버전에 따라 python2, python3와 같은 변수가 실행명령어로 바인딩이 되지만 윈도우는 그렇지 않기 때문이다(깃헙에 윈도우 환경을 고려해달라는 이슈가 올라와있다). 할수없이 커맨드 라인에서 <code>python2</code> 명령어를 인식할 수 있도록 환경변수를 세팅했다.</p><h1 id="윈도우와-python-환경변수-세팅"><a href="#윈도우와-python-환경변수-세팅" class="headerlink" title="윈도우와 python 환경변수 세팅"></a>윈도우와 python 환경변수 세팅</h1><p>파이썬은 설치시 환경변수 세팅 옵션을 체크하면 자동으로 변수를 세팅한다. 윈도우 <code>제어판 &gt; 시스템 &gt; 고급시스템설정 &gt; 환경변수</code>에 들어가면 사용자 변수 혹은 시스템 변수에 Path 라는 변수명을 갖고있는 값이 있다. 파이썬 환경변수 세팅이 됐다면 여기에 기존 파이썬 경로들이 나오는데, path의 입력 순서에 따라 첫번째로 작성된 파이썬 경로가 디폴트로 호출된다. 가령 아래와같이 입력이 되어있다면,</p><pre><code>C:\Users\doyeon\AppData\Local\Programs\Python\Python38-32\Scripts\C:\Users\doyeon\AppData\Local\Programs\Python\Python38-32\C:\Users\doyeon\AppData\Local\Programs\Python\Python37-32\Scripts\C:\Users\doyeon\AppData\Local\Programs\Python\Python37-32\</code></pre><p>Python38-32가 상위에 입력이 되어있으므로 커맨드라인에서 <code>python</code>을 호출할 때 python 3.8이 실행된다. </p><h1 id="py-3-8로-버전-구분해서-실행하기"><a href="#py-3-8로-버전-구분해서-실행하기" class="headerlink" title="py -3.8로 버전 구분해서 실행하기"></a>py -3.8로 버전 구분해서 실행하기</h1><p>unix 체제와 다를뿐이지 윈도우에서도 버전을 구분해서 실행할 수 있는 기본 명령어가 있다.<code>py -3.7</code> 혹은 <code>py -3.8</code>와 같은 형태로 입력하면된다.</p><pre><code>C:\Users\doyeon&gt;py -3.7Python 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 21:26:53) [MSC v.1916 32 bit (Intel)] on win32Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.&gt;&gt;&gt;</code></pre><h1 id="python-3-x를-메인으로-쓰면서-파이썬-2-7-세팅하기"><a href="#python-3-x를-메인으로-쓰면서-파이썬-2-7-세팅하기" class="headerlink" title="python 3.x를 메인으로 쓰면서 파이썬 2.7 세팅하기"></a>python 3.x를 메인으로 쓰면서 파이썬 2.7 세팅하기</h1><p>하지만 나처럼 python을 3.x버전대로 쓰면서 unix os처럼 python2를 호출하고싶다면, 우선 파이썬2를 설치하고 해당 경로를 환경변수로 추가해야한다. 가령 파이썬이 <code>c:\Python27</code>에 설치가 되었다면 해당 경로를 38버전 뒤에 추가해준다.</p><pre><code>C:\Users\doyeon\AppData\Local\Programs\Python\Python38-32\Scripts\C:\Users\doyeon\AppData\Local\Programs\Python\Python38-32\c:\Python27\Scriptsc:\Python27\</code></pre><p>그리고 python2를 사용하기 위해서 <code>c:\Python27\</code>경로에 있는 <code>python.exe</code>파일의 이름을 <code>python2.exe</code>로 바꿔준다.</p><pre><code>C:\Users\doyeon&gt;python2Python 2.7.16 (v2.7.16:ef4ec6ed12, Mar 25 2019, 21:26:53) [MSC v.1916 32 bit (Intel)] on win32Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.&gt;&gt;&gt;</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;node-sass을 폐쇄된 윈도우 ci에서 빌드하기위해 어쩔수없이 python 2.x버전을 설치했는데, 에러가 발생했다. node-sass를 빌드하는 node-gyp이 파이썬을 실행할 때 커맨드라인에서 &lt;code&gt;python2&lt;/code&gt;를 사용
+      
+    
+    </summary>
+    
+      <category term="Python" scheme="https://parkdoyeon.github.io/python/"/>
+    
+    
+      <category term="python" scheme="https://parkdoyeon.github.io/tags/python/"/>
+    
+      <category term="python2" scheme="https://parkdoyeon.github.io/tags/python2/"/>
+    
+      <category term="python3" scheme="https://parkdoyeon.github.io/tags/python3/"/>
+    
+      <category term="path" scheme="https://parkdoyeon.github.io/tags/path/"/>
+    
+  </entry>
   
   <entry>
     <title>vue cli 3.X 버전에 typscript, webpack 세팅하기</title>
@@ -50,9 +368,9 @@
     <link href="https://parkdoyeon.github.io/dev-env/dev-env-2019-10-08-vs-code-window/"/>
     <id>https://parkdoyeon.github.io/dev-env/dev-env-2019-10-08-vs-code-window/</id>
     <published>2019-10-08T07:26:55.000Z</published>
-    <updated>2019-10-08T09:44:23.755Z</updated>
+    <updated>2020-02-23T01:34:13.469Z</updated>
     
-    <content type="html"><![CDATA[<p><em>2019년 10월 8일부터 작성 시작, 꾸준히 업데이트할 예정이다.</em></p><h1 id="IDE-디자인"><a href="#IDE-디자인" class="headerlink" title="IDE 디자인"></a>IDE 디자인</h1><ul><li><p>unique window colors<br>새로운 윈도우 띄울때마다 컬러가 바뀐다. 여러창 띄워놓고 작업할 때 유용하다.<br><a href="https://marketplace.visualstudio.com/items?itemName=stuart.unique-window-colors" rel="external nofollow noopener noreferrer" target="_blank">https://marketplace.visualstudio.com/items?itemName=stuart.unique-window-colors</a></p></li><li><p>rainbow brakets<br>괄호를 여닫을 때 다양한 색상으로 표기. Elasticsearch 쿼리 만들때 유용하게 썼다.<br><a href="https://marketplace.visualstudio.com/items?itemName=2gua.rainbow-brackets" rel="external nofollow noopener noreferrer" target="_blank">https://marketplace.visualstudio.com/items?itemName=2gua.rainbow-brackets</a></p></li></ul><h1 id="마크다운"><a href="#마크다운" class="headerlink" title="마크다운"></a>마크다운</h1><ul><li>markdown all in one<br>마크다운 작성할때 단축키를 써서 작업할 수 있다<br><a href="https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one" rel="external nofollow noopener noreferrer" target="_blank">https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one</a></li></ul>]]></content>
+    <content type="html"><![CDATA[<p><em>2019년 10월 8일부터 작성 시작, 꾸준히 업데이트할 예정이다.</em></p><h1 id="IDE-디자인"><a href="#IDE-디자인" class="headerlink" title="IDE 디자인"></a>IDE 디자인</h1><ul><li><p>unique window colors<br>새로운 윈도우 띄울때마다 컬러가 바뀐다. 여러창 띄워놓고 작업할 때 유용하다.<br><a href="https://marketplace.visualstudio.com/items?itemName=stuart.unique-window-colors" rel="external nofollow noopener noreferrer" target="_blank">https://marketplace.visualstudio.com/items?itemName=stuart.unique-window-colors</a></p></li><li><p>rainbow brakets<br>괄호를 여닫을 때 다양한 색상으로 표기. Elasticsearch 쿼리 만들때 유용하게 썼다.<br><a href="https://marketplace.visualstudio.com/items?itemName=2gua.rainbow-brackets" rel="external nofollow noopener noreferrer" target="_blank">https://marketplace.visualstudio.com/items?itemName=2gua.rainbow-brackets</a></p></li><li><p>indent rainbow<br>코드 내 들여쓰기 정도를 컬러를 입혀서 구분한다. 색상도 vscode의 톤앤 매너에 맞는 은은한 컬러라 보기 좋다. dot으로 구분하는 라이브러리도 많은데 개인적으로는 색상 표현이 더 직관적인 것 같다.<br><a href="https://marketplace.visualstudio.com/items?itemName=oderwat.indent-rainbow" rel="external nofollow noopener noreferrer" target="_blank">https://marketplace.visualstudio.com/items?itemName=oderwat.indent-rainbow</a></p></li></ul><h1 id="마크다운"><a href="#마크다운" class="headerlink" title="마크다운"></a>마크다운</h1><ul><li>markdown all in one<br>마크다운 작성할때 단축키를 써서 작업할 수 있다<br><a href="https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one" rel="external nofollow noopener noreferrer" target="_blank">https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one</a></li></ul>]]></content>
     
     <summary type="html">
     
@@ -273,316 +591,6 @@
       <category term="python" scheme="https://parkdoyeon.github.io/tags/python/"/>
     
       <category term="algorithm" scheme="https://parkdoyeon.github.io/tags/algorithm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>윈도우 파워쉘 권한 변경하기</title>
-    <link href="https://parkdoyeon.github.io/dev-env/dev-env-2019-07-10-powershell-auth/"/>
-    <id>https://parkdoyeon.github.io/dev-env/dev-env-2019-07-10-powershell-auth/</id>
-    <published>2019-07-10T09:02:31.000Z</published>
-    <updated>2019-07-13T09:32:43.641Z</updated>
-    
-    <content type="html"><![CDATA[<p>간혹 윈도우 2009 정도되는 서버 파워쉘에서 스크립트 파일 실행시 아래와 같이 스크립트 에러메세지가 출력 되는경우가 있다.</p><pre><code class="PowerShell">오류: 이 시스템에서 스크립트를 실행할 수 없으므로 [script] 파일을 로드할 수 없습니다.</code></pre><p>관리자 권한으로 파워쉘 실행하고, 아래의 명령어로 실행 정책을 확인한다. </p><pre><code class="PowerShell">PS &gt; Get-ExecutionPolicy</code></pre><p>리턴된 값이 Restricted이면 외부 스크립트 실행이 안되므로 UnRestricted나 RemoteSigned으로 바꿔주면 된다.</p><pre><code class="PowerShell">PS &gt; Set-ExecutionPolicy RemoteSigned</code></pre><p>RemoteSigned는 외부 스크립트에 모든 실행 권한을 주고, UnRestricted는 일부 스크립트에서 실행가능하다. 실행할때 ExecutionPolicy의 파라미터 값을 UnRestricted로 주면된다. 가령 Metricbeat의 서비스 인스톨 스크립트는 UnRestricted레벨을 주면 정상적으로 실행된다.</p><pre><code class="PowerShell">PowerShell.exe -ExecutionPolicy UnRestricted -File .\install-service-metricbeat.ps1.</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;간혹 윈도우 2009 정도되는 서버 파워쉘에서 스크립트 파일 실행시 아래와 같이 스크립트 에러메세지가 출력 되는경우가 있다.&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;PowerShell&quot;&gt;오류: 이 시스템에서 스크립트를 실행할 수 없으므로 [scr
-      
-    
-    </summary>
-    
-      <category term="Dev-Env" scheme="https://parkdoyeon.github.io/dev-env/"/>
-    
-    
-      <category term="window" scheme="https://parkdoyeon.github.io/tags/window/"/>
-    
-      <category term="powershell" scheme="https://parkdoyeon.github.io/tags/powershell/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ElasticSearch - unassigned shard 문제 해결 (3) replica 숫자가 부적절할때</title>
-    <link href="https://parkdoyeon.github.io/elk/elk-2019-06-27-es-replica/"/>
-    <id>https://parkdoyeon.github.io/elk/elk-2019-06-27-es-replica/</id>
-    <published>2019-06-27T07:47:13.000Z</published>
-    <updated>2019-06-27T15:33:15.454Z</updated>
-    
-    <content type="html"><![CDATA[<p>엘라스틱서치 테스트 환경에서 일어난 일이다. 마스터노드 1대만 단독으로 서비스가 올라가있는데, 어느 시점부터(아마도 es 버전을 올린 시점부터) index health status가 yellow로 바뀌었다. 확인해보니, 모든 인덱스에서 replica shard만 할당이 되지 못하고 있었다. 이유를 쿼리했더니 동일한 샤드가 있는 곳엔 샤드할당이 되지않는다는 에러메세지가 나왔다.</p><pre><code class="json">GET /_cluster/allocation/explain{    //...생략    cannot allocate because allocation is not permitted to any of the nodes that hold an in-sync shard copy    //...생략}</code></pre><p>좀 더 찾아보니, 스택오버플로우에 <a href="https://stackoverflow.com/questions/37302611/elasticsearch-doesnt-allow-to-allocate-unassigned-shard" rel="external nofollow noopener noreferrer" target="_blank">나와 비슷한 상황</a>인 사람이 있었다. replica는 말그대로 복제 샤드이기 때문에 동일한 노드에 배치될 수 없고, 또 다른 노드에 배치되어야 한다는 답변이 있었다. 즉, 복제샤드가 필요하면 노드를 추가 해야하고, 아니면 복제샤드 갯수 설정을 더 낮게 바꿔야한다는 것이다. </p><p>복제 샤드를 올바르게 설정하려면 “전체 노드 갯수 &gt;원본샤드 노드(1) + 복제샤드 갯수”가 성립해야 한다. ES가 기본값으로 설정하는 샤드의 갯수는 5개, 복제 샤드의 갯수는 1개이다. 테스트환경처럼 단독으로 ES 노드를 운영하는 상황에서는 복제샤드의 갯수를 0으로 맞춰줘야 status를 green으로 유지할 수 있다.</p><p>다행히도 복제샤드에 대한 설정은 이미 생성된 인덱스에도 적용할 수 있다. 다음과같이 쿼리하면 된다.</p><pre><code class="json">PUT /index_name_*/_settings{  &quot;index&quot;: {    &quot;number_of_replicas&quot;: 0  }}</code></pre><p>그리고, 앞으로 생성될 인덱스에 일괄적용하고싶다면 아래와 같이 <a href="/elk/elk-2019-02-27-es-mapping">템플릿을 통해</a> 지정하면 된다.</p><pre><code class="json">GET _template/myindex_shards_control{  &quot;index_patterns&quot;: &quot;index_name_*&quot;,  &quot;settings&quot;: {    &quot;number_of_shards&quot;: 1,    &quot;number_of_replicas&quot;: 0  }}</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;엘라스틱서치 테스트 환경에서 일어난 일이다. 마스터노드 1대만 단독으로 서비스가 올라가있는데, 어느 시점부터(아마도 es 버전을 올린 시점부터) index health status가 yellow로 바뀌었다. 확인해보니, 모든 인덱스에서 repli
-      
-    
-    </summary>
-    
-      <category term="ELK" scheme="https://parkdoyeon.github.io/elk/"/>
-    
-    
-      <category term="elasticsearch" scheme="https://parkdoyeon.github.io/tags/elasticsearch/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ElasticSearch 7.2에 한국어 분석기 Nori 플러그인 설치하기</title>
-    <link href="https://parkdoyeon.github.io/elk/elk-2019-06-27-es-nori/"/>
-    <id>https://parkdoyeon.github.io/elk/elk-2019-06-27-es-nori/</id>
-    <published>2019-06-27T02:18:32.000Z</published>
-    <updated>2019-09-07T11:17:19.318Z</updated>
-    
-    <content type="html"><![CDATA[<p>엘라스틱서치가 검색엔진으로서 한국어를 올바르게 인식하도록 하려면 한국어 분석기가 필요하다. 엘라스틱서치 6.4부터 공식적으로 제공하는 한국어 분석 플러그인 Nori는 기본 플러그인이 아니므로 번거롭지만 별도로 설치해줘야한다. 나는 도커로 서버를 운용하기때문에, 엘라스틱서치 공식 도커 이미지에 플러그인만 설치해서 다시 빌드했다.</p><pre><code class="dockerfile">FROM docker.elastic.co/elasticsearch/elasticsearch:7.2.0RUN [&quot;bin/elasticsearch-plugin&quot;, &quot;install&quot;, &quot;analysis-nori&quot;]CMD bin/elasticsearch</code></pre><p>설치후에는 플러그인 동작을 노리에서 제공하는 기본 분석기로 테스트를 해볼 수 있다.</p><pre><code class="json">POST _analyze{  &quot;explain&quot;: true,   &quot;analyzer&quot;: &quot;nori&quot;,  &quot;text&quot;: &quot;&lt;p&gt;젤다의전설은 링크가 주인공이다.&lt;/p&gt;&quot;,  &quot;attributes&quot; : [&quot;posType&quot;, &quot;leftPOS&quot;, &quot;rightPOS&quot;, &quot;morphemes&quot;, &quot;reading&quot;] //해당 컬럼이 없으면 전체 필드가 다 노출된다.}// Response 200{  &quot;detail&quot; : {    &quot;custom_analyzer&quot; : false,    &quot;analyzer&quot; : {      &quot;name&quot; : &quot;org.apache.lucene.analysis.ko.KoreanAnalyzer&quot;,      &quot;tokens&quot; : [        {          &quot;token&quot; : &quot;p&quot;,          &quot;start_offset&quot; : 1,          &quot;end_offset&quot; : 2,          &quot;type&quot; : &quot;word&quot;,          &quot;position&quot; : 0,          &quot;leftPOS&quot; : &quot;SL(Foreign language)&quot;,          &quot;morphemes&quot; : null,          &quot;posType&quot; : &quot;MORPHEME&quot;,          &quot;reading&quot; : null,          &quot;rightPOS&quot; : &quot;SL(Foreign language)&quot;        },        {          &quot;token&quot; : &quot;젤다&quot;,          &quot;start_offset&quot; : 3,          &quot;end_offset&quot; : 5,          &quot;type&quot; : &quot;word&quot;,          &quot;position&quot; : 1,          &quot;leftPOS&quot; : &quot;NNP(Proper Noun)&quot;,          &quot;morphemes&quot; : null,          &quot;posType&quot; : &quot;MORPHEME&quot;,          &quot;reading&quot; : null,          &quot;rightPOS&quot; : &quot;NNP(Proper Noun)&quot;        },        {          &quot;token&quot; : &quot;전설&quot;,          &quot;start_offset&quot; : 6,          &quot;end_offset&quot; : 8,          &quot;type&quot; : &quot;word&quot;,          &quot;position&quot; : 3,          &quot;leftPOS&quot; : &quot;NNG(General Noun)&quot;,          &quot;morphemes&quot; : null,          &quot;posType&quot; : &quot;MORPHEME&quot;,          &quot;reading&quot; : null,          &quot;rightPOS&quot; : &quot;NNG(General Noun)&quot;        },        {          &quot;token&quot; : &quot;링크&quot;,          &quot;start_offset&quot; : 10,          &quot;end_offset&quot; : 12,          &quot;type&quot; : &quot;word&quot;,          &quot;position&quot; : 5,          &quot;leftPOS&quot; : &quot;NNG(General Noun)&quot;,          &quot;morphemes&quot; : null,          &quot;posType&quot; : &quot;MORPHEME&quot;,          &quot;reading&quot; : null,          &quot;rightPOS&quot; : &quot;NNG(General Noun)&quot;        },        {          &quot;token&quot; : &quot;주인&quot;,          &quot;start_offset&quot; : 14,          &quot;end_offset&quot; : 16,          &quot;type&quot; : &quot;word&quot;,          &quot;position&quot; : 7,          &quot;leftPOS&quot; : &quot;NNG(General Noun)&quot;,          &quot;morphemes&quot; : null,          &quot;posType&quot; : &quot;MORPHEME&quot;,          &quot;reading&quot; : null,          &quot;rightPOS&quot; : &quot;NNG(General Noun)&quot;        },        {          &quot;token&quot; : &quot;공&quot;,          &quot;start_offset&quot; : 16,          &quot;end_offset&quot; : 17,          &quot;type&quot; : &quot;word&quot;,          &quot;position&quot; : 8,          &quot;leftPOS&quot; : &quot;NNG(General Noun)&quot;,          &quot;morphemes&quot; : null,          &quot;posType&quot; : &quot;MORPHEME&quot;,          &quot;reading&quot; : null,          &quot;rightPOS&quot; : &quot;NNG(General Noun)&quot;        },        {          &quot;token&quot; : &quot;이&quot;,          &quot;start_offset&quot; : 17,          &quot;end_offset&quot; : 18,          &quot;type&quot; : &quot;word&quot;,          &quot;position&quot; : 9,          &quot;leftPOS&quot; : &quot;VCP(Positive designator)&quot;,          &quot;morphemes&quot; : null,          &quot;posType&quot; : &quot;MORPHEME&quot;,          &quot;reading&quot; : null,          &quot;rightPOS&quot; : &quot;VCP(Positive designator)&quot;        },        {          &quot;token&quot; : &quot;p&quot;,          &quot;start_offset&quot; : 22,          &quot;end_offset&quot; : 23,          &quot;type&quot; : &quot;word&quot;,          &quot;position&quot; : 11,          &quot;leftPOS&quot; : &quot;SL(Foreign language)&quot;,          &quot;morphemes&quot; : null,          &quot;posType&quot; : &quot;MORPHEME&quot;,          &quot;reading&quot; : null,          &quot;rightPOS&quot; : &quot;SL(Foreign language)&quot;        }      ]    }  }}</code></pre><h1 id="커스터마이즈-하기"><a href="#커스터마이즈-하기" class="headerlink" title="커스터마이즈 하기"></a>커스터마이즈 하기</h1><p>검색결과를 코드로직에서 가공할수도 있지만, 커스텀 분석기를 만들어 더 효율적으로 결과의 내용을 변경할 수 있다. 커스텀 분석기가 잘 적용되는지 테스트를 하기위해 직접 데이터가 있는 인덱스에 붙이지 않고 샘플로 <code>my-custom-analyzer</code>인덱스를 생성한다.</p><pre><code class="json">PUT my-custom-analyzer{    &quot;settings&quot;:{        &quot;number_of_shards&quot;: 5,        &quot;number_of_replicas&quot;: 0,        &quot;analysis&quot;:{            &quot;tokenizer&quot;:{                &quot;kr_bbs_tokenizer&quot;:{                    &quot;type&quot;:&quot;nori_tokenizer&quot;,                    &quot;decompound_mode&quot;:&quot;mixed&quot;,                    //&quot;user_dictionary_rules&quot;: [&quot;젤다의전설 젤다 의 전설&quot;, &quot;성남시 성남 시&quot;, &quot;링크&quot;], 배열로 등록할수도 있고, 아래와 같이 직접 파일로 등록할 수도 있다.                    &quot;user_dictionary&quot;:&quot;user_dictionary.txt&quot;                }            },            &quot;analyzer&quot;:{                &quot;nori&quot;:{                    &quot;type&quot;:&quot;custom&quot;,                    &quot;tokenizer&quot;:&quot;kr_bbs_tokenizer&quot;                }            }        }    }}</code></pre><p>user_dictionary는 단어로 인식할 값들이 들어있는 배열이다. 텍스트 파일의 경우 개행을 통해 단어를, 띄어쓰기를 통해 형식을 구분한다. 띄어쓰기는 첫번째 음절을 명사로, 두번째 음절을 복합명사로 등록한다.</p><pre><code class="txt">성남시 성남 시젤다의전설 젤다 의 전설링크</code></pre><p>해당 파일은 <code>$ELASTICSEARCH-HOME/config/</code>경로에 넣어놓고 등록하면 된다. 도커를 통해 텍스트파일을 마운트하고-&gt;분석기에 파일 등록하고 -&gt;사전 내용 수정을 했는데,커스텀 분석기가 파일이 변경되면 바로 감지를 못하는 것같다. 완성된 사전을 분석기 등록시에 넣어줘야하는지 조금더 확인이 필요한 것같다.</p><p><em>주의! (2019-07-06 업데이트)</em><br>노드가 여러개인 경우 각 ES 인스턴스 경로마다 사용자 정의사전 파일을 추가해야한다. 분명히 인덱스 매핑 템플릿 설정은 정상적으로 되는데(경로에 해당파일 없으면 설정도 되지 않는다) ES에서 계속 IOException 로그와 함께 복제 샤드가 샤딩이 잘 안되길래 파일명 바꿔가며 한참 삽질을 한 후에야 깨달았다.</p><p>커스텀 분석기를 통해 사전을 적용한 형태소분석 결과값은 아래와 같다.</p><pre><code class="json">POST my-custom-analyzer/_analyze{  &quot;explain&quot;: true,   &quot;analyzer&quot;: &quot;nori&quot;,  &quot;text&quot;: &quot;&lt;p&gt;젤다의전설은 링크가 주인공이다.&lt;/p&gt;&quot;,  &quot;attributes&quot; : [&quot;posType&quot;, &quot;leftPOS&quot;, &quot;rightPOS&quot;, &quot;morphemes&quot;, &quot;reading&quot;]}// Response 200{  &quot;detail&quot; : {    &quot;custom_analyzer&quot; : true,    &quot;charfilters&quot; : [ ],    &quot;tokenizer&quot; : {      &quot;name&quot; : &quot;my_custom_tokenizer&quot;,      &quot;tokens&quot; : [        {          &quot;token&quot; : &quot;p&quot;,          &quot;start_offset&quot; : 1,          &quot;end_offset&quot; : 2,          &quot;type&quot; : &quot;word&quot;,          &quot;position&quot; : 0,          &quot;leftPOS&quot; : &quot;SL(Foreign language)&quot;,          &quot;morphemes&quot; : null,          &quot;posType&quot; : &quot;MORPHEME&quot;,          &quot;reading&quot; : null,          &quot;rightPOS&quot; : &quot;SL(Foreign language)&quot;        },        {          &quot;token&quot; : &quot;젤다의전설&quot;,          &quot;start_offset&quot; : 3,          &quot;end_offset&quot; : 8,          &quot;type&quot; : &quot;word&quot;,          &quot;position&quot; : 1,          &quot;positionLength&quot; : 3,          &quot;leftPOS&quot; : &quot;NNG(General Noun)&quot;,          &quot;morphemes&quot; : &quot;젤다/NNG(General Noun)+의/NNG(General Noun)+전설/NNG(General Noun)&quot;,          &quot;posType&quot; : &quot;COMPOUND&quot;,          &quot;reading&quot; : null,          &quot;rightPOS&quot; : &quot;NNG(General Noun)&quot;        },        {          &quot;token&quot; : &quot;젤다&quot;,          &quot;start_offset&quot; : 3,          &quot;end_offset&quot; : 5,          &quot;type&quot; : &quot;word&quot;,          &quot;position&quot; : 1,          &quot;leftPOS&quot; : &quot;NNG(General Noun)&quot;,          &quot;morphemes&quot; : null,          &quot;posType&quot; : &quot;MORPHEME&quot;,          &quot;reading&quot; : null,          &quot;rightPOS&quot; : &quot;NNG(General Noun)&quot;        },        {          &quot;token&quot; : &quot;의&quot;,          &quot;start_offset&quot; : 5,          &quot;end_offset&quot; : 6,          &quot;type&quot; : &quot;word&quot;,          &quot;position&quot; : 2,          &quot;leftPOS&quot; : &quot;NNG(General Noun)&quot;,          &quot;morphemes&quot; : null,          &quot;posType&quot; : &quot;MORPHEME&quot;,          &quot;reading&quot; : null,          &quot;rightPOS&quot; : &quot;NNG(General Noun)&quot;        },        {          &quot;token&quot; : &quot;전설&quot;,          &quot;start_offset&quot; : 6,          &quot;end_offset&quot; : 8,          &quot;type&quot; : &quot;word&quot;,          &quot;position&quot; : 3,          &quot;leftPOS&quot; : &quot;NNG(General Noun)&quot;,          &quot;morphemes&quot; : null,          &quot;posType&quot; : &quot;MORPHEME&quot;,          &quot;reading&quot; : null,          &quot;rightPOS&quot; : &quot;NNG(General Noun)&quot;        },        {          &quot;token&quot; : &quot;은&quot;,          &quot;start_offset&quot; : 8,          &quot;end_offset&quot; : 9,          &quot;type&quot; : &quot;word&quot;,          &quot;position&quot; : 4,          &quot;leftPOS&quot; : &quot;J(Ending Particle)&quot;,          &quot;morphemes&quot; : null,          &quot;posType&quot; : &quot;MORPHEME&quot;,          &quot;reading&quot; : null,          &quot;rightPOS&quot; : &quot;J(Ending Particle)&quot;        },        {          &quot;token&quot; : &quot;링크&quot;,          &quot;start_offset&quot; : 10,          &quot;end_offset&quot; : 12,          &quot;type&quot; : &quot;word&quot;,          &quot;position&quot; : 5,          &quot;leftPOS&quot; : &quot;NNG(General Noun)&quot;,          &quot;morphemes&quot; : null,          &quot;posType&quot; : &quot;MORPHEME&quot;,          &quot;reading&quot; : null,          &quot;rightPOS&quot; : &quot;NNG(General Noun)&quot;        },        {          &quot;token&quot; : &quot;가&quot;,          &quot;start_offset&quot; : 12,          &quot;end_offset&quot; : 13,          &quot;type&quot; : &quot;word&quot;,          &quot;position&quot; : 6,          &quot;leftPOS&quot; : &quot;J(Ending Particle)&quot;,          &quot;morphemes&quot; : null,          &quot;posType&quot; : &quot;MORPHEME&quot;,          &quot;reading&quot; : null,          &quot;rightPOS&quot; : &quot;J(Ending Particle)&quot;        },        {          &quot;token&quot; : &quot;주인공&quot;,          &quot;start_offset&quot; : 14,          &quot;end_offset&quot; : 17,          &quot;type&quot; : &quot;word&quot;,          &quot;position&quot; : 7,          &quot;positionLength&quot; : 2,          &quot;leftPOS&quot; : &quot;NNG(General Noun)&quot;,          &quot;morphemes&quot; : &quot;주인/NNG(General Noun)+공/NNG(General Noun)&quot;,          &quot;posType&quot; : &quot;COMPOUND&quot;,          &quot;reading&quot; : null,          &quot;rightPOS&quot; : &quot;NNG(General Noun)&quot;        },        {          &quot;token&quot; : &quot;주인&quot;,          &quot;start_offset&quot; : 14,          &quot;end_offset&quot; : 16,          &quot;type&quot; : &quot;word&quot;,          &quot;position&quot; : 7,          &quot;leftPOS&quot; : &quot;NNG(General Noun)&quot;,          &quot;morphemes&quot; : null,          &quot;posType&quot; : &quot;MORPHEME&quot;,          &quot;reading&quot; : null,          &quot;rightPOS&quot; : &quot;NNG(General Noun)&quot;        },        {          &quot;token&quot; : &quot;공&quot;,          &quot;start_offset&quot; : 16,          &quot;end_offset&quot; : 17,          &quot;type&quot; : &quot;word&quot;,          &quot;position&quot; : 8,          &quot;leftPOS&quot; : &quot;NNG(General Noun)&quot;,          &quot;morphemes&quot; : null,          &quot;posType&quot; : &quot;MORPHEME&quot;,          &quot;reading&quot; : null,          &quot;rightPOS&quot; : &quot;NNG(General Noun)&quot;        },        {          &quot;token&quot; : &quot;이&quot;,          &quot;start_offset&quot; : 17,          &quot;end_offset&quot; : 18,          &quot;type&quot; : &quot;word&quot;,          &quot;position&quot; : 9,          &quot;leftPOS&quot; : &quot;VCP(Positive designator)&quot;,          &quot;morphemes&quot; : null,          &quot;posType&quot; : &quot;MORPHEME&quot;,          &quot;reading&quot; : null,          &quot;rightPOS&quot; : &quot;VCP(Positive designator)&quot;        },        {          &quot;token&quot; : &quot;다&quot;,          &quot;start_offset&quot; : 18,          &quot;end_offset&quot; : 19,          &quot;type&quot; : &quot;word&quot;,          &quot;position&quot; : 10,          &quot;leftPOS&quot; : &quot;E(Verbal endings)&quot;,          &quot;morphemes&quot; : null,          &quot;posType&quot; : &quot;MORPHEME&quot;,          &quot;reading&quot; : null,          &quot;rightPOS&quot; : &quot;E(Verbal endings)&quot;        },        {          &quot;token&quot; : &quot;p&quot;,          &quot;start_offset&quot; : 22,          &quot;end_offset&quot; : 23,          &quot;type&quot; : &quot;word&quot;,          &quot;position&quot; : 11,          &quot;leftPOS&quot; : &quot;SL(Foreign language)&quot;,          &quot;morphemes&quot; : null,          &quot;posType&quot; : &quot;MORPHEME&quot;,          &quot;reading&quot; : null,          &quot;rightPOS&quot; : &quot;SL(Foreign language)&quot;        }      ]    },    &quot;tokenfilters&quot; : [ ]  }}</code></pre><h1 id="필터-세팅하기-nori-part-of-speech"><a href="#필터-세팅하기-nori-part-of-speech" class="headerlink" title="필터 세팅하기: nori_part_of_speech"></a>필터 세팅하기: nori_part_of_speech</h1><p>위에 분석결과를 보면 알 수 있듯이, 한국어의 조사같은 경우는 결과값으로서 의미가 없기때문에 처음부터 분석결과에 제외하는 것이 좋다. 방금 커스터마이즈로 추가한 인덱스에 <code>filter</code>필드의 값으로 필터링할 품사를 넣어주면 된다. 품사에 대한 정보는 <a href="http://lucene.apache.org/core/8_0_0/analyzers-nori/org/apache/lucene/analysis/ko/POS.Tag.html" rel="external nofollow noopener noreferrer" target="_blank">루씬 API문서</a>를 참조하면되고, 설명은 <a href="https://www.elastic.co/guide/en/elasticsearch/plugins/current/analysis-nori-speech.html" rel="external nofollow noopener noreferrer" target="_blank">nori 공식문서</a>를 참고하면 된다. 하지만 생선된 인덱스를 변경하기 위해서는</p><ol><li><code>_close</code>으로 인덱스를 닫은 다음</li><li>PUT 메소드의 _settings 쿼리를 통해 분석기를 변경하고 <ul><li>filter필드를 추가하고, analyzer필드 내부에 filter값을 지정해주면 된다.</li></ul></li><li><code>_open</code>을 통해 다시 열어줘야한다.</li></ol><pre><code class="json">POST my-custom-analyzer/_closePOST my-custom-analyzer/_settings{    &quot;analysis&quot;:{        &quot;tokenizer&quot;:{            &quot;my_custom_tokenizer&quot;:{                &quot;type&quot;:&quot;nori_tokenizer&quot;,                &quot;decompound_mode&quot;:&quot;mixed&quot;,                &quot;user_dictionary&quot;:&quot;user_dictionary.txt&quot;            }        },        &quot;analyzer&quot;:{            &quot;nori&quot;:{                &quot;type&quot;:&quot;custom&quot;,                &quot;tokenizer&quot;:&quot;my_custom_tokenizer&quot;,                &quot;filter&quot;: [                    &quot;nori_posfilter&quot;                ]            }        },        &quot;filter&quot;:{            &quot;nori_posfilter&quot;:{                &quot;type&quot;:&quot;nori_part_of_speech&quot;,                &quot;stoptags&quot;: [                    &quot;E&quot;,&quot;IC&quot;,&quot;J&quot;,&quot;MAG&quot;,&quot;MM&quot;,&quot;NA&quot;,&quot;NR&quot;,&quot;SC&quot;,                    &quot;SE&quot;,&quot;SF&quot;,&quot;SH&quot;,&quot;SL&quot;,&quot;SN&quot;,&quot;SP&quot;,&quot;SSC&quot;,&quot;SSO&quot;,                    &quot;SY&quot;,&quot;UNA&quot;,&quot;UNKNOWN&quot;,&quot;VA&quot;,&quot;VCN&quot;,&quot;VCP&quot;,&quot;VSV&quot;,                    &quot;VV&quot;,&quot;VX&quot;,&quot;XPN&quot;,&quot;XR&quot;,&quot;XSA&quot;,&quot;XSN&quot;,&quot;XSV&quot;                ]            }        }    }}POST my-custom-analyzer/_open</code></pre><p>그럼 이제 의도한대로 필터링이 되었는지 확인해보자. anlayze쿼리에 <code>explain: true</code>값이 있으면 필터링이 되지 않으므로 반드시 제외하고 쿼리를 날리자. </p><pre><code class="json">POST my-custom-analyzer/_analyze{  &quot;analyzer&quot;:&quot;nori&quot;,  &quot;text&quot;: &quot;&lt;p&gt;젤다의전설은 링크가 주인공이다.&lt;/p&gt;&quot;}//Response 200{  &quot;tokens&quot; : [    {      &quot;token&quot; : &quot;젤다의전설&quot;,      &quot;start_offset&quot; : 3,      &quot;end_offset&quot; : 8,      &quot;type&quot; : &quot;word&quot;,      &quot;position&quot; : 1,      &quot;positionLength&quot; : 3    },    {      &quot;token&quot; : &quot;젤다&quot;,      &quot;start_offset&quot; : 3,      &quot;end_offset&quot; : 5,      &quot;type&quot; : &quot;word&quot;,      &quot;position&quot; : 1    },    {      &quot;token&quot; : &quot;의&quot;,      &quot;start_offset&quot; : 5,      &quot;end_offset&quot; : 6,      &quot;type&quot; : &quot;word&quot;,      &quot;position&quot; : 2    },    {      &quot;token&quot; : &quot;전설&quot;,      &quot;start_offset&quot; : 6,      &quot;end_offset&quot; : 8,      &quot;type&quot; : &quot;word&quot;,      &quot;position&quot; : 3    },    {      &quot;token&quot; : &quot;링크&quot;,      &quot;start_offset&quot; : 10,      &quot;end_offset&quot; : 12,      &quot;type&quot; : &quot;word&quot;,      &quot;position&quot; : 5    },    {      &quot;token&quot; : &quot;주인공&quot;,      &quot;start_offset&quot; : 14,      &quot;end_offset&quot; : 17,      &quot;type&quot; : &quot;word&quot;,      &quot;position&quot; : 7,      &quot;positionLength&quot; : 2    },    {      &quot;token&quot; : &quot;주인&quot;,      &quot;start_offset&quot; : 14,      &quot;end_offset&quot; : 16,      &quot;type&quot; : &quot;word&quot;,      &quot;position&quot; : 7    },    {      &quot;token&quot; : &quot;공&quot;,      &quot;start_offset&quot; : 16,      &quot;end_offset&quot; : 17,      &quot;type&quot; : &quot;word&quot;,      &quot;position&quot; : 8    }  ]}</code></pre><h1 id="템플릿-생성"><a href="#템플릿-생성" class="headerlink" title="템플릿 생성"></a>템플릿 생성</h1><p>이제 테스트해본 설정을 그대로 인덱스 템플릿에 붙이면된다.</p><pre><code class="json">PUT _template/kr-board-analyzer-set{  &quot;index_patterns&quot;: &quot;kr-board-*&quot;,  &quot;settings&quot;:{    &quot;index&quot;: {      &quot;analysis&quot;:{        &quot;tokenizer&quot;:{            &quot;custom_tokenizer&quot;:{                &quot;type&quot;:&quot;nori_tokenizer&quot;,                &quot;decompound_mode&quot;:&quot;mixed&quot;,                &quot;user_dictionary&quot;:&quot;user_dictionary.txt&quot;            }        },        &quot;analyzer&quot;:{          &quot;custom_analyzer&quot;:{            &quot;type&quot;:&quot;custom&quot;,            &quot;tokenizer&quot;:&quot;custom_tokenizer&quot;,            &quot;filter&quot;: [                &quot;custom_posfilter&quot;            ]          }        },        &quot;filter&quot;:{          &quot;custom_posfilter&quot;:{            &quot;type&quot;:&quot;nori_part_of_speech&quot;,            &quot;stoptags&quot;: [                &quot;E&quot;,&quot;IC&quot;,&quot;J&quot;,&quot;MAG&quot;,&quot;MM&quot;,&quot;NA&quot;,&quot;NR&quot;,&quot;SC&quot;,                &quot;SE&quot;,&quot;SF&quot;,&quot;SH&quot;,&quot;SL&quot;,&quot;SN&quot;,&quot;SP&quot;,&quot;SSC&quot;,&quot;SSO&quot;,                &quot;SY&quot;,&quot;UNA&quot;,&quot;UNKNOWN&quot;,&quot;VA&quot;,&quot;VCN&quot;,&quot;VCP&quot;,&quot;VSV&quot;,                &quot;VV&quot;,&quot;VX&quot;,&quot;XPN&quot;,&quot;XR&quot;,&quot;XSA&quot;,&quot;XSN&quot;,&quot;XSV&quot;            ]          }        }      }    }  },  &quot;mappings&quot;: {    &quot;properties&quot;: {      &quot;obj&quot;: {        &quot;properties&quot;: {          &quot;Target&quot;: {            &quot;properties&quot;: {              &quot;model&quot;: {                &quot;properties&quot;: {                  &quot;Contents&quot;: { &quot;type&quot;: &quot;text&quot;, &quot;analyzer&quot;: &quot;custom_analyzer&quot; },                  &quot;Title&quot;: { &quot;type&quot;: &quot;text&quot;, &quot;analyzer&quot;: &quot;custom_analyzer&quot; }                }              }            }          }        }      }    }  }}</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;엘라스틱서치가 검색엔진으로서 한국어를 올바르게 인식하도록 하려면 한국어 분석기가 필요하다. 엘라스틱서치 6.4부터 공식적으로 제공하는 한국어 분석 플러그인 Nori는 기본 플러그인이 아니므로 번거롭지만 별도로 설치해줘야한다. 나는 도커로 서버를 
-      
-    
-    </summary>
-    
-      <category term="ELK" scheme="https://parkdoyeon.github.io/elk/"/>
-    
-    
-      <category term="elasticsearch" scheme="https://parkdoyeon.github.io/tags/elasticsearch/"/>
-    
-      <category term="nlp" scheme="https://parkdoyeon.github.io/tags/nlp/"/>
-    
-      <category term="nori" scheme="https://parkdoyeon.github.io/tags/nori/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Docker 로그로 서버 용량이 꽉찼을 때</title>
-    <link href="https://parkdoyeon.github.io/docker/docker-2019-06-18-docker-logrotate/"/>
-    <id>https://parkdoyeon.github.io/docker/docker-2019-06-18-docker-logrotate/</id>
-    <published>2019-06-18T06:57:18.000Z</published>
-    <updated>2019-06-27T15:33:15.452Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h1><p>평소와 같이 logstash에 파이프라인을 추가하려고 서버에 들어갔다가,<br>자동완성을 하려고 배시에 tab키를 눌렀더니 다음과 같은 텍스트가 출력됐다.</p><pre><code class="bash">$ cd p-bash: cannot create temp file for here-document: No space left on device</code></pre><p>남은 용량이 얼마나 있는지 확인하려고 <code>du</code>명령어를 쳤다. 보아하니 도커 디스크로 마운트된 디렉토리에 문제가 있는 것 같았다.</p><pre><code class="bash">$ df -hFilesystem                              Size  Used Avail Use% Mounted onudev                                    3.9G     0  3.9G   0% /devtmpfs                                   798M   79M  720M  10% /run/dev/mapper/[HOST이름]--vg-root   90G  4.3G   82G   6% /tmpfs                                   3.9G     0  3.9G   0% /dev/shmtmpfs                                   5.0M     0  5.0M   0% /run/locktmpfs                                   3.9G     0  3.9G   0% /sys/fs/cgroup/dev/sda1                               472M  153M  295M  35% /boottmpfs                                   798M     0  798M   0% /run/user/1003overlay                                  90G   90G     0 100% /var/lib/docker/overlay2/a5d0d5380f3e692bccb926c9fbf1c07ba6abc73db094b0e526d71aa19fd51537/mergedshm                                      64M     0   64M   0% /var/lib/docker/containers/ef5745582de101dddc056068c78e024388169af634315348427a80d59148a324/mounts/shm</code></pre><h1 id="원인"><a href="#원인" class="headerlink" title="원인"></a>원인</h1><p>도커의 컨테이너들로부터 출력되는 모든 로그들은 다 json파일로 파일시스템에 남는다.<br>즉, <code>/var/lib/docker/containers/*/*.log</code>와 같은 경로에 컨테이너의 ID로 된 디렉토리에 개별로 저장된다.<br>이 파일들은 관리가 되지 않으면 서서히 디스크 용량을 차지해서 disk full현상을 일으킬 수 있다.</p><p>나의 경우, logstash의 모든 파서들이 파싱된 로그를 stdout으로 출력하다보니 며칠만에 약 90G가 넘는 로그파일때문에 3-4일만에 서버 디스크가 꽉 찼었다.<br>(F.Y.I. 도커로 인한 disk full이 logstash를 운영하는데 별다른 영향을 주진 않았다.)</p><h1 id="해결"><a href="#해결" class="headerlink" title="해결"></a>해결</h1><p>해결방법은 log파일 관리를 자동화 하면 되는데,</p><ol><li>크론으로 json파일을 삭제할수도 있고</li><li>logrotate를 설치해서 실행시킬수도 있다. </li><li>하지만 나는 폐쇄된 네트워크에서 서버세팅을 해야하기때문에, <a href="https://docs.docker.com/config/containers/logging/configure/" rel="external nofollow noopener noreferrer" target="_blank">도커에 내장된 로그 설정</a>을 통해 로그 관리 세팅을 했다.</li></ol><h1 id="방법"><a href="#방법" class="headerlink" title="방법"></a>방법</h1><p>참고로, 내가 채택한 3번 방법은 도커서비스와 컨테이너를 내렸다가 새로 생성해줘야 적용이 되는 번거로움이 있다.</p><ol><li>아래 경로로 다음과 같은 내용의 설정파일을 하나 만든다. 있으면 수정하고, 없으면 새로 만들어주면 된다.<pre><code class="bash"> $ vi /etc/docker/daemon.json { &quot;log-driver&quot;: &quot;json-file&quot;, &quot;log-opts&quot;: {     &quot;max-size&quot;: &quot;100m&quot;,         &quot;max-file&quot;: &quot;3&quot;         } } </code></pre></li><li>도커 서비스를 재시작한다 (나는 스페이스 4개로 indentation을 구분했고, 이때 쉼표를 더 입력하거나 하면 시스템이 시작하지 않으므로 주의해야한다.)<pre><code class="bash"> $ systemctl restart docker</code></pre></li><li>컨테이너를 다시 생성한다</li></ol><p>설정이 적용된 컨테이너의 <code>/var/lib/docker/containers/*</code> 디렉토리 모습이다.</p><pre><code class="bash">$ ls9967b82d7c4059e1fb96ef9f20dc8c8738bf58e6e7418c680ac81019e5c964ec-json.log    checkpoints      hostname  resolv.conf9967b82d7c4059e1fb96ef9f20dc8c8738bf58e6e7418c680ac81019e5c964ec-json.log.1  config.v2.json   hosts     resolv.conf.hash9967b82d7c4059e1fb96ef9f20dc8c8738bf58e6e7418c680ac81019e5c964ec-json.log.2  hostconfig.json  mounts</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;문제&quot;&gt;&lt;a href=&quot;#문제&quot; class=&quot;headerlink&quot; title=&quot;문제&quot;&gt;&lt;/a&gt;문제&lt;/h1&gt;&lt;p&gt;평소와 같이 logstash에 파이프라인을 추가하려고 서버에 들어갔다가,&lt;br&gt;자동완성을 하려고 배시에 tab키를 눌렀더니 다
-      
-    
-    </summary>
-    
-      <category term="Docker" scheme="https://parkdoyeon.github.io/docker/"/>
-    
-    
-      <category term="docker" scheme="https://parkdoyeon.github.io/tags/docker/"/>
-    
-      <category term="container" scheme="https://parkdoyeon.github.io/tags/container/"/>
-    
-      <category term="logrotate" scheme="https://parkdoyeon.github.io/tags/logrotate/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ElasticSearch - unassigned shard 문제 해결 (2) 노드간 버전문제</title>
-    <link href="https://parkdoyeon.github.io/elk/elk-2019-06-18-es-version/"/>
-    <id>https://parkdoyeon.github.io/elk/elk-2019-06-18-es-version/</id>
-    <published>2019-06-18T02:37:18.000Z</published>
-    <updated>2019-06-27T15:33:15.454Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h1><p>Elasticsearch 홈페이지에서 공식 docker 이미지를 받아 새로운 노드가 되는 서버를 구성했는데,<br>그새 버전이 올라서 내가 사용하던 6.7.0이아닌 6.7.1이 설치되었다.</p><p>즉, 마스터를 포함한 두개의 서버에서는 6.7.0 이 실행되고, 새로 추가한 서버에서만 6.7.1의 도커 이미지가 도는 상태였다.<br>버전간 차이는 끝 자리수 +1이니 변화도 미미하고,<br>실제로 실행을 해도 크게 에러메세지나 경고메세지가 발생하지 않아서 하루정도 가만히 두고 있었다.</p><h1 id="원인"><a href="#원인" class="headerlink" title="원인"></a>원인</h1><p>그런데 추가한 노드로 샤드가 assign이 되지 않아서, 이유를 확인하려고 쿼리를 날렸다. </p><pre><code class="curl">GET /_cluster/allocation/explain</code></pre><p>위 쿼리를 날리면 shard정보와 cluster_info, 그리고 node 정보가 출력이 된다.<br>각 노드별 assign이 안되는 사유가 출력되고, 그 출력 사유가 실제 usassign에 있어서 얼만큼의 가중치(weight)를 갖는지도 표시된다. 나의 경우 node_version이 문제였고, 새로 세팅한 6.7.1의 버전이 마스터 노드의 버전과 상이하여 샤딩이 되지 않았다.</p><pre><code class="json">GET /_cluster/allocation/explain// 생략&quot;nodeuuid2&quot;: {            &quot;final_decision&quot;: &quot;NO&quot;            &quot;decisions&quot;: [                {                    &quot;decider&quot; : &quot;node_version&quot;,                    &quot;decision&quot; : &quot;NO&quot;,                    &quot;explanation&quot; : &quot;target node version [6.7.0] is older than source node version [6.7.1]&quot;                }            ],            &quot;weight&quot;: 1.3        }</code></pre><h1 id="해결"><a href="#해결" class="headerlink" title="해결"></a>해결</h1><p>버전을 다시 바꾸어서 ES를 실행시키자, 별도의 액션없이 천천히 샤딩이 되면서 서비스가 정상화 되었다.<br>정상이 된 샤드는 allocation explain쿼리에 다음과 같이 응답한다.</p><pre><code class="json">GET /_cluster/allocation/explain{  &quot;error&quot;: {    &quot;root_cause&quot;: [      {        &quot;type&quot;: &quot;illegal_argument_exception&quot;,        &quot;reason&quot;: &quot;unable to find any unassigned shards to explain [ClusterAllocationExplainRequest[useAnyUnassignedShard=true,includeYesDecisions?=false]&quot;      }    ],    &quot;type&quot;: &quot;illegal_argument_exception&quot;,    &quot;reason&quot;: &quot;unable to find any unassigned shards to explain [ClusterAllocationExplainRequest[useAnyUnassignedShard=true,includeYesDecisions?=false]&quot;  },  &quot;status&quot;: 400}</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;문제&quot;&gt;&lt;a href=&quot;#문제&quot; class=&quot;headerlink&quot; title=&quot;문제&quot;&gt;&lt;/a&gt;문제&lt;/h1&gt;&lt;p&gt;Elasticsearch 홈페이지에서 공식 docker 이미지를 받아 새로운 노드가 되는 서버를 구성했는데,&lt;br&gt;그새 버전이
-      
-    
-    </summary>
-    
-      <category term="ELK" scheme="https://parkdoyeon.github.io/elk/"/>
-    
-    
-      <category term="elasticsearch" scheme="https://parkdoyeon.github.io/tags/elasticsearch/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>테스트 자동화 - (1) Appium 서버 실행하기 (+안드로이드 테스트환경 세팅)</title>
-    <link href="https://parkdoyeon.github.io/web/web-2019-06-12-appium/"/>
-    <id>https://parkdoyeon.github.io/web/web-2019-06-12-appium/</id>
-    <published>2019-06-12T01:29:19.000Z</published>
-    <updated>2019-07-02T14:07:25.485Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Appium"><a href="#Appium" class="headerlink" title="Appium"></a>Appium</h1><p>Appium은 네이티브/하이브리드/웹앱 모바일 테스트 자동화를 위한 오픈소스로,<br>HTTP통신을 통해 타겟 디바이스에 요청을 보내는 서버 역할을 한다.<br>IOS 테스트시에는 애플에서 제공하는 XCUITest Driver를 통해 요청을 전달하고, Android 테스트시에는 구글에서 제공하는 UIAutomator2를 사용한다.</p><h1 id="설치"><a href="#설치" class="headerlink" title="설치"></a>설치</h1><p>appium은 npm을 통해 간단히 설치할 수 있다.<br>서비스가 돌아가기위한 환경세팅이 잘 되었는지 확인하기 위해 appium-doctor도 함께 설치하는 것이 좋다.</p><pre><code>&gt; npm install -g appium&gt; npm install -g appium-doctor</code></pre><h1 id="환경-세팅"><a href="#환경-세팅" class="headerlink" title="환경 세팅"></a>환경 세팅</h1><p>설치가 다  됐다면 명령창에서 appium-doctor을 실행해보자.</p><pre><code class="bash">&gt; appium-doctor</code></pre><p>아마 몇가지 변수들이 세팅이 안됐다는 에러가 나올 것이다.<br>(적어도 윈도우환경에서) appium을 실행하려면 다음과 같이 환경변수를 세팅해줘야한다.<br>환경 세팅과 관해서는 <a href="https://dejavuqa.tistory.com/222" rel="external nofollow noopener noreferrer" target="_blank">이 글</a>을 참고했다.<br>아래의 변수 세팅내용이 이해가 어려우면 링크를 타고 들어가 순서대로 세팅하면 된다.<br>간략하게 정리하면 다음과 같다.</p><h4 id="시스템-변수-Path에-추가해줘야-하는-내용"><a href="#시스템-변수-Path에-추가해줘야-하는-내용" class="headerlink" title="시스템 변수 Path에 추가해줘야 하는 내용"></a>시스템 변수 Path에 추가해줘야 하는 내용</h4><ul><li><code>%JAVA_HOME%\bin</code></li><li><code>%ANDROID_HOME%\emulator</code></li><li><code>%ANDROID_HOME%\tools</code></li><li><code>%ANDROID_HOME%\platform-tools</code></li></ul><p>변수가 잘 설정되었는지 커맨드창에서 확인하면 된다.</p><pre><code class="bash">&gt; set JAVA_HOME&gt; set ANDROID_HOME&gt; set Path</code></pre><p>혹시 내가 설정한 경로가 출력되지 않는다면 설정창을 확인버튼을 눌러서 잘 껐는지 확인하고,<br>그래도 안된다면 커맨드창을 종료했다 켜면 잘 나올 것이다.</p><h4 id="시스템-변수에-새로운-변수로-추가해줘야하는-변수"><a href="#시스템-변수에-새로운-변수로-추가해줘야하는-변수" class="headerlink" title="시스템 변수에 새로운 변수로 추가해줘야하는 변수"></a>시스템 변수에 새로운 변수로 추가해줘야하는 변수</h4><ul><li>JAVA_HOME <code>C:\Program Files\Java\jdk-9.0.1</code></li><li>ANDROID_HOME <code>C:\Users\doyeon\AppData\Local\Android\Sdk</code></li></ul><p>경로 끝에 세미콜론을 붙이면 appium이 인식하지 못하므로, 붙이지 않도록 주의한다.</p><p>각 경로는 서버의 PC환경마다 다를 수 있으므로 확인이 필요하다.<br><code>ANDROID_HOME</code>의 경우 안드로이드 스튜디오의 <code>Tools &gt; SDK Manager</code>에 들어가면 SDK 경로를 확인할 수 있다.<br><img src="/image/web/2019-06-12-appium-android.PNG" alt="android"></p><h4 id="Android-SDK-기본-세팅-설치"><a href="#Android-SDK-기본-세팅-설치" class="headerlink" title="Android SDK 기본 세팅 설치"></a>Android SDK 기본 세팅 설치</h4><p>환경변수가 세팅이 됐다면 안드로이드 테스트를 위해 몇가지 설치해야하는 툴들이 있다.<br>appium은 <code>ANDROID_HOME</code>변수를 통해 필요한 설치툴의 경로를 찾는다.<br>위 이미지 <code>Tools &gt; SDK Manager</code> 하단에 보면 SDK Tools탭이 있다.<br>탭을 누르고 들어가 아래의 내용을 체크하고 확인버튼을 누르면 설치를 시작한다.</p><ul><li>Android Emulator</li><li>Android SDK Platform-Tools</li><li>Android SDK Tools</li><li>Google Play Licensing Library</li><li>Google USB Driver</li></ul><h3 id="세팅-완료"><a href="#세팅-완료" class="headerlink" title="세팅 완료"></a>세팅 완료</h3><p>정상적으로 설치 되었다면 <code>appium</code>명령어를 입력하면 서비스가 실행될 것이다</p><pre><code class="bash">&gt; appium[Appium] Welcome to Appium v1.13.0[Appium] Appium REST http interface listener started on 0.0.0.0:4723</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;Appium&quot;&gt;&lt;a href=&quot;#Appium&quot; class=&quot;headerlink&quot; title=&quot;Appium&quot;&gt;&lt;/a&gt;Appium&lt;/h1&gt;&lt;p&gt;Appium은 네이티브/하이브리드/웹앱 모바일 테스트 자동화를 위한 오픈소스로,&lt;br&gt;HTTP통신
-      
-    
-    </summary>
-    
-      <category term="Web" scheme="https://parkdoyeon.github.io/web/"/>
-    
-    
-      <category term="web" scheme="https://parkdoyeon.github.io/tags/web/"/>
-    
-      <category term="android" scheme="https://parkdoyeon.github.io/tags/android/"/>
-    
-      <category term="appium" scheme="https://parkdoyeon.github.io/tags/appium/"/>
-    
-      <category term="test-automation" scheme="https://parkdoyeon.github.io/tags/test-automation/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>hexo에 mathjax 적용하기</title>
-    <link href="https://parkdoyeon.github.io/web/web-2019-06-07-mathjax/"/>
-    <id>https://parkdoyeon.github.io/web/web-2019-06-07-mathjax/</id>
-    <published>2019-06-07T08:02:33.000Z</published>
-    <updated>2019-06-08T11:13:46.134Z</updated>
-    
-    <content type="html"><![CDATA[<p>머신러닝 공부를 하다보니 수식을 입력해야하는데, 처음에는 직접 cdn을 호출해서 적용했었다. 꽤 간단하게 되는 것 같아 별도로 수정을 안하다가 어느날 로그(\(logx\))입력시 브라켓({})에서 띄워쓰기를 안해주니 다음과 같이 렌더링 에러가 났다.</p><pre><code class="bash">Template render error: (unknown path) [Line 14, Column 244]  expected variable end    at Object._prettifyError (/Users/doyeon/Dev/blog/node_modules/nunjucks/src/lib.js:36:11)    at Template.render (/Users/doyeon/Dev/blog/node_modules/nunjucks/src/environment.js:542:21)    at Environment.renderString (/Users/doyeon/Dev/blog/node_modules/nunjucks/src/environment.js:380:17)    at Promise.fromCallback.cb (/Users/doyeon/Dev/blog/node_modules/hexo/lib/extend/tag.js:62:48)    at tryCatcher (/Users/doyeon/Dev/blog/node_modules/bluebird/js/release/util.js:16:23)# (후략)</code></pre><p>구글링 하다보니 띄워쓰기가 문제가 되는 경우가 있다고 해서 브라켓에 띄워쓰기를 넣었더니 에러가 사라졌다.<br>이참에 종종 인라인 수식에 적용이 안되는 경우까지 해결해보려고 정석대로 hexo에 mathjax를 적용하도록 하는 글을 찾아봤다.</p><p>정리가 잘 된 글이 있었지만 노드 모듈 스크립트를 직접 수정해야해서 git 저장소를 통해 여러 PC에서 포스트를 작성하는 내 입장에서는 번거로운 구석이 있었다. (node_module이 .gitignore에 있으므로)</p><p>그래서 소스수정이 없는 방식을 찾다가 <a href="https://linkinpark213.com/2018/04/24/mathjax/" rel="external nofollow noopener noreferrer" target="_blank">이 글</a>을 찾았다.<br>블로그 디렉토리에 hexo-math를 다운로드 받아 사용하는 글이다. 그런데 무엇이 잘못됐는지 이상하게</p><ol><li>_config내에 cdn호출 입력해도 페이지에 호출이 안되는데다,</li><li>mathjax를 _config파일 최상위에 정의하는게 deprecate가 되고 있었다.</li><li>게다가 함께 설치되는 hexo-inject 모듈이 더이상 업데이트가 되지 않는다는 안내가 나왔다.</li></ol><p>알고보니 인라인에 적용이 안되는 문제는</p><pre><code>$ 이렇게 $ 쓰던걸 \\( 이렇게 \\) 바꾸니까 해결이 됐다.</code></pre><p>정리하면,</p><ol><li>header영역에 cdn 호출 스크립트 직접 추가하고<pre><code class="sass">&lt;script src=&quot;//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML&quot;&gt;&lt;/script&gt;</code></pre></li><li>수식입력하기만 바꾸는걸로.<pre><code>$$  수식 $$ # 단독입력\\( 수식 )\\ # 인라인 입력</code></pre></li></ol>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;머신러닝 공부를 하다보니 수식을 입력해야하는데, 처음에는 직접 cdn을 호출해서 적용했었다. 꽤 간단하게 되는 것 같아 별도로 수정을 안하다가 어느날 로그(\(logx\))입력시 브라켓({})에서 띄워쓰기를 안해주니 다음과 같이 렌더링 에러가 났
-      
-    
-    </summary>
-    
-      <category term="Web" scheme="https://parkdoyeon.github.io/web/"/>
-    
-    
-      <category term="web" scheme="https://parkdoyeon.github.io/tags/web/"/>
-    
-      <category term="hexo" scheme="https://parkdoyeon.github.io/tags/hexo/"/>
-    
-      <category term="mathjax" scheme="https://parkdoyeon.github.io/tags/mathjax/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Deep Learning From Scratch - 2. 신경망 학습</title>
-    <link href="https://parkdoyeon.github.io/ml/ml-2019-06-02-deep2/"/>
-    <id>https://parkdoyeon.github.io/ml/ml-2019-06-02-deep2/</id>
-    <published>2019-06-02T05:20:01.000Z</published>
-    <updated>2019-06-27T15:33:15.455Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="개요"><a href="#개요" class="headerlink" title="개요"></a>개요</h3><ul><li>‘학습’이란 훈련 데이터로부터 가중치 매개변수의 최적값을 <strong>자동</strong>으로 획득하는 것을 뜻한다.</li><li>매개변수 최적값을 학습할 수 있도록 해주는 <strong>지표</strong>는 손실함수이다.<ul><li>왜 정확도가 아닌 손실함수인가?<ul><li>정확도를 지표료 하면 매개변수의 미분이 대부분의 장소에서 0이 되기 때문이다. (= 소숫점 단위로 표현되는 연속적인 수치값이 아닌 단절된 숫자값으로 표현되기가 쉽다.)</li></ul></li></ul></li><li>손실함수를 최대한 작게 만들어주도록 하는 기법중 하나로, 함수의 기울기를 활용하는 것이 ‘경사법’이다.</li><li>입력부터 출력까지 사람의 개입이 없다는 의미에서, 딥러닝을 종단간 기계학습(end-to-end learning)이라고 한다.</li><li>한 데이터셋에만 지나치게 최적화된 상태를 <strong>오버피팅</strong>이라고 한다.</li></ul><h3 id="1-손실함수"><a href="#1-손실함수" class="headerlink" title="1. 손실함수"></a>1. 손실함수</h3><h4 id="1-1-평균-제곱-오차"><a href="#1-1-평균-제곱-오차" class="headerlink" title="1.1 평균 제곱 오차"></a>1.1 평균 제곱 오차</h4><p>$$ E = { { 1\over2 } \sum_ { k } ( y_k-t_k)^2 } $$</p><ul><li>\(y_k\)는 신경망이 추정한 출력값, \(t_k\)는 실제 정답레이블 값(원-핫 인코딩), k는 차원의 수를 의미한다.</li><li>결과값으로 나타난 손실값의 합들이 높을수록 정답과 멀어지고, 적을수록 정답에 가깝다.</li></ul><h4 id="1-2-교차-엔트로피-오차"><a href="#1-2-교차-엔트로피-오차" class="headerlink" title="1.2 교차 엔트로피 오차"></a>1.2 교차 엔트로피 오차</h4><p>$$  E = - { \sum_ { k } t_k logy_k } $$</p><ul><li>여기서 \(logy\)는 자연로그 \(log_en\)를 취한다.</li><li>\(t_k\)는 원-핫 인코딩 값이므로 실질적으로 \(t_k\)가 1일때의 \(logy_k\)을 계산한 값, 즉 정답 추정값의 자연로그를 계산하는 식이 된다.<ul><li>여기서 정답과 거리가 먼 결과가 발생할수록(x가 1에 가까워질수록) 엔트로피 오차(loss)가 더 크게 발생한다.</li><li>\(log_ex=y\)의 그래프<br><img src="/image/ml/2019-06-02-deep2-1.png" alt="log_ex=y의 그래프"></li><li>가령 신경망 출력이 0.6일때 교차 엔트로피 오차가 \(-log0.6 = 0.51\)이라면, 0.1일때는 \(-log0.1=2.3\)이 된다.</li></ul></li></ul><h4 id="1-3-미니-배치-함수"><a href="#1-3-미니-배치-함수" class="headerlink" title="1.3 미니 배치 함수"></a>1.3 미니 배치 함수</h4><p>$$  E = - { 1 \over N } \sum { \sum_ { k } t_k logy_k } $$</p><ul><li>앞서서 구한 교차 엔트로피 오차를 모두 구해서 갯수만큼 나누면 평균 교차 엔트로피값을 구할 수 있다. 이렇게 하면 훈련 데이터 개수와 관계없이 통일된 지표를 구할 수 있다.</li><li>전체 데이터가 수천 수십만개가 되면 교차 엔트로피 값을 구하는것은 무리가 있으므로 데이터 일부를 추려서 근사치로 이용할 수 있다.</li><li>추려진 일부 데이터를 <strong>미니배치</strong>라고 한다.</li></ul><h3 id="2-수치미분"><a href="#2-수치미분" class="headerlink" title="2. 수치미분"></a>2. 수치미분</h3><h4 id="2-1-수치미분과-오차"><a href="#2-1-수치미분과-오차" class="headerlink" title="2.1 수치미분과 오차"></a>2.1 수치미분과 오차</h4><ul><li>미분방법에는 수치 미분과 해석적 미분이 있다.<ol><li>수치미분은 실제 변화량을 수치적으로 계산하는 것으로, 변화값인 h에 최대한 작은 값(보통 \(\lim_{h\to0}\)으로 표현된다.)을 대입하여 계산한다.</li><li>해석적 미분은 수식적으로 미분함수를 만들어 미분값을 찾는 것을 의미한다.</li></ol></li><li>수치미분을 코드로직에 적용할 때 h의 최솟값을 대입하다보면 아래와 같은 문제가 발생한다.<br>수치미분을 구하는 파이썬 함수를 예로들면,<pre><code class="python">  def numerical_diff(f, x):      h = 10e-50      return (f(x+h)+f(x)/h)</code></pre>  아래와 같이 소숫점 8자리 이하부터 생략해 최종 계산값에 오차가 발생한다.<pre><code class="bash">  &gt;&gt;&gt; np.float32(1e-50)  0.0</code></pre>  때문에 \(10^{-4}\)정도의 값을 사용할 것을 권장한다.</li><li>수치미분에서 발생하는 오차는 필연적이기 때문에, 변화량이 +h인 미분과 -h인 미분의 중앙값을 구하기도 한다.</li></ul><h4 id="2-2-편미분"><a href="#2-2-편미분" class="headerlink" title="2.2 편미분"></a>2.2 편미분</h4><ul><li>편미분은 변수가 2개 이상인 경우에 사용한다. 3차원으로 그래프가 그려지므로, 미분값을 구할때는 변수 하나에 초점을 맞추고 다른 변수는 값을 고정한다.</li><li>편미분한 기울기 값에 마이너스 부호를 붙이고 2차원 벡터로 표현하면 각 지점에서 낮아지는 방향을 가리킨다. </li><li>이말인 즉, <strong>기울기가 가리키는 곳은 각 장소의 함수에서 함수의 출력 값을 가장 크게 줄이는 방향</strong>이다.</li></ul><h4 id="2-3-경사법"><a href="#2-3-경사법" class="headerlink" title="2.3 경사법"></a>2.3 경사법</h4><ul><li>경사법은 경사 하강법이라고 한다. 손실함수가 최소가 되는 값을 찾기위해 기울기를 활용하는 방법이다.</li><li>기울기가 가리키는 곳에 정말 함수의 최솟값이 있는지는 보장할 수 없다. 실제로 최솟값이 없는 경우가 대부분이다.</li><li>다만 그 방향으로 가야 줄일 수 있다는 사실은 확실하므로, 기울어진 방향으로 일정 거리만큼 이동해나가면서 줄이는게 경사법이라고 한다.</li><li>최솟값을 찾으면 경사 하강법, 최댓값을 찾으면 경사 상승법이다. 단순히 기울기에 마이너스를 붙이냐 아니냐의 차이이므로 방법과 내용의 실질적인 차이는 없다.</li></ul><h3 id="2-3-1-경사법의-수식"><a href="#2-3-1-경사법의-수식" class="headerlink" title="2.3.1 경사법의 수식"></a>2.3.1 경사법의 수식</h3><p>$$ x_0 = x_0 - \eta { \partial f \over \partial x_0 },  x_1 = x_1 - \eta { \partial f \over \partial x_1 } $$</p><ul><li><p>\( \eta \)(eta)기호는 갱신하는 양을 나타낸다. 보통 0.01이나 0.001 등 특정값으로 정해둔다. 신경망 학습에서는 <strong>학습률</strong>이라고 한다.</p></li><li><p>위의 식은 1회의 갱신이 일어나는 식이며, 만족스러운 값이 나타날때까지 갱신을 반복한다.</p><pre><code class="python">  # f: 최적화 함수  # init_x: 초기값  # learning_rate: 학습률  # step_num: 경사법에 따른 반복횟수   def gradient_descent (f, init_x, learning_rate=0.01, step_num=100):      x=init_x      for i in range(step_num):          grad = numerical_gradient(f, x)          x -= lr*grad      return x</code></pre></li><li><p>학습률과 같은 매개변수를 하이퍼파라미터라고 한다. 가중치/편향과 같은 신경망 매개변수와는 성질이 다른 매개변수이다.</p></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;개요&quot;&gt;&lt;a href=&quot;#개요&quot; class=&quot;headerlink&quot; title=&quot;개요&quot;&gt;&lt;/a&gt;개요&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;‘학습’이란 훈련 데이터로부터 가중치 매개변수의 최적값을 &lt;strong&gt;자동&lt;/strong&gt;으로 획득하는 것을 뜻한
-      
-    
-    </summary>
-    
-      <category term="ML" scheme="https://parkdoyeon.github.io/ml/"/>
-    
-    
-      <category term="machine-learning" scheme="https://parkdoyeon.github.io/tags/machine-learning/"/>
-    
-      <category term="deep-learning" scheme="https://parkdoyeon.github.io/tags/deep-learning/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ElasticSearch - unassigned shard 문제 해결 (1) shard가 너무 많을 때</title>
-    <link href="https://parkdoyeon.github.io/elk/elk-2019-05-31-es-shards/"/>
-    <id>https://parkdoyeon.github.io/elk/elk-2019-05-31-es-shards/</id>
-    <published>2019-05-31T01:11:02.000Z</published>
-    <updated>2019-06-27T15:33:15.453Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="문제상황"><a href="#문제상황" class="headerlink" title="문제상황"></a>문제상황</h3><p>ELK 스택을 개발하면서 운영 경험이 전무했던 나는 점진적으로 인덱스를 추가하고, 서비스에 지장이 있는 시점부터 확장을 할 계획이었다. 그리고 과거에 잠시 ES용으로 사용했던 서버 2대로 노드를 운영했다. 서버의 스펙은 아래와 같았다.</p><ul><li>RAM: <code>16G</code></li><li>CPU: <code>8</code></li><li>DISK: <code>/DATA 300G, /ROOT 100G</code></li></ul><p>그런데 어느순간부터 서비스 추가할때마다 ES가 죽거나, 안정적인 상태로 돌아오기까지 너무 오랜 시간(약 4시간 정도)이 소요됐다. </p><p>RAM이 문제였을까, CPU가 문제였을까(RAM이 <a href="https://www.elastic.co/guide/en/elasticsearch/guide/current/hardware.html" rel="external nofollow noopener noreferrer" target="_blank">이상적인 권장 사양</a>이 아님은 확실했다). 표면적인 징후는 bulk insert 큐가 가득 차는 문제이지만, 이는 시간이 지나거나 초기에 insert하는 데이터를 조절하면 해소가 되는 문제였다. 진짜 문제는 shard 할당에 있었다. </p><h3 id="너무-많은-샤드"><a href="#너무-많은-샤드" class="headerlink" title="너무 많은 샤드?"></a>너무 많은 샤드?</h3><p>우선 ES에 찍힌 로그를 봤다. 샤드가 너무 많다는 메세지가 있었다.</p><pre><code>#! Deprecation: In a future major version, this request will fail because this action would add [9xx] total shards,but this cluster currently has [8xxx]/[2000] maximum shards open.Before upgrading, reduce the number of shards in your cluster or adjust the cluster setting [cluster.max_shards_per_node].</code></pre><p> ES는 워낙 버전 업이 잦은데다 위의 메세지는 deprecation 경고였기 때문에, 가볍게 여겼다. 하지만 아래의 또 다른 에러 메세지를 보고 shard 문제임을 알 수 있었다. 샤드의 할당과 라우팅이 잘 이뤄지지 않는다는 내용이다.</p><pre><code>[kr-service-2019.05.25], type [index_stats], id [AV9RswFhsIL8o1ZCN3Mi],message [UnavailableShardsException[[kr-service-2019.05.25][0] Primary shard is not active or isn&#39;t assigned to a known node. Timeout: [1m], request: org.elasticsearch.action.bulk.BulkShardRequest@4f100b34]]]</code></pre><p>ES 노드 1개의 최대 샤드의 갯수 기본 설정은 2000개이다. 노드당 샤드를 늘려주면 문제가 해결될까 해서 샤드갯수를 5000까지 늘렸다.</p><pre><code>PUT /_cluster/settings{    &quot;persistent&quot; : {        &quot;cluster.max_shards_per_nodes&quot; : 5000    }}</code></pre><p>메세지는 사라졌지만, unassigned 문제가 해소되진 않았고, ES에 할당된 메모리는 줄어들 생각을 하지 않고 80%이상으로 치고 올라왔다. 부랴부랴 ES 공식사이트에 있는 shard 관리에 대한 <a href="https://www.elastic.co/kr/blog/how-many-shards-should-i-have-in-my-elasticsearch-cluster" rel="external nofollow noopener noreferrer" target="_blank">문서</a>를 읽었다. 매우 중요한 팁들이 있었는대 아래와 같은 내용이었다.</p><blockquote><p>TIP: 작은 샤드는 작은 세그먼트를 만들며 부하를 증가시킵니다. 평균 샤드 크기를 최소한 수 GB와 수십 GB 사이를 유지하세요. 시간 기반 데이터를 사용한 과거 사례를 보면, 20GB ~ 40GB 정도의 사이즈가 적당합니다.<br><br><br>TIP: 각 샤드의 부하는 세그먼트 개수와 크기에 따라 결정됩니다. forcemerge 기능을 사용하여 작은 세그먼트를 큰 세그먼트로 병합시키세요. 이 작업은 이상적으로 인덱스에 더 이상 데이터가 입력되지 않을 때 실행되어야 합니다. 그리고 무척 부하가 큰 작업이니 피크 시간을 피하여 수행해야 하는 것을 명심하세요.<br><br><br>TIP: 하나의 노드에 저장할 수 있는 샤드의 개수는 가용한 힙의 크기와 비례하지만, Elasticsearch에서 그 크기를 제한하고 있지는 않습니다. 경험상 하나의 노드에 설정한 힙 1GB 당 20개 정도가 적당합니다. 따라서 30GB 힙을 가진 노드는 최대 600개 정도의 샤드를 가지는 것이 가능하지만, 이 보다는 적게 유지하는 것이 더 좋습니다. 일반적으로 이러한 구성은 클러스터를 건강하게 유지하는데 도움이 됩니다</p></blockquote><p>요약하면 샤드의 갯수와 힙의 크기는 비례하는데, 나는 힙과 사용하는 데이터 크기(한 인덱스당 1~2G정도 사용)에 비해 지나치게 많은 샤드 할당을 하고있었다. 애초에 왜 이런 문제가 생겼는가 보니, Logstash에서 인덱스 생성시 샤드갯수가 5개로 생성되고 있었다. 기본 설정으로. (맙소사)</p><h3 id="샤드-줄이기"><a href="#샤드-줄이기" class="headerlink" title="샤드 줄이기"></a>샤드 줄이기</h3><p>우선 생성된 샤드를 일괄로 삭제할수는 없으니, 신규 생성하는 인덱스부터 설정을 바꿔주기로 했다. 방법은 꽤 간단하다. _template 요청으로 인덱스 생성시 샤드 설정을 지정하면 된다.</p><pre><code class="curl">GET _template/kr_shards_control{  &quot;index_patterns&quot;: &quot;kr-*&quot;,  &quot;settings&quot;: {    &quot;number_of_shards&quot;:   2  }}</code></pre><p>추가적으로 문제가 있던 시점에 추가했던 인덱스를 전부 삭제하고, 필요가 없는 오래된 인덱스도 일부 삭제했다. 그리고 데이터를 다시 받아 샤드 2개짜리로 생성했다. 30분 정도 지나니 메모리 수치도 점차 가라앉고, CPU도 안정되는 것을 확인할 수 있었다. 그리고 퇴근을 했다. 하지만 <a href="/elk/elk-2019-06-18-es-version">다른 문제</a>가 있었는데…</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;문제상황&quot;&gt;&lt;a href=&quot;#문제상황&quot; class=&quot;headerlink&quot; title=&quot;문제상황&quot;&gt;&lt;/a&gt;문제상황&lt;/h3&gt;&lt;p&gt;ELK 스택을 개발하면서 운영 경험이 전무했던 나는 점진적으로 인덱스를 추가하고, 서비스에 지장이 있는 시점부터
-      
-    
-    </summary>
-    
-      <category term="ELK" scheme="https://parkdoyeon.github.io/elk/"/>
-    
-    
-      <category term="elasticsearch" scheme="https://parkdoyeon.github.io/tags/elasticsearch/"/>
-    
-      <category term="shards" scheme="https://parkdoyeon.github.io/tags/shards/"/>
-    
-      <category term="template" scheme="https://parkdoyeon.github.io/tags/template/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>도커/도커 컴포즈 설치하고 서비스 시작하기</title>
-    <link href="https://parkdoyeon.github.io/docker/docker-2019-05-30-docker-install/"/>
-    <id>https://parkdoyeon.github.io/docker/docker-2019-05-30-docker-install/</id>
-    <published>2019-05-30T06:25:27.000Z</published>
-    <updated>2019-06-08T02:58:52.616Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="도커-설치하기"><a href="#도커-설치하기" class="headerlink" title="도커 설치하기"></a>도커 설치하기</h2><ul><li>[<a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/#set-up-the-repository" rel="external nofollow noopener noreferrer" target="_blank">Docker 설치 가이드</a>] 최초 설치시 반드시 저장소 등록(SET UP THE REPOSITORY)부터 할 것!</li><li>설치 후 자동시작이지만 혹시 서비스가 꺼져있다면 배시 통해서 도커 서비스 시작<pre><code class="bash">service docker start</code></pre></li></ul><h2 id="도커-서비스가-시작이-안되면-네트워크-확률이-높다"><a href="#도커-서비스가-시작이-안되면-네트워크-확률이-높다" class="headerlink" title="도커 서비스가 시작이 안되면 ? 네트워크 확률이 높다"></a>도커 서비스가 시작이 안되면 ? 네트워크 확률이 높다</h2><ol><li>로그보기.<pre><code class="bash">journalctl -xe</code></pre></li><li>출력되는 로그 자세히 보면 아래와 같은 내용이 있다.<pre><code class="bash">Error starting daemon: Error initionalizing network controller</code></pre></li><li>이럴땐 직접 ip 지정<pre><code class="bash">root$ ip link add name docker0 type bridgeroot$ ip addr add dev docker0 172.17.0.1/16root$ service docker start</code></pre></li></ol><h2 id="Docker-Compose-설치하기"><a href="#Docker-Compose-설치하기" class="headerlink" title="Docker-Compose 설치하기"></a>Docker-Compose 설치하기</h2><ul><li><a href="https://docs.docker.com/compose/install/#install-compose" rel="external nofollow noopener noreferrer" target="_blank">DockerCompose 설치 가이드</a></li><li>서비스 시작하기 전에 엉뚱한 곳에 실행 권한을 주진 않았나 확인하자.</li><li>apt install docker-compose명령어로 설치하면 구버전(2.2)이 설치된다. 최신버전인 3.2로 설치하기위해선 설치가이드 따르는 것이 좋다.</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;도커-설치하기&quot;&gt;&lt;a href=&quot;#도커-설치하기&quot; class=&quot;headerlink&quot; title=&quot;도커 설치하기&quot;&gt;&lt;/a&gt;도커 설치하기&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;[&lt;a href=&quot;https://docs.docker.com/install/li
-      
-    
-    </summary>
-    
-      <category term="Docker" scheme="https://parkdoyeon.github.io/docker/"/>
-    
-    
-      <category term="docker" scheme="https://parkdoyeon.github.io/tags/docker/"/>
-    
-      <category term="install" scheme="https://parkdoyeon.github.io/tags/install/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ElastAlert - 유용한 규칙 종류</title>
-    <link href="https://parkdoyeon.github.io/elk/elk-2019-05-29-ea-elastalert/"/>
-    <id>https://parkdoyeon.github.io/elk/elk-2019-05-29-ea-elastalert/</id>
-    <published>2019-05-29T11:07:16.000Z</published>
-    <updated>2019-06-27T15:33:15.453Z</updated>
-    
-    <content type="html"><![CDATA[<p><a href="https://github.com/Yelp/elastalert" target="_blank" rel="noopener">ElastAlert</a>은 조건에 따라 Elasticsearch에서 발생하는 문서에 대한 알럿을 보내주는 오픈소스이다. 각각의 규칙(Rule) yml파일을 생성하면 지정한 Rule 디렉토리에 있는 설정대로 ES에 쿼리하는 구조로,<br>직접 파일을 생성해서 관리해줄수도 있고, Kibana에 ElastAlert 플러그인을 추가해서 규칙 관리를 할수도 있다. </p><p>규칙은 다양한 타입이 있는데, ELK 로그 스택을 운영하면서 가장 많이 활용했던 Rule타입은 아래와 같다. 전반적인 내용은 <a href="https://elastalert.readthedocs.io/en/latest/ruletypes.html" rel="external nofollow noopener noreferrer" target="_blank">공식문서</a>를 참조하면된다.</p><h2 id="cardinality-특정-필드의-값의-종류를-제한하고싶을때"><a href="#cardinality-특정-필드의-값의-종류를-제한하고싶을때" class="headerlink" title="cardinality: 특정 필드의 값의 종류를 제한하고싶을때"></a>cardinality: 특정 필드의 값의 종류를 제한하고싶을때</h2><pre><code class="yml">name: gender alerttype: cardinalityindex: customer-%Y.%m.%duse_strftime_index: truecardinality_field: &quot;gender&quot; # 제약을 두고싶은 필드# 종류의 갯수(반대로 최소값을 설정하고싶으면 min_cardinality으로 세팅)max_cardinality: 2  alert_subject: &quot;남/녀 외의 또 다른 필드값 발생!&quot;</code></pre><h2 id="metric-aggregation-특정-값의-발생-빈도를-카운팅하고싶을-때"><a href="#metric-aggregation-특정-값의-발생-빈도를-카운팅하고싶을-때" class="headerlink" title="metric_aggregation: 특정 값의 발생 빈도를 카운팅하고싶을 때"></a>metric_aggregation: 특정 값의 발생 빈도를 카운팅하고싶을 때</h2><pre><code class="yml">name: sql datatype: metric_aggregationindex: inserted-sql-data-%Y.%m.%duse_strftime_index: truemetric_agg_key: &quot;pk-field&quot; # 카운팅 하고싶은 대상 필드의 이름metric_agg_type: value_count # value가 되는 값의 count를 한다는 것을 의미, 숫자크기와 같은 다른 방식의 카운팅방법 지정도 가능하다.query_key: &quot;pk-field.keyword&quot; # 대상으로 할 value에 대한 쿼리를 넣어주면 된다 max_threshold: 1 # 내 경우 중복이 발생하면 무조건 알럿이 와야하므로 최대 갯수는 1개.doc_type: docalert_subject: &quot;pk-field에 중복된 값이 있습니다.&quot;</code></pre><h2 id="any-어떤-문서든-발생하면-바로"><a href="#any-어떤-문서든-발생하면-바로" class="headerlink" title="any: 어떤 문서든 발생하면 바로!"></a>any: 어떤 문서든 발생하면 바로!</h2><pre><code class="yml">name: Fatal Errortype: anyindex: fatal-log-%Y.%m.%duse_strftime_index: truefilter:- query:    query_string:      query: &quot;log.level: fatal&quot;alert_subject: &quot;fatal 에러가 발생했습니다.&quot;</code></pre><h2 id="frequency-특정-갯수-이상의-문서가-발생했을때"><a href="#frequency-특정-갯수-이상의-문서가-발생했을때" class="headerlink" title="frequency: 특정 갯수 이상의 문서가 발생했을때"></a>frequency: 특정 갯수 이상의 문서가 발생했을때</h2><pre><code class="yml">name: Web Error Alerttype: frequencyindex: web-log-%Y.%m.%duse_strftime_index: true# 10분간 20번의 에러 로그가 발생하면 알럿num_events: 20timeframe:  minutes: 10filter:- query:    query_string:      query: &quot;fields.level: error&quot;alert_subject: &quot;지속적인 에러가 발생했습니다.&quot;</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;https://github.com/Yelp/elastalert&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;ElastAlert&lt;/a&gt;은 조건에 따라 Elasticsearch에서 발생하는 문서에 대한 알럿을 보내주는 오
-      
-    
-    </summary>
-    
-      <category term="ELK" scheme="https://parkdoyeon.github.io/elk/"/>
-    
-    
-      <category term="elasticsearch" scheme="https://parkdoyeon.github.io/tags/elasticsearch/"/>
-    
-      <category term="elk" scheme="https://parkdoyeon.github.io/tags/elk/"/>
-    
-      <category term="elastalert" scheme="https://parkdoyeon.github.io/tags/elastalert/"/>
     
   </entry>
   

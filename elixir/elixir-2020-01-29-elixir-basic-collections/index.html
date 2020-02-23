@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang>
+  <head><meta name="generator" content="Hexo 3.8.0">
+    
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta name="google-site-verification" content="ZPpg1XKRwaiB4lPx6SawBAA96ROVlVBmZ8s6pigFEVc">
+
+
+
+<meta name="naver-site-verification" content="a31e494cb7e78d5a64696ea234dc6c9006b251ff">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://parkdoyeon.github.io/elixir/elixir-2020-01-29-elixir-basic-collections/">
+
+
+  <meta property="og:title" content="Programming Elixir 5 - 콜렉션 처리">
+
+
+
+
+  <meta name="description" content="Programming Elixir 5 - 콜렉션 처리">
+  <meta property="og:description" content="Programming Elixir 5 - 콜렉션 처리">
+
+
+
+
+
+  <meta name="keywords" content="enum,collection,elixir,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Park Doyeon">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=">
+
+
+
+<link rel="canonical" href="https://parkdoyeon.github.io/elixir/elixir-2020-01-29-elixir-basic-collections/">
+
+
+<meta name="description" content="EnumEnum은 엘릭서의 모든 콜렉션 타입을 다루는 workhorse이다.그러나 데이터 변환작업시 메모리에 중간 결과물을 포함한 모든 콜렉션 데이터를 올려놓기 때문에 lazy하게 동작하도록 하려면 Stream을 사용해야한다.Stream은 스트림간의 모든 함수와 호환된다. 따라서 Stream은 Composable하다. IO.puts File.open!(“/">
+<meta name="keywords" content="enum,collection,elixir">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Programming Elixir 5 - 콜렉션 처리">
+<meta property="og:url" content="https://parkdoyeon.github.io/elixir/elixir-2020-01-29-elixir-basic-collections/index.html">
+<meta property="og:site_name" content="Park Doyeon">
+<meta property="og:description" content="EnumEnum은 엘릭서의 모든 콜렉션 타입을 다루는 workhorse이다.그러나 데이터 변환작업시 메모리에 중간 결과물을 포함한 모든 콜렉션 데이터를 올려놓기 때문에 lazy하게 동작하도록 하려면 Stream을 사용해야한다.Stream은 스트림간의 모든 함수와 호환된다. 따라서 Stream은 Composable하다. IO.puts File.open!(“/">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-02-23T01:34:13.471Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Programming Elixir 5 - 콜렉션 처리">
+<meta name="twitter:description" content="EnumEnum은 엘릭서의 모든 콜렉션 타입을 다루는 workhorse이다.그러나 데이터 변환작업시 메모리에 중간 결과물을 포함한 모든 콜렉션 데이터를 올려놓기 때문에 lazy하게 동작하도록 하려면 Stream을 사용해야한다.Stream은 스트림간의 모든 함수와 호환된다. 따라서 Stream은 Composable하다. IO.puts File.open!(“/">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141653278-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-141653278-1');
+  </script>
+
+
+
+
+
+  
+
+
+    <title> Programming Elixir 5 - 콜렉션 처리 - Park Doyeon </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </head>
+
+  <body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Park Doyeon</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+      </header>
+
+      <div id="post-categories"><ul class="category-list">
+
+    <li>
+    
+        <a href="/csharp">C#</a>
+    
+    </li>
+
+    <li>
+    
+        <a href="/dev-env">Dev-Env</a>
+    
+    </li>
+
+    <li>
+    
+        <a href="/undefined">Docker</a>
+    
+    </li>
+
+    <li>
+    
+        <a href="/elk">ELK</a>
+    
+    </li>
+
+    <li>
+    
+        <a href="/javascript">JavaScript</a>
+    
+    </li>
+
+    <li>
+    
+        <a href="/ml">ML</a>
+    
+    </li>
+
+    <li>
+    
+        <a href="/python">Python</a>
+    
+    </li>
+
+    <li>
+    
+        <a href="/sql">SQL</a>
+    
+    </li>
+
+    <li>
+    
+        <a href="/web">Web</a>
+    
+    </li>
+
+    <li>
+    
+        <a href="/elixir" class="on">Elixir</a>
+    
+    </li>
+
+</ul>
+
+      </div>
+
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          Programming Elixir 5 - 콜렉션 처리
+        
+      </h1>
+
+      <time class="post-time">
+          Jan 29 2020
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <h3 id="Enum"><a href="#Enum" class="headerlink" title="Enum"></a>Enum</h3><p>Enum은 엘릭서의 모든 콜렉션 타입을 다루는 workhorse이다.<br>그러나 데이터 변환작업시 메모리에 중간 결과물을 포함한 모든 콜렉션 데이터를 올려놓기 때문에 lazy하게 동작하도록 하려면 Stream을 사용해야한다.<br>Stream은 스트림간의 모든 함수와 호환된다. 따라서 Stream은 Composable하다.</p>
+<pre><code>IO.puts File.open!(“/usr/share/dict/words”)
+             |&gt; IO.stream(:line)
+             |&gt; Enum.max_by(&amp;String.length/1)
+
+# 위 코드의 shortcut코드
+IO.puts File.stream!(“/usr/share/dict/words”)
+             |&gt; Enum.max_by(&amp;String.length/1)
+
+# Stream을 사용한 구현은 중간 storage가 없는 대신 두배 이상 느리다는 단점이 있지만,
+# 데이터가 도달하면 바로바로 처리된다는 장점이 있다.
+# 가령 Enum으로만 구현한 경우 연속된 스트림라인이 늦게 도달했을 때 처리가 훨씬 더 오래걸릴 수 있다.</code></pre><h3 id="Collectable-Protocol"><a href="#Collectable-Protocol" class="headerlink" title="Collectable Protocol"></a>Collectable Protocol</h3><p>Enumerable Protocol은 타입 안의 요소를 순회하는 것이라면, Collectable은 반대의 개념으로 요소를 더해서 Collection을 빌드한다.<br>그러나 모든 콜렉션이 collectable한것은 아니다. Range 타입의 경우 요소 추가가 불가능 하며, Enum을 통한 Collectable 타입의 전환을 통해서 요소 추가가 가능하다. 이때, 이미 데이터가 있는 리스트와 병합되는 경우 range가 리스트 tail에 붙는다</p>
+<pre><code>iex&gt; Enum.into 1..5, [100, 101]
+[100, 101, 1, 2, 3, 4, 5]</code></pre><h3 id="Comprehension-Works-on-Bits-Too"><a href="#Comprehension-Works-on-Bits-Too" class="headerlink" title="Comprehension Works on Bits, Too"></a>Comprehension Works on Bits, Too</h3><pre><code>iex&gt; for &lt;&lt; &lt;&lt; b1::size(2), b2::size(3), b3::size(3) &gt;&gt; &lt;- “hello” &gt;&gt; , do: “0#{b1}#{b2}#{b3}”
+[&quot;0150&quot;, &quot;0145&quot;, &quot;0154&quot;, &quot;0154&quot;, &quot;0157”]</code></pre><p>여기서 &lt;&lt;&gt;&gt;은 바이너리를 가리킨다</p>
+<h3 id="Moving-Past-Divinity"><a href="#Moving-Past-Divinity" class="headerlink" title="Moving Past Divinity"></a>Moving Past Divinity</h3><p>엘릭서를 효율적으로 학습하는 과정의 일부는 재귀와 순회를 적재적소에 사용하는 것을 고민하는 것이다.<br>가능하면 순회를 사용할 것을 권장한다.</p>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+        <div class="post-tags">
+          
+            <a href="/tags/enum/">enum</a>
+          
+            <a href="/tags/collection/">collection</a>
+          
+            <a href="/tags/elixir/">elixir</a>
+          
+        </div>
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/elixir/elixir-2020-01-30-elixir-basic-string/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Programming Elixir 6 - 문자열, 제어흐름</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="/elixir/elixir-2020-01-27-elixir-basic-function/">
+        <span class="next-text nav-default">Programming Elixir 3 - 함수</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+    <!--<div style="text-align:center;">
+        <button class="btn" id="load-disqus" onclick="disqus.load();">load Disqus review</button>
+    </div>-->
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+    2020
+    <span class="footer-author">Park Doyeon.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> and <a class="theme-link" href="https://github.com/parkdoyeon">Me</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+<script type="text/javascript">
+  var disqus_shortname = 'parkdoyeon';
+  var disqus_identifier = 'elixir/elixir-2020-01-29-elixir-basic-collections/';
+  var disqus_url = 'https://parkdoyeon.github.io/elixir/elixir-2020-01-29-elixir-basic-collections/index.html';
+
+  
+  var disqus_config = function () {
+      this.page.url = disqus_url;
+      this.page.identifier = disqus_identifier;
+  };
+  
+  (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+  
+  
+  // var disqus = {
+  //   load : function disqus(){
+  //       if(typeof DISQUS !== 'object') {
+  //         (function () {
+  //         var s = document.createElement('script'); s.async = true;
+  //         s.type = 'text/javascript';
+  //         s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  //         (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+  //         }());
+  //         $('#load-disqus').remove(); ///Delete Button
+  //       }
+  //   }
+  // }
+
+</script>
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script src="/js/src/theme.js?v="></script>
+<script src="/js/src/bootstrap.js?v="></script>
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+<script src="/js/src/highlight.pack.js?v="></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.7.0/highlightjs-line-numbers.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', (event) => {
+  document.querySelectorAll('figure.highlight').forEach((block) => {
+    hljs.highlightBlock(block);
+  });
+});
+hljs.initHighlightingOnLoad();
+hljs.initLineNumbersOnLoad();
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </body>
+</html>

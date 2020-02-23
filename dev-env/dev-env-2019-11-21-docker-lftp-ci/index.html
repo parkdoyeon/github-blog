@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang>
+  <head><meta name="generator" content="Hexo 3.8.0">
+    
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta name="google-site-verification" content="ZPpg1XKRwaiB4lPx6SawBAA96ROVlVBmZ8s6pigFEVc">
+
+
+
+<meta name="naver-site-verification" content="a31e494cb7e78d5a64696ea234dc6c9006b251ff">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://parkdoyeon.github.io/dev-env/dev-env-2019-11-21-docker-lftp-ci/">
+
+
+  <meta property="og:title" content="리눅스 도커 lftp로 파일 배포하기">
+
+
+
+
+  <meta name="description" content="리눅스 도커 lftp로 파일 배포하기">
+  <meta property="og:description" content="리눅스 도커 lftp로 파일 배포하기">
+
+
+
+
+
+  <meta name="keywords" content="docker,ci/cd,ftp,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Park Doyeon">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=">
+
+
+
+<link rel="canonical" href="https://parkdoyeon.github.io/dev-env/dev-env-2019-11-21-docker-lftp-ci/">
+
+
+<meta name="description" content="CI 서버에서 npm 빌드가 완료되면 빌드된 파일을 ftp 통해서 웹서버에 배포하기로했다.CI서버에서 설치하고 쓸 ftp를 찾다가 lftp의 도커 이미지가 있어서 CI 파이프라인에 추가했다.lftp는 리눅스에서 많이 사용하는 ftp 프로그램으로, http를 포함한 다양한 프로토콜을 지원한다. 기본적인 명령어 형식은 아래와 같다. lftp ftp://[use">
+<meta name="keywords" content="docker,ci&#x2F;cd,ftp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="리눅스 도커 lftp로 파일 배포하기">
+<meta property="og:url" content="https://parkdoyeon.github.io/dev-env/dev-env-2019-11-21-docker-lftp-ci/index.html">
+<meta property="og:site_name" content="Park Doyeon">
+<meta property="og:description" content="CI 서버에서 npm 빌드가 완료되면 빌드된 파일을 ftp 통해서 웹서버에 배포하기로했다.CI서버에서 설치하고 쓸 ftp를 찾다가 lftp의 도커 이미지가 있어서 CI 파이프라인에 추가했다.lftp는 리눅스에서 많이 사용하는 ftp 프로그램으로, http를 포함한 다양한 프로토콜을 지원한다. 기본적인 명령어 형식은 아래와 같다. lftp ftp://[use">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-02-23T01:34:13.470Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="리눅스 도커 lftp로 파일 배포하기">
+<meta name="twitter:description" content="CI 서버에서 npm 빌드가 완료되면 빌드된 파일을 ftp 통해서 웹서버에 배포하기로했다.CI서버에서 설치하고 쓸 ftp를 찾다가 lftp의 도커 이미지가 있어서 CI 파이프라인에 추가했다.lftp는 리눅스에서 많이 사용하는 ftp 프로그램으로, http를 포함한 다양한 프로토콜을 지원한다. 기본적인 명령어 형식은 아래와 같다. lftp ftp://[use">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141653278-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-141653278-1');
+  </script>
+
+
+
+
+
+  
+
+
+    <title> 리눅스 도커 lftp로 파일 배포하기 - Park Doyeon </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </head>
+
+  <body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Park Doyeon</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+      </header>
+
+      <div id="post-categories"><ul class="category-list">
+
+    <li>
+    
+        <a href="/csharp">C#</a>
+    
+    </li>
+
+    <li>
+    
+        <a href="/dev-env" class="on">Dev-Env</a>
+    
+    </li>
+
+    <li>
+    
+        <a href="/undefined">Docker</a>
+    
+    </li>
+
+    <li>
+    
+        <a href="/elk">ELK</a>
+    
+    </li>
+
+    <li>
+    
+        <a href="/javascript">JavaScript</a>
+    
+    </li>
+
+    <li>
+    
+        <a href="/ml">ML</a>
+    
+    </li>
+
+    <li>
+    
+        <a href="/python">Python</a>
+    
+    </li>
+
+    <li>
+    
+        <a href="/sql">SQL</a>
+    
+    </li>
+
+    <li>
+    
+        <a href="/web">Web</a>
+    
+    </li>
+
+    <li>
+    
+        <a href="/elixir">Elixir</a>
+    
+    </li>
+
+</ul>
+
+      </div>
+
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          리눅스 도커 lftp로 파일 배포하기
+        
+      </h1>
+
+      <time class="post-time">
+          Nov 21 2019
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <p>CI 서버에서 npm 빌드가 완료되면 빌드된 파일을 ftp 통해서 웹서버에 배포하기로했다.<br>CI서버에서 설치하고 쓸 ftp를 찾다가 lftp의 도커 이미지가 있어서 CI 파이프라인에 추가했다.<br>lftp는 리눅스에서 많이 사용하는 ftp 프로그램으로, http를 포함한 다양한 프로토콜을 지원한다. 기본적인 명령어 형식은 아래와 같다.</p>
+<pre><code>lftp ftp://[user_id]:[user_password]@[host]:[port] -e &quot;mirror -R -n -v -p -X *.md -X *.db -X *.yml -X @html/ -X *.git/ $CI_PROJECT_DIR/vue/vue-proj/dist /R2/vue/vue-proj-1125;&quot;</code></pre><p>명령어에 담긴 flag 의미는 아래와 같다</p>
+<ul>
+<li>e: –delete, 동기화 과정중에 없는 파일을 삭제한다</li>
+<li>R: –recursive, 본래 mirror는 [목적지] [로컬] 순서로 디렉토리 표기가 되고 로컬에 목적지에 있는 파일을 다운로드 받는 명령어인데, 반대로 목적지에 파일을 전달하고 싶으면 R 플래그를 넣어줘야 한다.</li>
+<li>n: –only-newer, 새롭게 변경된 파일만 다운로드하기</li>
+<li>v: –verbose, 파일 전송 로그를 표기하기</li>
+<li>p: –no-perms, 작업이 완료되고 리눅스에서 원격에 있는 파일 권한을 변경하려하는데 </li>
+<li>X: –exclude-glob, glob 정규식으로 제외파일을 표기한다. 일반 정규식과 달리 asterisk(*)가 와일드카드 의미를 갖는다.</li>
+</ul>
+<p>자세한 내용 및 더 많은 옵션은 <a href="https://lftp.yar.ru/lftp-man.html" rel="external nofollow noopener noreferrer" target="_blank">lftp 공식 문서</a>를 통해 확인하면 된다.</p>
+<p>해당 stage 스크립트를  <code>gitlab-ci.yml</code>에 작성하니 아래와 같아졌다.</p>
+<pre><code>deploy_prod_vue_event:
+    image: registry.mycompany.com:5001/mwienk/docker-lftp:latest
+    stage: deploy
+    variables:
+        GIT_STRATEGY: none
+    script:
+        - echo &quot;Deploy to alpha server&quot;
+        - lftp ftp://deploy:$FTP_PASSWORD@172.0.0.1:2100 -e &quot;mirror -R -n -v -p -X *.md -X *.db -X *.yml -X @html/ -X *.git/ $CI_PROJECT_DIR/vue/vue-proj/dist /R2/vue/vue-proj-1125;&quot;
+    environment:
+        name: production
+    tags:
+        - ci-linux
+    when: manual
+    only:
+    - master</code></pre>
+            </div>
+          
+
+    
+      <footer class="post-footer">
+        <div class="post-tags">
+          
+            <a href="/tags/docker/">docker</a>
+          
+            <a href="/tags/ci-cd/">ci/cd</a>
+          
+            <a href="/tags/ftp/">ftp</a>
+          
+        </div>
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/elixir/elixir-2020-01-28-elixir-basic-typeandmodule/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Programming Elixir 4 - 타입과 모듈</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="/dev-env/dev-env-2019-11-05-linux-password/">
+        <span class="next-text nav-default">리눅스 계정잠금 해제</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+    <!--<div style="text-align:center;">
+        <button class="btn" id="load-disqus" onclick="disqus.load();">load Disqus review</button>
+    </div>-->
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+    2020
+    <span class="footer-author">Park Doyeon.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> and <a class="theme-link" href="https://github.com/parkdoyeon">Me</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+<script type="text/javascript">
+  var disqus_shortname = 'parkdoyeon';
+  var disqus_identifier = 'dev-env/dev-env-2019-11-21-docker-lftp-ci/';
+  var disqus_url = 'https://parkdoyeon.github.io/dev-env/dev-env-2019-11-21-docker-lftp-ci/index.html';
+
+  
+  var disqus_config = function () {
+      this.page.url = disqus_url;
+      this.page.identifier = disqus_identifier;
+  };
+  
+  (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+  
+  
+  // var disqus = {
+  //   load : function disqus(){
+  //       if(typeof DISQUS !== 'object') {
+  //         (function () {
+  //         var s = document.createElement('script'); s.async = true;
+  //         s.type = 'text/javascript';
+  //         s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  //         (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+  //         }());
+  //         $('#load-disqus').remove(); ///Delete Button
+  //       }
+  //   }
+  // }
+
+</script>
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script src="/js/src/theme.js?v="></script>
+<script src="/js/src/bootstrap.js?v="></script>
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+<script src="/js/src/highlight.pack.js?v="></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.7.0/highlightjs-line-numbers.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', (event) => {
+  document.querySelectorAll('figure.highlight').forEach((block) => {
+    hljs.highlightBlock(block);
+  });
+});
+hljs.initHighlightingOnLoad();
+hljs.initLineNumbersOnLoad();
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </body>
+</html>

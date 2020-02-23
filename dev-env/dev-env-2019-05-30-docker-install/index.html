@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang>
+  <head><meta name="generator" content="Hexo 3.8.0">
+    
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta name="google-site-verification" content="ZPpg1XKRwaiB4lPx6SawBAA96ROVlVBmZ8s6pigFEVc">
+
+
+
+<meta name="naver-site-verification" content="a31e494cb7e78d5a64696ea234dc6c9006b251ff">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://parkdoyeon.github.io/dev-env/dev-env-2019-05-30-docker-install/">
+
+
+  <meta property="og:title" content="Docker/Docker Compose 설치하고 서비스 시작하기">
+
+
+
+
+  <meta name="description" content="Docker/Docker Compose 설치하고 서비스 시작하기">
+  <meta property="og:description" content="Docker/Docker Compose 설치하고 서비스 시작하기">
+
+
+
+
+
+  <meta name="keywords" content="docker,install,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Park Doyeon">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=">
+
+
+
+<link rel="canonical" href="https://parkdoyeon.github.io/dev-env/dev-env-2019-05-30-docker-install/">
+
+
+<meta name="description" content="도커 설치하기 [Docker 설치 가이드] 최초 설치시 반드시 저장소 등록(SET UP THE REPOSITORY)부터 할 것! 설치 후 자동시작이지만 혹시 서비스가 꺼져있다면 배시 통해서 도커 서비스 시작service docker start   도커 서비스가 시작이 안되면 ? 네트워크 확률이 높다 로그보기.journalctl -xe  출력되는 로그 자세히">
+<meta name="keywords" content="docker,install">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Docker&#x2F;Docker Compose 설치하고 서비스 시작하기">
+<meta property="og:url" content="https://parkdoyeon.github.io/dev-env/dev-env-2019-05-30-docker-install/index.html">
+<meta property="og:site_name" content="Park Doyeon">
+<meta property="og:description" content="도커 설치하기 [Docker 설치 가이드] 최초 설치시 반드시 저장소 등록(SET UP THE REPOSITORY)부터 할 것! 설치 후 자동시작이지만 혹시 서비스가 꺼져있다면 배시 통해서 도커 서비스 시작service docker start   도커 서비스가 시작이 안되면 ? 네트워크 확률이 높다 로그보기.journalctl -xe  출력되는 로그 자세히">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-02-23T01:34:13.468Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Docker&#x2F;Docker Compose 설치하고 서비스 시작하기">
+<meta name="twitter:description" content="도커 설치하기 [Docker 설치 가이드] 최초 설치시 반드시 저장소 등록(SET UP THE REPOSITORY)부터 할 것! 설치 후 자동시작이지만 혹시 서비스가 꺼져있다면 배시 통해서 도커 서비스 시작service docker start   도커 서비스가 시작이 안되면 ? 네트워크 확률이 높다 로그보기.journalctl -xe  출력되는 로그 자세히">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141653278-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-141653278-1');
+  </script>
+
+
+
+
+
+  
+
+
+    <title> Docker/Docker Compose 설치하고 서비스 시작하기 - Park Doyeon </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </head>
+
+  <body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Park Doyeon</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+      </header>
+
+      <div id="post-categories"><ul class="category-list">
+
+    <li>
+    
+        <a href="/csharp">C#</a>
+    
+    </li>
+
+    <li>
+    
+        <a href="/dev-env" class="on">Dev-Env</a>
+    
+    </li>
+
+    <li>
+    
+        <a href="/undefined">Docker</a>
+    
+    </li>
+
+    <li>
+    
+        <a href="/elk">ELK</a>
+    
+    </li>
+
+    <li>
+    
+        <a href="/javascript">JavaScript</a>
+    
+    </li>
+
+    <li>
+    
+        <a href="/ml">ML</a>
+    
+    </li>
+
+    <li>
+    
+        <a href="/python">Python</a>
+    
+    </li>
+
+    <li>
+    
+        <a href="/sql">SQL</a>
+    
+    </li>
+
+    <li>
+    
+        <a href="/web">Web</a>
+    
+    </li>
+
+    <li>
+    
+        <a href="/elixir">Elixir</a>
+    
+    </li>
+
+</ul>
+
+      </div>
+
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          Docker/Docker Compose 설치하고 서비스 시작하기
+        
+      </h1>
+
+      <time class="post-time">
+          May 30 2019
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <h2 id="도커-설치하기"><a href="#도커-설치하기" class="headerlink" title="도커 설치하기"></a>도커 설치하기</h2><ul>
+<li>[<a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/#set-up-the-repository" rel="external nofollow noopener noreferrer" target="_blank">Docker 설치 가이드</a>] 최초 설치시 반드시 저장소 등록(SET UP THE REPOSITORY)부터 할 것!</li>
+<li>설치 후 자동시작이지만 혹시 서비스가 꺼져있다면 배시 통해서 도커 서비스 시작<pre><code class="bash">service docker start</code></pre>
+</li>
+</ul>
+<h2 id="도커-서비스가-시작이-안되면-네트워크-확률이-높다"><a href="#도커-서비스가-시작이-안되면-네트워크-확률이-높다" class="headerlink" title="도커 서비스가 시작이 안되면 ? 네트워크 확률이 높다"></a>도커 서비스가 시작이 안되면 ? 네트워크 확률이 높다</h2><ol>
+<li>로그보기.<pre><code class="bash">journalctl -xe</code></pre>
+</li>
+<li>출력되는 로그 자세히 보면 아래와 같은 내용이 있다.<pre><code class="bash">Error starting daemon: Error initionalizing network controller</code></pre>
+</li>
+<li>이럴땐 직접 ip 지정<pre><code class="bash">root$ ip link add name docker0 type bridge
+root$ ip addr add dev docker0 172.17.0.1/16
+root$ service docker start</code></pre>
+</li>
+</ol>
+<h2 id="Docker-Compose-설치하기"><a href="#Docker-Compose-설치하기" class="headerlink" title="Docker-Compose 설치하기"></a>Docker-Compose 설치하기</h2><ul>
+<li><a href="https://docs.docker.com/compose/install/#install-compose" rel="external nofollow noopener noreferrer" target="_blank">DockerCompose 설치 가이드</a></li>
+<li>서비스 시작하기 전에 엉뚱한 곳에 실행 권한을 주진 않았나 확인하자.</li>
+<li>apt install docker-compose명령어로 설치하면 구버전(2.2)이 설치된다. 최신버전인 3.2로 설치하기위해선 설치가이드 따르는 것이 좋다.</li>
+</ul>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+        <div class="post-tags">
+          
+            <a href="/tags/docker/">docker</a>
+          
+            <a href="/tags/install/">install</a>
+          
+        </div>
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/elk/elk-2019-05-31-es-shards/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">ElasticSearch - unassigned shard 문제 해결 (1) shard가 너무 많을 때</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="/elk/elk-2019-05-29-ea-elastalert/">
+        <span class="next-text nav-default">ElastAlert - 유용한 규칙 종류</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+    <!--<div style="text-align:center;">
+        <button class="btn" id="load-disqus" onclick="disqus.load();">load Disqus review</button>
+    </div>-->
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+    2020
+    <span class="footer-author">Park Doyeon.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> and <a class="theme-link" href="https://github.com/parkdoyeon">Me</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+<script type="text/javascript">
+  var disqus_shortname = 'parkdoyeon';
+  var disqus_identifier = 'dev-env/dev-env-2019-05-30-docker-install/';
+  var disqus_url = 'https://parkdoyeon.github.io/dev-env/dev-env-2019-05-30-docker-install/index.html';
+
+  
+  var disqus_config = function () {
+      this.page.url = disqus_url;
+      this.page.identifier = disqus_identifier;
+  };
+  
+  (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+  
+  
+  // var disqus = {
+  //   load : function disqus(){
+  //       if(typeof DISQUS !== 'object') {
+  //         (function () {
+  //         var s = document.createElement('script'); s.async = true;
+  //         s.type = 'text/javascript';
+  //         s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  //         (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+  //         }());
+  //         $('#load-disqus').remove(); ///Delete Button
+  //       }
+  //   }
+  // }
+
+</script>
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script src="/js/src/theme.js?v="></script>
+<script src="/js/src/bootstrap.js?v="></script>
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+<script src="/js/src/highlight.pack.js?v="></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.7.0/highlightjs-line-numbers.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', (event) => {
+  document.querySelectorAll('figure.highlight').forEach((block) => {
+    hljs.highlightBlock(block);
+  });
+});
+hljs.initHighlightingOnLoad();
+hljs.initLineNumbersOnLoad();
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </body>
+</html>
