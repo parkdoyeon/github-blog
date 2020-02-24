@@ -53,18 +53,18 @@
 <link rel="canonical" href="https://parkdoyeon.github.io/elixir/elixir-2020-02-03-elixir-functional/">
 
 
-<meta name="description" content="Elixir와 함수형 프로그래밍 OO has methods, FP has functions객체 지향적인 프로그래밍은 클래스 인스턴스 메소드를 사용하여 상태변경을 하게되는데, 몇가지 단점이 있다.  상태와 메소드간의 강한결합(coupling)이 발생한다. 실제세계에서는 객체지향적인 메소드 사용보다 서브클래싱을 하여 메소드를 공유하는 경우가 더 빈번하다. 역할">
+<meta name="description" content="Elixir와 함수형 프로그래밍 OOP has methods, FP has functions객체 지향적인 프로그래밍은 클래스 인스턴스 메소드를 사용하여 상태변경을 하게되는데, 몇가지 단점이 있다.  상태와 메소드간의 강한결합(coupling)이 발생한다. 실제세계에서는 객체지향적인 메소드 사용보다 서브클래싱을 하여 메소드를 공유하는 경우가 더 빈번하다. 역">
 <meta name="keywords" content="elixir,functional">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Elixir와 함수형 프로그래밍">
 <meta property="og:url" content="https://parkdoyeon.github.io/elixir/elixir-2020-02-03-elixir-functional/index.html">
 <meta property="og:site_name" content="Park Doyeon">
-<meta property="og:description" content="Elixir와 함수형 프로그래밍 OO has methods, FP has functions객체 지향적인 프로그래밍은 클래스 인스턴스 메소드를 사용하여 상태변경을 하게되는데, 몇가지 단점이 있다.  상태와 메소드간의 강한결합(coupling)이 발생한다. 실제세계에서는 객체지향적인 메소드 사용보다 서브클래싱을 하여 메소드를 공유하는 경우가 더 빈번하다. 역할">
+<meta property="og:description" content="Elixir와 함수형 프로그래밍 OOP has methods, FP has functions객체 지향적인 프로그래밍은 클래스 인스턴스 메소드를 사용하여 상태변경을 하게되는데, 몇가지 단점이 있다.  상태와 메소드간의 강한결합(coupling)이 발생한다. 실제세계에서는 객체지향적인 메소드 사용보다 서브클래싱을 하여 메소드를 공유하는 경우가 더 빈번하다. 역">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-02-24T14:39:28.263Z">
+<meta property="og:updated_time" content="2020-02-24T14:40:58.215Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Elixir와 함수형 프로그래밍">
-<meta name="twitter:description" content="Elixir와 함수형 프로그래밍 OO has methods, FP has functions객체 지향적인 프로그래밍은 클래스 인스턴스 메소드를 사용하여 상태변경을 하게되는데, 몇가지 단점이 있다.  상태와 메소드간의 강한결합(coupling)이 발생한다. 실제세계에서는 객체지향적인 메소드 사용보다 서브클래싱을 하여 메소드를 공유하는 경우가 더 빈번하다. 역할">
+<meta name="twitter:description" content="Elixir와 함수형 프로그래밍 OOP has methods, FP has functions객체 지향적인 프로그래밍은 클래스 인스턴스 메소드를 사용하여 상태변경을 하게되는데, 몇가지 단점이 있다.  상태와 메소드간의 강한결합(coupling)이 발생한다. 실제세계에서는 객체지향적인 메소드 사용보다 서브클래싱을 하여 메소드를 공유하는 경우가 더 빈번하다. 역">
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=">
@@ -215,7 +215,7 @@
     
             <div class="post-content">
             <p>Elixir와 함수형 프로그래밍</p>
-<h1 id="OO-has-methods-FP-has-functions"><a href="#OO-has-methods-FP-has-functions" class="headerlink" title="OO has methods, FP has functions"></a>OO has methods, FP has functions</h1><p>객체 지향적인 프로그래밍은 클래스 인스턴스 메소드를 사용하여 상태변경을 하게되는데, 몇가지 단점이 있다.</p>
+<h1 id="OOP-has-methods-FP-has-functions"><a href="#OOP-has-methods-FP-has-functions" class="headerlink" title="OOP has methods, FP has functions"></a>OOP has methods, FP has functions</h1><p>객체 지향적인 프로그래밍은 클래스 인스턴스 메소드를 사용하여 상태변경을 하게되는데, 몇가지 단점이 있다.</p>
 <ol>
 <li>상태와 메소드간의 강한결합(coupling)이 발생한다. 실제세계에서는 객체지향적인 메소드 사용보다 서브클래싱을 하여 메소드를 공유하는 경우가 더 빈번하다.</li>
 <li>역할에 대한 혼란을 불러일으킨다. 메소드의 다른 역할이 필요해질 때 클래스 확장이나 서브클래싱을 사용하는데, 이 또한 강항 결합을 야기한다.</li>
