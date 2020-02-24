@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>https://parkdoyeon.github.io/elixir/elixir-2020-02-03-elixir-functional/</loc>
+        <lastmod>2020-02-24T14:39:28.263Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://parkdoyeon.github.io/elixir/elixir-2020-01-28-elixir-basic-typeandmodule/</loc>
         <lastmod>2020-02-23T01:36:35.772Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -56,14 +64,6 @@
     </url>
 
     <url>
-        <loc>https://parkdoyeon.github.io/elixir/elixir-2020-01-29-elixir-basic-collections/</loc>
-        <lastmod>2020-02-23T01:34:13.471Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://parkdoyeon.github.io/elixir/elixir-2020-01-30-elixir-basic-string/</loc>
         <lastmod>2020-02-23T01:34:13.471Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -72,7 +72,15 @@
     </url>
 
     <url>
-        <loc>https://parkdoyeon.github.io/dev-env/dev-env-2019-11-21-docker-lftp-ci/</loc>
+        <loc>https://parkdoyeon.github.io/elixir/elixir-2020-01-29-elixir-basic-collections/</loc>
+        <lastmod>2020-02-23T01:34:13.471Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://parkdoyeon.github.io/elixir/elixir-2020-01-23-elixir-basic-principle/</loc>
         <lastmod>2020-02-23T01:34:13.470Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -88,7 +96,7 @@
     </url>
 
     <url>
-        <loc>https://parkdoyeon.github.io/elixir/elixir-2020-01-23-elixir-basic-principle/</loc>
+        <loc>https://parkdoyeon.github.io/dev-env/dev-env-2019-11-21-docker-lftp-ci/</loc>
         <lastmod>2020-02-23T01:34:13.470Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -112,7 +120,7 @@
     </url>
 
     <url>
-        <loc>https://parkdoyeon.github.io/dev-env/dev-env-2019-06-18-docker-logrotate/</loc>
+        <loc>https://parkdoyeon.github.io/dev-env/dev-env-2019-05-30-docker-install/</loc>
         <lastmod>2020-02-23T01:34:13.468Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -120,7 +128,7 @@
     </url>
 
     <url>
-        <loc>https://parkdoyeon.github.io/dev-env/dev-env-2019-05-30-docker-install/</loc>
+        <loc>https://parkdoyeon.github.io/dev-env/dev-env-2019-06-18-docker-logrotate/</loc>
         <lastmod>2020-02-23T01:34:13.468Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -200,7 +208,7 @@
     </url>
 
     <url>
-        <loc>https://parkdoyeon.github.io/python/python-2019-07-24-python-dict/</loc>
+        <loc>https://parkdoyeon.github.io/python/python-2019-07-21-python-sort/</loc>
         <lastmod>2019-07-31T15:29:54.629Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -208,7 +216,7 @@
     </url>
 
     <url>
-        <loc>https://parkdoyeon.github.io/python/python-2019-07-21-python-sort/</loc>
+        <loc>https://parkdoyeon.github.io/python/python-2019-07-24-python-dict/</loc>
         <lastmod>2019-07-31T15:29:54.629Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -360,14 +368,6 @@
     </url>
 
     <url>
-        <loc>https://parkdoyeon.github.io/sql/sql-2019-04-22-addpk/</loc>
-        <lastmod>2019-06-08T02:58:52.620Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://parkdoyeon.github.io/sql/sql-2019-03-14-insertselect/</loc>
         <lastmod>2019-06-08T02:58:52.620Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -376,8 +376,8 @@
     </url>
 
     <url>
-        <loc>https://parkdoyeon.github.io/ml/ml-2019-03-19-svm2/</loc>
-        <lastmod>2019-06-08T02:58:52.619Z</lastmod>
+        <loc>https://parkdoyeon.github.io/sql/sql-2019-04-22-addpk/</loc>
+        <lastmod>2019-06-08T02:58:52.620Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -385,6 +385,14 @@
 
     <url>
         <loc>https://parkdoyeon.github.io/ml/ml-2019-05-27-deep/</loc>
+        <lastmod>2019-06-08T02:58:52.619Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://parkdoyeon.github.io/ml/ml-2019-03-19-svm2/</loc>
         <lastmod>2019-06-08T02:58:52.619Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -480,14 +488,6 @@
     </url>
 
     <url>
-        <loc>https://parkdoyeon.github.io/csharp/csharp-2019-01-03-effectivecsharp-3/</loc>
-        <lastmod>2019-06-08T02:58:52.614Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://parkdoyeon.github.io/csharp/csharp-2019-01-24-effectivecsharp-4/</loc>
         <lastmod>2019-06-08T02:58:52.614Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -497,6 +497,14 @@
 
     <url>
         <loc>https://parkdoyeon.github.io/csharp/csharp-2019-02-18-net-standard/</loc>
+        <lastmod>2019-06-08T02:58:52.614Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://parkdoyeon.github.io/csharp/csharp-2019-01-03-effectivecsharp-3/</loc>
         <lastmod>2019-06-08T02:58:52.614Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -520,7 +528,7 @@
     </url>
 
     <url>
-        <loc>https://parkdoyeon.github.io/csharp/csharp-2018-12-07-csharp-6-0-syntheticsugar/</loc>
+        <loc>https://parkdoyeon.github.io/csharp/csharp-2018-12-11-csharp-7-1-tuple-async-is/</loc>
         <lastmod>2019-06-08T02:58:52.613Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -528,7 +536,7 @@
     </url>
 
     <url>
-        <loc>https://parkdoyeon.github.io/csharp/csharp-2018-12-11-csharp-7-1-tuple-async-is/</loc>
+        <loc>https://parkdoyeon.github.io/csharp/csharp-2018-12-07-csharp-6-0-syntheticsugar/</loc>
         <lastmod>2019-06-08T02:58:52.613Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -552,14 +560,6 @@
     </url>
 
     <url>
-        <loc>https://parkdoyeon.github.io/csharp/csharp-2018-12-03-csharp-database/</loc>
-        <lastmod>2019-06-08T02:58:52.612Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://parkdoyeon.github.io/csharp/csharp-2018-12-03-csharp-else/</loc>
         <lastmod>2019-06-08T02:58:52.612Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -568,7 +568,23 @@
     </url>
 
     <url>
+        <loc>https://parkdoyeon.github.io/csharp/csharp-2018-12-03-csharp-database/</loc>
+        <lastmod>2019-06-08T02:58:52.612Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://parkdoyeon.github.io/csharp/csharp-2018-12-05-csharp-2-0-Generic/</loc>
+        <lastmod>2019-06-08T02:58:52.612Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://parkdoyeon.github.io/csharp/csharp-2018-12-06-csharp-3-0-LINQ/</loc>
         <lastmod>2019-06-08T02:58:52.612Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -592,15 +608,7 @@
     </url>
 
     <url>
-        <loc>https://parkdoyeon.github.io/csharp/csharp-2018-12-06-csharp-3-0-LINQ/</loc>
-        <lastmod>2019-06-08T02:58:52.612Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://parkdoyeon.github.io/csharp/csharp-2018-11-14-csharp-basic/</loc>
+        <loc>https://parkdoyeon.github.io/csharp/csharp-2018-11-21-csharp-file/</loc>
         <lastmod>2019-06-08T02:58:52.611Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -616,23 +624,15 @@
     </url>
 
     <url>
-        <loc>https://parkdoyeon.github.io/csharp/csharp-2018-11-30-csharp-async/</loc>
-        <lastmod>2019-06-08T02:58:52.611Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://parkdoyeon.github.io/csharp/csharp-2018-11-21-csharp-file/</loc>
-        <lastmod>2019-06-08T02:58:52.611Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://parkdoyeon.github.io/csharp/csharp-2018-11-27-csharp-thread/</loc>
+        <lastmod>2019-06-08T02:58:52.611Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://parkdoyeon.github.io/csharp/csharp-2018-11-14-csharp-basic/</loc>
         <lastmod>2019-06-08T02:58:52.611Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -648,6 +648,14 @@
     </url>
 
     <url>
+        <loc>https://parkdoyeon.github.io/csharp/csharp-2018-11-30-csharp-async/</loc>
+        <lastmod>2019-06-08T02:58:52.611Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://parkdoyeon.github.io/csharp/csharp-2018-10-14-csharp-basic/</loc>
         <lastmod>2019-06-08T02:58:52.610Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -656,7 +664,7 @@
     </url>
 
     <url>
-        <loc>https://parkdoyeon.github.io/csharp/csharp-2018-10-15-csharp-basic/</loc>
+        <loc>https://parkdoyeon.github.io/csharp/csharp-2018-10-19-csharp-basic/</loc>
         <lastmod>2019-06-08T02:58:52.610Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -664,7 +672,7 @@
     </url>
 
     <url>
-        <loc>https://parkdoyeon.github.io/csharp/csharp-2018-10-19-csharp-basic/</loc>
+        <loc>https://parkdoyeon.github.io/csharp/csharp-2018-10-15-csharp-basic/</loc>
         <lastmod>2019-06-08T02:58:52.610Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>

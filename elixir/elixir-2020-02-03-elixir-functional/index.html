@@ -20,22 +20,22 @@
 
 
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://parkdoyeon.github.io/ml/ml-2019-02-12-r-encodig/">
+<meta property="og:url" content="https://parkdoyeon.github.io/elixir/elixir-2020-02-03-elixir-functional/">
 
 
-  <meta property="og:title" content="R - 인코딩 옵션 추론 및 한글 변환하기">
-
-
-
-
-  <meta name="description" content="R - 인코딩 옵션 추론 및 한글 변환하기">
-  <meta property="og:description" content="R - 인코딩 옵션 추론 및 한글 변환하기">
+  <meta property="og:title" content="Elixir와 함수형 프로그래밍">
 
 
 
 
+  <meta name="description" content="Elixir와 함수형 프로그래밍">
+  <meta property="og:description" content="Elixir와 함수형 프로그래밍">
 
-  <meta name="keywords" content="machine-learning,R,">
+
+
+
+
+  <meta name="keywords" content="elixir,functional,">
 
 
 
@@ -50,21 +50,21 @@
 
 
 
-<link rel="canonical" href="https://parkdoyeon.github.io/ml/ml-2019-02-12-r-encodig/">
+<link rel="canonical" href="https://parkdoyeon.github.io/elixir/elixir-2020-02-03-elixir-functional/">
 
 
-<meta name="description" content="맥에서 설치하는 R은 기본 utf8설정인경우로 데이터 변환을 할 필요가 없지만, 윈도우는 그렇지 않을 수 있기 때문에 데이터 타입 추론과 변환이 필요한 경우가 있다. 이때 readr라이브러리의 guess_encoding 함수를 호출하면 데이터타입 추론이 아래와 같은 결과로 나온다. library(readr) guess_encoding(someday) # A">
-<meta name="keywords" content="machine-learning,R">
+<meta name="description" content="Elixir와 함수형 프로그래밍 OO has methods, FP has functions객체 지향적인 프로그래밍은 클래스 인스턴스 메소드를 사용하여 상태변경을 하게되는데, 몇가지 단점이 있다.  상태와 메소드간의 강한결합(coupling)이 발생한다. 실제세계에서는 객체지향적인 메소드 사용보다 서브클래싱을 하여 메소드를 공유하는 경우가 더 빈번하다. 역할">
+<meta name="keywords" content="elixir,functional">
 <meta property="og:type" content="article">
-<meta property="og:title" content="R - 인코딩 옵션 추론 및 한글 변환하기">
-<meta property="og:url" content="https://parkdoyeon.github.io/ml/ml-2019-02-12-r-encodig/index.html">
+<meta property="og:title" content="Elixir와 함수형 프로그래밍">
+<meta property="og:url" content="https://parkdoyeon.github.io/elixir/elixir-2020-02-03-elixir-functional/index.html">
 <meta property="og:site_name" content="Park Doyeon">
-<meta property="og:description" content="맥에서 설치하는 R은 기본 utf8설정인경우로 데이터 변환을 할 필요가 없지만, 윈도우는 그렇지 않을 수 있기 때문에 데이터 타입 추론과 변환이 필요한 경우가 있다. 이때 readr라이브러리의 guess_encoding 함수를 호출하면 데이터타입 추론이 아래와 같은 결과로 나온다. library(readr) guess_encoding(someday) # A">
+<meta property="og:description" content="Elixir와 함수형 프로그래밍 OO has methods, FP has functions객체 지향적인 프로그래밍은 클래스 인스턴스 메소드를 사용하여 상태변경을 하게되는데, 몇가지 단점이 있다.  상태와 메소드간의 강한결합(coupling)이 발생한다. 실제세계에서는 객체지향적인 메소드 사용보다 서브클래싱을 하여 메소드를 공유하는 경우가 더 빈번하다. 역할">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-08T02:58:52.618Z">
+<meta property="og:updated_time" content="2020-02-24T14:39:28.263Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="R - 인코딩 옵션 추론 및 한글 변환하기">
-<meta name="twitter:description" content="맥에서 설치하는 R은 기본 utf8설정인경우로 데이터 변환을 할 필요가 없지만, 윈도우는 그렇지 않을 수 있기 때문에 데이터 타입 추론과 변환이 필요한 경우가 있다. 이때 readr라이브러리의 guess_encoding 함수를 호출하면 데이터타입 추론이 아래와 같은 결과로 나온다. library(readr) guess_encoding(someday) # A">
+<meta name="twitter:title" content="Elixir와 함수형 프로그래밍">
+<meta name="twitter:description" content="Elixir와 함수형 프로그래밍 OO has methods, FP has functions객체 지향적인 프로그래밍은 클래스 인스턴스 메소드를 사용하여 상태변경을 하게되는데, 몇가지 단점이 있다.  상태와 메소드간의 강한결합(coupling)이 발생한다. 실제세계에서는 객체지향적인 메소드 사용보다 서브클래싱을 하여 메소드를 공유하는 경우가 더 빈번하다. 역할">
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=">
@@ -104,7 +104,7 @@
   
 
 
-    <title> R - 인코딩 옵션 추론 및 한글 변환하기 - Park Doyeon </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <title> Elixir와 함수형 프로그래밍 - Park Doyeon </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   </head>
 
   <body>
@@ -143,7 +143,7 @@
 
     <li>
     
-        <a href="/elixir">Elixir</a>
+        <a href="/elixir" class="on">Elixir</a>
     
     </li>
 
@@ -167,7 +167,7 @@
 
     <li>
     
-        <a href="/ml" class="on">ML</a>
+        <a href="/ml">ML</a>
     
     </li>
 
@@ -201,12 +201,12 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          R - 인코딩 옵션 추론 및 한글 변환하기
+          Elixir와 함수형 프로그래밍
         
       </h1>
 
       <time class="post-time">
-          Feb 12 2019
+          Feb 3 2020
       </time>
     </header>
 
@@ -214,16 +214,24 @@
 
     
             <div class="post-content">
-            <p>맥에서 설치하는 R은 기본 utf8설정인경우로 데이터 변환을 할 필요가 없지만, 윈도우는 그렇지 않을 수 있기 때문에 데이터 타입 추론과 변환이 필요한 경우가 있다. 이때 readr라이브러리의 guess_encoding 함수를 호출하면 데이터타입 추론이 아래와 같은 결과로 나온다.</p>
-<pre><code class="r">library(readr)
-guess_encoding(someday)
-# A tibble: 1 x 2
-  encoding confidence
-1 ASCII             1</code></pre>
-<p>이때, 한국어 데이타의 경우 kormaps2014 라이브러리의 changeCode 함수를 통해 타입을 쉽게 변환할 수 있다.</p>
-<pre><code class="r">library(kormaps2014)
-encoded &lt;- changeCode(someday, from=&quot;ASCII&quot;, `=&quot;CP949&quot;)</code></pre>
+            <p>Elixir와 함수형 프로그래밍</p>
+<h1 id="OO-has-methods-FP-has-functions"><a href="#OO-has-methods-FP-has-functions" class="headerlink" title="OO has methods, FP has functions"></a>OO has methods, FP has functions</h1><p>객체 지향적인 프로그래밍은 클래스 인스턴스 메소드를 사용하여 상태변경을 하게되는데, 몇가지 단점이 있다.</p>
+<ol>
+<li>상태와 메소드간의 강한결합(coupling)이 발생한다. 실제세계에서는 객체지향적인 메소드 사용보다 서브클래싱을 하여 메소드를 공유하는 경우가 더 빈번하다.</li>
+<li>역할에 대한 혼란을 불러일으킨다. 메소드의 다른 역할이 필요해질 때 클래스 확장이나 서브클래싱을 사용하는데, 이 또한 강항 결합을 야기한다.</li>
+<li>동시성 환경에서 오브젝트의 상태값을 예기치 못하게 변형할 수 있다.</li>
+</ol>
+<h1 id="Functions-and-State"><a href="#Functions-and-State" class="headerlink" title="Functions and State"></a>Functions and State</h1><p>함수형 프로그래밍은 본래의 상태값을 절대 변경하지 않는다. 상태는 변형되지 않으며, 오직 또 다른 새로운 상태를 반환할 뿐이다. 때문에 함수는 pure하다고 말할 수 있다. 다시말해, 함수는 쉽게 조합되거나 재사용될 수 있다.</p>
+<p>엘릭서의 주된 도구는 함수의 조합(파이프 오퍼레이터의 사용 등의…)이나 패턴매칭(다른 파라미터를 갖는 같은 이름의 여러의 함수를 작성하는 것)이다.<br>파이프 오퍼레이터와 패턴매칭 조합을 통해 자연스럽게 다음 연산 수행되기 때문에, 조건문을 최대한 사용하지 않는 방향에서 코드작성이 가능하다.<br>조건문이 많아지면 코드작성이 어렵고 가독성이 떨어지므로, 조건문을 작성하지 않음으로서 좋은 설계가 가능하다.</p>
+<p>예를들어, 아래와 같이 조건문을 사용하지 않고도<br>함수 파라미터가 같은 두개의 값을 인자로 취했는지 아닌지 판단할수도 있다.<br>s</p>
+<pre><code>@doc “&quot;&quot;
+a function that takes two parameters.
+It should return `true` if the parameters are the same, `false` others.
+You aren&#39;t allowed to use any conditional logic, so you&#39;ll have to rely on pattern matching.
+“&quot;&quot;
 
+def equal(a, a), do: true
+def equal(_, _), do: false</code></pre>
             </div>
           
 
@@ -231,9 +239,9 @@ encoded &lt;- changeCode(someday, from=&quot;ASCII&quot;, `=&quot;CP949&quot;)</
       <footer class="post-footer">
         <div class="post-tags">
           
-            <a href="/tags/machine-learning/">machine-learning</a>
+            <a href="/tags/elixir/">elixir</a>
           
-            <a href="/tags/r/">R</a>
+            <a href="/tags/functional/">functional</a>
           
         </div>
 
@@ -241,15 +249,9 @@ encoded &lt;- changeCode(someday, from=&quot;ASCII&quot;, `=&quot;CP949&quot;)</
         
   <nav class="post-nav">
     
-      <a class="prev" href="/sql/sql-2019-02-12-datacheck/">
-        <i class="iconfont icon-left"></i>
-        <span class="prev-text nav-default">데이터별 갯수 확인 쿼리</span>
-        <span class="prev-text nav-mobile">Prev</span>
-      </a>
     
-    
-      <a class="next" href="/ml/ml-2019-02-12-r-factor/">
-        <span class="next-text nav-default">R - factor 자료형에 대하여</span>
+      <a class="next" href="/dev-env/dev-env-2020-02-01-asdf/">
+        <span class="next-text nav-default">Mac OS에서 asdf을 통한 언어 버전관리 + elixir 설치하기</span>
         <span class="prev-text nav-mobile">Next</span>
         <i class="iconfont icon-right"></i>
       </a>
@@ -301,8 +303,8 @@ encoded &lt;- changeCode(someday, from=&quot;ASCII&quot;, `=&quot;CP949&quot;)</
 
 <script type="text/javascript">
   var disqus_shortname = 'parkdoyeon';
-  var disqus_identifier = 'ml/ml-2019-02-12-r-encodig/';
-  var disqus_url = 'https://parkdoyeon.github.io/ml/ml-2019-02-12-r-encodig/index.html';
+  var disqus_identifier = 'elixir/elixir-2020-02-03-elixir-functional/';
+  var disqus_url = 'https://parkdoyeon.github.io/elixir/elixir-2020-02-03-elixir-functional/index.html';
 
   
   var disqus_config = function () {
