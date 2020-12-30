@@ -1,0 +1,571 @@
+<!DOCTYPE html><html><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><style id="typography.js">html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block}audio:not([controls]){display:none;height:0}progress{vertical-align:baseline}[hidden],template{display:none}a{background-color:transparent;-webkit-text-decoration-skip:objects}a:active,a:hover{outline-width:0}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:inherit;font-weight:bolder}dfn{font-style:italic}h1{font-size:2em;margin:.67em 0}mark{background-color:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}img{border-style:none}svg:not(:root){overflow:hidden}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}figure{margin:1em 40px}hr{box-sizing:content-box;height:0;overflow:visible}button,input,optgroup,select,textarea{font:inherit;margin:0}optgroup{font-weight:700}button,input{overflow:visible}button,select{text-transform:none}[type=reset],[type=submit],button,html [type=button]{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-cancel-button,[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-input-placeholder{color:inherit;opacity:.54}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}html{font:112.5%/1.722 'Lato',sans-serif;box-sizing:border-box;overflow-y:scroll;}*{box-sizing:inherit;}*:before{box-sizing:inherit;}*:after{box-sizing:inherit;}body{color:hsla(0,0%,0%,0.8);font-family:'Lato',sans-serif;font-weight:400;word-wrap:break-word;font-kerning:normal;-moz-font-feature-settings:"kern", "liga", "clig", "calt";-ms-font-feature-settings:"kern", "liga", "clig", "calt";-webkit-font-feature-settings:"kern", "liga", "clig", "calt";font-feature-settings:"kern", "liga", "clig", "calt";}img{max-width:100%;margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.722rem;}h1{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.722rem;color:hsla(0,0%,0%,0.9);font-family:'Neuton',sans-serif;font-weight:700;text-rendering:optimizeLegibility;font-size:2rem;line-height:1.1;}h2{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.722rem;color:hsla(0,0%,0%,0.9);font-family:'Neuton',sans-serif;font-weight:700;text-rendering:optimizeLegibility;font-size:1.51572rem;line-height:1.1;}h3{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.722rem;color:hsla(0,0%,0%,0.9);font-family:'Neuton',sans-serif;font-weight:700;text-rendering:optimizeLegibility;font-size:1.31951rem;line-height:1.1;}h4{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.722rem;color:hsla(0,0%,0%,0.9);font-family:'Neuton',sans-serif;font-weight:700;text-rendering:optimizeLegibility;font-size:1rem;line-height:1.1;}h5{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.722rem;color:hsla(0,0%,0%,0.9);font-family:'Neuton',sans-serif;font-weight:700;text-rendering:optimizeLegibility;font-size:0.87055rem;line-height:1.1;}h6{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.722rem;color:hsla(0,0%,0%,0.9);font-family:'Neuton',sans-serif;font-weight:700;text-rendering:optimizeLegibility;font-size:0.81225rem;line-height:1.1;}hgroup{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.722rem;}ul{margin-left:1.722rem;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.722rem;list-style-position:outside;list-style-image:none;}ol{margin-left:1.722rem;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.722rem;list-style-position:outside;list-style-image:none;}dl{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.722rem;}dd{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.722rem;}p{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.722rem;}figure{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.722rem;}pre{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.722rem;font-size:0.85rem;line-height:1.722rem;}table{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.722rem;font-size:1rem;line-height:1.722rem;border-collapse:collapse;width:100%;}fieldset{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.722rem;}blockquote{margin-left:0;margin-right:1.722rem;margin-top:0;padding-bottom:0;padding-left:1.93725rem;padding-right:0;padding-top:0;margin-bottom:1.722rem;font-size:1.1487rem;line-height:1.722rem;color:hsla(0,0%,0%,0.59);border-left:0.64575rem solid;border-color:#612423;}form{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.722rem;}noscript{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.722rem;}iframe{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.722rem;}hr{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:calc(1.722rem - 1px);background:hsla(0,0%,0%,0.2);border:none;height:1px;}address{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.722rem;}b{font-weight:700;}strong{font-weight:700;}dt{font-weight:700;}th{font-weight:700;}li{margin-bottom:calc(1.722rem / 2);}ol li{padding-left:0;}ul li{padding-left:0;}li > ol{margin-left:1.722rem;margin-bottom:calc(1.722rem / 2);margin-top:calc(1.722rem / 2);}li > ul{margin-left:1.722rem;margin-bottom:calc(1.722rem / 2);margin-top:calc(1.722rem / 2);}blockquote *:last-child{margin-bottom:0;}li *:last-child{margin-bottom:0;}p *:last-child{margin-bottom:0;}li > p{margin-bottom:calc(1.722rem / 2);}code{font-size:0.85rem;line-height:1.722rem;}kbd{font-size:0.85rem;line-height:1.722rem;}samp{font-size:0.85rem;line-height:1.722rem;}abbr{border-bottom:1px dotted hsla(0,0%,0%,0.5);cursor:help;}acronym{border-bottom:1px dotted hsla(0,0%,0%,0.5);cursor:help;}abbr[title]{border-bottom:1px dotted hsla(0,0%,0%,0.5);cursor:help;text-decoration:none;}thead{text-align:left;}td,th{text-align:left;border-bottom:1px solid hsla(0,0%,0%,0.12);font-feature-settings:"tnum";-moz-font-feature-settings:"tnum";-ms-font-feature-settings:"tnum";-webkit-font-feature-settings:"tnum";padding-left:1.148rem;padding-right:1.148rem;padding-top:0.861rem;padding-bottom:calc(0.861rem - 1px);}th:first-child,td:first-child{padding-left:0;}th:last-child,td:last-child{padding-right:0;}a{color:#4665b7;text-decoration:none;}a:hover,a:active{color:hsla(0,0%,0%,0.8);}h1,h2,h3,h4,h5,h6{margin-top:3.444rem;}blockquote > :last-child{margin-bottom:0;}blockquote cite{font-size:1rem;line-height:1.722rem;color:hsla(0,0%,0%,0.8);font-weight:400;}blockquote cite:before{content:"— ";}@media only screen and (max-width:480px){blockquote{margin-left:-1.2915rem;margin-right:0;border-left:0.32288rem solid;border-color:#612423;padding-left:0.96862rem;}}</style><link href="//fonts.googleapis.com/css?family=Neuton:700|Lato:400,400i,700" rel="stylesheet" type="text/css"/><title data-react-helmet="true">ElasticSearch 7.2에 한국어 분석기 Nori 플러그인 설치하기 | DEVLOG</title><meta data-react-helmet="true" name="description" content="엘라스틱서치가 검색엔진으로서 한국어를 올바르게 인식하도록 하려면 한국어 분석기가 필요하다. 엘라스틱서치 6.4부터 공식적으로 제공하는 한국어 분석 플러그인 Nori…"/><meta data-react-helmet="true" name="image" content="https://parkdoyeon.github.io/"/><meta data-react-helmet="true" property="og:url" content="https://parkdoyeon.github.io//elastic-search-7-2-에-한국어-분석기-nori-플러그인-설치하기"/><meta data-react-helmet="true" property="og:type" content="article"/><meta data-react-helmet="true" property="og:title" content="ElasticSearch 7.2에 한국어 분석기 Nori 플러그인 설치하기"/><meta data-react-helmet="true" property="og:description" content="엘라스틱서치가 검색엔진으로서 한국어를 올바르게 인식하도록 하려면 한국어 분석기가 필요하다. 엘라스틱서치 6.4부터 공식적으로 제공하는 한국어 분석 플러그인 Nori…"/><meta data-react-helmet="true" property="og:image" content="https://parkdoyeon.github.io/"/><meta data-react-helmet="true" property="fb:app_id" content=""/><meta data-react-helmet="true" name="twitter:card" content="summary_large_image"/><meta data-react-helmet="true" name="twitter:creator" content=""/><meta data-react-helmet="true" name="twitter:title" content="ElasticSearch 7.2에 한국어 분석기 Nori 플러그인 설치하기"/><meta data-react-helmet="true" name="twitter:description" content="엘라스틱서치가 검색엔진으로서 한국어를 올바르게 인식하도록 하려면 한국어 분석기가 필요하다. 엘라스틱서치 6.4부터 공식적으로 제공하는 한국어 분석 플러그인 Nori…"/><meta data-react-helmet="true" name="twitter:image" content="https://parkdoyeon.github.io/"/><script data-react-helmet="true" type="application/ld+json">[{"@context":"http://schema.org","@type":"WebSite","url":"https://parkdoyeon.github.io/","name":"ElasticSearch 7.2에 한국어 분석기 Nori 플러그인 설치하기","alternateName":"devlog"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://parkdoyeon.github.io//elastic-search-7-2-에-한국어-분석기-nori-플러그인-설치하기","name":"ElasticSearch 7.2에 한국어 분석기 Nori 플러그인 설치하기","image":"https://parkdoyeon.github.io/"}}]},{"@context":"http://schema.org","@type":"BlogPosting","url":"https://parkdoyeon.github.io/","name":"ElasticSearch 7.2에 한국어 분석기 Nori 플러그인 설치하기","alternateName":"devlog","headline":"ElasticSearch 7.2에 한국어 분석기 Nori 플러그인 설치하기","image":{"@type":"ImageObject","url":"https://parkdoyeon.github.io/"},"description":"엘라스틱서치가 검색엔진으로서 한국어를 올바르게 인식하도록 하려면 한국어 분석기가 필요하다. 엘라스틱서치 6.4부터 공식적으로 제공하는 한국어 분석 플러그인 Nori…"}]</script><style data-href="/styles.15b6dda261ecea92380b.css">footer{background-color:rgba(0,0,0,.9);padding:20px 0 40px;color:hsla(0,0%,100%,.7)}footer .Footer-module--container--3Dvn1{display:grid;grid-template-columns:50% 50%;margin-left:auto;margin-right:auto;max-width:50rem;padding:20px}footer a{color:#ddd;margin:10px}footer a:hover{color:#fff}footer .Footer-module--copyright--2uglW{text-align:right}header{display:flex;justify-content:space-between;align-items:center;padding:1rem;position:-webkit-sticky;position:sticky;top:0;background:hsla(0,0%,100%,.75);-webkit-backdrop-filter:blur(7px);backdrop-filter:blur(7px);z-index:9;margin-left:auto;margin-right:auto;height:70px}header a{text-decoration:none;color:#3c4856;font-size:1.1rem;margin-top:0}header h1{margin-top:5px}header nav a{color:#757575;transition:color .2s ease;text-decoration:none;display:inline-block;position:relative;font-size:16px}header nav a:hover{color:#4f647d}header nav a strong{margin:1px;color:#4f647d;font-size:.8rem}header .Header-module--activeNav--25noA{color:#4f647d;font-weight:700}.Header-module--main-nav--2C0n8{display:flex;list-style:none;padding:0;margin-top:30px;overflow:auto;overflow:-moz-scrollbars-none;scrollbar-width:none;-ms-overflow-style:none!important}.Header-module--main-nav--2C0n8::-webkit-scrollbar{width:0!important}.Header-module--main-nav--2C0n8 li{font-size:1.3rem}.Header-module--main-nav--2C0n8 li+li{margin-left:1.5rem}@media (max-width:1000px){header{display:block;height:120px}nav{margin-top:-20px}nav ul{margin:0}}@media (max-width:768px){header strong{display:none}.Header-module--main-nav--2C0n8 li+li{margin-left:1rem}}@media (max-width:520px){header nav a{font-size:.7rem;border:1px solid #eee;padding:2px;border-radius:5px}}body{margin:0;background:#fafbfb}h1,h2,h3,h4,h5,h6{margin-top:1rem}main{margin-left:auto;margin-right:auto;max-width:50rem;display:flex;flex-direction:column;min-height:100vh;padding:20px}article{height:90%}article:hover{box-shadow:0 11px 22px 12px #eee;border-radius:5px}.Bio-module--avatar--v_AB0{border-radius:50%;width:70px;float:left;margin:5px 20px}.PostTags-module--tag-container--ksSgQ a{text-decoration:none;display:inline-grid}.PostTags-module--tag-container--ksSgQ span{font-size:.8rem;font-weight:500;padding:.3rem .6rem;margin:.3rem;border-radius:3px;background:rgba(141,154,169,.21);color:rgba(0,0,0,.54)}.SocialLinks-module--social-links--1RDpJ{position:fixed;top:100px;left:30px;flex-direction:row;flex-wrap:wrap;justify-content:center;align-content:center;align-items:center;margin:15px 0}.SocialLinks-module--social-links--1RDpJ div{margin:5px 15px;cursor:pointer}.SocialLinks-module--share-count--3wXKp{text-align:center}@media (max-width:1200px){.SocialLinks-module--social-links--1RDpJ{position:relative;top:0}.SocialLinks-module--social-links--1RDpJ div{display:inline-grid;position:relative}}.post-module--post-meta--1ci95{color:#757575;margin-bottom:.5rem;font-size:.7rem}.post-module--pagination--1F-V0{display:flex;flex-wrap:wrap;justify-content:space-between;list-style:none;padding:0;margin-top:4rem}code[class*=language-],pre[class*=language-]{color:#f8f8f2;background:none;text-shadow:0 1px rgba(0,0,0,.3);font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto;border-radius:.3em}:not(pre)>code[class*=language-],pre[class*=language-]{background:#272822}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#708090}.token.punctuation{color:#f8f8f2}.namespace{opacity:.7}.token.constant,.token.deleted,.token.property,.token.symbol,.token.tag{color:#f92672}.token.boolean,.token.number{color:#ae81ff}.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string{color:#a6e22e}.language-css .token.string,.style .token.string,.token.entity,.token.operator,.token.url,.token.variable{color:#f8f8f2}.token.atrule,.token.attr-value,.token.class-name,.token.function{color:#e6db74}.token.keyword{color:#66d9ef}.token.important,.token.regex{color:#fd971f}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.PostsListing-module--article-list--3ReSK{display:grid;grid-template-columns:50% 50%}.PostsListing-module--article-list--3ReSK .PostsListing-module--article-box--3M6_I{margin-bottom:30px;display:inline-block;width:auto;transition:all .25s ease}.PostsListing-module--article-list--3ReSK .PostsListing-module--article-box--3M6_I:hover{cursor:pointer}.PostsListing-module--article-list--3ReSK .PostsListing-module--article-box--3M6_I .PostsListing-module--right--2MxCO{padding:15px;color:#3c4856;margin-top:-20px}.PostsListing-module--article-list--3ReSK .PostsListing-module--article-box--3M6_I .PostsListing-module--right--2MxCO .PostsListing-module--meta--3cFzL{margin-top:-15px;margin-bottom:20px;font-size:.7rem}@media (max-width:768px){.PostsListing-module--article-list--3ReSK{grid-template-columns:100%}}</style><meta name="generator" content="Gatsby 2.19.49"/><style type="text/css">.gatsby-resp-image-image{width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;color:transparent;}</style><style type="text/css">
+    .anchor {
+      float: left;
+      padding-right: 4px;
+      margin-left: -20px;
+    }
+    h1 .anchor svg,
+    h2 .anchor svg,
+    h3 .anchor svg,
+    h4 .anchor svg,
+    h5 .anchor svg,
+    h6 .anchor svg {
+      visibility: hidden;
+    }
+    h1:hover .anchor svg,
+    h2:hover .anchor svg,
+    h3:hover .anchor svg,
+    h4:hover .anchor svg,
+    h5:hover .anchor svg,
+    h6:hover .anchor svg,
+    h1 .anchor:focus svg,
+    h2 .anchor:focus svg,
+    h3 .anchor:focus svg,
+    h4 .anchor:focus svg,
+    h5 .anchor:focus svg,
+    h6 .anchor:focus svg {
+      visibility: visible;
+    }
+  </style><script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+      var hash = window.decodeURI(location.hash.replace('#', ''))
+      if (hash !== '') {
+        var element = document.getElementById(hash)
+        if (element) {
+          var offset = element.offsetTop
+          // Wait for the browser to finish rendering before scrolling.
+          setTimeout((function() {
+            window.scrollTo(0, offset - 0)
+          }), 0)
+        }
+      }
+    })
+  </script><link rel="preconnect dns-prefetch" href="https://www.google-analytics.com"/><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="manifest" href="/manifest.webmanifest"/><meta name="theme-color" content="#c62828"/><link rel="apple-touch-icon" sizes="48x48" href="/logos/logo-48.png"/><link rel="apple-touch-icon" sizes="1024x1024" href="/logos/logo-1024.png"/><link rel="alternate" type="application/rss+xml" title="/rss.xml" href="/rss.xml"/><link as="script" rel="preload" href="/styles-eac94caeae57308993bd.js"/><link as="script" rel="preload" href="/component---src-templates-post-js-8aadf6ce712350669c97.js"/><link as="script" rel="preload" href="/commons-dce8f697ab1752d3b5da.js"/><link as="script" rel="preload" href="/app-a75d49997f66cd18f459.js"/><link as="script" rel="preload" href="/webpack-runtime-2018ec7ce49a6cfc0fb8.js"/><link as="fetch" rel="preload" href="/page-data/elastic-search-7-2-에-한국어-분석기-nori-플러그인-설치하기/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><header><h1><a href="/">DEVLOG</a></h1><nav><ul class="Header-module--main-nav--2C0n8"><li><a href="/c">C#<strong> (<!-- -->27<!-- -->)</strong></a></li><li><a href="/dev-env">Dev-Env<strong> (<!-- -->14<!-- -->)</strong></a></li><li><a href="/elk">ELK<strong> (<!-- -->10<!-- -->)</strong></a></li><li><a href="/elixir">Elixir<strong> (<!-- -->8<!-- -->)</strong></a></li><li><a href="/java-script">JavaScript<strong> (<!-- -->4<!-- -->)</strong></a></li><li><a href="/ml">ML<strong> (<!-- -->6<!-- -->)</strong></a></li><li><a href="/phython">Phython<strong> (<!-- -->8<!-- -->)</strong></a></li><li><a href="/sql">SQL<strong> (<!-- -->5<!-- -->)</strong></a></li><li><a href="/web">Web<strong> (<!-- -->5<!-- -->)</strong></a></li></ul></nav></header><main><div><h1>ElasticSearch 7.2에 한국어 분석기 Nori 플러그인 설치하기</h1><p class="post-module--post-meta--1ci95">June 26, 2019<!-- --> — <!-- -->6<!-- --> Min Read<!-- --> </p><div class="post-module--post-meta--1ci95"><div class="PostTags-module--tag-container--ksSgQ"><a href="/tags/elasticsearch"><span>elasticsearch</span></a><a href="/tags/nlp"><span>nlp</span></a><a href="/tags/nori"><span>nori</span></a></div></div><div><p>엘라스틱서치가 검색엔진으로서 한국어를 올바르게 인식하도록 하려면 한국어 분석기가 필요하다. 엘라스틱서치 6.4부터 공식적으로 제공하는 한국어 분석 플러그인 Nori는 기본 플러그인이 아니므로 번거롭지만 별도로 설치해줘야한다. 나는 도커로 서버를 운용하기때문에, 엘라스틱서치 공식 도커 이미지에 플러그인만 설치해서 다시 빌드했다.</p>
+<div class="gatsby-highlight" data-language="dockerfile"><pre class="language-dockerfile"><code class="language-dockerfile"><span class="token keyword">FROM</span> docker.elastic.co/elasticsearch/elasticsearch<span class="token punctuation">:</span>7.2.0
+<span class="token keyword">RUN</span> <span class="token punctuation">[</span><span class="token string">"bin/elasticsearch-plugin"</span><span class="token punctuation">,</span> <span class="token string">"install"</span><span class="token punctuation">,</span> <span class="token string">"analysis-nori"</span><span class="token punctuation">]</span>
+<span class="token keyword">CMD</span> bin/elasticsearch</code></pre></div>
+<p>설치후에는 플러그인 동작을 노리에서 제공하는 기본 분석기로 테스트를 해볼 수 있다.</p>
+<div class="gatsby-highlight" data-language="json"><pre class="language-json"><code class="language-json">POST _analyze
+<span class="token punctuation">{</span>
+  <span class="token property">"explain"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> 
+  <span class="token property">"analyzer"</span><span class="token operator">:</span> <span class="token string">"nori"</span><span class="token punctuation">,</span>
+  <span class="token property">"text"</span><span class="token operator">:</span> <span class="token string">"&lt;p>젤다의전설은 링크가 주인공이다.&lt;/p>"</span><span class="token punctuation">,</span>
+  <span class="token property">"attributes"</span> <span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"posType"</span><span class="token punctuation">,</span> <span class="token string">"leftPOS"</span><span class="token punctuation">,</span> <span class="token string">"rightPOS"</span><span class="token punctuation">,</span> <span class="token string">"morphemes"</span><span class="token punctuation">,</span> <span class="token string">"reading"</span><span class="token punctuation">]</span> <span class="token comment">//해당 컬럼이 없으면 전체 필드가 다 노출된다.</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// Response 200</span>
+<span class="token punctuation">{</span>
+  <span class="token property">"detail"</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"custom_analyzer"</span> <span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token property">"analyzer"</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">"name"</span> <span class="token operator">:</span> <span class="token string">"org.apache.lucene.analysis.ko.KoreanAnalyzer"</span><span class="token punctuation">,</span>
+      <span class="token property">"tokens"</span> <span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span>
+          <span class="token property">"token"</span> <span class="token operator">:</span> <span class="token string">"p"</span><span class="token punctuation">,</span>
+          <span class="token property">"start_offset"</span> <span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+          <span class="token property">"end_offset"</span> <span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+          <span class="token property">"type"</span> <span class="token operator">:</span> <span class="token string">"word"</span><span class="token punctuation">,</span>
+          <span class="token property">"position"</span> <span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+          <span class="token property">"leftPOS"</span> <span class="token operator">:</span> <span class="token string">"SL(Foreign language)"</span><span class="token punctuation">,</span>
+          <span class="token property">"morphemes"</span> <span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+          <span class="token property">"posType"</span> <span class="token operator">:</span> <span class="token string">"MORPHEME"</span><span class="token punctuation">,</span>
+          <span class="token property">"reading"</span> <span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+          <span class="token property">"rightPOS"</span> <span class="token operator">:</span> <span class="token string">"SL(Foreign language)"</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+          <span class="token property">"token"</span> <span class="token operator">:</span> <span class="token string">"젤다"</span><span class="token punctuation">,</span>
+          <span class="token property">"start_offset"</span> <span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+          <span class="token property">"end_offset"</span> <span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+          <span class="token property">"type"</span> <span class="token operator">:</span> <span class="token string">"word"</span><span class="token punctuation">,</span>
+          <span class="token property">"position"</span> <span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+          <span class="token property">"leftPOS"</span> <span class="token operator">:</span> <span class="token string">"NNP(Proper Noun)"</span><span class="token punctuation">,</span>
+          <span class="token property">"morphemes"</span> <span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+          <span class="token property">"posType"</span> <span class="token operator">:</span> <span class="token string">"MORPHEME"</span><span class="token punctuation">,</span>
+          <span class="token property">"reading"</span> <span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+          <span class="token property">"rightPOS"</span> <span class="token operator">:</span> <span class="token string">"NNP(Proper Noun)"</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+          <span class="token property">"token"</span> <span class="token operator">:</span> <span class="token string">"전설"</span><span class="token punctuation">,</span>
+          <span class="token property">"start_offset"</span> <span class="token operator">:</span> <span class="token number">6</span><span class="token punctuation">,</span>
+          <span class="token property">"end_offset"</span> <span class="token operator">:</span> <span class="token number">8</span><span class="token punctuation">,</span>
+          <span class="token property">"type"</span> <span class="token operator">:</span> <span class="token string">"word"</span><span class="token punctuation">,</span>
+          <span class="token property">"position"</span> <span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+          <span class="token property">"leftPOS"</span> <span class="token operator">:</span> <span class="token string">"NNG(General Noun)"</span><span class="token punctuation">,</span>
+          <span class="token property">"morphemes"</span> <span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+          <span class="token property">"posType"</span> <span class="token operator">:</span> <span class="token string">"MORPHEME"</span><span class="token punctuation">,</span>
+          <span class="token property">"reading"</span> <span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+          <span class="token property">"rightPOS"</span> <span class="token operator">:</span> <span class="token string">"NNG(General Noun)"</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+          <span class="token property">"token"</span> <span class="token operator">:</span> <span class="token string">"링크"</span><span class="token punctuation">,</span>
+          <span class="token property">"start_offset"</span> <span class="token operator">:</span> <span class="token number">10</span><span class="token punctuation">,</span>
+          <span class="token property">"end_offset"</span> <span class="token operator">:</span> <span class="token number">12</span><span class="token punctuation">,</span>
+          <span class="token property">"type"</span> <span class="token operator">:</span> <span class="token string">"word"</span><span class="token punctuation">,</span>
+          <span class="token property">"position"</span> <span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+          <span class="token property">"leftPOS"</span> <span class="token operator">:</span> <span class="token string">"NNG(General Noun)"</span><span class="token punctuation">,</span>
+          <span class="token property">"morphemes"</span> <span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+          <span class="token property">"posType"</span> <span class="token operator">:</span> <span class="token string">"MORPHEME"</span><span class="token punctuation">,</span>
+          <span class="token property">"reading"</span> <span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+          <span class="token property">"rightPOS"</span> <span class="token operator">:</span> <span class="token string">"NNG(General Noun)"</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+          <span class="token property">"token"</span> <span class="token operator">:</span> <span class="token string">"주인"</span><span class="token punctuation">,</span>
+          <span class="token property">"start_offset"</span> <span class="token operator">:</span> <span class="token number">14</span><span class="token punctuation">,</span>
+          <span class="token property">"end_offset"</span> <span class="token operator">:</span> <span class="token number">16</span><span class="token punctuation">,</span>
+          <span class="token property">"type"</span> <span class="token operator">:</span> <span class="token string">"word"</span><span class="token punctuation">,</span>
+          <span class="token property">"position"</span> <span class="token operator">:</span> <span class="token number">7</span><span class="token punctuation">,</span>
+          <span class="token property">"leftPOS"</span> <span class="token operator">:</span> <span class="token string">"NNG(General Noun)"</span><span class="token punctuation">,</span>
+          <span class="token property">"morphemes"</span> <span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+          <span class="token property">"posType"</span> <span class="token operator">:</span> <span class="token string">"MORPHEME"</span><span class="token punctuation">,</span>
+          <span class="token property">"reading"</span> <span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+          <span class="token property">"rightPOS"</span> <span class="token operator">:</span> <span class="token string">"NNG(General Noun)"</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+          <span class="token property">"token"</span> <span class="token operator">:</span> <span class="token string">"공"</span><span class="token punctuation">,</span>
+          <span class="token property">"start_offset"</span> <span class="token operator">:</span> <span class="token number">16</span><span class="token punctuation">,</span>
+          <span class="token property">"end_offset"</span> <span class="token operator">:</span> <span class="token number">17</span><span class="token punctuation">,</span>
+          <span class="token property">"type"</span> <span class="token operator">:</span> <span class="token string">"word"</span><span class="token punctuation">,</span>
+          <span class="token property">"position"</span> <span class="token operator">:</span> <span class="token number">8</span><span class="token punctuation">,</span>
+          <span class="token property">"leftPOS"</span> <span class="token operator">:</span> <span class="token string">"NNG(General Noun)"</span><span class="token punctuation">,</span>
+          <span class="token property">"morphemes"</span> <span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+          <span class="token property">"posType"</span> <span class="token operator">:</span> <span class="token string">"MORPHEME"</span><span class="token punctuation">,</span>
+          <span class="token property">"reading"</span> <span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+          <span class="token property">"rightPOS"</span> <span class="token operator">:</span> <span class="token string">"NNG(General Noun)"</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+          <span class="token property">"token"</span> <span class="token operator">:</span> <span class="token string">"이"</span><span class="token punctuation">,</span>
+          <span class="token property">"start_offset"</span> <span class="token operator">:</span> <span class="token number">17</span><span class="token punctuation">,</span>
+          <span class="token property">"end_offset"</span> <span class="token operator">:</span> <span class="token number">18</span><span class="token punctuation">,</span>
+          <span class="token property">"type"</span> <span class="token operator">:</span> <span class="token string">"word"</span><span class="token punctuation">,</span>
+          <span class="token property">"position"</span> <span class="token operator">:</span> <span class="token number">9</span><span class="token punctuation">,</span>
+          <span class="token property">"leftPOS"</span> <span class="token operator">:</span> <span class="token string">"VCP(Positive designator)"</span><span class="token punctuation">,</span>
+          <span class="token property">"morphemes"</span> <span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+          <span class="token property">"posType"</span> <span class="token operator">:</span> <span class="token string">"MORPHEME"</span><span class="token punctuation">,</span>
+          <span class="token property">"reading"</span> <span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+          <span class="token property">"rightPOS"</span> <span class="token operator">:</span> <span class="token string">"VCP(Positive designator)"</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+          <span class="token property">"token"</span> <span class="token operator">:</span> <span class="token string">"p"</span><span class="token punctuation">,</span>
+          <span class="token property">"start_offset"</span> <span class="token operator">:</span> <span class="token number">22</span><span class="token punctuation">,</span>
+          <span class="token property">"end_offset"</span> <span class="token operator">:</span> <span class="token number">23</span><span class="token punctuation">,</span>
+          <span class="token property">"type"</span> <span class="token operator">:</span> <span class="token string">"word"</span><span class="token punctuation">,</span>
+          <span class="token property">"position"</span> <span class="token operator">:</span> <span class="token number">11</span><span class="token punctuation">,</span>
+          <span class="token property">"leftPOS"</span> <span class="token operator">:</span> <span class="token string">"SL(Foreign language)"</span><span class="token punctuation">,</span>
+          <span class="token property">"morphemes"</span> <span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+          <span class="token property">"posType"</span> <span class="token operator">:</span> <span class="token string">"MORPHEME"</span><span class="token punctuation">,</span>
+          <span class="token property">"reading"</span> <span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+          <span class="token property">"rightPOS"</span> <span class="token operator">:</span> <span class="token string">"SL(Foreign language)"</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<h1 id="커스터마이즈-하기"><a href="#%EC%BB%A4%EC%8A%A4%ED%84%B0%EB%A7%88%EC%9D%B4%EC%A6%88-%ED%95%98%EA%B8%B0" aria-label="커스터마이즈 하기 permalink" class="anchor"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>커스터마이즈 하기</h1>
+<p>검색결과를 코드로직에서 가공할수도 있지만, 커스텀 분석기를 만들어 더 효율적으로 결과의 내용을 변경할 수 있다. 커스텀 분석기가 잘 적용되는지 테스트를 하기위해 직접 데이터가 있는 인덱스에 붙이지 않고 샘플로 <code class="language-text">my-custom-analyzer</code>인덱스를 생성한다.</p>
+<div class="gatsby-highlight" data-language="json"><pre class="language-json"><code class="language-json">PUT my-custom-analyzer
+<span class="token punctuation">{</span>
+    <span class="token property">"settings"</span><span class="token operator">:</span><span class="token punctuation">{</span>
+        <span class="token property">"number_of_shards"</span><span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+        <span class="token property">"number_of_replicas"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+        <span class="token property">"analysis"</span><span class="token operator">:</span><span class="token punctuation">{</span>
+            <span class="token property">"tokenizer"</span><span class="token operator">:</span><span class="token punctuation">{</span>
+                <span class="token property">"kr_bbs_tokenizer"</span><span class="token operator">:</span><span class="token punctuation">{</span>
+                    <span class="token property">"type"</span><span class="token operator">:</span><span class="token string">"nori_tokenizer"</span><span class="token punctuation">,</span>
+                    <span class="token property">"decompound_mode"</span><span class="token operator">:</span><span class="token string">"mixed"</span><span class="token punctuation">,</span>
+                    <span class="token comment">//</span><span class="token property">"user_dictionary_rules"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"젤다의전설 젤다 의 전설"</span><span class="token punctuation">,</span> <span class="token string">"성남시 성남 시"</span><span class="token punctuation">,</span> <span class="token string">"링크"</span><span class="token punctuation">]</span><span class="token punctuation">,</span> 배열로 등록할수도 있고<span class="token punctuation">,</span> 아래와 같이 직접 파일로 등록할 수도 있다.
+                    <span class="token property">"user_dictionary"</span><span class="token operator">:</span><span class="token string">"user_dictionary.txt"</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token property">"analyzer"</span><span class="token operator">:</span><span class="token punctuation">{</span>
+                <span class="token property">"nori"</span><span class="token operator">:</span><span class="token punctuation">{</span>
+                    <span class="token property">"type"</span><span class="token operator">:</span><span class="token string">"custom"</span><span class="token punctuation">,</span>
+                    <span class="token property">"tokenizer"</span><span class="token operator">:</span><span class="token string">"kr_bbs_tokenizer"</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>user_dictionary는 단어로 인식할 값들이 들어있는 배열이다. 텍스트 파일의 경우 개행을 통해 단어를, 띄어쓰기를 통해 형식을 구분한다. 띄어쓰기는 첫번째 음절을 명사로, 두번째 음절을 복합명사로 등록한다.</p>
+<div class="gatsby-highlight" data-language="txt"><pre class="language-txt"><code class="language-txt">성남시 성남 시
+젤다의전설 젤다 의 전설
+링크</code></pre></div>
+<p>해당 파일은 <code class="language-text">$ELASTICSEARCH-HOME/config/</code>경로에 넣어놓고 등록하면 된다. 도커를 통해 텍스트파일을 마운트하고->분석기에 파일 등록하고 ->사전 내용 수정을 했는데,커스텀 분석기가 파일이 변경되면 바로 감지를 못하는 것같다. 완성된 사전을 분석기 등록시에 넣어줘야하는지 조금더 확인이 필요한 것같다.</p>
+<p><em>주의! (2019-07-06 업데이트)</em>
+노드가 여러개인 경우 각 ES 인스턴스 경로마다 사용자 정의사전 파일을 추가해야한다. 분명히 인덱스 매핑 템플릿 설정은 정상적으로 되는데(경로에 해당파일 없으면 설정도 되지 않는다) ES에서 계속 IOException 로그와 함께 복제 샤드가 샤딩이 잘 안되길래 파일명 바꿔가며 한참 삽질을 한 후에야 깨달았다.</p>
+<p>커스텀 분석기를 통해 사전을 적용한 형태소분석 결과값은 아래와 같다.</p>
+<div class="gatsby-highlight" data-language="json"><pre class="language-json"><code class="language-json">POST my-custom-analyzer/_analyze
+<span class="token punctuation">{</span>
+  <span class="token property">"explain"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> 
+  <span class="token property">"analyzer"</span><span class="token operator">:</span> <span class="token string">"nori"</span><span class="token punctuation">,</span>
+  <span class="token property">"text"</span><span class="token operator">:</span> <span class="token string">"&lt;p>젤다의전설은 링크가 주인공이다.&lt;/p>"</span><span class="token punctuation">,</span>
+  <span class="token property">"attributes"</span> <span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"posType"</span><span class="token punctuation">,</span> <span class="token string">"leftPOS"</span><span class="token punctuation">,</span> <span class="token string">"rightPOS"</span><span class="token punctuation">,</span> <span class="token string">"morphemes"</span><span class="token punctuation">,</span> <span class="token string">"reading"</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// Response 200</span>
+<span class="token punctuation">{</span>
+  <span class="token property">"detail"</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"custom_analyzer"</span> <span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token property">"charfilters"</span> <span class="token operator">:</span> <span class="token punctuation">[</span> <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token property">"tokenizer"</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">"name"</span> <span class="token operator">:</span> <span class="token string">"my_custom_tokenizer"</span><span class="token punctuation">,</span>
+      <span class="token property">"tokens"</span> <span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span>
+          <span class="token property">"token"</span> <span class="token operator">:</span> <span class="token string">"p"</span><span class="token punctuation">,</span>
+          <span class="token property">"start_offset"</span> <span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+          <span class="token property">"end_offset"</span> <span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+          <span class="token property">"type"</span> <span class="token operator">:</span> <span class="token string">"word"</span><span class="token punctuation">,</span>
+          <span class="token property">"position"</span> <span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+          <span class="token property">"leftPOS"</span> <span class="token operator">:</span> <span class="token string">"SL(Foreign language)"</span><span class="token punctuation">,</span>
+          <span class="token property">"morphemes"</span> <span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+          <span class="token property">"posType"</span> <span class="token operator">:</span> <span class="token string">"MORPHEME"</span><span class="token punctuation">,</span>
+          <span class="token property">"reading"</span> <span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+          <span class="token property">"rightPOS"</span> <span class="token operator">:</span> <span class="token string">"SL(Foreign language)"</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+          <span class="token property">"token"</span> <span class="token operator">:</span> <span class="token string">"젤다의전설"</span><span class="token punctuation">,</span>
+          <span class="token property">"start_offset"</span> <span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+          <span class="token property">"end_offset"</span> <span class="token operator">:</span> <span class="token number">8</span><span class="token punctuation">,</span>
+          <span class="token property">"type"</span> <span class="token operator">:</span> <span class="token string">"word"</span><span class="token punctuation">,</span>
+          <span class="token property">"position"</span> <span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+          <span class="token property">"positionLength"</span> <span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+          <span class="token property">"leftPOS"</span> <span class="token operator">:</span> <span class="token string">"NNG(General Noun)"</span><span class="token punctuation">,</span>
+          <span class="token property">"morphemes"</span> <span class="token operator">:</span> <span class="token string">"젤다/NNG(General Noun)+의/NNG(General Noun)+전설/NNG(General Noun)"</span><span class="token punctuation">,</span>
+          <span class="token property">"posType"</span> <span class="token operator">:</span> <span class="token string">"COMPOUND"</span><span class="token punctuation">,</span>
+          <span class="token property">"reading"</span> <span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+          <span class="token property">"rightPOS"</span> <span class="token operator">:</span> <span class="token string">"NNG(General Noun)"</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+          <span class="token property">"token"</span> <span class="token operator">:</span> <span class="token string">"젤다"</span><span class="token punctuation">,</span>
+          <span class="token property">"start_offset"</span> <span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+          <span class="token property">"end_offset"</span> <span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+          <span class="token property">"type"</span> <span class="token operator">:</span> <span class="token string">"word"</span><span class="token punctuation">,</span>
+          <span class="token property">"position"</span> <span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+          <span class="token property">"leftPOS"</span> <span class="token operator">:</span> <span class="token string">"NNG(General Noun)"</span><span class="token punctuation">,</span>
+          <span class="token property">"morphemes"</span> <span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+          <span class="token property">"posType"</span> <span class="token operator">:</span> <span class="token string">"MORPHEME"</span><span class="token punctuation">,</span>
+          <span class="token property">"reading"</span> <span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+          <span class="token property">"rightPOS"</span> <span class="token operator">:</span> <span class="token string">"NNG(General Noun)"</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+          <span class="token property">"token"</span> <span class="token operator">:</span> <span class="token string">"의"</span><span class="token punctuation">,</span>
+          <span class="token property">"start_offset"</span> <span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+          <span class="token property">"end_offset"</span> <span class="token operator">:</span> <span class="token number">6</span><span class="token punctuation">,</span>
+          <span class="token property">"type"</span> <span class="token operator">:</span> <span class="token string">"word"</span><span class="token punctuation">,</span>
+          <span class="token property">"position"</span> <span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+          <span class="token property">"leftPOS"</span> <span class="token operator">:</span> <span class="token string">"NNG(General Noun)"</span><span class="token punctuation">,</span>
+          <span class="token property">"morphemes"</span> <span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+          <span class="token property">"posType"</span> <span class="token operator">:</span> <span class="token string">"MORPHEME"</span><span class="token punctuation">,</span>
+          <span class="token property">"reading"</span> <span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+          <span class="token property">"rightPOS"</span> <span class="token operator">:</span> <span class="token string">"NNG(General Noun)"</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+          <span class="token property">"token"</span> <span class="token operator">:</span> <span class="token string">"전설"</span><span class="token punctuation">,</span>
+          <span class="token property">"start_offset"</span> <span class="token operator">:</span> <span class="token number">6</span><span class="token punctuation">,</span>
+          <span class="token property">"end_offset"</span> <span class="token operator">:</span> <span class="token number">8</span><span class="token punctuation">,</span>
+          <span class="token property">"type"</span> <span class="token operator">:</span> <span class="token string">"word"</span><span class="token punctuation">,</span>
+          <span class="token property">"position"</span> <span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+          <span class="token property">"leftPOS"</span> <span class="token operator">:</span> <span class="token string">"NNG(General Noun)"</span><span class="token punctuation">,</span>
+          <span class="token property">"morphemes"</span> <span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+          <span class="token property">"posType"</span> <span class="token operator">:</span> <span class="token string">"MORPHEME"</span><span class="token punctuation">,</span>
+          <span class="token property">"reading"</span> <span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+          <span class="token property">"rightPOS"</span> <span class="token operator">:</span> <span class="token string">"NNG(General Noun)"</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+          <span class="token property">"token"</span> <span class="token operator">:</span> <span class="token string">"은"</span><span class="token punctuation">,</span>
+          <span class="token property">"start_offset"</span> <span class="token operator">:</span> <span class="token number">8</span><span class="token punctuation">,</span>
+          <span class="token property">"end_offset"</span> <span class="token operator">:</span> <span class="token number">9</span><span class="token punctuation">,</span>
+          <span class="token property">"type"</span> <span class="token operator">:</span> <span class="token string">"word"</span><span class="token punctuation">,</span>
+          <span class="token property">"position"</span> <span class="token operator">:</span> <span class="token number">4</span><span class="token punctuation">,</span>
+          <span class="token property">"leftPOS"</span> <span class="token operator">:</span> <span class="token string">"J(Ending Particle)"</span><span class="token punctuation">,</span>
+          <span class="token property">"morphemes"</span> <span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+          <span class="token property">"posType"</span> <span class="token operator">:</span> <span class="token string">"MORPHEME"</span><span class="token punctuation">,</span>
+          <span class="token property">"reading"</span> <span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+          <span class="token property">"rightPOS"</span> <span class="token operator">:</span> <span class="token string">"J(Ending Particle)"</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+          <span class="token property">"token"</span> <span class="token operator">:</span> <span class="token string">"링크"</span><span class="token punctuation">,</span>
+          <span class="token property">"start_offset"</span> <span class="token operator">:</span> <span class="token number">10</span><span class="token punctuation">,</span>
+          <span class="token property">"end_offset"</span> <span class="token operator">:</span> <span class="token number">12</span><span class="token punctuation">,</span>
+          <span class="token property">"type"</span> <span class="token operator">:</span> <span class="token string">"word"</span><span class="token punctuation">,</span>
+          <span class="token property">"position"</span> <span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+          <span class="token property">"leftPOS"</span> <span class="token operator">:</span> <span class="token string">"NNG(General Noun)"</span><span class="token punctuation">,</span>
+          <span class="token property">"morphemes"</span> <span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+          <span class="token property">"posType"</span> <span class="token operator">:</span> <span class="token string">"MORPHEME"</span><span class="token punctuation">,</span>
+          <span class="token property">"reading"</span> <span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+          <span class="token property">"rightPOS"</span> <span class="token operator">:</span> <span class="token string">"NNG(General Noun)"</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+          <span class="token property">"token"</span> <span class="token operator">:</span> <span class="token string">"가"</span><span class="token punctuation">,</span>
+          <span class="token property">"start_offset"</span> <span class="token operator">:</span> <span class="token number">12</span><span class="token punctuation">,</span>
+          <span class="token property">"end_offset"</span> <span class="token operator">:</span> <span class="token number">13</span><span class="token punctuation">,</span>
+          <span class="token property">"type"</span> <span class="token operator">:</span> <span class="token string">"word"</span><span class="token punctuation">,</span>
+          <span class="token property">"position"</span> <span class="token operator">:</span> <span class="token number">6</span><span class="token punctuation">,</span>
+          <span class="token property">"leftPOS"</span> <span class="token operator">:</span> <span class="token string">"J(Ending Particle)"</span><span class="token punctuation">,</span>
+          <span class="token property">"morphemes"</span> <span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+          <span class="token property">"posType"</span> <span class="token operator">:</span> <span class="token string">"MORPHEME"</span><span class="token punctuation">,</span>
+          <span class="token property">"reading"</span> <span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+          <span class="token property">"rightPOS"</span> <span class="token operator">:</span> <span class="token string">"J(Ending Particle)"</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+          <span class="token property">"token"</span> <span class="token operator">:</span> <span class="token string">"주인공"</span><span class="token punctuation">,</span>
+          <span class="token property">"start_offset"</span> <span class="token operator">:</span> <span class="token number">14</span><span class="token punctuation">,</span>
+          <span class="token property">"end_offset"</span> <span class="token operator">:</span> <span class="token number">17</span><span class="token punctuation">,</span>
+          <span class="token property">"type"</span> <span class="token operator">:</span> <span class="token string">"word"</span><span class="token punctuation">,</span>
+          <span class="token property">"position"</span> <span class="token operator">:</span> <span class="token number">7</span><span class="token punctuation">,</span>
+          <span class="token property">"positionLength"</span> <span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+          <span class="token property">"leftPOS"</span> <span class="token operator">:</span> <span class="token string">"NNG(General Noun)"</span><span class="token punctuation">,</span>
+          <span class="token property">"morphemes"</span> <span class="token operator">:</span> <span class="token string">"주인/NNG(General Noun)+공/NNG(General Noun)"</span><span class="token punctuation">,</span>
+          <span class="token property">"posType"</span> <span class="token operator">:</span> <span class="token string">"COMPOUND"</span><span class="token punctuation">,</span>
+          <span class="token property">"reading"</span> <span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+          <span class="token property">"rightPOS"</span> <span class="token operator">:</span> <span class="token string">"NNG(General Noun)"</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+          <span class="token property">"token"</span> <span class="token operator">:</span> <span class="token string">"주인"</span><span class="token punctuation">,</span>
+          <span class="token property">"start_offset"</span> <span class="token operator">:</span> <span class="token number">14</span><span class="token punctuation">,</span>
+          <span class="token property">"end_offset"</span> <span class="token operator">:</span> <span class="token number">16</span><span class="token punctuation">,</span>
+          <span class="token property">"type"</span> <span class="token operator">:</span> <span class="token string">"word"</span><span class="token punctuation">,</span>
+          <span class="token property">"position"</span> <span class="token operator">:</span> <span class="token number">7</span><span class="token punctuation">,</span>
+          <span class="token property">"leftPOS"</span> <span class="token operator">:</span> <span class="token string">"NNG(General Noun)"</span><span class="token punctuation">,</span>
+          <span class="token property">"morphemes"</span> <span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+          <span class="token property">"posType"</span> <span class="token operator">:</span> <span class="token string">"MORPHEME"</span><span class="token punctuation">,</span>
+          <span class="token property">"reading"</span> <span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+          <span class="token property">"rightPOS"</span> <span class="token operator">:</span> <span class="token string">"NNG(General Noun)"</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+          <span class="token property">"token"</span> <span class="token operator">:</span> <span class="token string">"공"</span><span class="token punctuation">,</span>
+          <span class="token property">"start_offset"</span> <span class="token operator">:</span> <span class="token number">16</span><span class="token punctuation">,</span>
+          <span class="token property">"end_offset"</span> <span class="token operator">:</span> <span class="token number">17</span><span class="token punctuation">,</span>
+          <span class="token property">"type"</span> <span class="token operator">:</span> <span class="token string">"word"</span><span class="token punctuation">,</span>
+          <span class="token property">"position"</span> <span class="token operator">:</span> <span class="token number">8</span><span class="token punctuation">,</span>
+          <span class="token property">"leftPOS"</span> <span class="token operator">:</span> <span class="token string">"NNG(General Noun)"</span><span class="token punctuation">,</span>
+          <span class="token property">"morphemes"</span> <span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+          <span class="token property">"posType"</span> <span class="token operator">:</span> <span class="token string">"MORPHEME"</span><span class="token punctuation">,</span>
+          <span class="token property">"reading"</span> <span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+          <span class="token property">"rightPOS"</span> <span class="token operator">:</span> <span class="token string">"NNG(General Noun)"</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+          <span class="token property">"token"</span> <span class="token operator">:</span> <span class="token string">"이"</span><span class="token punctuation">,</span>
+          <span class="token property">"start_offset"</span> <span class="token operator">:</span> <span class="token number">17</span><span class="token punctuation">,</span>
+          <span class="token property">"end_offset"</span> <span class="token operator">:</span> <span class="token number">18</span><span class="token punctuation">,</span>
+          <span class="token property">"type"</span> <span class="token operator">:</span> <span class="token string">"word"</span><span class="token punctuation">,</span>
+          <span class="token property">"position"</span> <span class="token operator">:</span> <span class="token number">9</span><span class="token punctuation">,</span>
+          <span class="token property">"leftPOS"</span> <span class="token operator">:</span> <span class="token string">"VCP(Positive designator)"</span><span class="token punctuation">,</span>
+          <span class="token property">"morphemes"</span> <span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+          <span class="token property">"posType"</span> <span class="token operator">:</span> <span class="token string">"MORPHEME"</span><span class="token punctuation">,</span>
+          <span class="token property">"reading"</span> <span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+          <span class="token property">"rightPOS"</span> <span class="token operator">:</span> <span class="token string">"VCP(Positive designator)"</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+          <span class="token property">"token"</span> <span class="token operator">:</span> <span class="token string">"다"</span><span class="token punctuation">,</span>
+          <span class="token property">"start_offset"</span> <span class="token operator">:</span> <span class="token number">18</span><span class="token punctuation">,</span>
+          <span class="token property">"end_offset"</span> <span class="token operator">:</span> <span class="token number">19</span><span class="token punctuation">,</span>
+          <span class="token property">"type"</span> <span class="token operator">:</span> <span class="token string">"word"</span><span class="token punctuation">,</span>
+          <span class="token property">"position"</span> <span class="token operator">:</span> <span class="token number">10</span><span class="token punctuation">,</span>
+          <span class="token property">"leftPOS"</span> <span class="token operator">:</span> <span class="token string">"E(Verbal endings)"</span><span class="token punctuation">,</span>
+          <span class="token property">"morphemes"</span> <span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+          <span class="token property">"posType"</span> <span class="token operator">:</span> <span class="token string">"MORPHEME"</span><span class="token punctuation">,</span>
+          <span class="token property">"reading"</span> <span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+          <span class="token property">"rightPOS"</span> <span class="token operator">:</span> <span class="token string">"E(Verbal endings)"</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+          <span class="token property">"token"</span> <span class="token operator">:</span> <span class="token string">"p"</span><span class="token punctuation">,</span>
+          <span class="token property">"start_offset"</span> <span class="token operator">:</span> <span class="token number">22</span><span class="token punctuation">,</span>
+          <span class="token property">"end_offset"</span> <span class="token operator">:</span> <span class="token number">23</span><span class="token punctuation">,</span>
+          <span class="token property">"type"</span> <span class="token operator">:</span> <span class="token string">"word"</span><span class="token punctuation">,</span>
+          <span class="token property">"position"</span> <span class="token operator">:</span> <span class="token number">11</span><span class="token punctuation">,</span>
+          <span class="token property">"leftPOS"</span> <span class="token operator">:</span> <span class="token string">"SL(Foreign language)"</span><span class="token punctuation">,</span>
+          <span class="token property">"morphemes"</span> <span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+          <span class="token property">"posType"</span> <span class="token operator">:</span> <span class="token string">"MORPHEME"</span><span class="token punctuation">,</span>
+          <span class="token property">"reading"</span> <span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+          <span class="token property">"rightPOS"</span> <span class="token operator">:</span> <span class="token string">"SL(Foreign language)"</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">"tokenfilters"</span> <span class="token operator">:</span> <span class="token punctuation">[</span> <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<h1 id="필터-세팅하기-noripartof_speech"><a href="#%ED%95%84%ED%84%B0-%EC%84%B8%ED%8C%85%ED%95%98%EA%B8%B0-noripartof_speech" aria-label="필터 세팅하기 noripartof_speech permalink" class="anchor"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>필터 세팅하기: nori<em>part</em>of_speech</h1>
+<p>위에 분석결과를 보면 알 수 있듯이, 한국어의 조사같은 경우는 결과값으로서 의미가 없기때문에 처음부터 분석결과에 제외하는 것이 좋다. 방금 커스터마이즈로 추가한 인덱스에 <code class="language-text">filter</code>필드의 값으로 필터링할 품사를 넣어주면 된다. 품사에 대한 정보는 <a href="http://lucene.apache.org/core/8_0_0/analyzers-nori/org/apache/lucene/analysis/ko/POS.Tag.html">루씬 API문서</a>를 참조하면되고, 설명은 <a href="https://www.elastic.co/guide/en/elasticsearch/plugins/current/analysis-nori-speech.html">nori 공식문서</a>를 참고하면 된다. 하지만 생선된 인덱스를 변경하기 위해서는</p>
+<ol>
+<li><code class="language-text">_close</code>으로 인덱스를 닫은 다음</li>
+<li>PUT 메소드의 _settings 쿼리를 통해 분석기를 변경하고 </li>
+<li>filter필드를 추가하고, analyzer필드 내부에 filter값을 지정해주면 된다.</li>
+<li><code class="language-text">_open</code>을 통해 다시 열어줘야한다.</li>
+</ol>
+<div class="gatsby-highlight" data-language="json"><pre class="language-json"><code class="language-json">POST my-custom-analyzer/_close
+POST my-custom-analyzer/_settings
+<span class="token punctuation">{</span>
+    <span class="token property">"analysis"</span><span class="token operator">:</span><span class="token punctuation">{</span>
+        <span class="token property">"tokenizer"</span><span class="token operator">:</span><span class="token punctuation">{</span>
+            <span class="token property">"my_custom_tokenizer"</span><span class="token operator">:</span><span class="token punctuation">{</span>
+                <span class="token property">"type"</span><span class="token operator">:</span><span class="token string">"nori_tokenizer"</span><span class="token punctuation">,</span>
+                <span class="token property">"decompound_mode"</span><span class="token operator">:</span><span class="token string">"mixed"</span><span class="token punctuation">,</span>
+                <span class="token property">"user_dictionary"</span><span class="token operator">:</span><span class="token string">"user_dictionary.txt"</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token property">"analyzer"</span><span class="token operator">:</span><span class="token punctuation">{</span>
+            <span class="token property">"nori"</span><span class="token operator">:</span><span class="token punctuation">{</span>
+                <span class="token property">"type"</span><span class="token operator">:</span><span class="token string">"custom"</span><span class="token punctuation">,</span>
+                <span class="token property">"tokenizer"</span><span class="token operator">:</span><span class="token string">"my_custom_tokenizer"</span><span class="token punctuation">,</span>
+                <span class="token property">"filter"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                    <span class="token string">"nori_posfilter"</span>
+                <span class="token punctuation">]</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token property">"filter"</span><span class="token operator">:</span><span class="token punctuation">{</span>
+            <span class="token property">"nori_posfilter"</span><span class="token operator">:</span><span class="token punctuation">{</span>
+                <span class="token property">"type"</span><span class="token operator">:</span><span class="token string">"nori_part_of_speech"</span><span class="token punctuation">,</span>
+                <span class="token property">"stoptags"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                    <span class="token string">"E"</span><span class="token punctuation">,</span><span class="token string">"IC"</span><span class="token punctuation">,</span><span class="token string">"J"</span><span class="token punctuation">,</span><span class="token string">"MAG"</span><span class="token punctuation">,</span><span class="token string">"MM"</span><span class="token punctuation">,</span><span class="token string">"NA"</span><span class="token punctuation">,</span><span class="token string">"NR"</span><span class="token punctuation">,</span><span class="token string">"SC"</span><span class="token punctuation">,</span>
+                    <span class="token string">"SE"</span><span class="token punctuation">,</span><span class="token string">"SF"</span><span class="token punctuation">,</span><span class="token string">"SH"</span><span class="token punctuation">,</span><span class="token string">"SL"</span><span class="token punctuation">,</span><span class="token string">"SN"</span><span class="token punctuation">,</span><span class="token string">"SP"</span><span class="token punctuation">,</span><span class="token string">"SSC"</span><span class="token punctuation">,</span><span class="token string">"SSO"</span><span class="token punctuation">,</span>
+                    <span class="token string">"SY"</span><span class="token punctuation">,</span><span class="token string">"UNA"</span><span class="token punctuation">,</span><span class="token string">"UNKNOWN"</span><span class="token punctuation">,</span><span class="token string">"VA"</span><span class="token punctuation">,</span><span class="token string">"VCN"</span><span class="token punctuation">,</span><span class="token string">"VCP"</span><span class="token punctuation">,</span><span class="token string">"VSV"</span><span class="token punctuation">,</span>
+                    <span class="token string">"VV"</span><span class="token punctuation">,</span><span class="token string">"VX"</span><span class="token punctuation">,</span><span class="token string">"XPN"</span><span class="token punctuation">,</span><span class="token string">"XR"</span><span class="token punctuation">,</span><span class="token string">"XSA"</span><span class="token punctuation">,</span><span class="token string">"XSN"</span><span class="token punctuation">,</span><span class="token string">"XSV"</span>
+                <span class="token punctuation">]</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+POST my-custom-analyzer/_open</code></pre></div>
+<p>그럼 이제 의도한대로 필터링이 되었는지 확인해보자. anlayze쿼리에 <code class="language-text">explain: true</code>값이 있으면 필터링이 되지 않으므로 반드시 제외하고 쿼리를 날리자. </p>
+<div class="gatsby-highlight" data-language="json"><pre class="language-json"><code class="language-json">POST my-custom-analyzer/_analyze
+<span class="token punctuation">{</span>
+  <span class="token property">"analyzer"</span><span class="token operator">:</span><span class="token string">"nori"</span><span class="token punctuation">,</span>
+  <span class="token property">"text"</span><span class="token operator">:</span> <span class="token string">"&lt;p>젤다의전설은 링크가 주인공이다.&lt;/p>"</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">//Response 200</span>
+<span class="token punctuation">{</span>
+  <span class="token property">"tokens"</span> <span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      <span class="token property">"token"</span> <span class="token operator">:</span> <span class="token string">"젤다의전설"</span><span class="token punctuation">,</span>
+      <span class="token property">"start_offset"</span> <span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+      <span class="token property">"end_offset"</span> <span class="token operator">:</span> <span class="token number">8</span><span class="token punctuation">,</span>
+      <span class="token property">"type"</span> <span class="token operator">:</span> <span class="token string">"word"</span><span class="token punctuation">,</span>
+      <span class="token property">"position"</span> <span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+      <span class="token property">"positionLength"</span> <span class="token operator">:</span> <span class="token number">3</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      <span class="token property">"token"</span> <span class="token operator">:</span> <span class="token string">"젤다"</span><span class="token punctuation">,</span>
+      <span class="token property">"start_offset"</span> <span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+      <span class="token property">"end_offset"</span> <span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+      <span class="token property">"type"</span> <span class="token operator">:</span> <span class="token string">"word"</span><span class="token punctuation">,</span>
+      <span class="token property">"position"</span> <span class="token operator">:</span> <span class="token number">1</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      <span class="token property">"token"</span> <span class="token operator">:</span> <span class="token string">"의"</span><span class="token punctuation">,</span>
+      <span class="token property">"start_offset"</span> <span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+      <span class="token property">"end_offset"</span> <span class="token operator">:</span> <span class="token number">6</span><span class="token punctuation">,</span>
+      <span class="token property">"type"</span> <span class="token operator">:</span> <span class="token string">"word"</span><span class="token punctuation">,</span>
+      <span class="token property">"position"</span> <span class="token operator">:</span> <span class="token number">2</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      <span class="token property">"token"</span> <span class="token operator">:</span> <span class="token string">"전설"</span><span class="token punctuation">,</span>
+      <span class="token property">"start_offset"</span> <span class="token operator">:</span> <span class="token number">6</span><span class="token punctuation">,</span>
+      <span class="token property">"end_offset"</span> <span class="token operator">:</span> <span class="token number">8</span><span class="token punctuation">,</span>
+      <span class="token property">"type"</span> <span class="token operator">:</span> <span class="token string">"word"</span><span class="token punctuation">,</span>
+      <span class="token property">"position"</span> <span class="token operator">:</span> <span class="token number">3</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      <span class="token property">"token"</span> <span class="token operator">:</span> <span class="token string">"링크"</span><span class="token punctuation">,</span>
+      <span class="token property">"start_offset"</span> <span class="token operator">:</span> <span class="token number">10</span><span class="token punctuation">,</span>
+      <span class="token property">"end_offset"</span> <span class="token operator">:</span> <span class="token number">12</span><span class="token punctuation">,</span>
+      <span class="token property">"type"</span> <span class="token operator">:</span> <span class="token string">"word"</span><span class="token punctuation">,</span>
+      <span class="token property">"position"</span> <span class="token operator">:</span> <span class="token number">5</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      <span class="token property">"token"</span> <span class="token operator">:</span> <span class="token string">"주인공"</span><span class="token punctuation">,</span>
+      <span class="token property">"start_offset"</span> <span class="token operator">:</span> <span class="token number">14</span><span class="token punctuation">,</span>
+      <span class="token property">"end_offset"</span> <span class="token operator">:</span> <span class="token number">17</span><span class="token punctuation">,</span>
+      <span class="token property">"type"</span> <span class="token operator">:</span> <span class="token string">"word"</span><span class="token punctuation">,</span>
+      <span class="token property">"position"</span> <span class="token operator">:</span> <span class="token number">7</span><span class="token punctuation">,</span>
+      <span class="token property">"positionLength"</span> <span class="token operator">:</span> <span class="token number">2</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      <span class="token property">"token"</span> <span class="token operator">:</span> <span class="token string">"주인"</span><span class="token punctuation">,</span>
+      <span class="token property">"start_offset"</span> <span class="token operator">:</span> <span class="token number">14</span><span class="token punctuation">,</span>
+      <span class="token property">"end_offset"</span> <span class="token operator">:</span> <span class="token number">16</span><span class="token punctuation">,</span>
+      <span class="token property">"type"</span> <span class="token operator">:</span> <span class="token string">"word"</span><span class="token punctuation">,</span>
+      <span class="token property">"position"</span> <span class="token operator">:</span> <span class="token number">7</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      <span class="token property">"token"</span> <span class="token operator">:</span> <span class="token string">"공"</span><span class="token punctuation">,</span>
+      <span class="token property">"start_offset"</span> <span class="token operator">:</span> <span class="token number">16</span><span class="token punctuation">,</span>
+      <span class="token property">"end_offset"</span> <span class="token operator">:</span> <span class="token number">17</span><span class="token punctuation">,</span>
+      <span class="token property">"type"</span> <span class="token operator">:</span> <span class="token string">"word"</span><span class="token punctuation">,</span>
+      <span class="token property">"position"</span> <span class="token operator">:</span> <span class="token number">8</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span></code></pre></div>
+<h1 id="템플릿-생성"><a href="#%ED%85%9C%ED%94%8C%EB%A6%BF-%EC%83%9D%EC%84%B1" aria-label="템플릿 생성 permalink" class="anchor"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>템플릿 생성</h1>
+<p>이제 테스트해본 설정을 그대로 인덱스 템플릿에 붙이면된다.</p>
+<div class="gatsby-highlight" data-language="json"><pre class="language-json"><code class="language-json">PUT _template/kr-board-analyzer-set
+<span class="token punctuation">{</span>
+  <span class="token property">"index_patterns"</span><span class="token operator">:</span> <span class="token string">"kr-board-*"</span><span class="token punctuation">,</span>
+  <span class="token property">"settings"</span><span class="token operator">:</span><span class="token punctuation">{</span>
+    <span class="token property">"index"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">"analysis"</span><span class="token operator">:</span><span class="token punctuation">{</span>
+        <span class="token property">"tokenizer"</span><span class="token operator">:</span><span class="token punctuation">{</span>
+            <span class="token property">"custom_tokenizer"</span><span class="token operator">:</span><span class="token punctuation">{</span>
+                <span class="token property">"type"</span><span class="token operator">:</span><span class="token string">"nori_tokenizer"</span><span class="token punctuation">,</span>
+                <span class="token property">"decompound_mode"</span><span class="token operator">:</span><span class="token string">"mixed"</span><span class="token punctuation">,</span>
+                <span class="token property">"user_dictionary"</span><span class="token operator">:</span><span class="token string">"user_dictionary.txt"</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token property">"analyzer"</span><span class="token operator">:</span><span class="token punctuation">{</span>
+          <span class="token property">"custom_analyzer"</span><span class="token operator">:</span><span class="token punctuation">{</span>
+            <span class="token property">"type"</span><span class="token operator">:</span><span class="token string">"custom"</span><span class="token punctuation">,</span>
+            <span class="token property">"tokenizer"</span><span class="token operator">:</span><span class="token string">"custom_tokenizer"</span><span class="token punctuation">,</span>
+            <span class="token property">"filter"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                <span class="token string">"custom_posfilter"</span>
+            <span class="token punctuation">]</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token property">"filter"</span><span class="token operator">:</span><span class="token punctuation">{</span>
+          <span class="token property">"custom_posfilter"</span><span class="token operator">:</span><span class="token punctuation">{</span>
+            <span class="token property">"type"</span><span class="token operator">:</span><span class="token string">"nori_part_of_speech"</span><span class="token punctuation">,</span>
+            <span class="token property">"stoptags"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                <span class="token string">"E"</span><span class="token punctuation">,</span><span class="token string">"IC"</span><span class="token punctuation">,</span><span class="token string">"J"</span><span class="token punctuation">,</span><span class="token string">"MAG"</span><span class="token punctuation">,</span><span class="token string">"MM"</span><span class="token punctuation">,</span><span class="token string">"NA"</span><span class="token punctuation">,</span><span class="token string">"NR"</span><span class="token punctuation">,</span><span class="token string">"SC"</span><span class="token punctuation">,</span>
+                <span class="token string">"SE"</span><span class="token punctuation">,</span><span class="token string">"SF"</span><span class="token punctuation">,</span><span class="token string">"SH"</span><span class="token punctuation">,</span><span class="token string">"SL"</span><span class="token punctuation">,</span><span class="token string">"SN"</span><span class="token punctuation">,</span><span class="token string">"SP"</span><span class="token punctuation">,</span><span class="token string">"SSC"</span><span class="token punctuation">,</span><span class="token string">"SSO"</span><span class="token punctuation">,</span>
+                <span class="token string">"SY"</span><span class="token punctuation">,</span><span class="token string">"UNA"</span><span class="token punctuation">,</span><span class="token string">"UNKNOWN"</span><span class="token punctuation">,</span><span class="token string">"VA"</span><span class="token punctuation">,</span><span class="token string">"VCN"</span><span class="token punctuation">,</span><span class="token string">"VCP"</span><span class="token punctuation">,</span><span class="token string">"VSV"</span><span class="token punctuation">,</span>
+                <span class="token string">"VV"</span><span class="token punctuation">,</span><span class="token string">"VX"</span><span class="token punctuation">,</span><span class="token string">"XPN"</span><span class="token punctuation">,</span><span class="token string">"XR"</span><span class="token punctuation">,</span><span class="token string">"XSA"</span><span class="token punctuation">,</span><span class="token string">"XSN"</span><span class="token punctuation">,</span><span class="token string">"XSV"</span>
+            <span class="token punctuation">]</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token property">"mappings"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"properties"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">"obj"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"properties"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+          <span class="token property">"Target"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token property">"properties"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+              <span class="token property">"model"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                <span class="token property">"properties"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                  <span class="token property">"Contents"</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"text"</span><span class="token punctuation">,</span> <span class="token property">"analyzer"</span><span class="token operator">:</span> <span class="token string">"custom_analyzer"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                  <span class="token property">"Title"</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"text"</span><span class="token punctuation">,</span> <span class="token property">"analyzer"</span><span class="token operator">:</span> <span class="token string">"custom_analyzer"</span> <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span>
+              <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div></div><hr/></div><nav><ul class="post-module--pagination--1F-V0"><li><a rel="prev" href="/윈도우-파워쉘-권한-변경하기">← <!-- -->윈도우 파워쉘 권한 변경하기</a></li><li><a rel="next" href="/elastic-search-unassigned-shard-문제-해결-3-replica-숫자가-부적절할때">ElasticSearch - unassigned shard 문제 해결 (3) replica 숫자가 부적절할때<!-- -->→</a></li></ul></nav></main><footer><div class="Footer-module--container--3Dvn1"><div><a href="https://twitter.com/undefined" target="_blank" rel="noopener noreferrer">Twitter</a><a href="https://github.com/parkdoyeon" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://parkdoyeon.github.io/rss.xml" target="_blank" rel="noopener noreferrer">RSS</a></div><div class="Footer-module--copyright--2uglW">Copyright © 2020. All rights reserved.</div></div></footer></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script>
+  
+  
+  if(true) {
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  }
+  if (typeof ga === "function") {
+    ga('create', 'UA-161211056-1', 'auto', {});
+      
+      
+      
+      
+      
+      }</script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/elastic-search-7-2-에-한국어-분석기-nori-플러그인-설치하기";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"app":["/app-a75d49997f66cd18f459.js"],"component---node-modules-gatsby-plugin-offline-app-shell-js":["/component---node-modules-gatsby-plugin-offline-app-shell-js-7ca1fffc0f095fe8aa22.js"],"component---src-templates-post-js":["/component---src-templates-post-js-8aadf6ce712350669c97.js"],"component---src-templates-tag-js":["/component---src-templates-tag-js-048813de74a0f2205756.js"],"component---src-templates-category-js":["/component---src-templates-category-js-f6f26836a5a0dfef289c.js"],"component---src-pages-404-js":["/component---src-pages-404-js-08abf9db6d816a8110aa.js"],"component---src-pages-about-js":["/component---src-pages-about-js-87a8ba76b009135f8cfa.js"],"component---src-pages-contact-js":["/component---src-pages-contact-js-5342676424cfecc86972.js"],"component---src-pages-index-js":["/component---src-pages-index-js-ae2a17f9bb9e30abd83f.js"]};/*]]>*/</script><script src="/webpack-runtime-2018ec7ce49a6cfc0fb8.js" async=""></script><script src="/app-a75d49997f66cd18f459.js" async=""></script><script src="/commons-dce8f697ab1752d3b5da.js" async=""></script><script src="/component---src-templates-post-js-8aadf6ce712350669c97.js" async=""></script><script src="/styles-eac94caeae57308993bd.js" async=""></script></body></html>
