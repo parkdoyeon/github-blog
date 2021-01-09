@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[DEVLOG]]></title><description><![CDATA[things to search agoain]]></description><link>https://parkdoyeon.github.io/</link><image><url>https://parkdoyeon.github.io//logos/logo-48.png</url><title>DEVLOG</title><link>https://parkdoyeon.github.io/</link></image><generator>GatsbyJS Advanced Starter</generator><lastBuildDate>Wed, 30 Dec 2020 13:35:44 GMT</lastBuildDate><atom:link href="https://parkdoyeon.github.io//rss.xml" rel="self" type="application/rss+xml"/><copyright><![CDATA[Copyright © 2020. All rights reserved.]]></copyright><item><title><![CDATA[쿠버네티스 자주 사용하는 명령어 정리]]></title><description><![CDATA[클러스터 세팅, 네임스페이스 설정하기 클러스터 세팅하기 네임스페이스 설정하기 접근하기 포트 포워딩 통해서 서비스 로컬 포트로 끌어오기 리소스 확인하기]]></description><link>https://parkdoyeon.github.io//쿠버네티스-자주-사용하는-명령어-정리</link><guid isPermaLink="false">https://parkdoyeon.github.io//쿠버네티스-자주-사용하는-명령어-정리</guid><category><![CDATA[kubernetes]]></category><pubDate>Thu, 12 Mar 2020 15:00:00 GMT</pubDate><content:encoded>&lt;h3 id=&quot;클러스터-세팅-네임스페이스-설정하기&quot;&gt;&lt;a href=&quot;#%ED%81%B4%EB%9F%AC%EC%8A%A4%ED%84%B0-%EC%84%B8%ED%8C%85-%EB%84%A4%EC%9E%84%EC%8A%A4%ED%8E%98%EC%9D%B4%EC%8A%A4-%EC%84%A4%EC%A0%95%ED%95%98%EA%B8%B0&quot; aria-label=&quot;클러스터 세팅 네임스페이스 설정하기 permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;클러스터 세팅, 네임스페이스 설정하기&lt;/h3&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[DEVLOG]]></title><description><![CDATA[things to search agoain]]></description><link>https://parkdoyeon.github.io/</link><image><url>https://parkdoyeon.github.io//logos/logo-48.png</url><title>DEVLOG</title><link>https://parkdoyeon.github.io/</link></image><generator>GatsbyJS Advanced Starter</generator><lastBuildDate>Sat, 09 Jan 2021 06:00:19 GMT</lastBuildDate><atom:link href="https://parkdoyeon.github.io//rss.xml" rel="self" type="application/rss+xml"/><copyright><![CDATA[Copyright © 2020. All rights reserved.]]></copyright><item><title><![CDATA[쿠버네티스 자주 사용하는 명령어 정리]]></title><description><![CDATA[클러스터 세팅, 네임스페이스 설정하기 클러스터 세팅하기 네임스페이스 설정하기 접근하기 포트 포워딩 통해서 서비스 로컬 포트로 끌어오기 리소스 확인하기]]></description><link>https://parkdoyeon.github.io//쿠버네티스-자주-사용하는-명령어-정리</link><guid isPermaLink="false">https://parkdoyeon.github.io//쿠버네티스-자주-사용하는-명령어-정리</guid><category><![CDATA[kubernetes]]></category><pubDate>Thu, 12 Mar 2020 15:00:00 GMT</pubDate><content:encoded>&lt;h3 id=&quot;클러스터-세팅-네임스페이스-설정하기&quot;&gt;&lt;a href=&quot;#%ED%81%B4%EB%9F%AC%EC%8A%A4%ED%84%B0-%EC%84%B8%ED%8C%85-%EB%84%A4%EC%9E%84%EC%8A%A4%ED%8E%98%EC%9D%B4%EC%8A%A4-%EC%84%A4%EC%A0%95%ED%95%98%EA%B8%B0&quot; aria-label=&quot;클러스터 세팅 네임스페이스 설정하기 permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;클러스터 세팅, 네임스페이스 설정하기&lt;/h3&gt;
 &lt;p&gt;클러스터 세팅하기&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;$ kubectl sc&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;네임스페이스 설정하기&lt;/p&gt;
@@ -2189,31 +2189,7 @@ sort -h : 읽기좋은 포멧 형식으로 비교
 head -10 : 상위 10개까지 보여주기&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;참고 페이지
-&lt;a href=&quot;https://www.cyberciti.biz/faq/how-do-i-find-the-largest-filesdirectories-on-a-linuxunixbsd-filesystem/&quot;&gt;https://www.cyberciti.biz/faq/how-do-i-find-the-largest-filesdirectories-on-a-linuxunixbsd-filesystem/&lt;/a&gt;&lt;/p&gt;</content:encoded><author>park.doyeon@gmail.com</author></item><item><title><![CDATA[SVM - 2. svm 사이의 최대 거리값 찾기]]></title><description><![CDATA[그래프 다시 그래프로 돌아오자.
-svm의 가장 기본적인 목표는 경계(decision boundary)에 가장 가까운 서로 다른 클래스 두 점의 '거리 최대값'을 찾는 것이다.
-위 그래프에서 초록색 선은 x-클래스 벡터, 하늘색 선은 x…]]></description><link>https://parkdoyeon.github.io//svm-2-svm-사이의-최대-거리값-찾기</link><guid isPermaLink="false">https://parkdoyeon.github.io//svm-2-svm-사이의-최대-거리값-찾기</guid><category><![CDATA[machine-learning]]></category><category><![CDATA[svm]]></category><pubDate>Mon, 18 Mar 2019 15:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;img src=&quot;/image/ml/2019-03-19-svm2-1.jpeg&quot; alt=&quot;그래프&quot;&gt;&lt;/p&gt;
-&lt;p&gt;다시 그래프로 돌아오자.
-svm의 가장 기본적인 목표는 경계(decision boundary)에 가장 가까운 서로 다른 클래스 두 점의 &apos;거리 최대값&apos;을 찾는 것이다.
-위 그래프에서 초록색 선은 x-클래스 벡터, 하늘색 선은 x+클래스 벡터이다.
-뺄셈으로 두 벡터의 거리를 찾고, 벡터값을 스칼라로 바꾸기 위해 w벡터의 단위벡터값을 내적해준다. &lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/image/ml/2019-03-19-svm2-2.png&quot; alt=&quot;수식&quot;&gt;&lt;/p&gt;
-&lt;p&gt;왜 하필 w벡터일까? SVM 조건식을 통해 도출한 X와 W의 내적값을 1과 b에 대한 상수식으로 치환하면,
-아래와 같이 아주 깔끔한 식이 도출된다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/image/ml/2019-03-19-svm2-3.png&quot; alt=&quot;수식&quot;&gt;&lt;/p&gt;
-&lt;p&gt;||w||가 분모에 있다는 것은 다시말해 최대값을 찾기위해서는 가장 작은 w를 찾아야한다는 얘기가 된다.
-수학적 편의에 차원에서 w의 최솟값을 찾기 위해 아래와같이 식을 변형한다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/image/ml/2019-03-19-svm2-4.png&quot; alt=&quot;수식&quot;&gt;&lt;/p&gt;
-&lt;p&gt;&apos;왜 이렇게 변형해야 하는가&apos;는 또 다른 문제이기 때문에 우선 차치하더라도,
-2차원 그래프에서 2차원 함수는 최솟값을 찾기에 아주 적절한 형태를 갖추고 있다.
-이와같은 변형을 2차원 함수의 볼록한 그릇같은 모양을 따서 convex optimization problem이라고 한다.
-svm의 최적화 문제는 매우 다양한데, 우선 이것말고도 또 다른 최적화 방식이 있다는 것만 알아두자.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;도움이 됐던 자료/강의&lt;/strong&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;MIT 6.034 Artificial Intelligence, Fall 2010:  &lt;a href=&quot;https://www.youtube.com/watch?v=_PwhiWxHK8o&quot;&gt;https://www.youtube.com/watch?v=_PwhiWxHK8o&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Chapter 3: Support Vector machine with Math: &lt;a href=&quot;https://medium.com/deep-math-machine-learning-ai/chapter-3-support-vector-machine-with-math-47d6193c82be&quot;&gt;https://medium.com/deep-math-machine-learning-ai/chapter-3-support-vector-machine-with-math-47d6193c82be&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;초짜 대학원생의 입장에서 이해하는 Support Vector Machine (1): &lt;a href=&quot;http://jaejunyoo.blogspot.com/2018/01/support-vector-machine-1.html&quot;&gt;http://jaejunyoo.blogspot.com/2018/01/support-vector-machine-1.html&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;서포트 벡터 머신 (Support Vector Machine): &lt;a href=&quot;https://ratsgo.github.io/machine%20learning/2017/05/23/SVM/&quot;&gt;https://ratsgo.github.io/machine%20learning/2017/05/23/SVM/&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;</content:encoded><author>park.doyeon@gmail.com</author></item><item><title><![CDATA[SVM - 1. yi(x·w+b) >= 1 도출하기]]></title><description><![CDATA[그래프 위 그래프는 두개의 그룹을 나누는 가장 최단의 경계가 되는 서포트 벡터 라인 두개와,
+&lt;a href=&quot;https://www.cyberciti.biz/faq/how-do-i-find-the-largest-filesdirectories-on-a-linuxunixbsd-filesystem/&quot;&gt;https://www.cyberciti.biz/faq/how-do-i-find-the-largest-filesdirectories-on-a-linuxunixbsd-filesystem/&lt;/a&gt;&lt;/p&gt;</content:encoded><author>park.doyeon@gmail.com</author></item><item><title><![CDATA[SVM - 1. yi(x·w+b) >= 1 도출하기]]></title><description><![CDATA[그래프 위 그래프는 두개의 그룹을 나누는 가장 최단의 경계가 되는 서포트 벡터 라인 두개와,
 두 그룹의 경계가 되는 점선라인(dicision boundary)을 표현하고 있다.  여기서  dicision boundary를 통과하는 범선 벡터 w…]]></description><link>https://parkdoyeon.github.io//svm-1-yi-x-w-b-1-도출하기</link><guid isPermaLink="false">https://parkdoyeon.github.io//svm-1-yi-x-w-b-1-도출하기</guid><category><![CDATA[machine-learning]]></category><category><![CDATA[svm]]></category><pubDate>Mon, 18 Mar 2019 15:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;img src=&quot;/image/ml/2019-03-19-svm-1.jpeg&quot; alt=&quot;그래프&quot;&gt;&lt;/p&gt;
 &lt;p&gt;위 그래프는 두개의 그룹을 나누는 가장 최단의 경계가 되는 서포트 벡터 라인 두개와,
 두 그룹의 경계가 되는 점선라인(dicision boundary)을 표현하고 있다. &lt;/p&gt;
@@ -2238,6 +2214,30 @@ w와 X의 정의에 따라 직교하는 벡터의 내적은 0이 되므로, 아�
 &lt;p&gt;그러나 이런 가정만으로 어떤 수학적인 법칙을 찾기에는 어려움이 있다. 이를 해소하기위해 각 항에 class값(+1, -1)인 yi를 곱한다.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;/image/ml/2019-03-19-svm-8.jpeg&quot; alt=&quot;정의&quot;&gt;&lt;/p&gt;
 &lt;p&gt;이렇게 곱셈을 하면 두개의 다른 식이 하나의 부등식으로 도출된다. (마이너스 곱을 하면 우항의 값이 플러스로 변형되고 부등호의 방향이 바뀐다)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;도움이 됐던 자료/강의&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;MIT 6.034 Artificial Intelligence, Fall 2010:  &lt;a href=&quot;https://www.youtube.com/watch?v=_PwhiWxHK8o&quot;&gt;https://www.youtube.com/watch?v=_PwhiWxHK8o&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Chapter 3: Support Vector machine with Math: &lt;a href=&quot;https://medium.com/deep-math-machine-learning-ai/chapter-3-support-vector-machine-with-math-47d6193c82be&quot;&gt;https://medium.com/deep-math-machine-learning-ai/chapter-3-support-vector-machine-with-math-47d6193c82be&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;초짜 대학원생의 입장에서 이해하는 Support Vector Machine (1): &lt;a href=&quot;http://jaejunyoo.blogspot.com/2018/01/support-vector-machine-1.html&quot;&gt;http://jaejunyoo.blogspot.com/2018/01/support-vector-machine-1.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;서포트 벡터 머신 (Support Vector Machine): &lt;a href=&quot;https://ratsgo.github.io/machine%20learning/2017/05/23/SVM/&quot;&gt;https://ratsgo.github.io/machine%20learning/2017/05/23/SVM/&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;</content:encoded><author>park.doyeon@gmail.com</author></item><item><title><![CDATA[SVM - 2. svm 사이의 최대 거리값 찾기]]></title><description><![CDATA[그래프 다시 그래프로 돌아오자.
+svm의 가장 기본적인 목표는 경계(decision boundary)에 가장 가까운 서로 다른 클래스 두 점의 '거리 최대값'을 찾는 것이다.
+위 그래프에서 초록색 선은 x-클래스 벡터, 하늘색 선은 x…]]></description><link>https://parkdoyeon.github.io//svm-2-svm-사이의-최대-거리값-찾기</link><guid isPermaLink="false">https://parkdoyeon.github.io//svm-2-svm-사이의-최대-거리값-찾기</guid><category><![CDATA[machine-learning]]></category><category><![CDATA[svm]]></category><pubDate>Mon, 18 Mar 2019 15:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;img src=&quot;/image/ml/2019-03-19-svm2-1.jpeg&quot; alt=&quot;그래프&quot;&gt;&lt;/p&gt;
+&lt;p&gt;다시 그래프로 돌아오자.
+svm의 가장 기본적인 목표는 경계(decision boundary)에 가장 가까운 서로 다른 클래스 두 점의 &apos;거리 최대값&apos;을 찾는 것이다.
+위 그래프에서 초록색 선은 x-클래스 벡터, 하늘색 선은 x+클래스 벡터이다.
+뺄셈으로 두 벡터의 거리를 찾고, 벡터값을 스칼라로 바꾸기 위해 w벡터의 단위벡터값을 내적해준다. &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/image/ml/2019-03-19-svm2-2.png&quot; alt=&quot;수식&quot;&gt;&lt;/p&gt;
+&lt;p&gt;왜 하필 w벡터일까? SVM 조건식을 통해 도출한 X와 W의 내적값을 1과 b에 대한 상수식으로 치환하면,
+아래와 같이 아주 깔끔한 식이 도출된다.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/image/ml/2019-03-19-svm2-3.png&quot; alt=&quot;수식&quot;&gt;&lt;/p&gt;
+&lt;p&gt;||w||가 분모에 있다는 것은 다시말해 최대값을 찾기위해서는 가장 작은 w를 찾아야한다는 얘기가 된다.
+수학적 편의에 차원에서 w의 최솟값을 찾기 위해 아래와같이 식을 변형한다.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/image/ml/2019-03-19-svm2-4.png&quot; alt=&quot;수식&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&apos;왜 이렇게 변형해야 하는가&apos;는 또 다른 문제이기 때문에 우선 차치하더라도,
+2차원 그래프에서 2차원 함수는 최솟값을 찾기에 아주 적절한 형태를 갖추고 있다.
+이와같은 변형을 2차원 함수의 볼록한 그릇같은 모양을 따서 convex optimization problem이라고 한다.
+svm의 최적화 문제는 매우 다양한데, 우선 이것말고도 또 다른 최적화 방식이 있다는 것만 알아두자.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;도움이 됐던 자료/강의&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;MIT 6.034 Artificial Intelligence, Fall 2010:  &lt;a href=&quot;https://www.youtube.com/watch?v=_PwhiWxHK8o&quot;&gt;https://www.youtube.com/watch?v=_PwhiWxHK8o&lt;/a&gt;&lt;/p&gt;
@@ -2495,15 +2495,15 @@ byte-range리퀘스트는 처음에 영상을 로드할때 헤드에 range에 10
 byte-range리퀘스트는 처음에 영상을 로드할때 헤드에 range에 1024바이트 확인한다는 요청을 한다. (해당 리퀘스트가 지원되지 않는 서버 영상은 재생되지 않을수도 있다.) 서버는 성공적인 range 리스폰스이면 206코드를 던지면서 전체 리소스 사이즈가 어떤지를 보낸다.&lt;br&gt;
 사파리 브라우저는 이를 바탕으로 각 파일의 바이트 길이를 계산한다. 여기서 요청한 것보다 데이터가 크면 이후의 리퀘스트를 중단한다.&lt;/p&gt;
 &lt;p&gt;safari의 mp4영상지원 설명: &lt;a href=&quot;https://stackoverflow.com/questions/52087208/pwa-cached-video-will-not-play-in-mobile-safari-11-4&quot;&gt;https://stackoverflow.com/questions/52087208/pwa-cached-video-will-not-play-in-mobile-safari-11-4&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;byte-range 설명: &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/HTTP/Range_requests&quot;&gt;https://developer.mozilla.org/en-US/docs/Web/HTTP/Range_requests&lt;/a&gt;&lt;/p&gt;</content:encoded><author>park.doyeon@gmail.com</author></item><item><title><![CDATA[id값 인서트하기]]></title><description><![CDATA[인서트 전에 테이블 id 인서트 옵션을 on 해줘야한다]]></description><link>https://parkdoyeon.github.io//id값-인서트하기</link><guid isPermaLink="false">https://parkdoyeon.github.io//id값-인서트하기</guid><category><![CDATA[mssql]]></category><category><![CDATA[insert]]></category><pubDate>Mon, 11 Feb 2019 15:00:00 GMT</pubDate><content:encoded>&lt;p&gt;인서트 전에 테이블 id 인서트 옵션을 on 해줘야한다&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;sql&quot;&gt;&lt;pre class=&quot;language-sql&quot;&gt;&lt;code class=&quot;language-sql&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;SET&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;IDENTITY_INSERT&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;table&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;ON&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;token keyword&quot;&gt;INSERT&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;INTO&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;table&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;IDX&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; COL1&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; COL2&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;VALUES&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;token keyword&quot;&gt;SET&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;IDENTITY_INSERT&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;table&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;OFF&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded><author>park.doyeon@gmail.com</author></item><item><title><![CDATA[데이터별 갯수 확인 쿼리]]></title><description><![CDATA[집계 데이터중에서 특정갯수만큼의 열을 갖고있는 데이터를 확인하고싶으면 having을 통해 확인하면된다 group by 인자가 여러개일경우 순서에 따라서 집계된다.]]></description><link>https://parkdoyeon.github.io//데이터별-갯수-확인-쿼리</link><guid isPermaLink="false">https://parkdoyeon.github.io//데이터별-갯수-확인-쿼리</guid><category><![CDATA[mssql]]></category><category><![CDATA[select]]></category><pubDate>Mon, 11 Feb 2019 15:00:00 GMT</pubDate><content:encoded>&lt;p&gt;집계 데이터중에서 특정갯수만큼의 열을 갖고있는 데이터를 확인하고싶으면 having을 통해 확인하면된다&lt;/p&gt;
+&lt;p&gt;byte-range 설명: &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/HTTP/Range_requests&quot;&gt;https://developer.mozilla.org/en-US/docs/Web/HTTP/Range_requests&lt;/a&gt;&lt;/p&gt;</content:encoded><author>park.doyeon@gmail.com</author></item><item><title><![CDATA[데이터별 갯수 확인 쿼리]]></title><description><![CDATA[집계 데이터중에서 특정갯수만큼의 열을 갖고있는 데이터를 확인하고싶으면 having을 통해 확인하면된다 group by 인자가 여러개일경우 순서에 따라서 집계된다.]]></description><link>https://parkdoyeon.github.io//데이터별-갯수-확인-쿼리</link><guid isPermaLink="false">https://parkdoyeon.github.io//데이터별-갯수-확인-쿼리</guid><category><![CDATA[mssql]]></category><category><![CDATA[select]]></category><pubDate>Mon, 11 Feb 2019 15:00:00 GMT</pubDate><content:encoded>&lt;p&gt;집계 데이터중에서 특정갯수만큼의 열을 갖고있는 데이터를 확인하고싶으면 having을 통해 확인하면된다&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;sql&quot;&gt;&lt;pre class=&quot;language-sql&quot;&gt;&lt;code class=&quot;language-sql&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;varchar_col&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
 &lt;span class=&quot;token keyword&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;table&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
 &lt;span class=&quot;token keyword&quot;&gt;GROUP&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;varchar_col&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
 &lt;span class=&quot;token keyword&quot;&gt;HAVING&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;group by 인자가 여러개일경우 순서에 따라서 집계된다.&lt;/p&gt;</content:encoded><author>park.doyeon@gmail.com</author></item><item><title><![CDATA[R - 인코딩 옵션 추론 및 한글 변환하기]]></title><description><![CDATA[맥에서 설치하는 R은 기본 utf8설정인경우로 데이터 변환을 할 필요가 없지만, 윈도우는 그렇지 않을 수 있기 때문에 데이터 타입 추론과 변환이 필요한 경우가 있다. 이때 readr라이브러리의 guess_encoding…]]></description><link>https://parkdoyeon.github.io//r-인코딩-옵션-추론-및-한글-변환하기</link><guid isPermaLink="false">https://parkdoyeon.github.io//r-인코딩-옵션-추론-및-한글-변환하기</guid><category><![CDATA[machine-learning]]></category><category><![CDATA[R]]></category><pubDate>Mon, 11 Feb 2019 15:00:00 GMT</pubDate><content:encoded>&lt;p&gt;맥에서 설치하는 R은 기본 utf8설정인경우로 데이터 변환을 할 필요가 없지만, 윈도우는 그렇지 않을 수 있기 때문에 데이터 타입 추론과 변환이 필요한 경우가 있다. 이때 readr라이브러리의 guess_encoding 함수를 호출하면 데이터타입 추론이 아래와 같은 결과로 나온다.&lt;/p&gt;
+&lt;p&gt;group by 인자가 여러개일경우 순서에 따라서 집계된다.&lt;/p&gt;</content:encoded><author>park.doyeon@gmail.com</author></item><item><title><![CDATA[id값 인서트하기]]></title><description><![CDATA[인서트 전에 테이블 id 인서트 옵션을 on 해줘야한다]]></description><link>https://parkdoyeon.github.io//id값-인서트하기</link><guid isPermaLink="false">https://parkdoyeon.github.io//id값-인서트하기</guid><category><![CDATA[mssql]]></category><category><![CDATA[insert]]></category><pubDate>Mon, 11 Feb 2019 15:00:00 GMT</pubDate><content:encoded>&lt;p&gt;인서트 전에 테이블 id 인서트 옵션을 on 해줘야한다&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;sql&quot;&gt;&lt;pre class=&quot;language-sql&quot;&gt;&lt;code class=&quot;language-sql&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;SET&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;IDENTITY_INSERT&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;table&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;ON&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;INSERT&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;INTO&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;table&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;IDX&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; COL1&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; COL2&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;VALUES&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;SET&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;IDENTITY_INSERT&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;table&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;OFF&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded><author>park.doyeon@gmail.com</author></item><item><title><![CDATA[R - 인코딩 옵션 추론 및 한글 변환하기]]></title><description><![CDATA[맥에서 설치하는 R은 기본 utf8설정인경우로 데이터 변환을 할 필요가 없지만, 윈도우는 그렇지 않을 수 있기 때문에 데이터 타입 추론과 변환이 필요한 경우가 있다. 이때 readr라이브러리의 guess_encoding…]]></description><link>https://parkdoyeon.github.io//r-인코딩-옵션-추론-및-한글-변환하기</link><guid isPermaLink="false">https://parkdoyeon.github.io//r-인코딩-옵션-추론-및-한글-변환하기</guid><category><![CDATA[machine-learning]]></category><category><![CDATA[R]]></category><pubDate>Mon, 11 Feb 2019 15:00:00 GMT</pubDate><content:encoded>&lt;p&gt;맥에서 설치하는 R은 기본 utf8설정인경우로 데이터 변환을 할 필요가 없지만, 윈도우는 그렇지 않을 수 있기 때문에 데이터 타입 추론과 변환이 필요한 경우가 있다. 이때 readr라이브러리의 guess_encoding 함수를 호출하면 데이터타입 추론이 아래와 같은 결과로 나온다.&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;r&quot;&gt;&lt;pre class=&quot;language-r&quot;&gt;&lt;code class=&quot;language-r&quot;&gt;library&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;readr&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
 guess_encoding&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;someday&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;token comment&quot;&gt;# A tibble: 1 x 2&lt;/span&gt;
@@ -2929,6 +2929,129 @@ List&amp;lt;int&amp;gt; list = new List&amp;lt;int&amp;gt;();
 DuckTypingCall(txt, &amp;quot;text&amp;quot;); // 0
 DuckTypingCall(list, 3); // 2&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/li&gt;
+&lt;/ul&gt;</content:encoded><author>park.doyeon@gmail.com</author></item><item><title><![CDATA[c# 기본서 - c# 5.0: async, await]]></title><description><![CDATA[호출자 정보 c/c++에서 갖고오는 , 와 같은 매크로 상수를 불러올 수 있게됐다. c#에서는 함수 파라미터에 attribute 형식으로 입력하면 된다. 특성 설명 CallerMemberName…]]></description><link>https://parkdoyeon.github.io//c-기본서-c-5-0-async-await</link><guid isPermaLink="false">https://parkdoyeon.github.io//c-기본서-c-5-0-async-await</guid><category><![CDATA[c#]]></category><category><![CDATA[c#5.0]]></category><category><![CDATA[async]]></category><category><![CDATA[await]]></category><category><![CDATA[Task]]></category><category><![CDATA[Task<TResult>]]></category><category><![CDATA[호출자정보]]></category><pubDate>Thu, 06 Dec 2018 15:00:00 GMT</pubDate><content:encoded>&lt;h3 id=&quot;호출자-정보&quot;&gt;&lt;a href=&quot;#%ED%98%B8%EC%B6%9C%EC%9E%90-%EC%A0%95%EB%B3%B4&quot; aria-label=&quot;호출자 정보 permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;호출자 정보&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;c/c++에서 갖고오는 &lt;code class=&quot;language-text&quot;&gt;__LINE__&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;__FILE__&lt;/code&gt;와 같은 매크로 상수를 불러올 수 있게됐다.&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;c#에서는 함수 파라미터에 attribute 형식으로 입력하면 된다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c#&quot;&gt;&lt;pre class=&quot;language-c#&quot;&gt;&lt;code class=&quot;language-c#&quot;&gt;static void LogMessage([CallerMemberName] string memberName = &amp;quot;&amp;quot;, [CallerFilePath] string filePath = &amp;quot;&amp;quot;, [CallerLineNumber] int lineNumber = 0)
+{
+    //코드
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;특성&lt;/th&gt;
+&lt;th&gt;설명&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;CallerMemberName&lt;/td&gt;
+&lt;td&gt;호출자 정보가 명시된 메서드를 호출한 측의 메서드 이름&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CallerFilePath&lt;/td&gt;
+&lt;td&gt;호출자 정보가 명시된 메서드를 호출한 측의 소스파일 경로&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CallerLineNumber&lt;/td&gt;
+&lt;td&gt;호출자 정보가 명시된 메서드를 호출한 측의 소스코드 라인 번호&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;where T: struct&lt;/td&gt;
+&lt;td&gt;값 형식만&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;async-await&quot;&gt;&lt;a href=&quot;#async-await&quot; aria-label=&quot;async await permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;async, await&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;비동기 호출을 동기호출처럼 사용할 수 있는 예약어&lt;/li&gt;
+&lt;li&gt;FileRead()같은 함수는 비동기 함수가 별개로 있지만, 비동기로 호출할경우 콜백 함수를 쓰는등 복잡해지는 문제가 있었다.&lt;/li&gt;
+&lt;li&gt;사용 방법은 함수 앞에 await를 붙이고, 그 아래에 있는 코드를 콜백함수처럼 동기적으로 작성하면 된다.&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;async는 await이라는 단어를 예약어로 인식하게 하도록 메소드 앞에 붙이는 예약어이다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;하위호환을 위해 추가된 개념이다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;비동기-반환-타입-task-tasktresult&quot;&gt;&lt;a href=&quot;#%EB%B9%84%EB%8F%99%EA%B8%B0-%EB%B0%98%ED%99%98-%ED%83%80%EC%9E%85-task-tasktresult&quot; aria-label=&quot;비동기 반환 타입 task tasktresult permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;비동기 반환 타입: Task, Task&lt;TResult&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;비동기 메서드는 반환값이 있는 경우 Task&lt;TResult&gt;, 없는경우 Task 반환한다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;await예약어를 사용하지 않고 async 예약어를 사용할 경우 void 리턴도 가능한데, 이때 예외가 발생하면 처리되지 않은 채로 프로세스가 비정상적으로 종료되므로 권장되지 않는다.&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;그럼에도 불구하고 async void가 있는 경우는 EventHandler 타입때문이다. 아래를 제시한 타입외에는 사용하지 말자.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c#&quot;&gt;&lt;pre class=&quot;language-c#&quot;&gt;&lt;code class=&quot;language-c#&quot;&gt;public delegate void EventHandler(object sender, EventArgs e);&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Task만 ThreadPool.QueueUserWorkItem대용으로 사용할수도 있다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c#&quot;&gt;&lt;pre class=&quot;language-c#&quot;&gt;&lt;code class=&quot;language-c#&quot;&gt;//동일한 코드이다
+ThreadPool.QueueWorkItem(
+    (obj) =&amp;gt;
+    {
+        //코드
+    }
+, null)
+
+Task task1 = new Task(
+    () =&amp;gt;
+    {
+        //코드
+    }
+, null)
+
+Task task2 = new Task(
+    () =&amp;gt;
+    {
+        //코드
+    }
+, null)
+
+task1.Start();
+task1.Wait();
+//차이점이라면 Task가 좀 더 세밀하게 제어할 수 있다. ThreadPool은 EventWaitHandle 타입을 통해 제어해야하는데, Wait();호출을 통해 작업완료까지 스레드 대기를 할 수있다.
+
+//Task.WaitAll(task1, task2)
+//두개의 스레드를 동시에 실행하고 대기할 수 있다.
+
+//await Task.WaitAll(task1, task2)
+//두개의 스레드를 동시에 실행하고 대기하지 않고 다음작업을 진행한다.&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;Task.Factory.StartNew(Action&lt;T&gt; func)이라는 정적 속성을 통해 Start()호출 없이 바로 시작할수도 있다.&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Task&lt;TResult&gt;를 사용해 반환값을 처리할수도 있다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c#&quot;&gt;&lt;pre class=&quot;language-c#&quot;&gt;&lt;code class=&quot;language-c#&quot;&gt;Task&amp;lt;int&amp;gt; task1 = new Task&amp;lt;int&amp;gt;(
+    () =&amp;gt;
+    {
+        Random rand = new Random((int))
+    }
+, null)
+task1.Start();
+task1.Wait();
+Console.WriteLine(task1.Result);&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;비동기를 지원하지 않는 동기메서드를 비동기메서드처럼 구현할수도 있다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c#&quot;&gt;&lt;pre class=&quot;language-c#&quot;&gt;&lt;code class=&quot;language-c#&quot;&gt;static Task&amp;lt;string&amp;gt; ReadAllTextAsync(string filePath)
+{
+    return TaskFactory.StartNew(() =&amp;gt; 
+    {
+        File.ReadAllText(filePath);
+    })
+}
+private static async Task AwaitFileRead(string filePath)
+{
+    string fileText = await ReadAllTextAsync(filePath);
+    // Task 반환타입을 갖지만 Async예약어가 있으므로 return 문이 필요없다.
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
 &lt;/ul&gt;</content:encoded><author>park.doyeon@gmail.com</author></item><item><title><![CDATA[c# 기본서 - c# 6.0: 간편표기법]]></title><description><![CDATA[6.0 주요변화 간편 표기법정도의 변화가 있었다. 때문에 빌드할때는 c# 6.0이 필요하지만 빌드 결과를 실행하기위해선 .NET framework 2.0(c# 2.…]]></description><link>https://parkdoyeon.github.io//c-기본서-c-6-0-간편표기법</link><guid isPermaLink="false">https://parkdoyeon.github.io//c-기본서-c-6-0-간편표기법</guid><category><![CDATA[c#]]></category><category><![CDATA[c#6.0]]></category><category><![CDATA[lambda]]></category><category><![CDATA[using]]></category><category><![CDATA[questionmark]]></category><category><![CDATA[dictionary]]></category><category><![CDATA[when]]></category><category><![CDATA[task]]></category><pubDate>Thu, 06 Dec 2018 15:00:00 GMT</pubDate><content:encoded>&lt;h3 id=&quot;60-주요변화&quot;&gt;&lt;a href=&quot;#60-%EC%A3%BC%EC%9A%94%EB%B3%80%ED%99%94&quot; aria-label=&quot;60 주요변화 permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;6.0 주요변화&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;간편 표기법정도의 변화가 있었다.&lt;/li&gt;
@@ -3061,129 +3184,6 @@ var people = new Dictionary&amp;lt;string, int&amp;gt;
 &lt;p&gt;null을 리턴하는 Task 메서드를 Task.Run메서드에 넣는 경우도 Run(Func&lt;Task&gt; function)을 선택해서 실행하도록 하게 되었다.&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c#&quot;&gt;&lt;pre class=&quot;language-c#&quot;&gt;&lt;code class=&quot;language-c#&quot;&gt;public static Task Run(Func&amp;lt;Task&amp;gt; function);
 public static Task Run(Action function);&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/li&gt;
-&lt;/ul&gt;</content:encoded><author>park.doyeon@gmail.com</author></item><item><title><![CDATA[c# 기본서 - c# 5.0: async, await]]></title><description><![CDATA[호출자 정보 c/c++에서 갖고오는 , 와 같은 매크로 상수를 불러올 수 있게됐다. c#에서는 함수 파라미터에 attribute 형식으로 입력하면 된다. 특성 설명 CallerMemberName…]]></description><link>https://parkdoyeon.github.io//c-기본서-c-5-0-async-await</link><guid isPermaLink="false">https://parkdoyeon.github.io//c-기본서-c-5-0-async-await</guid><category><![CDATA[c#]]></category><category><![CDATA[c#5.0]]></category><category><![CDATA[async]]></category><category><![CDATA[await]]></category><category><![CDATA[Task]]></category><category><![CDATA[Task<TResult>]]></category><category><![CDATA[호출자정보]]></category><pubDate>Thu, 06 Dec 2018 15:00:00 GMT</pubDate><content:encoded>&lt;h3 id=&quot;호출자-정보&quot;&gt;&lt;a href=&quot;#%ED%98%B8%EC%B6%9C%EC%9E%90-%EC%A0%95%EB%B3%B4&quot; aria-label=&quot;호출자 정보 permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;호출자 정보&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;c/c++에서 갖고오는 &lt;code class=&quot;language-text&quot;&gt;__LINE__&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;__FILE__&lt;/code&gt;와 같은 매크로 상수를 불러올 수 있게됐다.&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;c#에서는 함수 파라미터에 attribute 형식으로 입력하면 된다.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c#&quot;&gt;&lt;pre class=&quot;language-c#&quot;&gt;&lt;code class=&quot;language-c#&quot;&gt;static void LogMessage([CallerMemberName] string memberName = &amp;quot;&amp;quot;, [CallerFilePath] string filePath = &amp;quot;&amp;quot;, [CallerLineNumber] int lineNumber = 0)
-{
-    //코드
-}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;특성&lt;/th&gt;
-&lt;th&gt;설명&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;CallerMemberName&lt;/td&gt;
-&lt;td&gt;호출자 정보가 명시된 메서드를 호출한 측의 메서드 이름&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;CallerFilePath&lt;/td&gt;
-&lt;td&gt;호출자 정보가 명시된 메서드를 호출한 측의 소스파일 경로&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;CallerLineNumber&lt;/td&gt;
-&lt;td&gt;호출자 정보가 명시된 메서드를 호출한 측의 소스코드 라인 번호&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;where T: struct&lt;/td&gt;
-&lt;td&gt;값 형식만&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;async-await&quot;&gt;&lt;a href=&quot;#async-await&quot; aria-label=&quot;async await permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;async, await&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;비동기 호출을 동기호출처럼 사용할 수 있는 예약어&lt;/li&gt;
-&lt;li&gt;FileRead()같은 함수는 비동기 함수가 별개로 있지만, 비동기로 호출할경우 콜백 함수를 쓰는등 복잡해지는 문제가 있었다.&lt;/li&gt;
-&lt;li&gt;사용 방법은 함수 앞에 await를 붙이고, 그 아래에 있는 코드를 콜백함수처럼 동기적으로 작성하면 된다.&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;async는 await이라는 단어를 예약어로 인식하게 하도록 메소드 앞에 붙이는 예약어이다.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;하위호환을 위해 추가된 개념이다.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;비동기-반환-타입-task-tasktresult&quot;&gt;&lt;a href=&quot;#%EB%B9%84%EB%8F%99%EA%B8%B0-%EB%B0%98%ED%99%98-%ED%83%80%EC%9E%85-task-tasktresult&quot; aria-label=&quot;비동기 반환 타입 task tasktresult permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;비동기 반환 타입: Task, Task&lt;TResult&gt;&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;비동기 메서드는 반환값이 있는 경우 Task&lt;TResult&gt;, 없는경우 Task 반환한다.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;await예약어를 사용하지 않고 async 예약어를 사용할 경우 void 리턴도 가능한데, 이때 예외가 발생하면 처리되지 않은 채로 프로세스가 비정상적으로 종료되므로 권장되지 않는다.&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;그럼에도 불구하고 async void가 있는 경우는 EventHandler 타입때문이다. 아래를 제시한 타입외에는 사용하지 말자.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c#&quot;&gt;&lt;pre class=&quot;language-c#&quot;&gt;&lt;code class=&quot;language-c#&quot;&gt;public delegate void EventHandler(object sender, EventArgs e);&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Task만 ThreadPool.QueueUserWorkItem대용으로 사용할수도 있다.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c#&quot;&gt;&lt;pre class=&quot;language-c#&quot;&gt;&lt;code class=&quot;language-c#&quot;&gt;//동일한 코드이다
-ThreadPool.QueueWorkItem(
-    (obj) =&amp;gt;
-    {
-        //코드
-    }
-, null)
-
-Task task1 = new Task(
-    () =&amp;gt;
-    {
-        //코드
-    }
-, null)
-
-Task task2 = new Task(
-    () =&amp;gt;
-    {
-        //코드
-    }
-, null)
-
-task1.Start();
-task1.Wait();
-//차이점이라면 Task가 좀 더 세밀하게 제어할 수 있다. ThreadPool은 EventWaitHandle 타입을 통해 제어해야하는데, Wait();호출을 통해 작업완료까지 스레드 대기를 할 수있다.
-
-//Task.WaitAll(task1, task2)
-//두개의 스레드를 동시에 실행하고 대기할 수 있다.
-
-//await Task.WaitAll(task1, task2)
-//두개의 스레드를 동시에 실행하고 대기하지 않고 다음작업을 진행한다.&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/li&gt;
-&lt;li&gt;Task.Factory.StartNew(Action&lt;T&gt; func)이라는 정적 속성을 통해 Start()호출 없이 바로 시작할수도 있다.&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Task&lt;TResult&gt;를 사용해 반환값을 처리할수도 있다.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c#&quot;&gt;&lt;pre class=&quot;language-c#&quot;&gt;&lt;code class=&quot;language-c#&quot;&gt;Task&amp;lt;int&amp;gt; task1 = new Task&amp;lt;int&amp;gt;(
-    () =&amp;gt;
-    {
-        Random rand = new Random((int))
-    }
-, null)
-task1.Start();
-task1.Wait();
-Console.WriteLine(task1.Result);&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;비동기를 지원하지 않는 동기메서드를 비동기메서드처럼 구현할수도 있다.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c#&quot;&gt;&lt;pre class=&quot;language-c#&quot;&gt;&lt;code class=&quot;language-c#&quot;&gt;static Task&amp;lt;string&amp;gt; ReadAllTextAsync(string filePath)
-{
-    return TaskFactory.StartNew(() =&amp;gt; 
-    {
-        File.ReadAllText(filePath);
-    })
-}
-private static async Task AwaitFileRead(string filePath)
-{
-    string fileText = await ReadAllTextAsync(filePath);
-    // Task 반환타입을 갖지만 Async예약어가 있으므로 return 문이 필요없다.
-}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/li&gt;
 &lt;/ul&gt;</content:encoded><author>park.doyeon@gmail.com</author></item><item><title><![CDATA[c# 기본서 - c# 7.1: Tuple, ValueTuple, async, is]]></title><description><![CDATA[defalut 리터럴 형식 추가 2.0에 추가된 default는 (T)를 인자로 받았다. 문자 그대로 T를 인자로 받으면 컴파일시 기본값을 추측하는데, 7.0부터 어차피 타입추론이 이뤄지므로 지정이 필요없다고 판단하고 리터럴로 사용하게 됐다. Main…]]></description><link>https://parkdoyeon.github.io//c-기본서-c-7-1-tuple-value-tuple-async-is</link><guid isPermaLink="false">https://parkdoyeon.github.io//c-기본서-c-7-1-tuple-value-tuple-async-is</guid><category><![CDATA[c#]]></category><category><![CDATA[c#7.1]]></category><category><![CDATA[default]]></category><category><![CDATA[ValueTuple]]></category><category><![CDATA[async]]></category><category><![CDATA[is]]></category><pubDate>Thu, 06 Dec 2018 15:00:00 GMT</pubDate><content:encoded>&lt;h3 id=&quot;defalut-리터럴-형식-추가&quot;&gt;&lt;a href=&quot;#defalut-%EB%A6%AC%ED%84%B0%EB%9F%B4-%ED%98%95%EC%8B%9D-%EC%B6%94%EA%B0%80&quot; aria-label=&quot;defalut 리터럴 형식 추가 permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;defalut 리터럴 형식 추가&lt;/h3&gt;
 &lt;ul&gt;
@@ -3693,36 +3693,6 @@ MyDivde myFunc = delegate (int a, int b)
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;/ul&gt;</content:encoded><author>park.doyeon@gmail.com</author></item><item><title><![CDATA[c# 기본서 - AppDomain과 리플렉션]]></title><description><![CDATA[응용프로그램 도메인(App Domain) 닷넷 응용프로그램은 EXE 프로세스로 실행되고 내부의 CLR에 의해 응용프로그램 도메인(App Domain…]]></description><link>https://parkdoyeon.github.io//c-기본서-app-domain과-리플렉션</link><guid isPermaLink="false">https://parkdoyeon.github.io//c-기본서-app-domain과-리플렉션</guid><category><![CDATA[c#]]></category><category><![CDATA[bcl]]></category><category><![CDATA[dll]]></category><category><![CDATA[AppDomain]]></category><category><![CDATA[Reflection]]></category><pubDate>Sun, 02 Dec 2018 15:00:00 GMT</pubDate><content:encoded>&lt;h3 id=&quot;응용프로그램-도메인app-domain&quot;&gt;&lt;a href=&quot;#%EC%9D%91%EC%9A%A9%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8-%EB%8F%84%EB%A9%94%EC%9D%B8app-domain&quot; aria-label=&quot;응용프로그램 도메인app domain permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;응용프로그램 도메인(App Domain)&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;닷넷 응용프로그램은 EXE 프로세스로 실행되고 내부의 CLR에 의해 응용프로그램 도메인(App Domain)으로 나뉜다.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;이는 내부적인 격리 공간으로, 별도의 통신방법을 설정하지 않는 한 서로 침범할 수 없으며,&lt;/li&gt;
-&lt;li&gt;하나의 App Domain이 불안정하게 종료가 되어도 영향을 끼치지 않는다.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;App Domain 내부에는 어셈블리들이 로드된다.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;각 도메인들은 메인에서 AppDomain 클래스와 같은 reflection관련 클래스를 통해 이름과 목록을 조회하고, 직접 호출할 수 있다.&lt;/li&gt;
-&lt;li&gt;심지어 직접 인스턴스를 생성할수도 있다.&lt;/li&gt;
-&lt;li&gt;해제도 가능한데, Default AppDomain은 직접 해제가 불가능하고 프로세스가 종료될때만 해제된다.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;리플렉션reflection&quot;&gt;&lt;a href=&quot;#%EB%A6%AC%ED%94%8C%EB%A0%89%EC%85%98reflection&quot; aria-label=&quot;리플렉션reflection permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;리플렉션(Reflection)&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;리플렉션을 이용한 메서드 접근은 메인스레드에서 실행하는 것과 동일하게 어셈블리의 클래스와 메서드 접근을 가능케 하며,&lt;/li&gt;
-&lt;li&gt;컴파일 시점에서 다른 코드에 대한 정보가 없더라도 접근이 가능하도록 한다.&lt;/li&gt;
-&lt;li&gt;OOP의 캡슐화 마저도 무시할 수 있는 위력을 갖는다.&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;이러한 접근은 &apos;느슨한 결합&apos;이라고 하며, &lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;속도 저하에대한 이슈가 있지만 기술로 뛰어넘는 추세이다.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;때문에 프레임워크 제작에 유용하게 사용될 수 있다.&lt;/li&gt;
 &lt;/ul&gt;</content:encoded><author>park.doyeon@gmail.com</author></item><item><title><![CDATA[c# 기본서 - 데이터베이스]]></title><description><![CDATA[데이터 자료형 문자열 데이터형에서 'n' 접두사가 붙은 것은 유니코드 문자(UCS-2)를 담는 것을 의미한다 가령 char(10)은 영문10자, 한글5자라면, nchar(10)은 영문10자, 한글 10자를 표현할 수 있다. 문자열 데이터형에서 'var…]]></description><link>https://parkdoyeon.github.io//c-기본서-데이터베이스</link><guid isPermaLink="false">https://parkdoyeon.github.io//c-기본서-데이터베이스</guid><category><![CDATA[c#]]></category><category><![CDATA[bcl]]></category><category><![CDATA[database]]></category><category><![CDATA[CRUD]]></category><category><![CDATA[POCO]]></category><pubDate>Sun, 02 Dec 2018 15:00:00 GMT</pubDate><content:encoded>&lt;h3 id=&quot;데이터-자료형&quot;&gt;&lt;a href=&quot;#%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%9E%90%EB%A3%8C%ED%98%95&quot; aria-label=&quot;데이터 자료형 permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;데이터 자료형&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -3810,6 +3780,36 @@ MyDivde myFunc = delegate (int a, int b)
 &lt;h3 id=&quot;tranjection-scope&quot;&gt;&lt;a href=&quot;#tranjection-scope&quot; aria-label=&quot;tranjection scope permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Tranjection Scope&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;using 문을 이용해 구역지정을 하고 complete()메소드 호출을 통해 트랜잭션을 실행할 수 있다.&lt;/li&gt;
+&lt;/ul&gt;</content:encoded><author>park.doyeon@gmail.com</author></item><item><title><![CDATA[c# 기본서 - AppDomain과 리플렉션]]></title><description><![CDATA[응용프로그램 도메인(App Domain) 닷넷 응용프로그램은 EXE 프로세스로 실행되고 내부의 CLR에 의해 응용프로그램 도메인(App Domain…]]></description><link>https://parkdoyeon.github.io//c-기본서-app-domain과-리플렉션</link><guid isPermaLink="false">https://parkdoyeon.github.io//c-기본서-app-domain과-리플렉션</guid><category><![CDATA[c#]]></category><category><![CDATA[bcl]]></category><category><![CDATA[dll]]></category><category><![CDATA[AppDomain]]></category><category><![CDATA[Reflection]]></category><pubDate>Sun, 02 Dec 2018 15:00:00 GMT</pubDate><content:encoded>&lt;h3 id=&quot;응용프로그램-도메인app-domain&quot;&gt;&lt;a href=&quot;#%EC%9D%91%EC%9A%A9%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8-%EB%8F%84%EB%A9%94%EC%9D%B8app-domain&quot; aria-label=&quot;응용프로그램 도메인app domain permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;응용프로그램 도메인(App Domain)&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;닷넷 응용프로그램은 EXE 프로세스로 실행되고 내부의 CLR에 의해 응용프로그램 도메인(App Domain)으로 나뉜다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;이는 내부적인 격리 공간으로, 별도의 통신방법을 설정하지 않는 한 서로 침범할 수 없으며,&lt;/li&gt;
+&lt;li&gt;하나의 App Domain이 불안정하게 종료가 되어도 영향을 끼치지 않는다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;App Domain 내부에는 어셈블리들이 로드된다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;각 도메인들은 메인에서 AppDomain 클래스와 같은 reflection관련 클래스를 통해 이름과 목록을 조회하고, 직접 호출할 수 있다.&lt;/li&gt;
+&lt;li&gt;심지어 직접 인스턴스를 생성할수도 있다.&lt;/li&gt;
+&lt;li&gt;해제도 가능한데, Default AppDomain은 직접 해제가 불가능하고 프로세스가 종료될때만 해제된다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;리플렉션reflection&quot;&gt;&lt;a href=&quot;#%EB%A6%AC%ED%94%8C%EB%A0%89%EC%85%98reflection&quot; aria-label=&quot;리플렉션reflection permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;리플렉션(Reflection)&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;리플렉션을 이용한 메서드 접근은 메인스레드에서 실행하는 것과 동일하게 어셈블리의 클래스와 메서드 접근을 가능케 하며,&lt;/li&gt;
+&lt;li&gt;컴파일 시점에서 다른 코드에 대한 정보가 없더라도 접근이 가능하도록 한다.&lt;/li&gt;
+&lt;li&gt;OOP의 캡슐화 마저도 무시할 수 있는 위력을 갖는다.&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;이러한 접근은 &apos;느슨한 결합&apos;이라고 하며, &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;속도 저하에대한 이슈가 있지만 기술로 뛰어넘는 추세이다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;때문에 프레임워크 제작에 유용하게 사용될 수 있다.&lt;/li&gt;
 &lt;/ul&gt;</content:encoded><author>park.doyeon@gmail.com</author></item><item><title><![CDATA[c# 기본서 - BCL: 비동기 호출]]></title><description><![CDATA[비동기 호출 일반적으로 동기호출을 Blocking 호출이라고 한다. 동기호출을 하면 해당 스레드는 아무것도 수행하지 못한다. 예시로 disk I/O…]]></description><link>https://parkdoyeon.github.io//c-기본서-bcl-비동기-호출</link><guid isPermaLink="false">https://parkdoyeon.github.io//c-기본서-bcl-비동기-호출</guid><category><![CDATA[c#]]></category><category><![CDATA[bcl]]></category><category><![CDATA[thread]]></category><category><![CDATA[async]]></category><pubDate>Thu, 29 Nov 2018 15:00:00 GMT</pubDate><content:encoded>&lt;h3 id=&quot;비동기-호출&quot;&gt;&lt;a href=&quot;#%EB%B9%84%EB%8F%99%EA%B8%B0-%ED%98%B8%EC%B6%9C&quot; aria-label=&quot;비동기 호출 permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;비동기 호출&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;일반적으로 동기호출을 Blocking 호출이라고 한다. 동기호출을 하면 해당 스레드는 아무것도 수행하지 못한다. 예시로 disk I/O가 있다.&lt;/li&gt;
